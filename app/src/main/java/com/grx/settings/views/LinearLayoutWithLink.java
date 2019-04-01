@@ -1,12 +1,14 @@
 package com.grx.settings.views;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-
+import android.widget.Toast;
+import com.grx.settings.R;
 import com.grx.settings.utils.Common;
 
 
@@ -45,7 +47,11 @@ public class LinearLayoutWithLink extends LinearLayout implements View.OnClickLi
         if(mUrl!=null){
             Intent myintent=new Intent(Intent.ACTION_VIEW);
             myintent.setData(Uri.parse(mUrl));
-            getContext().startActivity(myintent);
+            try {
+                getContext().startActivity(myintent);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(getContext(), R.string.activity_not_found, Toast.LENGTH_LONG).show();
+            }
         }
     }
 

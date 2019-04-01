@@ -226,4 +226,7 @@
     </string-array>
 
     <string name="grxs_draganddroptoshortout">Puedes ordenar la lista arrastrando los elementos</string>
+
+    <string name="activity_not_found">No se puede abrir esta actividad</string>
+
 </resources>
