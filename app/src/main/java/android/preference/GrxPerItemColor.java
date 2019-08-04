@@ -30,6 +30,7 @@ public class GrxPerItemColor extends GrxBasePreference implements  DlgFrGrxPerIt
 
     private int idDefaultColors;
     private int defaultColor;
+    private boolean saveOnTheFly = false;
     int iconsValueTint =0;
 
     public GrxPerItemColor(Context context, AttributeSet attrs) {
@@ -54,7 +55,10 @@ public class GrxPerItemColor extends GrxBasePreference implements  DlgFrGrxPerIt
             } catch (Exception e) {
 
             }
-        }    
+        }
+        if (ta.hasValue(R.styleable.grxPreferences_saveValueOnFly)) {
+            saveOnTheFly = ta.getBoolean(R.styleable.grxPreferences_saveValueOnFly, false );
+        }
         ta.recycle();
         setDefaultValue(myPrefAttrsInfo.getMyStringDefValue());
     }
@@ -80,7 +84,7 @@ public class GrxPerItemColor extends GrxBasePreference implements  DlgFrGrxPerIt
             if(dlg==null){
                 dlg = DlgFrGrxPerItemColor.newInstance(this, Common.TAG_PREFSSCREEN_FRAGMENT, myPrefAttrsInfo.getMyKey(), myPrefAttrsInfo.getMyTitle(),
                         mStringValue,myPrefAttrsInfo.getMyOptionsArrayId(), myPrefAttrsInfo.getMyValuesArrayId(), myPrefAttrsInfo.getMyIconsArrayId(), iconsValueTint, idDefaultColors,
-                        defaultColor, myPrefAttrsInfo.getMySeparator(), myPrefAttrsInfo.getMyStringDefValue());
+                        defaultColor, myPrefAttrsInfo.getMySeparator(), myPrefAttrsInfo.getMyStringDefValue(), saveOnTheFly);
                 dlg.show(prefsScreen.getFragmentManager(),Common.TAG_DLGFRGRITEMSCOLORS);
             }
         }
