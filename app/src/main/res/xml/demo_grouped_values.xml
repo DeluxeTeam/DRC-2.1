@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:grx="http://schemas.android.com/apk/res-auto">
+    <GrxInfoText android:summary=""         />
+    <GrxPreferenceCategory android:title="@string/battery_home"
+        grx:textColor="?contrast_text_color" grx:backgroundColor="?colorAccent" />
+
+    <GrxSwitchPreference android:title= "@string/enable_grxbat" android:defaultValue="true" android:key="grxbath_enabled"
+        grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="be" grx:groupedValueSystemType="system" grx:groupedValueBroadCast="com.grx.tests" />
+
+    <GrxPreferenceCategory android:title="@string/grx_circular_battery" android:dependency="grxbath_enabled"/>
+
+    <GrxCheckBoxPreference android:title="@string/bold_text" android:dependency="grxbath_enabled"  android:defaultValue="true" android:key="grxbath_bold"
+        grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="bold" />
+    <GrxSeekBar android:title="@string/battery_size" android:dependency="grxbath_enabled"  android:key="grxbath_size"
+        android:defaultValue="30" grx:minValue="15" grx:maxValue="40" grx:units=" dp" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="size" />
+    <GrxSeekBar android:title="@string/batt_stroke" android:dependency="grxbath_enabled"  android:key="grxbath_stroke"
+        android:defaultValue="2" grx:minValue="1" grx:maxValue="6" grx:units=" dp" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="stro"/>
+
+    <GrxSeekBar android:title="@string/battery_marginstart" android:dependency="grxbath_enabled"  android:key="grxbath_ms"
+        android:defaultValue="3" grx:minValue="0" grx:maxValue="50" grx:units=" px" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="ms" />
+    <GrxSeekBar android:title="@string/battery_marginend" android:dependency="grxbath_enabled"  android:key="grxbath_me"
+        android:defaultValue="3" grx:minValue="0" grx:maxValue="50" grx:units=" px" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="me"/>
+
+    <GrxSeekBar android:title="@string/batt_animation_time" android:dependency="grxbath_enabled"  android:key="grxbath_animtime"
+        android:defaultValue="100" grx:minValue="10" grx:maxValue="250" grx:units=" mS" grx:showPopup="true" grx:interval="2"
+        grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="anim"/>
+    <GrxSeekBar android:title="@string/batt_alpha_animation" android:dependency="grxbath_enabled"  android:key="grxbath_alphatime"
+        android:defaultValue="2" grx:minValue="1" grx:maxValue="10" grx:units=" sec" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="alphaan"/>
+    <GrxPreferenceCategory android:title="@string/batt_colors" android:dependency="grxbath_enabled">
+        <GrxColorPicker android:title="@string/batt_dark_bgs" android:key="grxbath_darkbg_bat"
+            android:defaultValue="0xfffafafa" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="bcdb"
+            grx:saveValueOnFly="true" />
+        <GrxColorPicker android:title="@string/batt_framecolor_dark_bgs" android:key="grxbath_darkbg_frame"
+            android:defaultValue="0x20fafafa" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="bfdb"/>
+        <GrxColorPicker android:title="@string/batt_text_dark_bgs" android:key="grxbath_darkbg_text"
+            android:defaultValue="0xfffafafa" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="btdb"/>
+        <GrxColorPicker android:title="@string/batt_light_bgs" android:key="grxbath_lightbg_bat"
+            android:defaultValue="0xff343434" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="bclb"/>
+        <GrxColorPicker android:title="@string/batt_framecolor_light_bgs" android:key="grxbath_lightbg_frame"
+            android:defaultValue="0x20343434" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="bflb"/>
+        <GrxColorPicker android:title="@string/batt_text_light_bgs" android:key="grxbath_lightbg_text"
+            android:defaultValue="0xff343434" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbathome" grx:groupedValueMyAlias="btlb"/>
+    </GrxPreferenceCategory>
+
+    <GrxButtonPreference grx:groupedValueKey="grxcirbathome" android:title="@string/grxs_apply" android:key="button_1"  android:summary="Press To apply changes in home circ. bat"
+        grx:button_Style="big"/>
+
+
+    <GrxInfoText android:summary=""         />
+    <GrxPreferenceCategory android:title="@string/battery_ls"
+        grx:textColor="?contrast_text_color" grx:backgroundColor="?colorAccent"/>
+
+    <GrxSwitchPreference android:title="@string/enable_grxbat" android:defaultValue="true" android:key="grxbatl_enabled"
+        grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="be" grx:groupedValueSystemType="system" grx:groupedValueBroadCast="com.grx.tests" />
+
+    <GrxPreferenceCategory android:title="@string/grx_circular_battery" android:dependency="grxbatl_enabled"/>
+
+    <GrxCheckBoxPreference android:title="@string/bold_text" android:dependency="grxbatl_enabled"  android:defaultValue="true" android:key="grxbatl_bold"
+        grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="bold" />
+    <GrxSeekBar android:title="@string/battery_size" android:dependency="grxbatl_enabled"  android:key="grxbatl_size"
+        android:defaultValue="30" grx:minValue="15" grx:maxValue="40" grx:units=" dp" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="size" />
+    <GrxSeekBar android:title="@string/batt_stroke" android:dependency="grxbatl_enabled"  android:key="grxbatl_stroke"
+        android:defaultValue="2" grx:minValue="1" grx:maxValue="6" grx:units=" dp" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="stro"/>
+
+    <GrxSeekBar android:title="@string/battery_marginstart" android:dependency="grxbath_enabled"  android:key="grxbatl_ms"
+        android:defaultValue="3" grx:minValue="0" grx:maxValue="50" grx:units=" px" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="ms" />
+    <GrxSeekBar android:title="@string/battery_marginend" android:dependency="grxbath_enabled"  android:key="grxbatl_me"
+        android:defaultValue="3" grx:minValue="0" grx:maxValue="50" grx:units=" px" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="me"/>
+
+    <GrxSeekBar android:title="@string/batt_animation_time" android:dependency="grxbatl_enabled"  android:key="grxbatl_animtime"
+        android:defaultValue="100" grx:minValue="10" grx:maxValue="250" grx:units=" mS" grx:showPopup="true" grx:interval="2"
+        grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="anim"/>
+    <GrxSeekBar android:title="@string/batt_alpha_animation" android:dependency="grxbatl_enabled"  android:key="grxbatl_alphatime"
+        android:defaultValue="2" grx:minValue="1" grx:maxValue="10" grx:units=" sec" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="alphaan"/>
+    <GrxPreferenceCategory android:title="@string/batt_colors" android:dependency="grxbatl_enabled">
+        <GrxColorPicker android:title="@string/batt_dark_bgs" android:key="grxbatl_darkbg_bat"
+            android:defaultValue="0xfffafafa" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="bcdb"
+            grx:saveValueOnFly="true"/>
+        <GrxColorPicker android:title="@string/batt_framecolor_dark_bgs" android:key="grxbatl_darkbg_frame"
+            android:defaultValue="0x20fafafa" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="bfdb"/>
+        <GrxColorPicker android:title="@string/batt_text_dark_bgs" android:key="grxbatl_darkbg_text"
+            android:defaultValue="0xfffafafa" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="btdb"/>
+        <GrxColorPicker android:title="@string/batt_light_bgs" android:key="grxbatl_lightbg_bat"
+            android:defaultValue="0xff343434" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="bclb"/>
+        <GrxColorPicker android:title="@string/batt_framecolor_light_bgs" android:key="grxbatl_lightbg_frame"
+            android:defaultValue="0x20343434" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="bflb"/>
+        <GrxColorPicker android:title="@string/batt_text_light_bgs" android:key="grxbatl_lightbg_text"
+            android:defaultValue="0xff343434" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatls" grx:groupedValueMyAlias="btlb"/>
+    </GrxPreferenceCategory>
+
+
+    <GrxInfoText android:summary=""         />
+
+
+
+    <GrxPreferenceCategory android:title="@string/battery_panel"
+        grx:textColor="?contrast_text_color" grx:backgroundColor="?colorAccent"/>
+
+    <GrxSwitchPreference android:title="@string/enable_grxbat" android:defaultValue="true" android:key="grxbatp_enabled"
+        grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="be" grx:groupedValueSystemType="system" grx:groupedValueBroadCast="com.grx.tests" />
+
+    <GrxPreferenceCategory android:title="@string/grx_circular_battery" android:dependency="grxbatp_enabled"/>
+
+    <GrxCheckBoxPreference android:title="@string/bold_text" android:dependency="grxbatp_enabled"  android:defaultValue="true" android:key="grxbatp_bold"
+        grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="bold" />
+    <GrxSeekBar android:title="@string/battery_size" android:dependency="grxbatp_enabled"  android:key="grxbatp_size"
+        android:defaultValue="30" grx:minValue="15" grx:maxValue="40" grx:units=" dp" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="size" />
+    <GrxSeekBar android:title="@string/batt_stroke" android:dependency="grxbatp_enabled"  android:key="grxbatp_stroke"
+        android:defaultValue="2" grx:minValue="1" grx:maxValue="6" grx:units=" dp" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="stro"/>
+
+    <GrxSeekBar android:title="@string/battery_marginstart" android:dependency="grxbath_enabled"  android:key="grxbatp_ms"
+        android:defaultValue="3" grx:minValue="0" grx:maxValue="50" grx:units=" px" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="ms" />
+    <GrxSeekBar android:title="@string/battery_marginend" android:dependency="grxbath_enabled"  android:key="grxbatp_me"
+        android:defaultValue="3" grx:minValue="0" grx:maxValue="50" grx:units=" px" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="me"/>
+
+
+    <GrxSeekBar android:title="@string/batt_animation_time" android:dependency="grxbatp_enabled"  android:key="grxbatp_animtime"
+        android:defaultValue="100" grx:minValue="10" grx:maxValue="250" grx:units=" mS" grx:showPopup="true" grx:interval="2"
+        grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="anim"/>
+    <GrxSeekBar android:title="@string/batt_alpha_animation" android:dependency="grxbatp_enabled"  android:key="grxbatp_alphatime"
+        android:defaultValue="2" grx:minValue="1" grx:maxValue="10" grx:units=" sec" grx:showPopup="true" grx:interval="1"
+        grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="alphaan"/>
+    <GrxPreferenceCategory android:title="@string/batt_colors" android:dependency="grxbatp_enabled">
+        <GrxColorPicker android:title="@string/batt_dark_bgs" android:key="grxbatp_darkbg_bat"
+            android:defaultValue="0xfffafafa" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="bcdb"
+            grx:saveValueOnFly="true"/>
+        <GrxColorPicker android:title="@string/batt_framecolor_dark_bgs" android:key="grxbatp_darkbg_frame"
+            android:defaultValue="0x20fafafa" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="bfdb"/>
+        <GrxColorPicker android:title="@string/batt_text_dark_bgs" android:key="grxbatp_darkbg_text"
+            android:defaultValue="0xfffafafa" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="btdb"/>
+        <GrxColorPicker android:title="@string/batt_light_bgs" android:key="grxbatp_lightbg_bat"
+            android:defaultValue="0xff343434" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="bclb"/>
+        <GrxColorPicker android:title="@string/batt_framecolor_light_bgs" android:key="grxbatp_lightbg_frame"
+            android:defaultValue="0x20343434" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="bflb"/>
+        <GrxColorPicker android:title="@string/batt_text_light_bgs" android:key="grxbatp_lightbg_text"
+            android:defaultValue="0xff343434" grx:showAlphaSlider="true" grx:showAutoButton="true"
+            grx:groupedValueKey="grxcirbatpanel" grx:groupedValueMyAlias="btlb"/>
+    </GrxPreferenceCategory>
+
+
+    <GrxInfoText android:summary=""         />
+
+</PreferenceScreen>
