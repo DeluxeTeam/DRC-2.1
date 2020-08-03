@@ -403,7 +403,10 @@ public class GrxPreferenceScreen extends PreferenceFragment implements
 
         String prefKey = pref.getKey();
         if(!TextUtils.isEmpty(prefKey)) {
-            if(mKeysInGroupedValues.containsKey(prefKey)) return true;
+            if(mKeysInGroupedValues.containsKey(prefKey)) {
+                updateAllCustomDependencies(pref.getKey() , newvalue);
+                return true;
+            }
         }
 
         switch (pref.getClass().getSimpleName()) {
