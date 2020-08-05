@@ -12,6 +12,7 @@ android {
     defaultConfig {
         applicationId 'com.grx.settings'
         minSdkVersion 22
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 22 // Google Play Requires API 26 or Higher.
                             // If you still need API 22 to 25, uncomment in lintOptions Section the line checkReleaseBuilds false
                             // or you will not be able to generate a signed apk
