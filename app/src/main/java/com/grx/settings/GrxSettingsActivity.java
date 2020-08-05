@@ -2264,9 +2264,13 @@ public class GrxSettingsActivity extends AppCompatActivity implements
 
     /*** get root bg task, to avoid the app to crash if phone not rooted */
 
+    private boolean isUserWarned = false;
 
     public void showRootState(){
-        if(!Common.IsRooted) showToast(getString(R.string.grxs_app_not_rooted));
+        if(!Common.IsRooted && !isUserWarned) {
+            showToast(getString(R.string.grxs_app_not_rooted));
+            isUserWarned = true;
+        }
     }
 
     public class getSuBgTask extends  AsyncTask<Void, Void, Boolean> {
