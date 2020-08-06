@@ -103,6 +103,7 @@ public class PrefAttrsInfo {
     private String mMyGroupedValueKey;
     private String mMyGroupedValueSystemType;
     private String mMyGroupedValueBroadCast;
+    private String mMyGroupedValueBroadCastExtraName;
     private String mMyGroupedValueMyAlias;
 
     private String mMyDependencyRule;
@@ -240,6 +241,7 @@ public class PrefAttrsInfo {
         mMyGroupedValueKey = ta.getString(R.styleable.grxPreferences_groupedValueKey);
         mMyGroupedValueSystemType = ta.getString(R.styleable.grxPreferences_groupedValueSystemType);
         mMyGroupedValueBroadCast = ta.getString(R.styleable.grxPreferences_groupedValueBroadCast);
+        mMyGroupedValueBroadCastExtraName = ta.getString(R.styleable.grxPreferences_groupedValueBroadCastExtraName);
         mMyGroupedValueMyAlias = ta.getString(R.styleable.grxPreferences_groupedValueMyAlias);
 
         if(mMyGroupedValueKey!=null) mSaveInSettingsAllowed=false;
@@ -450,6 +452,8 @@ public class PrefAttrsInfo {
     public String getMyGroupedValueSystemType(){return mMyGroupedValueSystemType;}
 
     public String getMyGroupedValueBroadCast() {return mMyGroupedValueBroadCast;}
+
+    public String getMyGroupedValueBroadCastExtraName() {return mMyGroupedValueBroadCastExtraName;}
 
     public String getMyGroupedValueMyAlias() { return mMyGroupedValueMyAlias;}
 

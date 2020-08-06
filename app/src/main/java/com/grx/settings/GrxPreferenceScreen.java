@@ -991,14 +991,14 @@ public class GrxPreferenceScreen extends PreferenceFragment implements
      /************** grouped value support ***********/
 
     public void addGroupedValueMember(String prefkey, Object defval, PrefAttrsInfo.PREF_TYPE preftype, String groupedValuekey,
-                                      String alias, String systemtype, String broadcastaction){
+                                      String alias, String systemtype, String broadcastaction, String broadcastExtraName){
         if(TextUtils.isEmpty(prefkey) || TextUtils.isEmpty(groupedValuekey)) return;
         mKeysInGroupedValues.put(prefkey,groupedValuekey);
         if(!mGroupedValuesInfo.containsKey(groupedValuekey)) {
             mGroupedValuesInfo.put(groupedValuekey,new GroupedValueInfo(groupedValuekey, getActivity()));
         }
         GroupedValueInfo groupedKeyInfo = mGroupedValuesInfo.get(groupedValuekey);
-        groupedKeyInfo.addPreferenceConfiguration(prefkey, defval, preftype,alias,systemtype,broadcastaction);
+        groupedKeyInfo.addPreferenceConfiguration(prefkey, defval, preftype,alias,systemtype,broadcastaction, broadcastExtraName);
     }
 
 

@@ -577,7 +577,8 @@ public class GrxBasePreference extends Preference implements
                     myGroupedKey,
                     myPrefAttrsInfo.getMyGroupedValueMyAlias(),
                     myPrefAttrsInfo.getMyGroupedValueSystemType(),
-                    myPrefAttrsInfo.getMyGroupedValueBroadCast()
+                    myPrefAttrsInfo.getMyGroupedValueBroadCast(),
+                    myPrefAttrsInfo.getMyGroupedValueBroadCastExtraName()
             );
         }
 

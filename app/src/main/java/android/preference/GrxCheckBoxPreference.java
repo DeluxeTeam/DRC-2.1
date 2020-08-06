@@ -181,7 +181,8 @@ public class GrxCheckBoxPreference extends CheckBoxPreference implements GrxPref
                     myGroupedKey,
                     myPrefAttrsInfo.getMyGroupedValueMyAlias(),
                     myPrefAttrsInfo.getMyGroupedValueSystemType(),
-                    myPrefAttrsInfo.getMyGroupedValueBroadCast()
+                    myPrefAttrsInfo.getMyGroupedValueBroadCast(),
+                    myPrefAttrsInfo.getMyGroupedValueBroadCastExtraName()
             );
         }
 

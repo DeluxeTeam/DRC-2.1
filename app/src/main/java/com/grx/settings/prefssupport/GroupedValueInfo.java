@@ -49,8 +49,10 @@ public class GroupedValueInfo {
     }
 
 
-    public void addPreferenceConfiguration(String prefkey, Object defval, PrefAttrsInfo.PREF_TYPE preftype, String alias, String systemtype, String broadcastaction){
+    public void addPreferenceConfiguration(String prefkey, Object defval, PrefAttrsInfo.PREF_TYPE preftype, String alias, String systemtype, String broadcastaction,
+                                           String broadcastExtraName){
         setBroadCastAction(broadcastaction);
+        mBroadCastExtraName=broadcastExtraName;
         setGroupedValueSystemType(systemtype);
         addKeyAlias(prefkey, alias);
         if(preftype!= PrefAttrsInfo.PREF_TYPE.BUTTON ){
@@ -167,7 +169,11 @@ public class GroupedValueInfo {
         if(TextUtils.isEmpty(mBroadCastAction)) return;
         Intent intent = new Intent();
         intent.setAction(mBroadCastAction);
-        intent.putExtra(mGroupedValueKey,mGroupedValue);
+        if (mBroadCastExtraName == null || mBroadCastExtraName.isEmpty()) {
+            intent.putExtra(mGroupedValueKey, mGroupedValue);
+        } else {
+            intent.putExtra(mBroadCastExtraName, mGroupedValueKey);
+        }
         mContext.sendBroadcast(intent);
     }
 

@@ -211,7 +211,8 @@ public class GrxSwitchPreference extends SwitchPreference implements GrxPreferen
                     myGroupedKey,
                     myPrefAttrsInfo.getMyGroupedValueMyAlias(),
                     myPrefAttrsInfo.getMyGroupedValueSystemType(),
-                    myPrefAttrsInfo.getMyGroupedValueBroadCast()
+                    myPrefAttrsInfo.getMyGroupedValueBroadCast(),
+                    myPrefAttrsInfo.getMyGroupedValueBroadCastExtraName()
             );
         }
 
