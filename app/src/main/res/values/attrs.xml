@@ -92,7 +92,7 @@
 		<attr name="showAlphaSlider" format="boolean"/>
 		<attr name="colorPickerStyle" format="string"/>
 		<attr name="saveValueOnFly" format="boolean"/>
-		<attr name="defaultColor" format="integer"/>
+		<attr name="defaultColor" format="string|integer|color|reference"/>
 		<attr name="sizeX" format="integer"/>
 		<attr name="sizeY" format="integer"/>
 		<attr name="circularImage" format="boolean"/>
