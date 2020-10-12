@@ -2,5 +2,8 @@
     <update>
         <latestVersion>2.1.1</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
+        <releaseNotes>
+            - Test
+        </releaseNotes>
     </update>
 </AppUpdater>
