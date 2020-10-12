@@ -1,7 +1,6 @@
 <AppUpdater>
     <update>
         <latestVersion>2.1.1</latestVersion>
-        <latestVersionCode>2</latestVersionCode>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
     </update>
 </AppUpdater>
