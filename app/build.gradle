@@ -10,25 +10,29 @@ android {
 	//buildToolsVersion "22.0.1" // no need now, uncomment in older android studio vers.
     //buildToolsVersion '28.0.3'  // no need now, uncomment in older android studio vers depending on the build tools you need.
     defaultConfig {
-        applicationId 'com.grx.settings'
+        applicationId 'com.deluxelabs.drc'
         minSdkVersion 22
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 22 // Google Play Requires API 26 or Higher.
                             // If you still need API 22 to 25, uncomment in lintOptions Section the line checkReleaseBuilds false
                             // or you will not be able to generate a signed apk
         versionCode 2
-        versionName "2.0"
+        versionName "2.1.1"
+        multiDexEnabled  false
     }
 
     repositories {
-        mavenCentral()
+        maven {
+            url "https://jitpack.io"
+        }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7  // 1.7 for old device compatibility
+        //sourceCompatibility JavaVersion.VERSION_1_7  // 1.7 for old device compatibility
 
         // Uncomment next 2 lines and comment previous one for full java 1.8 compatibility (lambda, etc..)
-        //sourceCompatibility JavaVersion.VERSION_1_8
-        //targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
 
     }
 
@@ -38,7 +42,6 @@ android {
         }
     }
 
-
     lintOptions {
         disable 'MissingTranslation'
         checkReleaseBuilds false  // For target sdk 22 to 25 uncomment this line if you want to generate code for older devices with older gradles plugins / older android studio versions.
@@ -47,6 +50,7 @@ android {
     }
     productFlavors {
     }
+
 /*
     dexOptions {
         javaMaxHeapSize "3g"
@@ -54,12 +58,11 @@ android {
 
     dexOptions {
         preDexLibraries true
-    } */
+    }*/
+
 }
 
 dependencies {
-
-
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
 
@@ -71,4 +74,9 @@ dependencies {
     implementation 'com.android.support:cardview-v7:22+'
     implementation 'com.android.support:design:22+'
     implementation 'com.android.support:palette-v7:22+'
+
+    // AppUpdater
+    implementation ('com.github.javiersantos:AppUpdater:2.7') {
+        exclude group: 'com.android.support'
+    }
 }

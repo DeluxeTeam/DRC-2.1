@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:grx="http://schemas.android.com/apk/res-auto">
+
+    <!-- Status bar buttons -->
+    <GrxPreferenceCategory android:title="Status bar buttons">
+
+        <PreferenceScreen android:title="Left">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="vbutton_left"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/enable"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="vs"
+                grx:groupedValueKey="vbutton_left"
+                android:key="vbutton_left_enabled"
+                android:defaultValue="false" />
+
+            <GrxColorPicker
+                grx:groupedValueMyAlias="bg"
+                grx:groupedValueKey="vbutton_left"
+                android:title="@string/vbutton_color"
+                android:key="vbutton_left_color"
+                android:dependency="vbutton_left_enabled"
+                android:defaultValue="-16776961"
+                grx:showAlphaSlider="true"
+                grx:showAutoButton="true" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="vbutton_left_short"
+                android:defaultValue="0"
+                android:dependency="vbutton_left_enabled"
+                grx:groupedValueMyAlias="sh"
+                grx:groupedValueKey="vbutton_left"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="vbutton_left_short_app"
+                android:dependency="vbutton_left_enabled"
+                grx:groupedValueMyAlias="sa"
+                grx:groupedValueKey="vbutton_left"
+                grx:depRule="ENABLE#vbutton_left_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="vbutton_left_double"
+                android:defaultValue="0"
+                android:dependency="vbutton_left_enabled"
+                grx:groupedValueMyAlias="db"
+                grx:groupedValueKey="vbutton_left"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="vbutton_left_double_app"
+                android:dependency="vbutton_left_enabled"
+                grx:groupedValueMyAlias="da"
+                grx:groupedValueKey="vbutton_left"
+                grx:depRule="ENABLE#vbutton_left_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="vbutton_left_long"
+                android:defaultValue="0"
+                android:dependency="vbutton_left_enabled"
+                grx:groupedValueMyAlias="lg"
+                grx:groupedValueKey="vbutton_left"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="vbutton_left_long_app"
+                android:dependency="vbutton_left_enabled"
+                grx:groupedValueMyAlias="la"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                grx:groupedValueKey="vbutton_left"
+                grx:depRule="ENABLE#vbutton_left_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="Center">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="vbutton_center"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/enable"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="vs"
+                grx:groupedValueKey="vbutton_center"
+                android:key="vbutton_center_enabled"
+                android:defaultValue="false" />
+
+            <GrxColorPicker
+                grx:groupedValueMyAlias="bg"
+                grx:groupedValueKey="vbutton_center"
+                android:title="@string/vbutton_color"
+                android:key="vbutton_center_color"
+                android:dependency="vbutton_center_enabled"
+                android:defaultValue="-16776961"
+                grx:showAlphaSlider="true"
+                grx:showAutoButton="true" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="vbutton_center_short"
+                android:defaultValue="0"
+                android:dependency="vbutton_center_enabled"
+                grx:groupedValueMyAlias="sh"
+                grx:groupedValueKey="vbutton_center"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="vbutton_center_short_app"
+                android:dependency="vbutton_center_enabled"
+                grx:groupedValueMyAlias="sa"
+                grx:groupedValueKey="vbutton_center"
+                grx:depRule="ENABLE#vbutton_center_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="vbutton_center_double"
+                android:defaultValue="0"
+                android:dependency="vbutton_center_enabled"
+                grx:groupedValueMyAlias="db"
+                grx:groupedValueKey="vbutton_center"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="vbutton_center_double_app"
+                android:dependency="vbutton_center_enabled"
+                grx:groupedValueMyAlias="da"
+                grx:groupedValueKey="vbutton_center"
+                grx:depRule="ENABLE#vbutton_center_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="vbutton_center_long"
+                android:defaultValue="0"
+                android:dependency="vbutton_center_enabled"
+                grx:groupedValueMyAlias="lg"
+                grx:groupedValueKey="vbutton_center"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="vbutton_center_long_app"
+                android:dependency="vbutton_center_enabled"
+                grx:groupedValueMyAlias="la"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                grx:groupedValueKey="vbutton_center"
+                grx:depRule="ENABLE#vbutton_center_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="Right">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="vbutton_right"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/enable"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="vs"
+                grx:groupedValueKey="vbutton_right"
+                android:key="vbutton_right_enabled"
+                android:defaultValue="false" />
+
+            <GrxColorPicker
+                grx:groupedValueMyAlias="bg"
+                grx:groupedValueKey="vbutton_right"
+                android:title="@string/vbutton_color"
+                android:key="vbutton_right_color"
+                android:dependency="vbutton_right_enabled"
+                android:defaultValue="-16776961"
+                grx:showAlphaSlider="true"
+                grx:showAutoButton="true" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="vbutton_right_short"
+                android:defaultValue="0"
+                android:dependency="vbutton_right_enabled"
+                grx:groupedValueMyAlias="sh"
+                grx:groupedValueKey="vbutton_right"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="vbutton_right_short_app"
+                android:dependency="vbutton_right_enabled"
+                grx:groupedValueMyAlias="sa"
+                grx:groupedValueKey="vbutton_right"
+                grx:depRule="ENABLE#vbutton_right_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="vbutton_right_double"
+                android:defaultValue="0"
+                android:dependency="vbutton_right_enabled"
+                grx:groupedValueMyAlias="db"
+                grx:groupedValueKey="vbutton_right"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="vbutton_right_double_app"
+                android:dependency="vbutton_right_enabled"
+                grx:groupedValueMyAlias="da"
+                grx:groupedValueKey="vbutton_right"
+                grx:depRule="ENABLE#vbutton_right_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="vbutton_right_long"
+                android:defaultValue="0"
+                android:dependency="vbutton_right_enabled"
+                grx:groupedValueMyAlias="lg"
+                grx:groupedValueKey="vbutton_right"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="vbutton_right_long_app"
+                android:dependency="vbutton_right_enabled"
+                grx:groupedValueMyAlias="la"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                grx:groupedValueKey="vbutton_right"
+                grx:depRule="ENABLE#vbutton_right_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+        </PreferenceScreen>
+
+    </GrxPreferenceCategory>
+
+    <!-- Navigation bar button -->
+    <GrxPreferenceCategory android:title="Navigation bar buttons">
+
+        <PreferenceScreen android:title="Right">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="vbutton_navbar"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/enable"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="vs"
+                grx:groupedValueKey="vbutton_navbar"
+                android:key="vbutton_navbar_enabled"
+                android:defaultValue="false" />
+
+            <GrxColorPicker
+                grx:groupedValueMyAlias="bg"
+                grx:groupedValueKey="vbutton_navbar"
+                android:title="@string/vbutton_color"
+                android:key="vbutton_navbar_color"
+                android:dependency="vbutton_navbar_enabled"
+                android:defaultValue="-16776961"
+                grx:showAlphaSlider="true"
+                grx:showAutoButton="true" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="vbutton_navbar_short"
+                android:defaultValue="0"
+                android:dependency="vbutton_navbar_enabled"
+                grx:groupedValueMyAlias="sh"
+                grx:groupedValueKey="vbutton_navbar"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="vbutton_navbar_short_app"
+                android:dependency="vbutton_navbar_enabled"
+                grx:groupedValueMyAlias="sa"
+                grx:groupedValueKey="vbutton_navbar"
+                grx:depRule="ENABLE#vbutton_navbar_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="vbutton_navbar_double"
+                android:defaultValue="0"
+                android:dependency="vbutton_navbar_enabled"
+                grx:groupedValueMyAlias="db"
+                grx:groupedValueKey="vbutton_navbar"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="vbutton_navbar_double_app"
+                android:dependency="vbutton_navbar_enabled"
+                grx:groupedValueMyAlias="da"
+                grx:groupedValueKey="vbutton_navbar"
+                grx:depRule="ENABLE#vbutton_navbar_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="vbutton_navbar_long"
+                android:defaultValue="0"
+                android:dependency="vbutton_navbar_enabled"
+                grx:groupedValueMyAlias="lg"
+                grx:groupedValueKey="vbutton_navbar"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="vbutton_navbar_long_app"
+                android:dependency="vbutton_navbar_enabled"
+                grx:groupedValueMyAlias="la"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                grx:groupedValueKey="vbutton_navbar"
+                grx:depRule="ENABLE#vbutton_navbar_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+        </PreferenceScreen>
+
+    </GrxPreferenceCategory>
+
+</PreferenceScreen>

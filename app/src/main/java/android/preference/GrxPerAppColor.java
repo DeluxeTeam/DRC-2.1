@@ -15,10 +15,10 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 
-import com.grx.settings.utils.Common;
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefs_dlgs.DlgFrGrxPerAppColor;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrGrxPerAppColor;
 
 import java.util.regex.Pattern;
 
@@ -29,9 +29,6 @@ public class GrxPerAppColor extends GrxBasePreference implements DlgFrGrxPerAppC
     private int mDefaultColor;
     private boolean mShowAuto;
     private boolean mShowAlpha;
-
-    private String mLabel;
-
 
 
     public GrxPerAppColor(Context context, AttributeSet attrs) {
@@ -59,18 +56,19 @@ public class GrxPerAppColor extends GrxBasePreference implements DlgFrGrxPerAppC
     @Override
     public void configStringPreference(String value){
         int numitems=0;
-        if(! (mStringValue.isEmpty()||(mStringValue==null))  ){
+        if(!mStringValue.isEmpty()){
             String[] arr = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
             numitems=arr.length;
         }
-        if(numitems==0) mLabel=myPrefAttrsInfo.getMySummary();
+        String mLabel;
+        if(numitems==0) mLabel =myPrefAttrsInfo.getMySummary();
         else mLabel = getContext().getString( R.string.grxs_num_selected,numitems ) ;
-        setSummary(myPrefAttrsInfo.getMySummary() + " " +mLabel);
+        setSummary(myPrefAttrsInfo.getMySummary() + " " + mLabel);
     }
 
 
     @Override
-    public void onGrxMultiAppColorSel(DlgFrGrxPerAppColor dialog, int num, String value){
+    public void onGrxMultiAppColorSel(String value){
         if(!mStringValue.equals(value)){
             mStringValue=value;
             saveNewStringValue(value);

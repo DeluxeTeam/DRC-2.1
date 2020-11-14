@@ -16,15 +16,17 @@
 
 package com.sublimenavigationview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
-import com.grx.settings.R;
+import com.deluxelabs.drc.R;
 /**
  * Sub-classed TextView that responds to custom states &amp; style attrs.
  */
+@SuppressLint("AppCompatCustomView")
 public class StateAwareTextView extends TextView {
 
     public static final String TAG = StateAwareTextView.class.getSimpleName();

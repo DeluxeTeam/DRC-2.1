@@ -33,7 +33,7 @@ import java.util.List;
 public class RootFile {
 
     private final String mFile;
-    private RootUtils.SU mSU;
+    private final RootUtils.SU mSU;
 
     public RootFile(String file) {
         mFile = file;

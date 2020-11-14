@@ -19,12 +19,12 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
 
-import com.grx.settings.prefs_dlgs.DlgFrGrxMultiAccess;
-import com.grx.settings.utils.Common;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrGrxMultiAccess;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 import java.util.regex.Pattern;
 
@@ -36,8 +36,6 @@ public class GrxMultiAccess extends GrxBasePreference implements DlgFrGrxMultiAc
     private boolean mShowActivities;
     private boolean mSaveCustomActionsIcons;
     int iconsValueTint =0;
-
-    private String mLabel;
 
     public GrxMultiAccess(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -64,7 +62,7 @@ public class GrxMultiAccess extends GrxBasePreference implements DlgFrGrxMultiAc
             try {
                 iconsValueTint = ta.getInt(R.styleable.grxPreferences_iconsValueTint, 0);
 
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
         ta.recycle();
@@ -91,7 +89,7 @@ public class GrxMultiAccess extends GrxBasePreference implements DlgFrGrxMultiAc
         if(mStringValue.isEmpty()) return;
 
          String[] uris = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
-         for(int i=0;i<uris.length;i++) GrxPrefsUtils.deleteGrxIconFileFromUriString(uris[i]);
+        for (String s : uris) GrxPrefsUtils.deleteGrxIconFileFromUriString(s);
 
          mStringValue= myPrefAttrsInfo.getMyStringDefValue();
          configStringPreference(mStringValue);
@@ -102,13 +100,14 @@ public class GrxMultiAccess extends GrxBasePreference implements DlgFrGrxMultiAc
     @Override
     public void configStringPreference(String value){
         int numitems=0;
-        if(! (mStringValue.isEmpty()||(mStringValue==null))  ){
+        if(!mStringValue.isEmpty()){
             String[] arr = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
             numitems=arr.length;
         }
-        if(numitems==0) mLabel=myPrefAttrsInfo.getMySummary();
+        String mLabel;
+        if(numitems==0) mLabel =myPrefAttrsInfo.getMySummary();
         else mLabel = getContext().getString( R.string.grxs_num_selected,numitems ) ;
-        setSummary(myPrefAttrsInfo.getMySummary() + " " +mLabel);
+        setSummary(myPrefAttrsInfo.getMySummary() + " " + mLabel);
     }
 
     public void GrxSetMultiAccess(String value){

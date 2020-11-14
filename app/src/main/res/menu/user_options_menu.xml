@@ -11,13 +11,12 @@
         android:checkable="false"
         app:badgeText=">"
         />
-    <Separator/>
-    <TextWithBadge
-        android:id="@+id/grx_mid_app_help"
-        android:title="@string/grxs_app_help"
-        android:checkable="false"
-        app:badgeText=">"
-        />
+    <Checkbox
+        android:id="@+id/grx_mid_app_updates"
+        android:key="check_updates"
+        android:title="@string/drc_updates"
+        android:checked="true"
+        android:checkable="true" />
     <Separator/>
     <CenteredText android:title="@string/grxs_title_theming_options" android:checked="true"/>
     <Separator/>
@@ -27,10 +26,10 @@
         android:title="@string/grxs_select_theme"
         android:checkable="true" />
 
-    <TextWithBadge
+    <!--TextWithBadge
         android:id="@+id/grx_mid_header_svn_back"
         android:title="@string/grxs_nav_header_bg"
-        android:checkable="false" />
+        android:checkable="false" /-->
 
     <TextWithBadge
         android:id="@+id/grx_mid_divider_height"

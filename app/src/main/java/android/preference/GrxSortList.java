@@ -18,11 +18,11 @@ import android.util.AttributeSet;
 
 
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefs_dlgs.DlgFrGrxSortList;
-import com.grx.settings.utils.Common;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrGrxSortList;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 public class GrxSortList extends GrxBasePreference implements DlgFrGrxSortList.OnSortedList {
 

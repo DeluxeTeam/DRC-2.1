@@ -44,17 +44,17 @@ class ItemMainLayout extends FrameLayout {
     private int mBtnLeftTotalWidth;
     private int mBtnRightTotalWidth;
     /* 子view */
-    private ItemBackGroundLayout mItemLeftBackGroundLayout;
-    private ItemBackGroundLayout mItemRightBackGroundLayout;
-    private View mItemCustomView;
+    private final ItemBackGroundLayout mItemLeftBackGroundLayout;
+    private final ItemBackGroundLayout mItemRightBackGroundLayout;
+    private final View mItemCustomView;
     /* Scroller */
-    private Scroller mScroller;
+    private final Scroller mScroller;
     /* 控件是否滑动 */
     private boolean mIsMoving = false;
     /* 是不是要滑过(over) */
     private boolean mWannaOver = true;
     /* 最小滑动距离，超过了，才认为开始滑动 */
-    private int mTouchSlop = 0;
+    private final int mTouchSlop;
     /* 滑动的监听器 */
     private OnItemSlideListenerProxy mOnItemSlideListenerProxy;
     /* Drawable */
@@ -149,7 +149,7 @@ class ItemMainLayout extends FrameLayout {
                         } else if (leftDistance < 0) {//右边的btn显示出来的
                             mIntention = INTENTION_RIGHT_CLOSE;
                             setBackGroundVisible(false, true);
-                        } else if (leftDistance > 0) {//左边的btn显示出来的
+                        } else {//左边的btn显示出来的
                             mIntention = INTENTION_LEFT_ALREADY_OPEN;
                             setBackGroundVisible(true, false);
                         }
@@ -160,7 +160,7 @@ class ItemMainLayout extends FrameLayout {
                         } else if (leftDistance < 0) {//右边的btn显示出来的
                             mIntention = INTENTION_RIGHT_ALREADY_OPEN;
                             setBackGroundVisible(false, true);
-                        } else if (leftDistance > 0) {//左边的btn显示出来的
+                        } else {//左边的btn显示出来的
                             mIntention = INTENTION_LEFT_CLOSE;
                             setBackGroundVisible(true, false);
                         }

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:grx="http://schemas.android.com/apk/res-auto">
+
+    <!-- Kill app[s] preferences -->
+    <PreferenceScreen android:title="@string/close_app_behavior">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="ts_others"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <!-- Whitelist -->
+        <GrxMultipleAppSelection
+            android:title="@string/whitelist"
+            android:key="dlx_whitelist_slot_general"
+            grx:saveActivityname="false"
+            android:defaultValue="com.android.systemui##com.deluxelabs.drc##com.sec.android.app.launcher##"
+            grx:separator="##"
+            grx:groupedValueMyAlias="wt"
+            grx:groupedValueKey="ts_others"
+            grx:groupedValueSystemType="system" />
+
+        <!-- Show app killed toast -->
+        <GrxCheckBoxPreference
+            android:title="@string/toast_closed"
+            android:key="dlx_show_closed_app"
+            android:defaultValue="false"
+            grx:groupedValueMyAlias="kt"
+            grx:groupedValueKey="ts_others" />
+
+        <!-- Show recent apps killed toast -->
+        <GrxCheckBoxPreference
+            android:title="@string/recents_closed"
+            android:key="dlx_show_closed_recent_apps"
+            android:defaultValue="false"
+            grx:groupedValueMyAlias="rkt"
+            grx:groupedValueKey="ts_others" />
+
+        <!-- Show app on whitelist -->
+        <GrxCheckBoxPreference
+            android:title="@string/whitelisted_app"
+            android:key="dlx_show_cant_close_app"
+            android:defaultValue="false"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="deluxerom_master_prefs"
+            grx:groupedValueMyAlias="aow"
+            grx:groupedValueKey="ts_others"/>
+
+    </PreferenceScreen>
+
+    <!-- Battery levels -->
+    <PreferenceScreen android:title="@string/bt_warnings">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="ts_others"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSeekBar
+            android:title="@string/low_bt"
+            grx:groupedValueMyAlias="lbt"
+            grx:groupedValueKey="ts_others"
+            android:key="dlx_low_battery"
+            android:defaultValue="15"
+            grx:maxValue="99"
+            grx:minValue="1"
+            grx:interval="1" />
+
+        <GrxSeekBar
+            android:title="@string/critical_bt"
+            grx:groupedValueMyAlias="cbt"
+            grx:groupedValueKey="ts_others"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="deluxerom_master_prefs"
+            android:key="dlx_critical_battery"
+            android:defaultValue="5"
+            grx:maxValue="99"
+            grx:minValue="1"
+            grx:interval="1" />
+
+    </PreferenceScreen>
+
+    <!-- Toast animations -->
+    <GrxSingleSelection
+        android:title="@string/toast_animation"
+        android:key="dlx_toast_anim"
+        android:defaultValue="0"
+        grx:broadCast1="dlx_services_mods"
+        grx:broadCast1Extra="toast"
+        grx:optionsArray="@array/toast_animation_entries"
+        grx:valuesArray="@array/toast_animation_values"
+        grx:systemType="system" />
+
+    <!-- Allow dark mode while using themes -->
+    <GrxSwitchPreference
+        android:title="@string/dark_mode_theme"
+        android:defaultValue="false"
+        grx:systemType="system"
+        android:key="current_theme_support_night_mode" />
+
+    <!-- Fast charge -->
+    <GrxSwitchPreference
+        android:title="@string/fast_charging"
+        android:defaultValue="true"
+        grx:systemType="system" />
+
+    <!-- Secure flag -->
+    <GrxSwitchPreference
+        android:title="@string/secure_flag"
+        android:defaultValue="false"
+        grx:systemType="system"
+        grx:broadCast1="dlx_services_mods"
+        grx:broadCast1Extra="secure_flag"
+        android:key="dlx_secure_flag" />
+
+</PreferenceScreen>

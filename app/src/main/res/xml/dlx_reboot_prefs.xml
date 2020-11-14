@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:grx="http://schemas.android.com/apk/res-auto">
+
+    <GrxButtonPreference
+        grx:groupedValueKey="reboot_menu"
+        android:title="@string/grxs_apply"
+        android:key="button_1"
+        grx:button_Style="big" />
+
+    <!-- Reboot menu style -->
+    <GrxSingleSelection
+        android:title="@string/reboot_style"
+        grx:groupedValueMyAlias="style"
+        grx:groupedValueKey="reboot_menu"
+        grx:groupedValueSystemType="system"
+        android:key="dlx_power_menu_style"
+        android:defaultValue="0"
+        grx:optionsArray="@array/reboot_style_entries"
+        grx:valuesArray="@array/reboot_style_values" />
+
+    <!-- Hide all prefs while using dialog style -->
+    <GrxPreferenceCategory grx:depRule="DISABLE#dlx_power_menu_style#STRING#1" grx:hiddenCategory="true">
+
+        <!-- Icons -->
+        <GrxSingleSelection
+            android:title="@string/icons_style"
+            android:key="dlx_reboot_style"
+            android:defaultValue="0"
+            grx:optionsArray="@array/reboot_icon_entries"
+            grx:iconsArray="@array/drawables_icono_reinicio"
+            grx:valuesArray="@array/reboot_icon_values"
+            grx:groupedValueMyAlias="icons"
+            grx:groupedValueKey="reboot_menu" />
+
+        <!-- Entries -->
+        <GrxSelectSortItems
+            android:title="@string/elements_show"
+            android:key="dlx_power_menu_container"
+            android:defaultValue="power,restart,emergency,drc,"
+            grx:separator=","
+            grx:groupedValueMyAlias="entries"
+            grx:groupedValueKey="reboot_menu"
+            grx:optionsArray="@array/agc_reboot_options"
+            grx:valuesArray="@array/agc_reboot_values" />
+
+        <!-- Use 2 columns -->
+        <GrxCheckBoxPreference
+            android:title="@string/columns"
+            grx:groupedValueMyAlias="2cols"
+            grx:groupedValueKey="reboot_menu"
+            android:key="dlx_power_menu_2columns"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="deluxerom_master_prefs"
+            android:defaultValue="0" />
+
+        <!-- Text prefs -->
+        <PreferenceScreen android:title="@string/txt_prefs">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="reboot_menu"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxPerItemColor
+                grx:groupedValueMyAlias="colors"
+                grx:groupedValueKey="reboot_menu"
+                android:title="@string/txt_clrs"
+                android:key="dlx_pw_colors"
+                grx:valuesArray="@array/pm_color_values"
+                grx:optionsArray="@array/pm_color_entries"
+                android:defaultValue="main/-3947581##desc/-3947581##status/-3947581##mainwhite/-9079435##descwhite/-9079435##statuswhite/-9079435##"
+                grx:separator="##"
+                grx:colorPickerStyle="flower"
+                grx:showAlphaSlider="true"
+                grx:showAutoButton="true" />
+
+<!--            <GrxSeekBar   TODO PRE-RELEASE
+                android:title="Text size"
+                android:key="dlx_pw_tx_size"
+                android:defaultValue="15"
+                grx:groupedValueMyAlias="sz"
+                grx:groupedValueKey="reboot_menu"
+                grx:maxValue="70"
+                grx:minValue="0"
+                grx:interval="1" />
+
+            <GrxSeekBar
+                android:title="Subext size"
+                android:key="dlx_pw_subtx_size"
+                android:defaultValue="15"
+                grx:groupedValueMyAlias="subsz"
+                grx:groupedValueKey="reboot_menu"
+                grx:maxValue="70"
+                grx:minValue="0"
+                grx:interval="1" />
+
+            <GrxSingleSelection
+                android:title="@string/font"
+                android:key="dlx_pw_tx_font"
+                android:defaultValue="Stock"
+                grx:groupedValueMyAlias="fttx"
+                grx:groupedValueKey="reboot_menu"
+                grx:iconsArray="@array/agc_estilo_fuente_drawables"
+                grx:optionsArray="@array/agc_estilo_fuente_entries"
+                grx:valuesArray="@array/agc_estilo_fuente_entries" />
+
+            <GrxSingleSelection
+                android:title="@string/font"
+                android:key="dlx_pw_subtx_font"
+                android:defaultValue="Stock"
+                grx:groupedValueMyAlias="ftsub"
+                grx:groupedValueKey="reboot_menu"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                grx:iconsArray="@array/agc_estilo_fuente_drawables"
+                grx:optionsArray="@array/agc_estilo_fuente_entries"
+                grx:valuesArray="@array/agc_estilo_fuente_entries" />-->
+
+        </PreferenceScreen>
+
+        <!-- Matrix effect -->
+        <PreferenceScreen android:title="@string/matrix">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="reboot_menu"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference android:title="@string/visibility"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="mxen"
+                grx:groupedValueKey="reboot_menu"
+                android:key="dlx_pw_matrix"
+                android:defaultValue="0" />
+
+            <GrxCheckBoxPreference
+                grx:depRule="DISABLE#dlx_pw_matrix_random#BOOLEAN#true"
+                android:dependency="dlx_pw_matrix"
+                android:title="@string/use_gradient"
+                grx:groupedValueMyAlias="mxgd"
+                grx:groupedValueKey="reboot_menu"
+                android:key="dlx_pw_matrix_gradient"
+                android:defaultValue="0" />
+
+            <GrxCheckBoxPreference
+                android:dependency="dlx_pw_matrix"
+                grx:groupedValueMyAlias="mxiv"
+                grx:groupedValueKey="reboot_menu"
+                android:title="@string/invert"
+                android:key="dlx_pw_matrix_invert"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                grx:depRule="DISABLE#dlx_pw_matrix_gradient#BOOLEAN#true"
+                android:dependency="dlx_pw_matrix"
+                grx:groupedValueMyAlias="mxrd"
+                grx:groupedValueKey="reboot_menu"
+                android:title="@string/random_color"
+                android:key="dlx_pw_matrix_random"
+                android:defaultValue="false" />
+
+            <GrxColorPicker
+                android:dependency="dlx_pw_matrix"
+                grx:groupedValueMyAlias="mxbg"
+                grx:groupedValueKey="reboot_menu"
+                android:title="@string/bg_color"
+                android:key="dlx_pw_matrix_bg"
+                android:defaultValue="0xFF000000"
+                grx:showAlphaSlider="true"
+                grx:showAutoButton="true" />
+
+            <GrxColorPicker
+                grx:depRule="DISABLE#dlx_pw_matrix_random#BOOLEAN#true"
+                android:dependency="dlx_pw_matrix"
+                grx:groupedValueMyAlias="mxpy"
+                grx:groupedValueKey="reboot_menu"
+                android:title="@string/primary_text_color"
+                android:key="dlx_pw_matrix_py"
+                android:defaultValue="0xFF00FF00"
+                grx:showAlphaSlider="true"
+                grx:showAutoButton="true" />
+
+            <GrxColorPicker
+                grx:depRule="DISABLE#dlx_pw_matrix_random#BOOLEAN#true"
+                android:dependency="dlx_pw_matrix_gradient"
+                grx:groupedValueMyAlias="mxsc"
+                grx:groupedValueKey="reboot_menu"
+                android:title="@string/second_txt_color_gradient"
+                android:key="dlx_pw_matrix_sc"
+                android:defaultValue="0xFFFFFF00"
+                grx:showAlphaSlider="true"
+                grx:showAutoButton="true" />
+
+            <GrxSeekBar
+                android:dependency="dlx_pw_matrix"
+                grx:groupedValueMyAlias="mxsz"
+                grx:groupedValueKey="reboot_menu"
+                android:title="@string/size"
+                android:key="dlx_pw_matrix_size"
+                android:defaultValue="15"
+                grx:maxValue="50"
+                grx:minValue="3"
+                grx:interval="1"
+                grx:showPopup="true" />
+
+            <GrxSeekBar
+                android:dependency="dlx_pw_matrix"
+                android:title="@string/opacity"
+                android:key="dlx_pw_matrix_alpha"
+                android:defaultValue="255"
+                grx:groupedValueMyAlias="mxap"
+                grx:groupedValueKey="reboot_menu"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                grx:maxValue="255"
+                grx:minValue="1"
+                grx:interval="1"
+                grx:showPopup="true" />
+
+        </PreferenceScreen>
+
+        <!-- Custom background -->
+        <PreferenceScreen android:title="@string/colorimagegd">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="reboot_menu"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/visibility"
+                android:key="dlx_pw_bg_enabled"
+                android:defaultValue="false"
+                grx:groupedValueMyAlias="bgen"
+                grx:groupedValueKey="reboot_menu" />
+
+            <GrxSingleSelection
+                android:title="@string/bg_type"
+                android:key="dlx_pw_bg_type"
+                android:defaultValue="0"
+                android:dependency="dlx_pw_bg_enabled"
+                grx:optionsArray="@array/custom_bg_type_entries"
+                grx:valuesArray="@array/custom_bg_type_values"
+                grx:groupedValueMyAlias="bgtp"
+                grx:groupedValueKey="reboot_menu" />
+
+            <GrxPickImage
+                android:title="@string/select_image"
+                android:key="dlx_pw_bg_uri"
+                android:dependency="dlx_pw_bg_enabled"
+                grx:depRule="ENABLE#dlx_pw_bg_type#STRING#0"
+                grx:groupedValueMyAlias="bguri"
+                grx:groupedValueKey="reboot_menu" />
+
+            <GrxSeekBar
+                android:title="@string/opacity"
+                android:key="dlx_pw_bg_alpha"
+                android:defaultValue="255"
+                android:dependency="dlx_pw_bg_enabled"
+                grx:maxValue="255"
+                grx:minValue="0"
+                grx:groupedValueMyAlias="bgal"
+                grx:groupedValueKey="reboot_menu" />
+
+            <GrxColorPicker
+                android:title="@string/color"
+                android:key="dlx_pw_bg_indv_color"
+                android:defaultValue="-1"
+                android:dependency="dlx_pw_bg_enabled"
+                grx:depRule="ENABLE#dlx_pw_bg_type#STRING#1"
+                grx:colorPickerStyle="flower"
+                grx:iconTint="?complementary_color3"
+                grx:showAlphaSlider="true"
+                grx:showAutoButton="true"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                grx:groupedValueMyAlias="bgcl"
+                grx:groupedValueKey="reboot_menu" />
+
+        </PreferenceScreen>
+
+    </GrxPreferenceCategory>
+
+</PreferenceScreen>

@@ -8,9 +8,9 @@
 
     <!-- Application strings, arrays, etc. -->
 
-    <string name="gs_rom_info_option">Rom Info</string>
+    <string name="gs_rom_info_option">ROM information</string>
 
-    <string name="grxs_recents_screens_title">Recent Screens</string>
+    <string name="grxs_recents_screens_title">Recent screens</string>
     <string name="grxs_buildprop_simulator">Simulate Build Prop</string>
     <string name="grxs_navigation_drawer_open">Open navigation drawer</string>
     <string name="grxs_navigation_drawer_close">Close navigation drawer</string>
@@ -55,8 +55,8 @@
     <string name="grxs_nav_header_bg">Panel Header Bg</string>
     <string name="grxs_selecc_image_usando">Select Image using..</string>
     <string name="grxs_error_redondeando">Error processing image</string>
-    <string name="grxs_script_array_error">An error ocurred while running the associated script</string>
-    <string name="grxs_apply">Apply</string>
+    <string name="grxs_script_array_error">An error occurred while running the associated script</string>
+    <string name="grxs_apply">Apply changes</string>
     <string name="grxs_backup">Backup</string>
     <string name="grxs_restore">Restore</string>
     <string name="grxs_restoring_msg">Restoring and synchronizing %1$s preferences and files....</string>
@@ -69,7 +69,7 @@
     <string name="grxs_back">Back</string>
     <string name="grxs_select_app">Select Application</string>
     <string name="grxs_building_sorting_list">Creaing and sorting list ..</string>
-    <string name="grxs_building_list">Creating applications list...</string>
+    <string name="grxs_building_list">Creating applications list…</string>
     <string name="grxs_is_not_installed">( %1$s is not installed! )</string>
     <string name="grxs_delete_values">Delete values</string>
     <string name="grxs_reset_values">Reset values</string>
@@ -111,7 +111,7 @@
     <string name="grxs_title_theming_options">Style and Theming</string>
     <string name="grxs_title_navview_options">Navigation Drawer</string>
     <string name="grxs_title_other_options">Other Options</string>
-    <string name="grxs_title_rom_app_info_options">Rom and App Help</string>
+    <string name="grxs_title_rom_app_info_options">About DeluxeROM®</string>
     <string name="grxs_title_recents_screens_options">Floating Recents Screens Area</string>
     <string name="grxs_show_recents_fw">Enable Recents Floating Window</string>
     <string name="grxs_show_recents_fw_hint">(long press on FAB)</string>
@@ -159,7 +159,7 @@
     <string name="grxs_script_dialog_msg">Are you sure you want to run this action?</string>
     <string name="grxs_script_file_dialog_msg">Are you sure you want to run this scrip: %1$s ?</string>
     <string name="grxs_update_item">Update Item</string>
-    <string name="grxs_rom_info">Rom Info</string>
+    <string name="grxs_rom_info">ROM info</string>
     <string name="grxs_app">App.</string>
     <string name="grxs_pulse_speed_title">Pulse Speed (Time On - Time Off)</string>
     <string name="grxs_pulse_app_null">No App Selected</string>
@@ -199,8 +199,10 @@
         <item>4 px</item>
     </string-array>
 
-
     <string-array name="grxa_theme_list">
+        <item>@string/dlxui</item>
+        <item>@string/dlxdark</item>
+        <item>@string/dlxlight</item>
         <item>@string/grxs_theme_white_bluegrey</item>
         <item>@string/grxs_theme_black_white</item>
         <item>@string/grxs_theme_light_tile</item>
@@ -209,10 +211,32 @@
         <item>@string/grxs_theme_black_and_white</item>
         <item>@string/grxs_theme_black_ics</item>
         <item>@string/grxs_theme_black_red</item>
-
     </string-array>
 
+    <!--  colors        -->
+    <color name="themecolor">#ff0c849e</color>
+    <color name="toolbartitlecolor">#ffffffff</color>
+    <color name="toolbarsubtitlecolor">#ffffffff</color>
+    <color name="colorPrimary">@color/themecolor</color>
+    <color name="colorPrimaryDark">@color/themecolor</color>
+    <color name="colorAccent">#fffc713f</color>
+    <color name="colorAccent_drc_dark">#ff970d0d</color>
+    <color name="colorAccent_drc_light">#ff05d0fb</color>
+
+
+    <!-- SVN Colores-->
+    <color name="themecolor_snv">#ff0c849e</color>
+    <color name="divider_svn">@color/themecolor_snv</color>
+    <color name="colorPrimary_snv">#ff770303</color>
+    <color name="colorPrimaryDark_svn">#ff970d0d</color>
+    <color name="colorAccent_svn">#ffb71c1c</color>
+    <color name="defcolor_multiapp">#ff025a93</color>
+    <color name="holo_gray_light">#ff636363</color>
+
     <string-array name="grxa_theme_values">
+        <item>Theme.DRC.DlxUI</item>
+        <item>Theme.DRC.Dark</item>
+        <item>Theme.DRC.Light</item>
         <item>Theme.White.BlueGrey</item>
         <item>Theme.Black.Light</item>
         <item>Theme.Green.Light</item>
@@ -402,5 +426,2046 @@
 
 
     <string name="activity_not_found">Can\'t open this activity</string>
+
+    <!-- DeluxeROM start -->
+    <string-array name="dual_sb_positions_options">
+        <item>@string/left_top</item>
+        <item>@string/left_center</item>
+        <item>@string/left_bottom</item>
+        <item>@string/center_top</item>
+        <item>@string/center_center</item>
+        <item>@string/center_bottom</item>
+        <item>@string/right_top</item>
+        <item>@string/right_center</item>
+        <item>@string/right_bottom</item>
+    </string-array>
+    <string-array name="qp_views_positions_options">
+        <item>@string/weather</item>
+        <item>@string/netspeed</item>
+        <item>@string/systemicons</item>
+        <item>@string/minitbattery</item>
+        <item>@string/circularbt</item>
+        <item>@string/battery_and_text</item>
+    </string-array>
+    <string-array name="qp_views_positions_values">
+        <item>qp_weather</item>
+        <item>qp_netspeed</item>
+        <item>statusicons</item>
+        <item>qp_minitbt</item>
+        <item>qp_circularbt</item>
+        <item>qp_batterycontainer</item>
+    </string-array>
+    <string-array name="kg_views_positions_options">
+        <item>@string/carrier</item>
+        <item>@string/clock</item>
+        <item>@string/weather</item>
+        <item>@string/netspeed</item>
+        <item>@string/systemicons</item>
+        <item>@string/minitbattery</item>
+        <item>@string/circularbt</item>
+        <item>@string/battery_and_text</item>
+    </string-array>
+    <string-array name="kg_views_positions_values">
+        <item>kg_carrier</item>
+        <item>keyguard_status_bar_clock</item>
+        <item>kg_weather</item>
+        <item>kg_netspeed</item>
+        <item>statusicons</item>
+        <item>kg_minitbt</item>
+        <item>kg_circularbt</item>
+        <item>kg_batterycontainer</item>
+    </string-array>
+    <string-array name="dual_sb_positions_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="dual_sb_noti_positions_options">
+        <item>@string/left_top</item>
+        <item>@string/left_center</item>
+        <item>@string/left_bottom</item>
+    </string-array>
+    <string-array name="dual_sb_noti_positions_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="sbar_views_positions_options">
+        <item>@string/carrier</item>
+        <item>@string/clock</item>
+        <item>@string/analog_clock</item>
+        <item>@string/sb_date</item>
+        <item>@string/weather</item>
+        <item>@string/netspeed</item>
+        <item>@string/systemicons</item>
+        <item>@string/minitbattery</item>
+        <item>@string/circularbt</item>
+        <item>@string/battery_and_text</item>
+    </string-array>
+    <string-array name="sbar_views_positions_values">
+        <item>sb_carrier</item>
+        <item>status_bar_clock</item>
+        <item>analogclock</item>
+        <item>sb_date</item>
+        <item>sb_weather</item>
+        <item>sb_netspeed</item>
+        <item>statusicons</item>
+        <item>sb_minitbt</item>
+        <item>sb_circularbt</item>
+        <item>sb_batterycontainer</item>
+    </string-array>
+    <string-array name="sb_positions_options">
+        <item>@string/left</item>
+        <item>@string/center</item>
+        <item>@string/right</item>
+    </string-array>
+    <string-array name="sb_positions_values">
+        <item>1</item>
+        <item>4</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="custom_bg_type_entries">
+        <item>Image</item>
+        <item>Solid color</item>
+        <item>Gradient</item>
+    </string-array>
+    <string-array name="custom_bg_type_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="hidden_icons_options">
+        <item>@string/minitbattery_sb</item>
+        <item>@string/minitbattery_qp</item>
+        <item>@string/minitbattery_ls</item>
+        <item>@string/airplane</item>
+        <item>@string/alarm</item>
+        <item>@string/battery_and_text_sb</item>
+        <item>@string/battery_and_text_qp</item>
+        <item>@string/battery_and_text_ls</item>
+        <item>@string/bluetooth</item>
+        <item>@string/bluetooth_connected</item>
+        <item>@string/bluetooth_level</item>
+        <item>@string/carrier_sb</item>
+        <item>@string/carrier_qp</item>
+        <item>@string/carrier_ls</item>
+        <item>@string/circularbt_sb</item>
+        <item>@string/circularbt_qp</item>
+        <item>@string/circularbt_ls</item>
+        <item>@string/analog_clock</item>
+        <item>@string/clock_sb</item>
+        <item>@string/clock_ls</item>
+        <item>@string/data_saver</item>
+        <item>@string/sb_date</item>
+        <item>@string/headset</item>
+        <item>@string/hotspot</item>
+        <item>@string/location</item>
+        <item>@string/mobile</item>
+        <item>@string/netspeed_sb</item>
+        <item>@string/netspeed_qp</item>
+        <item>@string/netspeed_ls</item>
+        <item>@string/nfc</item>
+        <item>@string/power_saving</item>
+        <item>@string/private_mode</item>
+        <item>@string/rcs</item>
+        <item>@string/rotation</item>
+        <item>@string/cast</item>
+        <item>@string/secure_mode</item>
+        <item>@string/smart_network</item>
+        <item>@string/volume</item>
+        <item>@string/wearable_gear</item>
+        <item>@string/weather_sb</item>
+        <item>@string/weather_qp</item>
+        <item>@string/weather_ls</item>
+        <item>@string/wifi</item>
+        <item>@string/wifi_calling</item>
+        <item>@string/wifi_p2p</item>
+    </string-array>
+    <string-array name="hidden_icons_values">
+        <item>sb_minitbt</item>
+        <item>qp_minitbt</item>
+        <item>kg_minitbt</item>
+        <item>airplane</item>
+        <item>alarm_clock</item>
+        <item>sb_batterycontainer</item>
+        <item>qp_batterycontainer</item>
+        <item>kg_batterycontainer</item>
+        <item>bluetooth</item>
+        <item>bluetooth_connected</item>
+        <item>bt_level</item>
+        <item>sb_carrier</item>
+        <item>qp_carrier</item>
+        <item>kg_carrier</item>
+        <item>sb_circularbt</item>
+        <item>qp_circularbt</item>
+        <item>kg_circularbt</item>
+        <item>analogclock</item>
+        <item>status_bar_clock</item>
+        <item>keyguard_status_bar_clock</item>
+        <item>data_saver</item>
+        <item>sb_date</item>
+        <item>headset</item>
+        <item>hotspot</item>
+        <item>location</item>
+        <item>mobile</item>
+        <item>sb_netspeed</item>
+        <item>qp_netspeed</item>
+        <item>kg_netspeed</item>
+        <item>nfc</item>
+        <item>power_saver</item>
+        <item>private_mode</item>
+        <item>com.samsung.rcs</item>
+        <item>rotate</item>
+        <item>cast</item>
+        <item>secure</item>
+        <item>smart_network</item>
+        <item>volume</item>
+        <item>wearable_gear</item>
+        <item>sb_weather</item>
+        <item>qp_weather</item>
+        <item>kg_weather</item>
+        <item>wifi</item>
+        <item>ims_volte</item>
+        <item>wifi_p2p</item>
+    </string-array>
+    <string-array name="sb_date_entries">
+        <item>@string/day</item>
+        <item>@string/month</item>
+        <item>@string/month_short</item>
+        <item>@string/month_long</item>
+        <item>@string/year</item>
+        <item>@string/year_4</item>
+        <item>@string/empty</item>
+    </string-array>
+    <string-array name="sb_date_values">
+        <item>dd</item>
+        <item>MM</item>
+        <item>MMM</item>
+        <item>MMMM</item>
+        <item>yy</item>
+        <item>yyyy</item>
+        <item>empty</item>
+    </string-array>
+    <array name="agc_estilo_fuente_drawables">
+        <item>@drawable/defaultt</item>
+        <item>@drawable/abductionsmall</item>
+        <item>@drawable/abeakrg</item>
+        <item>@drawable/addisababa</item>
+        <item>@drawable/agentletouch</item>
+        <item>@drawable/airmolestripe</item>
+        <item>@drawable/aller</item>
+        <item>@drawable/androidclock</item>
+        <item>@drawable/arial</item>
+        <item>@drawable/arial_rb</item>
+        <item>@drawable/aristonexregular</item>
+        <item>@drawable/arraybold</item>
+        <item>@drawable/astandardbold</item>
+        <item>@drawable/attic</item>
+        <item>@drawable/barmeno105</item>
+        <item>@drawable/bauhaus</item>
+        <item>@drawable/beau_sans_pro_book</item>
+        <item>@drawable/beautifuleverytime</item>
+        <item>@drawable/belligerentbold</item>
+        <item>@drawable/blackchancery</item>
+        <item>@drawable/bluehigh</item>
+        <item>@drawable/bluehighbold</item>
+        <item>@drawable/bubbleletters</item>
+        <item>@drawable/cantaneobold</item>
+        <item>@drawable/caprica</item>
+        <item>@drawable/cartoon</item>
+        <item>@drawable/caviardreams_bold</item>
+        <item>@drawable/celtic</item>
+        <item>@drawable/comicsansms</item>
+        <item>@drawable/cooljazz</item>
+        <item>@drawable/darkromanticism</item>
+        <item>@drawable/dustismobold</item>
+        <item>@drawable/feastofflesh</item>
+        <item>@drawable/felipe</item>
+        <item>@drawable/galantnormal</item>
+        <item>@drawable/gezoe</item>
+        <item>@drawable/gillsansmtitalic</item>
+        <item>@drawable/helveticaneuece55roman</item>
+        <item>@drawable/jaramondbold</item>
+        <item>@drawable/laneposhbold</item>
+        <item>@drawable/lauren</item>
+        <item>@drawable/melonio</item>
+        <item>@drawable/metal</item>
+        <item>@drawable/motleycrue</item>
+        <item>@drawable/nokiapure</item>
+        <item>@drawable/petermorgan</item>
+        <item>@drawable/piratebold</item>
+        <item>@drawable/questbold</item>
+        <item>@drawable/roboto</item>
+        <item>@drawable/robotobold</item>
+        <item>@drawable/rosemary</item>
+        <item>@drawable/sansationbold</item>
+        <item>@drawable/segoe</item>
+    </array>
+    <string-array name="agc_estilo_fuente_entries">
+        <item>Stock</item>
+        <item>Abductionsmall</item>
+        <item>ABEAKRG</item>
+        <item>AddisAbaba</item>
+        <item>AGentleTouch</item>
+        <item>AirmoleStripe</item>
+        <item>Aller</item>
+        <item>AndroidClock</item>
+        <item>Arial</item>
+        <item>Arial_RB</item>
+        <item>AristonExRegular</item>
+        <item>ArrayBold</item>
+        <item>Astandardbold</item>
+        <item>Attic</item>
+        <item>Barmeno105</item>
+        <item>Bauhaus</item>
+        <item>Beau_Sans_Pro_Book</item>
+        <item>beautifuleverytime</item>
+        <item>Belligerentbold</item>
+        <item>BlackChancery</item>
+        <item>Bluehigh</item>
+        <item>Bluehighbold</item>
+        <item>BubbleLetters</item>
+        <item>Cantaneobold</item>
+        <item>Caprica</item>
+        <item>Cartoon</item>
+        <item>caviardreams_bold</item>
+        <item>Celtic</item>
+        <item>comicsansms</item>
+        <item>Cooljazz</item>
+        <item>Darkromanticism</item>
+        <item>Dustismobold</item>
+        <item>FeastOfFlesh</item>
+        <item>Felipe</item>
+        <item>GalantNormal</item>
+        <item>Gezoe</item>
+        <item>GillSansMTItalic</item>
+        <item>HelveticaNeueCE55Roman</item>
+        <item>Jaramondbold</item>
+        <item>Laneposhbold</item>
+        <item>Lauren</item>
+        <item>Melonio</item>
+        <item>Metal</item>
+        <item>MotleyCrue</item>
+        <item>NokiaPure</item>
+        <item>Petermorgan</item>
+        <item>Piratebold</item>
+        <item>Questbold</item>
+        <item>Roboto</item>
+        <item>Roboto-Bold</item>
+        <item>Rosemary</item>
+        <item>Sansationbold</item>
+        <item>Segoe</item>
+    </string-array>
+    <string-array name="agc_wifi_drawables">
+        <item>@drawable/wifi_stock_4</item>
+        <item>@drawable/wifi_aosp_4</item>
+        <item>@drawable/wifi_calatrava_4</item>
+        <item>@drawable/wifi_curva_4</item>
+        <item>@drawable/wifi_deluxerom</item>
+        <item>@drawable/wifi_letra_4</item>
+        <item>@drawable/wifi_rb_4</item>
+        <item>@drawable/wifi_spanky_4</item>
+        <item>@drawable/wifi_tierra_4</item>
+        <item>@drawable/wifi_tribal1_4</item>
+        <item>@drawable/wifi_tribal2_4</item>
+        <item>@drawable/wifi_giro_4</item>
+        <item>@drawable/wifi_modern</item>
+        <item>@drawable/wifi_atomo</item>
+        <item>@drawable/wifi_metallica</item>
+        <item>@drawable/wifi_agua</item>
+        <item>@drawable/wifi_ensaimada</item>
+        <item>@drawable/wifi_forja</item>
+        <item>@drawable/wifi_modern2</item>
+    </string-array>
+    <string-array name="agc_wifi_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+    </string-array>
+    <string-array name="agc_wifi_entries">
+        <item>Stock</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+    </string-array>
+    <string-array name="agc_signal_drawables">
+        <item>@drawable/signal_stock</item>
+        <item>@drawable/signal_agua</item>
+        <item>@drawable/signal_aosp</item>
+        <item>@drawable/signal_barra</item>
+        <item>@drawable/signal_cadena</item>
+        <item>@drawable/signal_deluxerom</item>
+        <item>@drawable/signal_giro</item>
+        <item>@drawable/signal_luna</item>
+        <item>@drawable/signal_luz</item>
+        <item>@drawable/signal_ola</item>
+        <item>@drawable/signal_parabo</item>
+        <item>@drawable/signal_modern</item>
+        <item>@drawable/signal_atomo</item>
+        <item>@drawable/signal_metallica</item>
+        <item>@drawable/signal_ios</item>
+        <item>@drawable/signal_flecha</item>
+        <item>@drawable/signal_flecha2</item>
+        <item>@drawable/signal_stark</item>
+    </string-array>
+    <string-array name="agc_signal_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+    </string-array>
+    <string-array name="agc_signal_entries">
+        <item>Stock</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+    </string-array>
+    <array name="agc_alarma_drawables">
+        <item>@drawable/alarma_stock</item>
+        <item>@drawable/alarma_arena</item>
+        <item>@drawable/alarma_campana</item>
+        <item>@drawable/alarma_clasico_1</item>
+        <item>@drawable/alarma_clasico_2</item>
+        <item>@drawable/alarma_deluxe</item>
+        <item>@drawable/alarma_digital_1</item>
+        <item>@drawable/alarma_digital_2</item>
+        <item>@drawable/alarma_moderno</item>
+        <item>@drawable/alarma_romano</item>
+    </array>
+    <string-array name="agc_alarma_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="agc_alarma_entries">
+        <item>Stock</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <array name="agc_bluetooth_drawables">
+        <item>@drawable/bluetooth_1</item>
+        <item>@drawable/bluetooth_2</item>
+        <item>@drawable/bluetooth_3</item>
+        <item>@drawable/bluetooth_4</item>
+        <item>@drawable/bluetooth_5</item>
+        <item>@drawable/bluetooth_6</item>
+        <item>@drawable/bluetooth_7</item>
+        <item>@drawable/bluetooth_8</item>
+        <item>@drawable/bluetooth_9</item>
+    </array>
+    <string-array name="agc_bluetooth_entries">
+        <item>Stock</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="agc_bluetooth_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <array name="agc_sound_sb_drawables">
+        <item>@drawable/sound_sb_stock</item>
+        <item>@drawable/sound_sb_dos</item>
+        <item>@drawable/sound_sb_tres</item>
+        <item>@drawable/sound_sb_cuarto</item>
+        <item>@drawable/sound_sb_cinco</item>
+        <item>@drawable/sound_sb_seis</item>
+        <item>@drawable/sound_sb_siete</item>
+        <item>@drawable/sound_sb_deluxe</item>
+        <item>@drawable/sound_sb_metallica</item>
+    </array>
+    <string-array name="agc_sound_sb_entries">
+        <item>Stock</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="agc_sound_sb_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="signal_color_values">
+        <item>wifi</item>
+        <item>wifiarrows</item>
+        <item>signal</item>
+        <item>mobiletype</item>
+        <item>mobilearrows</item>
+        <item>roaming</item>
+        <item>airplane</item>
+        <item>boosterwifi</item>
+        <item>boostermobile</item>
+        <item>boosteractivity</item>
+        <item>tint</item>
+    </string-array>
+    <string-array name="signal_color_entries">
+        <item>WiFi</item>
+        <item>WiFi arrows</item>
+        <item>Signal</item>
+        <item>Mobile type</item>
+        <item>Mobile arrows</item>
+        <item>Roaming</item>
+        <item>Airplane</item>
+        <item>Booster WiFi</item>
+        <item>Booster mobile</item>
+        <item>Booster activity</item>
+        <item>Tint</item>
+    </string-array>
+    <string-array name="qp_color_values">
+        <item>bg</item>
+        <item>bi</item>
+        <item>bs</item>
+        <item>bc</item>
+        <item>bfg</item>
+        <item>bbg</item>
+        <item>bfm</item>
+        <item>bbm</item>
+        <item>nbg</item>
+        <item>nbb</item>
+        <item>npc</item>
+        <item>nsc</item>
+        <item>cd</item>
+        <item>sc</item>
+        <item>bts</item>
+        <item>tt</item>
+        <item>tp</item>
+        <item>ts</item>
+        <item>ton</item>
+        <item>toff</item>
+        <item>tdim</item>
+        <item>tion</item>
+        <item>tioff</item>
+        <item>tidim</item>
+        <item>hd</item>
+        <item>pi</item>
+    </string-array>
+    <string-array name="qp_color_entries">
+        <item>Background</item>
+        <item>Brightness icon</item>
+        <item>Brightness settings</item>
+        <item>Brightness controller</item>
+        <item>Brightness foreground</item>
+        <item>Brightness background</item>
+        <item>Brightness foreground [max]</item>
+        <item>Brightness background [max]</item>
+        <item>Notification background</item>
+        <item>Notification background behind</item>
+        <item>Notification primary color</item>
+        <item>Notification secondary color</item>
+        <item>Date / Clock</item>
+        <item>Signal icons</item>
+        <item>Buttons</item>
+        <item>Tile name</item>
+        <item>Tile detail primary</item>
+        <item>Tile detail secondary</item>
+        <item>Tile on</item>
+        <item>Tile off</item>
+        <item>Tile dim</item>
+        <item>Tile icon on</item>
+        <item>Tile icon off</item>
+        <item>Tile icon dim</item>
+        <item>Handler icon</item>
+        <item>Page indicator</item>
+    </string-array>
+    <string-array name="general_color_entries">
+        <item>Sound</item>
+        <item>Bluetooth</item>
+        <item>NFC</item>
+        <item>Alarm</item>
+        <item>WifiCall / VoLTE</item>
+        <item>Location</item>
+        <item>Private mode</item>
+        <item>Gear</item>
+        <item>Power saver</item>
+        <item>Data saver</item>
+        <item>HeadSet</item>
+        <item>System notifications</item>
+        <item>Tint on white apps</item>
+    </string-array>
+    <string-array name="general_color_values">
+        <item>sound</item>
+        <item>bluetooth</item>
+        <item>nfc</item>
+        <item>alarm</item>
+        <item>wificall</item>
+        <item>location</item>
+        <item>privatemode</item>
+        <item>gear</item>
+        <item>powersaver</item>
+        <item>datasaver</item>
+        <item>headset</item>
+        <item>systemnotifs</item>
+        <item>tint</item>
+    </string-array>
+    <string-array name="double_tap_sb_options">
+        <item>Disabled</item>
+        <item>From right side</item>
+        <item>From left side</item>
+        <item>Everywhere</item>
+    </string-array>
+    <string-array name="double_tap_sb_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="common_actions">
+        <item>Do nothing</item>
+        <item>Open app</item>
+        <item>WiFi</item>
+        <item>Sound mode</item>
+        <item>Bluetooth</item>
+        <item>Rotation</item>
+        <item>Airplane mode</item>
+        <item>Flashlight</item>
+        <item>Mobile data</item>
+        <item>Blue light filter</item>
+        <item>Camera</item>
+        <item>Location</item>
+        <item>Do not disturb</item>
+        <!--item>NFC</item-->
+        <item>Always on display</item>
+        <item>Night mode</item>
+        <item>Screenshot</item>
+        <item>Retailed screenshot</item>
+        <item>Record screen</item>
+        <item>Press recents</item>
+        <item>Press home</item>
+        <item>Press back</item>
+        <item>Press menu</item>
+        <item>Reboot menu</item>
+        <item>Lock screen</item>
+        <item>Close current app</item>
+        <item>Close recent apps</item>
+        <item>Increase 10% brightness</item>
+        <item>Decrease 10% brightness</item>
+        <item>Set max. brightness</item>
+        <item>Set min. brightness</item>
+        <item>Increase x1 system volume</item>
+        <item>Increase x1 notif. volume</item>
+        <item>Increase x1 media volume</item>
+        <item>Increase x1 ringtone volume</item>
+        <item>Decrease x1 system volume</item>
+        <item>Decrease x1 notif. volume</item>
+        <item>Decrease x1 media volume</item>
+        <item>Decrease x1 ringtone volume</item>
+        <item>Play/Pause media</item>
+        <item>Next media track</item>
+        <item>Previous media track</item>
+    </string-array>
+    <string-array name="common_actions_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <!--item>13</item-->
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+    </string-array>
+    <string-array name="toggle_animations_entries">
+        <item>Vertical flip</item>
+        <item>Horizontal flip</item>
+        <item>Rotate to the right</item>
+        <item>Rotate to the left</item>
+        <item>Stretch horizontal</item>
+        <item>Stretch vertical</item>
+        <item>Swipe from the left</item>
+        <item>Swipe from the right</item>
+        <item>Swipe from above</item>
+        <item>Swipe from below</item>
+        <item>Appear</item>
+    </string-array>
+    <string-array name="toggle_animations_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="toggle_animations_timeout_entries">
+        <item>Very slow (3500ms)</item>
+        <item>Slow (2500ms)</item>
+        <item>Normal (2000ms)</item>
+        <item>Fast (1500ms)</item>
+        <item>Very fast (1000ms)</item>
+        <item>Extremely fast (500ms)</item>
+        <item>Imperceptible (250ms)</item>
+    </string-array>
+    <string-array name="toggle_animations_timeout_values">
+        <item>3500</item>
+        <item>2500</item>
+        <item>2000</item>
+        <item>1500</item>
+        <item>1000</item>
+        <item>500</item>
+        <item>250</item>
+    </string-array>
+    <string-array name="toggle_animations_interpolator_entries">
+        <item>Linear</item>
+        <item>Speed up</item>
+        <item>Speed down</item>
+        <item>Accelerate and decelerate</item>
+        <item>Bounce</item>
+        <item>Exceed</item>
+        <item>Anticipate</item>
+        <item>Anticipate and bounce</item>
+    </string-array>
+    <string-array name="toggle_animations_interpolator_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="drawables_agc_navbar_back">
+        <item>@drawable/navbar_stock_back</item>
+        <item>@drawable/navbar_airbrush_back</item>
+        <item>@drawable/navbar_androidl_back</item>
+        <item>@drawable/navbar_arrea_back</item>
+        <item>@drawable/navbar_bamboo_back</item>
+        <item>@drawable/navbar_blueball_back</item>
+        <item>@drawable/navbar_carbon_back</item>
+        <item>@drawable/navbar_cod_back</item>
+        <item>@drawable/navbar_condensed_back</item>
+        <item>@drawable/navbar_deluxe_back</item>
+        <item>@drawable/navbar_honeycomb_back</item>
+        <item>@drawable/navbar_hud_back</item>
+        <item>@drawable/navbar_metallica_back</item>
+        <item>@drawable/navbar_motorola_back</item>
+        <item>@drawable/navbar_nexus_back</item>
+        <item>@drawable/navbar_zenyth_back</item>
+        <item>@drawable/navbar_ring_back</item>
+        <item>@drawable/navbar_pirata_back</item>
+        <item>@drawable/navbar_starwars_back</item>
+        <item>@drawable/navbar_maiden_back</item>
+        <item>@drawable/navbar_acdc_back</item>
+        <item>@drawable/navbar_marmol_back</item>
+        <item>@drawable/navbar_androidlx_back</item>
+        <item>@drawable/navbar_androidlx2_back</item>
+        <item>@drawable/navbar_aberroncho_back</item>
+        <item>@drawable/navbar_acespade_back</item>
+        <item>@drawable/navbar_fanegas_back</item>
+        <item>@drawable/navbar_lavara_back</item>
+        <item>@drawable/navbar_lolailo_back</item>
+        <item>@drawable/navbar_tresd_back</item>
+        <item>@drawable/navbar_visillo_back</item>
+        <item>@drawable/navbar_skull_back</item>
+    </string-array>
+    <string-array name="drawables_agc_navbar_home">
+        <item>@drawable/navbar_stock_home</item>
+        <item>@drawable/navbar_airbrush_home</item>
+        <item>@drawable/navbar_androidl_home</item>
+        <item>@drawable/navbar_arrea_home</item>
+        <item>@drawable/navbar_bamboo_home</item>
+        <item>@drawable/navbar_blueball_home</item>
+        <item>@drawable/navbar_carbon_home</item>
+        <item>@drawable/navbar_cod_home</item>
+        <item>@drawable/navbar_condensed_home</item>
+        <item>@drawable/navbar_deluxe_home</item>
+        <item>@drawable/navbar_honeycomb_home</item>
+        <item>@drawable/navbar_hud_home</item>
+        <item>@drawable/navbar_metallica_home</item>
+        <item>@drawable/navbar_motorola_home</item>
+        <item>@drawable/navbar_nexus_home</item>
+        <item>@drawable/navbar_zenyth_home</item>
+        <item>@drawable/navbar_ring_home</item>
+        <item>@drawable/navbar_pirata_home</item>
+        <item>@drawable/navbar_starwars_home</item>
+        <item>@drawable/navbar_maiden_home</item>
+        <item>@drawable/navbar_acdc_home</item>
+        <item>@drawable/navbar_marmol_home</item>
+        <item>@drawable/navbar_androidlx_home</item>
+        <item>@drawable/navbar_androidlx2_home</item>
+        <item>@drawable/navbar_aberroncho_home</item>
+        <item>@drawable/navbar_acespade_home</item>
+        <item>@drawable/navbar_fanegas_home</item>
+        <item>@drawable/navbar_lavara_home</item>
+        <item>@drawable/navbar_lolailo_home</item>
+        <item>@drawable/navbar_tresd_home</item>
+        <item>@drawable/navbar_visillo_home</item>
+        <item>@drawable/navbar_skull_home</item>
+    </string-array>
+    <string-array name="drawables_agc_navbar_recent">
+        <item>@drawable/navbar_stock_recent</item>
+        <item>@drawable/navbar_airbrush_recent</item>
+        <item>@drawable/navbar_androidl_recent</item>
+        <item>@drawable/navbar_arrea_recent</item>
+        <item>@drawable/navbar_bamboo_recent</item>
+        <item>@drawable/navbar_blueball_recent</item>
+        <item>@drawable/navbar_carbon_recent</item>
+        <item>@drawable/navbar_cod_recent</item>
+        <item>@drawable/navbar_condensed_recent</item>
+        <item>@drawable/navbar_deluxe_recent</item>
+        <item>@drawable/navbar_honeycomb_recent</item>
+        <item>@drawable/navbar_hud_recent</item>
+        <item>@drawable/navbar_metallica_recent</item>
+        <item>@drawable/navbar_motorola_recent</item>
+        <item>@drawable/navbar_nexus_recent</item>
+        <item>@drawable/navbar_zenyth_recent</item>
+        <item>@drawable/navbar_ring_recent</item>
+        <item>@drawable/navbar_pirata_recent_</item>
+        <item>@drawable/navbar_starwars_recent</item>
+        <item>@drawable/navbar_maiden_recent</item>
+        <item>@drawable/navbar_acdc_recent</item>
+        <item>@drawable/navbar_marmol_recent</item>
+        <item>@drawable/navbar_androidlx_recent</item>
+        <item>@drawable/navbar_androidlx2_recent</item>
+        <item>@drawable/navbar_aberroncho_recent</item>
+        <item>@drawable/navbar_acespade_recent</item>
+        <item>@drawable/navbar_fanegas_recent</item>
+        <item>@drawable/navbar_lavara_recent</item>
+        <item>@drawable/navbar_lolailo_recent</item>
+        <item>@drawable/navbar_tresd_recent</item>
+        <item>@drawable/navbar_visillo_recent</item>
+        <item>@drawable/navbar_skull_recent</item>
+    </string-array>
+    <string-array name="agc_navbar_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+    <string-array name="agc_navbar_entries">
+        <item>Stock</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+    <string-array name="navbar_icons_color_values">
+        <item>recents</item>
+        <item>home</item>
+        <item>back</item>
+        <item>recents_dark</item>
+        <item>home_dark</item>
+        <item>back_dark</item>
+    </string-array>
+    <string-array name="navbar_icons_color_entries">
+        <item>Recents on white bgs</item>
+        <item>Home on white bgs</item>
+        <item>Back on white bgs</item>
+        <item>Recents</item>
+        <item>Home</item>
+        <item>Back</item>
+    </string-array>
+    <array name="notpanel_styles_drawables">
+        <item>@drawable/notpanel_style_stock</item>
+        <item>@drawable/notpanel_style_1</item>
+        <item>@drawable/notpanel_style_2</item>
+        <item>@drawable/notpanel_style_3</item>
+        <item>@drawable/notpanel_style_4</item>
+        <item>@drawable/notpanel_style_5</item>
+        <item>@drawable/notpanel_style_6</item>
+        <item>@drawable/notpanel_style_7</item>
+        <item>@drawable/notpanel_style_8</item>
+        <item>@drawable/notpanel_style_9</item>
+        <item>@drawable/notpanel_style_10</item>
+    </array>
+    <string-array name="notpanel_styles_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="toast_animation_entries">
+        <item>@string/toast_none_animation</item>
+        <item>@string/toast_default_animation</item>
+        <item>@string/toast_fade_animation</item>
+        <item>@string/toast_SlideRight_animation</item>
+        <item>@string/toast_SlideLeft_animation</item>
+        <item>@string/toast_Xylon_animation</item>
+        <item>@string/toast_Toko_animation</item>
+        <item>@string/toast_Tn_animation</item>
+        <item>@string/toast_Honami_animation</item>
+        <item>@string/toast_FastFade_animation</item>
+        <item>@string/toast_GrowFade_animation</item>
+        <item>@string/toast_GrowFadeCenter_animation</item>
+        <item>@string/toast_GrowFadeBottom_animation</item>
+        <item>@string/toast_SlideLeftRight_animation</item>
+        <item>@string/toast_SlideRightLeft_animation</item>
+        <item>@string/toast_Translucent_animation</item>
+    </string-array>
+    <string-array name="toast_animation_values">
+        <item/> // None
+        <item>Animation.Toast</item>
+        <item>Animation.Toast.Fade</item>
+        <item>Animation.Toast.SlideRight</item>
+        <item>Animation.Toast.SlideLeft</item>
+        <item>Animation.Toast.Xylon</item>
+        <item>Animation.Toast.Toko</item>
+        <item>Animation.Toast.Tn</item>
+        <item>Animation.Toast.Honami</item>
+        <item>Animation.Toast.FastFade</item>
+        <item>Animation.Toast.GrowFade</item>
+        <item>Animation.Toast.GrowFadeCenter</item>
+        <item>Animation.Toast.GrowFadeBottom</item>
+        <item>Animation.Toast.SlideLeftRight</item>
+        <item>Animation.Toast.SlideRightLeft</item>
+        <item>Animation.Toast.Translucent</item>
+    </string-array>
+    <string-array name="reboot_style_entries">
+        <item>Stock</item>
+        <item>Dialog</item>
+    </string-array>
+    <string-array name="reboot_style_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="agc_reboot_options">
+        <item>DRC</item>
+        <item>Data mode</item>
+        <item>Download</item>
+        <item>Emergency mode</item>
+        <item>Flashlight</item>
+        <item>Power off</item>
+        <item>Quick reboot</item>
+        <item>Reboot UI</item>
+        <item>Reboot</item>
+        <item>Record screen</item>
+        <item>Recovery</item>
+        <item>Screenshot</item>
+        <item>Settings</item>
+    </string-array>
+    <string-array name="agc_reboot_values">
+        <item>drc</item>
+        <item>data_mode</item>
+        <item>download</item>
+        <item>emergency</item>
+        <item>flashlight</item>
+        <item>power</item>
+        <item>quickreboot</item>
+        <item>rebootui</item>
+        <item>restart</item>
+        <item>screencapture</item>
+        <item>recovery</item>
+        <item>screenshot</item>
+        <item>settings</item>
+    </string-array>
+    <string-array name="reboot_icon_entries">
+        <item>Stock</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+    </string-array>
+    <string-array name="reboot_icon_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+    </string-array>
+    <array name="drawables_icono_reinicio">
+        <item>@drawable/stock</item>
+        <item>@drawable/semicirculo</item>
+        <item>@drawable/gradiente</item>
+        <item>@drawable/hexagonal</item>
+        <item>@drawable/spanky</item>
+        <item>@drawable/irpana</item>
+        <item>@drawable/estonteria</item>
+        <item>@drawable/ansiaviva</item>
+        <item>@drawable/deluxe</item>
+        <item>@drawable/rb</item>
+        <item>@drawable/hexagonaldos</item>
+        <item>@drawable/arcilla</item>
+        <item>@drawable/elegant_uno</item>
+        <item>@drawable/elegant_dos</item>
+        <item>@drawable/elegant_tres</item>
+        <item>@drawable/spiral</item>
+        <item>@drawable/metal2</item>
+        <item>@drawable/vikingrunes</item>
+        <item>@drawable/comosea</item>
+    </array>
+    <string-array name="pm_color_entries">
+        <item>Main text</item>
+        <item>Description text</item>
+        <item>Status text</item>
+        <item>Main text on white bgs</item>
+        <item>Description text on white bgs</item>
+        <item>Status text on white bgs</item>
+    </string-array>
+    <string-array name="pm_color_values">
+        <item>main</item>
+        <item>desc</item>
+        <item>status</item>
+        <item>mainwhite</item>
+        <item>descwhite</item>
+        <item>statuswhite</item>
+    </string-array>
+    <string-array name="changelog_280">
+        <item>Rebased over N950FXXSDDTJ1</item>
+        <item>Security patch 01/10/2020</item>
+        <item>Updated S8+/S8 files [DTJ1]</item>
+        <item>Updated DeluxeKernel_v16.3</item>
+        <item>Updated modded weather app</item>
+        <item>Updated modded TouchWiz app</item>
+        <item>Updated Magisk</item>
+        <item>Updated WebView</item>
+        <item>Updated chinese SmartManager</item>
+        <item>Remade all mods from scratch</item>
+        <item>Dual bar on-the-fly (No more ZIPs)</item>
+        <item>Optimized remap mod (60~% less of code)</item>
+        <item>Optimized all mods to waste less resources</item>
+        <item>Fixed biometric on reboot mod issues</item>
+        <item>Fixed WiFi/Data icon change</item>
+        <item>Fixed notifications transparency (even with custom color)</item>
+        <item>Fixed missing TW transition</item>
+        <item>Separated all views into individual preferences</item>
+        <item>Added back switchable SELinux (enforcing by default)</item>
+        <item>Added status bar notification colors</item>
+        <item>Added panel carrier customization</item>
+        <item>Added analog clock to status bar</item>
+        <item>Added possibility to use transparent panel (notifs. included)</item>
+        <item>Added DRC updates to get quick-fixes (Typos, non-translated words, force-closes, etc…)</item>
+    </string-array>
+    <string-array name="changelog_270">
+        <item>Rebased over N950FXXSCDTF1</item>
+        <item>Security patch 01/07/2020</item>
+        <item>Updated S8+/S8 files [DTF1]</item>
+        <item>Updated DeluxeKernel_v14</item>
+        <item>Fixed system signatures bypass</item>
+    </string-array>
+    <string-array name="changelog_260">
+        <item>Rebased over N950FXXSBDTED</item>
+        <item>Security patch 01/06/2020</item>
+        <item>Updated S8+/S8 files [DTEA]</item>
+        <item>Updated DeluxeKernel_v13.1</item>
+        <item>Added 1 more reboot style</item>
+        <item>Fixed errors on app updates (Contacts/Music)</item>
+        <item>Improved bug report function on DRC</item>
+    </string-array>
+    <string-array name="changelog_250">
+        <item>Rebased over N950FXXSBDTE6</item>
+        <item>Security patch 01/05/2020</item>
+        <item>Updated DeluxeKernel_v13</item>
+        <item>Updated TWRP</item>
+        <item>Fixed TWRP compatibility</item>
+    </string-array>
+    <string-array name="changelog_240">
+        <item>Rebased over N950FXXSADTC4</item>
+        <item>Security patch 01/04/2020</item>
+        <item>Updated S8+/S8 files [DTC6]</item>
+        <item>Updated Magisk to v20.4</item>
+        <item>Included S8+/S8 camera fix</item>
+        <item>Included carrier fix</item>
+        <item>Added DRC option for bug report</item>
+        <item>Added TW custom color/size for app names</item>
+        <item>Added TW custom size for app icons</item>
+        <item>Added TW app label for recents</item>
+        <item>Added back DualApp patched</item>
+        <item>Forced TW widgets to accept any resize</item>
+        <item>Removed reboot dependency for reset DRC</item>
+        <item>Optimized DRC</item>
+    </string-array>
+    <string-array name="changelog_230">
+        <item>Rebased over N950FXXSADTB1</item>
+        <item>Security patch 01/03/2020</item>
+        <item>Fixed installer issues</item>
+        <item>Updated S8+/S8 files [DTC1]</item>
+        <item>Updated chinese SmartManager</item>
+        <item>Updated WebView</item>
+        <item>Simplified AROMA installer</item>
+        <item>Added dynamic lockscreen</item>
+        <item>Added one more bootanimation (Deluxe4)</item>
+        <item>Removed some conflictive/inefficient mods</item>
+    </string-array>
+    <string-array name="changelog_220">
+        <item>Rebased over N950FXXS9DTA1</item>
+        <item>Security patch 01/02/2020</item>
+        <item>Updated DeluxeKernel® to v12</item>
+    </string-array>
+    <string-array name="changelog_210">
+        <item>Rebased over N950FXXS8DSK5</item>
+        <item>Security patch 01/12/2019</item>
+        <item>Fixed virtual buttons behavior</item>
+        <item>Fixed notification colors</item>
+        <item>Fixed battery capacity on N950F</item>
+        <item>Improved stock battery hide/show logic</item>
+        <item>Added option to show percentage on right side</item>
+        <item>Added custom margins for stock battery</item>
+        <item>Added custom margins for battery percentage</item>
+        <item>Added reboot menu custom size for texts</item>
+        <item>Added reboot menu custom fonts for texts</item>
+        <item>Added 2 more styles on power menu</item>
+    </string-array>
+    <string-array name="changelog_200">
+        <item>Rebased over N950FXXS8DSK1</item>
+        <item>Security patch 01/11/2019</item>
+        <item>Updated DeluxeKernel® v11</item>
+        <item>Updated Magisk v20.1</item>
+        <item>Updated Busybox 1.31.1</item>
+        <item>Fixed custom notification colors</item>
+        <item>Fixed tint issues on quickpanel statusbar</item>
+        <item>Fixed do-not-disturb icon on statusbar</item>
+        <item>Forced reboot menu effects (Matrix/Custom background) to use full screen</item>
+        <item>Added per view option for only apply custom margins to statusbar items</item>
+        <item>Added quickpanel statusbar items colors</item>
+        <item>Added tint for battery bar</item>
+        <item>Added 1 more toggles style</item>
+        <item>Kept stock notification background on lock screen (Transparency)</item>
+        <item>Other minor improvements</item>
+    </string-array>
+    <string-array name="changelog_190">
+        <item>Rebased over N950FXXU7DSJ1</item>
+        <item>Security patch 01/10/2019</item>
+        <item>Updated TWRP to 3.3.1–1</item>
+        <item>Updated TouchWiz to 10.0.40.6</item>
+        <item>Updated Magisk to v20</item>
+        <item>Fixed weather settings force-closing</item>
+        <item>Fixed duplicated power menu entries</item>
+        <item>General code cleanup for less resources usage</item>
+        <item>DRC Improvements</item>
+        <item>Removed MTP warning</item>
+        <item>Added bluetooth battery indicator</item>
+        <item>Added per item position on quickpanel statusbar</item>
+        <item>Added custom batteries (minit/circle) to quickpanel statusbar</item>
+        <item>Added option to block notif. panel usage on lockscreen</item>
+        <item>Added double tap settings on virtual buttons</item>
+        <item>Added battery bar on status bar</item>
+        <item>Added 1 more icon style on reboot menu</item>
+        <item>Added custom text colors on reboot menu (Action/Confirm/Status) (Light/Dark)</item>
+        <item>Added custom background on reboot menu</item>
+        <item>Added matrix effect on reboot menu</item>
+        <item>Added custom color on white background on network speedmeter</item>
+        <item>Added progressive custom background on notif. panel</item>
+        <item>Added progressive matrix effect on notif. panel</item>
+        <item>Added option to force or not the change to manual brightness (Applies for statusbar, virtual buttons and remapped keys)</item>
+    </string-array>
+    <string-array name="changelog_182">
+        <item>DeluxeKernel_v10.1 (Always permissive)</item>
+        <item>Updated S8+/S8 files from september base</item>
+        <item>Added custom toast animations</item>
+        <item>Added weather temperature on statusbar</item>
+        <item>Added ROM version into DeluxeROM® settings section</item>
+        <item>Stopped TouchWiz auto-updates</item>
+    </string-array>
+    <string-array name="changelog_181">
+        <item>Updated S8+/S8 files from latest base</item>
+        <item>Included UI fix from v18</item>
+        <item>Added per key options to disable vibration on short press</item>
+        <item>Added brightness adjustment swiping on statusbar</item>
+        <item>Added option to use quick reply on secure lockscreen</item>
+        <item>Added option to remove permanent notifications</item>
+        <item>Added one more navigation bar style</item>
+    </string-array>
+    <string-array name="changelog_180">
+        <item>Rebased over N950FXXS7DSHC</item>
+        <item>Security patch 01/09/2019</item>
+        <item>Updated ramdisks</item>
+        <item>Updated TouchWiz to latest version and added back 4x4</item>
+        <item>Fixed some CSCs (NZC, PET, TEB, TCE)</item>
+        <item>Added AC/DC bootanimation</item>
+        <item>Added languages to pre-install</item>
+        <item>Added option to use last configuration on AROMA</item>
+        <item>Added notification led customizations (color, quiet hours, etc…)</item>
+        <item>Added custom navigation bar icon colors</item>
+        <item>Added custom size and max. icons on recents</item>
+    </string-array>
+    <string-array name="changelog_171">
+        <item>Updated DeluxeKernel®_v10</item>
+        <item>Moved Snapchat fix to user selection (DRC toggle > Others > Bypass secure flag)</item>
+        <item>Added back home icon animation (ONLY when using stock icons / theme)</item>
+        <item>Fixed navigation bar icons behavior after change the order</item>
+        <item>Added more navigaton bar styles</item>
+        <item>Added DRC themes; DlxUI (Night/Day automatic), DlxDark and DlxLight</item>
+        <item>Fixed hidden icons mod (It was reverted sometimes)</item>
+        <item>Added AROMA option to boot directly with dual statusbar</item>
+        <item>Removed MultiSIM "Show on expanded panel" option</item>
+    </string-array>
+    <string-array name="changelog_170">
+        <item>Rebased over N950FXXS7DSH1</item>
+        <item>Updated DeluxeKernel®_v9.1</item>
+        <item>Fixed some non-working keys (panel colors, 180 rotation)</item>
+        <item>Fixed installer issues</item>
+        <item>Fixed HW tests / USSD codes</item>
+        <item>Fixed battery capacity on S8+ / S8</item>
+        <item>Added option to force night mode while using themes (DRC > Others and DRC toggle)</item>
+        <item>Added option to enable/disable fast charge (DRC > Others and DRC toggle)</item>
+        <item>Added MultiSIM panel customization (visibility, colors, font)</item>
+        <item>Added navigation bar custom icons</item>
+        <item>Added notification colors</item>
+        <item>Added custom paddings (top/bottom/left/right) to more views (Batteries, clock, date, etc)</item>
+        <item>Added panel handler custom color</item>
+        <item>Added launch Google voice search as custom action (Remap, virtual buttons…)</item>
+    </string-array>
+    <string-array name="changelog_160">
+        <item>Rebased over N950FXXS7DSG1</item>
+        <item>Updated DeluxeKernel®_v9</item>
+        <item>Added vibration control key by key</item>
+        <item>Added Secure Folder</item>
+        <item>Added toggles text color</item>
+        <item>Added toggles animation</item>
+        <item>Added top/bottom padding on clock</item>
+    </string-array>
+    <string-array name="changelog_151">
+        <item>Rebased over N950FXXU6DSF6</item>
+        <item>Updated DeluxeKernel®_v8.2</item>
+        <item>Updated S8+/S8 files</item>
+        <item>Fixed S8+/S8 module testing</item>
+        <item>Fixed VoLTE issues</item>
+        <item>Added back 2Sims+SD bypass</item>
+        <item>Fixed coloring WifiCall/VoLTE icons</item>
+        <item>Fixed hidden preferences on DRC</item>
+        <item>Fixed backup/restore function on DRC</item>
+        <item>Added custom toggle icons for QR Scanner</item>
+        <item>Added fingerprint wake-on option</item>
+        <item>Added RAM bar to recents</item>
+        <item>Added \"Allow 180º rotation\" on rotation toggle</item>
+        <item>Optimized 3MinitBattery code to fix some issues</item>
+        <item>Cleaned up a bit in general all the mods</item>
+    </string-array>
+    <string-array name="changelog_150">
+        <item>Rebased over N950FXXS6DSF2</item>
+        <item>Fixed S8+/S8 zoom on camera</item>
+        <item>Updated DeluxeKernel®_v8.1</item>
+        <item>Added kernel section on DRC (gestures/governors/SELinux)</item>
+        <item>Added quick settings to DRC tile</item>
+        <item>Added "empty" field as date option</item>
+        <item>Added left and right margins on date</item>
+        <item>Added 2 more toggles style</item>
+        <item>Added StatusBar margins selection</item>
+        <item>Added full remap mod (short/long/double/triple tap)</item>
+        <item>Added option to hide lockscreen status bar</item>
+        <item>Improved reboot actions security on lockscreen.</item>
+        <item>Improved clock seconds code (Background resources usage)</item>
+        <item>Improved panel colors code (Slow key reading on night mode)</item>
+        <item>Fixed navigation bar custom size (disabled if gestures are on)</item>
+        <item>Fixed brightness slider fg color not working</item>
+        <item>Fixed tint issues on circular battery</item>
+        <item>Fixed NFC can\'t be hidden on statusbar</item>
+    </string-array>
+    <string-array name="changelog_141">
+        <item>Updated S8+/S8 files</item>
+        <item>Updated DeluxeKernel®_v8</item>
+        <item>Added clock seconds / AM-PM</item>
+        <item>Unified DRC N8-S8-S7</item>
+        <item>Added day to date</item>
+        <item>Added GooglePackageInstaller on stock SmartManager</item>
+        <item>Fixed installer issues</item>
+    </string-array>
+    <string-array name="changelog_140">
+        <item>Rebased over N950FXXS5DSD5</item>
+        <item>Updated N950F ramdisk</item>
+        <item>Updated TW with previous mods</item>
+        <item>Fixed launch app on TW double tap</item>
+        <item>Added signal colors</item>
+        <item>Added battery and percentage colors</item>
+        <item>Added custom date to statusbar</item>
+        <item>Added custom background to statusbar</item>
+        <item>Added dual statusbar</item>
+        <item>Added bluetooth_connected to hidden icons</item>
+        <item>Added custom toggles</item>
+        <item>Added panel colors (Tiles, background, buttons, brightness…)</item>
+        <item>Added power menu and user icon switchs (on panel)</item>
+        <item>Added DRC to power menu</item>
+        <item>Added option to split power menu items or not</item>
+        <item>Added DRC,AppLock and VoLTE tiles</item>
+        <item>Rewritten power menu code to fix some minnor bugs</item>
+    </string-array>
+    <string-array name="changelog_130">
+        <item>Rebased over N950FXXS5DSC5</item>
+        <item>Updated DeluxeKernel®_v7 N8/S8+/S8</item>
+        <item>Added remap for home/back/recents</item>
+        <item>Added skip tracks mods</item>
+        <item>TouchWiz with 6x6, 7x7, 8x8 and double tap</item>
+        <item>Option for max. rows on quickpanel</item>
+        <item>16 animation scales on settings</item>
+        <item>Updated recoverys</item>
+        <item>Replaced some icons</item>
+        <item>Fixed CSC features</item>
+        <item>Added Deluxe® bootanimation</item>
+        <item>DRC improvements</item>
+    </string-array>
+    <string-array name="changelog_120">
+        <item>Rebased over N950FXXS5DSC2</item>
+        <item>Updated ramdisk N950F</item>
+        <item>Fixed /system size problem</item>
+        <item>Added custom signal icons</item>
+        <item>Added custom bluetooth icons</item>
+        <item>Added custom alarm icons</item>
+        <item>Added custom sound mode icons</item>
+        <item>Added selection 4G/LTE icon</item>
+        <item>Added power menu item/order selection</item>
+        <item>Added power menu random order selection</item>
+        <item>Added 14 styles to power menu</item>
+        <item>Panel blur disabled if GoodLock is running</item>
+        <item>SmartManager stock/chinese version selectable on AROMA</item>
+    </string-array>
+    <string-array name="changelog_114">
+        <item>Added DeluxeKernel®_v6 for all variants</item>
+        <item>Added option to show all icons on statusbar</item>
+        <item>Added color pickers for general colors on statusbar</item>
+        <item>Added custom WiFi icons</item>
+        <item>Added network speedmeter preferences</item>
+        <item>Added option to hide stock battery alone (without percentage)</item>
+        <item>Hidden percentage and network speedmeter from Settings. Both are on DRC</item>
+        <item>Added option to disable heads-up notifications and select timeout</item>
+        <item>Added custom background for navigation bar</item>
+        <item>Fixed virtual buttons size on statusbar (on landscape)</item>
+        <item>More useless files debloated</item>
+        <item>Fixed minnor bugs on DRC</item>
+        <item>Optimized some mods</item>
+    </string-array>
+    <string-array name="changelog_113">
+        <item>Rebased over N950FXXU5DSB2</item>
+        <item>Added extended reboot menu (stock style)</item>
+        <item>Fixed extended reboot menu (list style)</item>
+        <item>Added toggle to choose reboot menu style (stock/list)</item>
+        <item>Tint switch for 3MinitBattery</item>
+        <item>Fixed virtual navigation bar button on landscape</item>
+        <item>Added NZC CSC (New Zeland unbranded)</item>
+        <item>Added PET CSC (Peru Claro)</item>
+        <item>Various optimizations</item>
+        <item>Replaced SmartManager witch China version (more features)</item>
+        <item>Forced status official on settings</item>
+        <item>Added native blur to quickpanel</item>
+    </string-array>
+    <string-array name="changelog_112">
+        <item>Not released to users</item>
+    </string-array>
+    <string-array name="changelog_111">
+        <item>Fixed camera S8/S8+</item>
+        <item>Fixed iris unlock S8/S8+</item>
+        <item>Bootloader/modem optional on AROMA</item>
+        <item>Added Velvet (Google) as system app on AROMA</item>
+        <item>Added Samsung Notes on AROMA</item>
+        <item>Keept BixbyWakeUp for prevent Google Voice FC</item>
+        <item>Added back glance for S-Pen</item>
+        <item>Deleted OEM toggle from settings, is always enabled</item>
+        <item>Added 2Sims + SD bypass</item>
+        <item>Fixed carrier text limit size on lockscreen</item>
+        <item>Added custom color for white backgrounds on carrier text</item>
+        <item>Added data usage preferences to DRC</item>
+        <item>Fixed behavior of batteries 3Minit and circular</item>
+        <item>Added tint to 3Minit icon</item>
+        <item>Added virtual buttons with 28 actions</item>
+        <item>Deleted brightness warning</item>
+        <item>Added extended reboot menu (EXPERIMENTAL)</item>
+        <item>Added battery levels (warning and critic) pickers</item>
+    </string-array>
+    <string-array name="changelog_110">
+        <item>Initial release</item>
+        <item>Based on first N950F Beta</item>
+    </string-array>
+    <string-array name="tw_animations_entries">
+        <item>Default</item>
+        <item>Accordion</item>
+        <item>Card</item>
+        <item>Cardflip</item>
+        <item>Carousal</item>
+        <item>Cascade</item>
+        <item>Conveyor</item>
+        <item>Diagonal</item>
+        <item>Disperse</item>
+        <item>Fade</item>
+        <item>Fan</item>
+        <item>Fuelle</item>
+        <item>Inner Cube</item>
+        <item>Outer cube</item>
+        <item>Panel</item>
+        <item>Blind</item>
+        <item>Plain</item>
+        <item>Depth</item>
+        <item>Rotate</item>
+        <item>Spiral</item>
+        <item>Zoom</item>
+        <item>ZoomUpDown</item>
+    </string-array>
+    <string-array name="tw_animations_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+    </string-array>
+    <string-array name="kernel_s2w_entries">
+        <item>Slide right</item>
+        <item>Slide left</item>
+        <item>Slide up</item>
+        <item>Slide down</item>
+    </string-array>
+    <string-array name="kernel_s2w_values">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="kernel_s2s_entries">
+        <item>Disabled</item>
+        <item>Sweep right</item>
+        <item>Sweep left</item>
+        <item>Sweep left/right</item>
+    </string-array>
+    <string-array name="kernel_s2s_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="kernel_governor_littlebig_options">
+        <item>@string/big_governor</item>
+        <item>@string/little_governor</item>
+    </string-array>
+    <string-array name="kernel_governor_littlebig_values">
+        <item>big</item>
+        <item>little</item>
+    </string-array>
+    <string-array name="kernel_governors">
+        <item>conservative</item>
+        <item>ondemand</item>
+        <item>userspace</item>
+        <item>powerspace</item>
+        <item>interactive</item>
+        <item>performance</item>
+    </string-array>
+    <string-array name="kernel_scheduler_intext_options">
+        <item>@string/internal_storage</item>
+        <item>@string/external_storage</item>
+    </string-array>
+    <string-array name="kernel_scheduler_intext_values">
+        <item>internal</item>
+        <item>external</item>
+    </string-array>
+    <string-array name="kernel_schedulers">
+        <item>noop</item>
+        <item>deadline</item>
+        <item>cfq</item>
+    </string-array>
+    <string-array name="dlx_analog_drawables">
+        <item>@drawable/dlx_analog_black</item>
+    </string-array>
+    <string-array name="dlx_analog_entries">
+        <item>1</item>
+    </string-array>
+    <string-array name="dlx_analog_values"> <!-- SystemUI drawable name -->
+        <item>dlx_analog_black</item>
+    </string-array>
+
+    <string name="toast_FastFade_animation">Fast fade</string>
+    <string name="toast_GrowFadeBottom_animation">Grow fade bottom</string>
+    <string name="toast_GrowFadeCenter_animation">Grow fade center</string>
+    <string name="toast_GrowFade_animation">Grow fade</string>
+    <string name="toast_Honami_animation">Honami</string>
+    <string name="toast_SlideLeftRight_animation">Slide left right</string>
+    <string name="toast_SlideLeft_animation">Slide left</string>
+    <string name="toast_SlideRightLeft_animation">Slide right left</string>
+    <string name="toast_SlideRight_animation">Slide right</string>
+    <string name="toast_Tn_animation">Tn</string>
+    <string name="toast_Toko_animation">Toko</string>
+    <string name="toast_Translucent_animation">Translucent</string>
+    <string name="toast_Xylon_animation">Xylon</string>
+    <string name="toast_default_animation">Default</string>
+    <string name="toast_fade_animation">Fade</string>
+    <string name="toast_none_animation">None</string>
+    <string name="dual_sb_noti_position">Notifications position</string>
+    <string name="dual_sb_positions_us">Views position (DUAL)</string>
+    <string name="single_sb_positions_us">Views position (SINGLE)</string>
+    <string name="sb_positions_help">Select per view position and sort them</string>
+    <string name="carrier">Carrier</string>
+    <string name="clock">Clock</string>
+    <string name="sb_date">Date</string>
+    <string name="weather">Weather</string>
+    <string name="weather_sb">Weather (Status bar)</string>
+    <string name="weather_qp">Weather (Notif. panel)</string>
+    <string name="weather_ls">Weather (Lock screen)</string>
+    <string name="netspeed">Network speedmetter</string>
+    <string name="systemicons">System icons</string>
+    <string name="minitbattery">3MinitBattery</string>
+    <string name="minitbattery_sb">3MinitBattery (Status bar)</string>
+    <string name="minitbattery_qp">3MinitBattery (Notif. panel)</string>
+    <string name="minitbattery_ls">3MinitBattery (Lock screen)</string>
+    <string name="mobile">Mobile</string>
+    <string name="wifi">Wifi</string>
+    <string name="airplane">Airplane icon</string>
+    <string name="nfc">NFC</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="alarm">Alarm clock</string>
+    <string name="cast">Screen cast</string>
+    <string name="wifi_p2p">Wifi P2P (..mirroring)</string>
+    <string name="wifi_calling">Wifi Calling/Volte</string>
+    <string name="location">Location (GPS)</string>
+    <string name="volume">Volume</string>
+    <string name="power_saving">Power saver</string>
+    <string name="data_saver">Data saver</string>
+    <string name="hotspot">Hotspot</string>
+    <string name="zen">Do not disturb</string>
+    <string name="rcs">RCS</string>
+    <string name="wearable_gear">Wearable gear</string>
+    <string name="private_mode">Private mode</string>
+    <string name="secure_mode">Secure mode</string>
+    <string name="smart_network">Smart network</string>
+    <string name="headset">Headset</string>
+    <string name="rotation">Rotation</string>
+    <string name="bluetooth_level">Bluetooth battery level</string>
+    <string name="circularbt">Circular battery</string>
+    <string name="circularbt_sb">Circular battery (Status bar)</string>
+    <string name="circularbt_qp">Circular battery (Notif. panel)</string>
+    <string name="circularbt_ls">Circular battery (Lock screen)</string>
+    <string name="battery_and_text">Battery and battery text</string>
+    <string name="battery_and_text_sb">Battery and battery text (Status bar)</string>
+    <string name="battery_and_text_ls">Battery and battery text (Lock screen)</string>
+    <string name="battery_and_text_qp">Battery and battery text (Quick panel)</string>
+    <string name="bluetooth_connected">Bluetooth connected</string>
+    <string name="dual_single">Dual / Single / Backgrounds / Margins</string>
+    <string name="use_dual">Use dual bar</string>
+    <string name="left_top">Left top</string>
+    <string name="left_center">Left full center</string>
+    <string name="left_bottom">Left bottom</string>
+    <string name="center_top">Center top</string>
+    <string name="center_center">Center full center</string>
+    <string name="center_bottom">Center bottom</string>
+    <string name="right_top">Right top</string>
+    <string name="right_center">Right full center</string>
+    <string name="right_bottom">Right bottom</string>
+    <string name="left">Left</string>
+    <string name="center">Center</string>
+    <string name="right">Right</string>
+    <string name="year_4">Year (4 digits)</string>
+    <string name="month_short">Month name (short)</string>
+    <string name="month_long">Month name (long)</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="show_day">Show day</string>
+    <string name="show_day_at_end">Day on the right</string>
+    <string name="show_long_day">Whole day</string>
+    <string name="day">Day</string>
+    <string name="empty">Empty</string>
+    <string name="first_value">First value</string>
+    <string name="second_value">Second value</string>
+    <string name="third_value">Third value</string>
+    <string name="margins">Margins</string>
+    <string name="top_margin">Top margin</string>
+    <string name="bottom_margin">Bottom margin</string>
+    <string name="left_margin">Left margin</string>
+    <string name="right_margin">Right margin</string>
+    <string name="size">Size</string>
+    <string name="color">Color</string>
+    <string name="tint">Tint</string>
+    <string name="hidden_views">Hidden icons</string>
+    <string name="batteries">Batteries</string>
+    <string name="clock_sb">Clock (Status bar)</string>
+    <string name="clock_ls">Clock (Lock screen)</string>
+    <string name="carrier_sb">Carrier (Status bar)</string>
+    <string name="carrier_qp">Carrier (Notif. panel)</string>
+    <string name="carrier_ls">Carrier (Lock screen)</string>
+    <string name="netspeed_sb">Network speedmetter (Status bar)</string>
+    <string name="netspeed_qp">Network speedmetter (Notif. panel)</string>
+    <string name="netspeed_ls">Network speedmetter (Lock screen)</string>
+    <string name="show_seconds">Show seconds</string>
+    <string name="show_ampm">Show AMPM (Only on 12h mode)</string>
+    <string name="lockscreen">Lock screen</string>
+    <string name="statusbar">Status bar</string>
+    <string name="notifpanel">Notification panel</string>
+    <string name="virtual_buttons">Virtual buttons</string>
+    <string name="remap_buttons">Remap buttons</string>
+    <string name="rebootmenu">Reboot menu</string>
+    <string name="navbar">Navigation bar</string>
+    <string name="others">Other mods</string>
+    <string name="kernel">Kernel</string>
+    <string name="font">Font</string>
+    <string name="single_color">Single color</string>
+    <string name="up_color">Up color</string>
+    <string name="down_color">Down color</string>
+    <string name="arrows_color">Arrows color</string>
+    <string name="show_all">Split up/down</string>
+    <string name="show_stock_battery">Show stock battery</string>
+    <string name="empty_level">Empty level</string>
+    <string name="empty_level_on_white_bgs">Empty level on white bgs</string>
+    <string name="loaded_level">Loaded level</string>
+    <string name="loaded_level_on_white_bgs">Loaded level on white bgs</string>
+    <string name="bolt">Bolt</string>
+    <string name="bolt_on_white_bgs">Bolt on white bgs</string>
+    <string name="percentage">Battery percentage</string>
+    <string name="percentage_on_white_bgs">Percentage on white bgs</string>
+    <string name="percentage_right">Percentage on right side</string>
+    <string name="minit_tint">Use tint on white backgrounds</string>
+    <string name="colors">Colors</string>
+    <string name="icon_colors_style">Icons and colors</string>
+    <string name="icons_warning">NOTE : Changing icons may take few seconds to get done</string>
+    <string name="wifi_icon">WiFi icon</string>
+    <string name="signal_icon">Signal icon</string>
+    <string name="alarm_icon">Alarm icon</string>
+    <string name="bluetooth_icon">Bluetooth icon</string>
+    <string name="sound_icon">Sound icon</string>
+    <string name="use_lte">Use LTE</string>
+    <string name="general_colors_info">Colors picked here won\'t be applied on notif. panel. Remember you can show all icon on Status bar > Other mods > Show all icons</string>
+    <string name="signal_colors">Signal colors</string>
+    <string name="color_per_icon">Per icon color</string>
+    <string name="battery_bar">Battery bar</string>
+    <string name="show_bar">Show battery bar</string>
+    <string name="thickness">Thickness</string>
+    <string name="animate_charging">Animate when charging</string>
+    <string name="different_color_charging">Use different color when charging</string>
+    <string name="charging_color">Charging color</string>
+    <string name="low_color">Low battery color</string>
+    <string name="blend_colors">Blend color and low color</string>
+    <string name="reverse_blend">Reverse blended color</string>
+    <string name="centered">Center</string>
+    <string name="revert">Revert</string>
+    <string name="invert">Invert direction</string>
+    <string name="color_on_white_bg">Color on white backgrounds</string>
+    <string name="dlxui">DlxUI</string>
+    <string name="dlxdark">DlxDark</string>
+    <string name="dlxlight">DlxLight</string>
+    <string name="changelog_280">Changelog v28</string>
+    <string name="changelog_270">Changelog v27</string>
+    <string name="changelog_260">Changelog v26</string>
+    <string name="changelog_250">Changelog v25</string>
+    <string name="changelog_240">Changelog v24</string>
+    <string name="changelog_230">Changelog v23</string>
+    <string name="changelog_220">Changelog v22</string>
+    <string name="changelog_210">Changelog v21</string>
+    <string name="changelog_200">Changelog v20</string>
+    <string name="changelog_190">Changelog v19</string>
+    <string name="changelog_182">Changelog v18.2</string>
+    <string name="changelog_181">Changelog v18.1</string>
+    <string name="changelog_180">Changelog v18</string>
+    <string name="changelog_171">Changelog v17.1</string>
+    <string name="changelog_170">Changelog v17</string>
+    <string name="changelog_160">Changelog v16</string>
+    <string name="changelog_151">Changelog v15.1</string>
+    <string name="changelog_150">Changelog v15</string>
+    <string name="changelog_141">Changelog v14.1</string>
+    <string name="changelog_140">Changelog v14</string>
+    <string name="changelog_130">Changelog v13</string>
+    <string name="changelog_120">Changelog v12</string>
+    <string name="changelog_114">Changelog v11.4</string>
+    <string name="changelog_113">Changelog v11.3</string>
+    <string name="changelog_112">Changelog v11.2</string>
+    <string name="changelog_111">Changelog v11.1</string>
+    <string name="changelog_110">Changelog v11</string>
+    <string name="changelog">Changelog</string>
+    <string name="twlauncher">TW Launcher</string>
+    <string name="analog_clock">Analog clock</string>
+    <string name="big_governor">Big governor</string>
+    <string name="little_governor">Little governor</string>
+    <string name="internal_storage">Internal storage</string>
+    <string name="external_storage">External storage</string>
+    <string name="aod_wake">Double tap to wake and AOD \"Tap to show\" may cause screen wake-up issues</string>
+    <string name="enable">Enable</string>
+    <string name="short_press">Short press</string>
+    <string name="short_app">App on short press</string>
+    <string name="double_tap">Double tap</string>
+    <string name="double_tap_app">App on double tap</string>
+    <string name="long_press">Long press</string>
+    <string name="long_press_app">App on long press</string>
+    <string name="vbutton_color">Color on press</string>
+    <string name="remap">Enable remap</string>
+    <string name="triple_tap">Triple tap</string>
+    <string name="triple_tap_app">App on triple tap</string>
+    <string name="vibrate">Vibrate</string>
+    <string name="block_short_vibrate">Don\'t vibrate on short press</string>
+    <string name="duration">Duration</string>
+    <string name="screen_on">With screen on</string>
+    <string name="power">Power</string>
+    <string name="recents">Recents</string>
+    <string name="home">Home</string>
+    <string name="back">Back</string>
+    <string name="volup">Volume up</string>
+    <string name="voldown">Volume down</string>
+    <string name="screen_off">With screen off</string>
+    <string name="secure_flag">Bypass secure flag</string>
+    <string name="fast_charging">Fast charging</string>
+    <string name="dark_mode_theme">Force night mode on themes</string>
+    <string name="toast_animation">Toast animation</string>
+    <string name="critical_bt">Critical battery warning</string>
+    <string name="low_bt">Low battery warning</string>
+    <string name="bt_warnings">Battery warnings</string>
+    <string name="whitelisted_app">Show whitelisted app toast</string>
+    <string name="recents_closed">Show closed recent apps toast</string>
+    <string name="toast_closed">Show closed app toast</string>
+    <string name="whitelist">Kill-app whitelist</string>
+    <string name="close_app_behavior">Close-apps action behavior</string>
+    <string name="bug_report">Bug report</string>
+    <string name="paypal">PayPal donations</string>
+    <string name="telegram_esp">Telegram support (ESP)</string>
+    <string name="telegram_eng">Telegram support (ENG)</string>
+    <string name="htc">HTCMania thread</string>
+    <string name="xda">XDA thread</string>
+    <string name="visibility">Visibility</string>
+    <string name="tw_animations">Transition</string>
+    <string name="blur">Blur effect</string>
+    <string name="text_apps">Apps text</string>
+    <string name="use_custom_color">Use custom color</string>
+    <string name="use_custom_size">Use custom size</string>
+    <string name="icon_apps">Apps icon</string>
+    <string name="search_box">Search bar</string>
+    <string name="rambar">RAM bar</string>
+    <string name="bg_used">Background used</string>
+    <string name="percent_bg">Percent background</string>
+    <string name="free_bg">Free background</string>
+    <string name="used_text">Used text</string>
+    <string name="percent_text">Percentage text</string>
+    <string name="free_text">Free text</string>
+    <string name="used_ram_sz">Used size</string>
+    <string name="percent_sz">Percentage size</string>
+    <string name="free_sz">Free size</string>
+    <string name="recent_apps">Recent apps</string>
+    <string name="max_icons">Max. icons</string>
+    <string name="show_name">Show app name</string>
+    <string name="opacity">Opacity</string>
+    <string name="use_tint">Tint on white backgrounds</string>
+    <string name="select_image">Select image</string>
+    <string name="bg_type">Background type</string>
+    <string name="colorimagegd">Color / Image / Gradient</string>
+    <string name="custom_padding">Use custom margins</string>
+    <string name="sb_margin">Status bar margins</string>
+    <string name="stock_bt">Stock battery</string>
+    <string name="icon">Icon</string>
+    <string name="separator">Separator</string>
+    <string name="use_custom_text">Use custom text</string>
+    <string name="custom_text">Custom text</string>
+    <string name="use_fahrenheit">Use farenheit</string>
+    <string name="keep_notifs">Keep notification icons stock</string>
+    <string name="headsup">Heads up notifications</string>
+    <string name="headsup_timeout">Heads up timeout</string>
+    <string name="swipe_br">Brightness slider</string>
+    <string name="force_br">Force manual brightness</string>
+    <string name="show_icons">Show all icons</string>
+    <string name="dt2s">Double tap to sleep</string>
+    <string name="expand_panel">Expand panel</string>
+    <string name="selinux">Selinux status</string>
+    <string name="no_deluxe_kernel">THIS SETTINGS WILL BE ONLY AVAILABLE WHILE USING DELUXEKERNEL.</string>
+    <string name="govs_scheds">Governors / IO schedulers</string>
+    <string name="governors">Governors</string>
+    <string name="io_schedulers">IO schedulers</string>
+    <string name="gestures">Gestures</string>
+    <string name="dt2w">Double tap to wake</string>
+    <string name="s2w">Sweep to wake</string>
+    <string name="s2s">Sweep to sleep</string>
+    <string name="kernel_gesture_vibration">Vibration on gesture</string>
+    <string name="selinux_title">SELinux</string>
+    <string name="qp_positions_us">Per view positions</string>
+    <string name="show_expanded">Show when expanded</string>
+    <string name="position">Position</string>
+    <string name="panel_colors">Panel colors (Background, toggles, buttons …)</string>
+    <string name="use_custom_colors">Use custom colors</string>
+    <string name="day_mode">Day mode colors</string>
+    <string name="night_mode">Night mode colors</string>
+    <string name="show_pw_bt">Show power button</string>
+    <string name="show_usr_bt">Show user button</string>
+    <string name="clear_all">Allow clear all notifs.</string>
+    <string name="matrix">Matrix effect</string>
+    <string name="use_gradient">Use gradient</string>
+    <string name="random_color">Random color</string>
+    <string name="bg_color">Background color</string>
+    <string name="primary_text_color">Primary text color</string>
+    <string name="second_txt_color_gradient">Second text color (Gradient)</string>
+    <string name="bluref">Blur effect</string>
+    <string name="enable_blur">Enable blur effect</string>
+    <string name="blur_int">Blur intensity</string>
+    <string name="toggles">Toggle style</string>
+    <string name="toggle_style">Style</string>
+    <string name="toggle_anims">Toggle animations</string>
+    <string name="enable_animations">Enable toggle animations</string>
+    <string name="anim">Animation</string>
+    <string name="interpolator">Interpolator animation</string>
+    <string name="timeout">Timeout</string>
+    <string name="reboot_style">Reboot style</string>
+    <string name="icons_style">Icons style</string>
+    <string name="elements_show">Elements to show</string>
+    <string name="columns">Use 2 columns</string>
+    <string name="txt_prefs">Text preferences</string>
+    <string name="txt_clrs">Text colors</string>
+    <string name="bixby">Bixby</string>
+    <string name="panel_views">Views/Positions (Batteries, weather, carrier…)</string>
+    <string name="ls_views">Views/Positions (Clock, batteries, carrier…)</string>
+    <string name="bypass_fp">Biometric on reboot</string>
+    <string name="hide_sb">Hide status bar</string>
+    <string name="block_panel">Block notification panel</string>
+    <string name="allow_quick">Allow quick reply always</string>
+    <string name="control_br">Control brightness from status bar</string>
+    <string name="data_bar">Data usage bar</string>
+    <string name="navbar_title">Icons, colors, and background</string>
+    <string name="icon_colors">Icon colors</string>
+    <string name="navbar_size">Size (Landscape/Portrait)</string>
+    <string name="landscape_size">Landscape size</string>
+    <string name="other_mods">Other mods</string>
+    <string name="unhide_first">Unhide first on "Hidden icons"</string>
+    <string name="drc_updates">Automatic check for DRC updates</string>
+    <string name="rows_portrait">Max. toggles on portrait</string>
+    <string name="rows_landscape">Max. toggles on landscape</string>
+    <string name="notifs_manager">Notifications manager (Led/Sound/Vibrate)</string>
+    <string name="noti_manager">Notifications manager</string>
+    <string name="noti_manager_sum">Led color, sound and vibration</string>
+    <string name="per_app_led_color">Led color per app</string>
+    <string name="led_color_info">Take in mind the color range of leds are not so big, so, no all colors are possible.</string>
+    <string name="led_category">Led configuration</string>
+    <string name="led_quiet_hrs">Led quiet hours</string>
+    <string name="led_quiet_hrs_info">Disable led notifications in a range. If you want to keep it disabled select same start/end time</string>
+    <string name="start_time">From …</string>
+    <string name="end_tme">To …</string>
+    <string name="enable_led_quiethrs">Enable led quiet hours</string>
+    <string name="notisounds_quiet_hrs">Notification sounds quiet hours</string>
+    <string name="notisounds_quiet_hrs_enable">Enable notification sounds quiet hours</string>
+    <string name="notisounds_quiet_hrs_info">Select a time range in which notifications sounds (if enabled) will not sound</string>
+    <string name="quiet_also_led">Use also led quiet hours</string>
+    <string name="vibration_quiet_hrs">Notification vibration quiet hours</string>
+    <string name="vibration_quiet_hrs_enable">Enable notification vibration quiet hours</string>
+    <string name="vibration_quiet_hrs_info">Select a time range in which notifications vibrations (if enabled) will not act</string>
+    <string name="bug_error">Cannot generate bug report</string>
+    <string name="choose_email">Choose an email client :</string>
+    <string name="no_email">There is no email client installed on your phone.</string>
+    <string name="bug_collecting">Please wait while we collect required information… (1 minute)</string>
+    <string name="grxs_bug_info">Write a description of the bug and how to reproduce it. After press \"Ok\", a small zip with ROM info will be generated, then default email app will be opened with all the information recolected and you\'ll be able to send it. You will get an answer as soon as possible on the same email which you sent the report.</string>
+    <string name="bug_sent">Bug report sent. Don\'t forget to check your email later ;)</string>
+    <string name="color_on_dark_bg">Color on night mode</string>
+    <string name="hour">Hour color</string>
+    <string name="minute">Minute color</string>
+    <string name="second">Second color</string>
+    <string name="dcolor">Dials color</string>
+    <string name="use_bg">Use image as background</string>
+    <!-- DeluxeROM end -->
 
 </resources>

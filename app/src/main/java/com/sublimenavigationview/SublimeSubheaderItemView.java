@@ -25,7 +25,10 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.grx.settings.R;
+import com.deluxelabs.drc.R;
+
+import java.util.Objects;
+
 /**
  * View implementation for Subheader menu item.
  *
@@ -77,10 +80,10 @@ public class SublimeSubheaderItemView extends SublimeBaseItemView {
             setSubheaderItemTextColor(subheaderItemStyleProfile.getTextColor());
         }
         if (subheaderItemStyleProfile.getTypeface() != null) {
-            setSubheaderItemTypeface(subheaderItemStyleProfile.getTypeface(),
-                    subheaderItemStyleProfile.getTypefaceStyle());
+            setSubheaderItemTypeface(
+            );
         } else {
-            setSubheaderItemTypefaceStyle(subheaderItemStyleProfile.getTypefaceStyle());
+            setSubheaderItemTypefaceStyle();
         }
 
         // Subheader Hint styling
@@ -109,12 +112,12 @@ public class SublimeSubheaderItemView extends SublimeBaseItemView {
 
     @Override
     public void setIconTintList(ColorStateList tintList) {
-        mExpandDrawable = DrawableCompat.wrap(mExpandDrawable
-                .getConstantState().newDrawable()).mutate();
+        mExpandDrawable = DrawableCompat.wrap(Objects.requireNonNull(mExpandDrawable
+                .getConstantState()).newDrawable()).mutate();
         DrawableCompat.setTintList(mExpandDrawable, tintList);
 
-        mCollapseDrawable = DrawableCompat.wrap(mCollapseDrawable
-                .getConstantState().newDrawable()).mutate();
+        mCollapseDrawable = DrawableCompat.wrap(Objects.requireNonNull(mCollapseDrawable
+                .getConstantState()).newDrawable()).mutate();
         DrawableCompat.setTintList(mCollapseDrawable, tintList);
 
         super.setIconTintList(tintList);
@@ -158,7 +161,7 @@ public class SublimeSubheaderItemView extends SublimeBaseItemView {
         mHint.setTextColor(subheaderHintTextColor);
     }
 
-    public void setSubheaderItemTypeface(Typeface itemTypeface, int itemTypefaceStyle) {
+    public void setSubheaderItemTypeface() {
         //mText.setTypeface(itemTypeface, itemTypefaceStyle);
         //grx
         mText.setTypeface(null,Typeface.BOLD);
@@ -168,7 +171,7 @@ public class SublimeSubheaderItemView extends SublimeBaseItemView {
         mHint.setTypeface(hintTypeface, hintTypefaceStyle);
     }
 
-    public void setSubheaderItemTypefaceStyle(int itemTypefaceStyle) {
+    public void setSubheaderItemTypefaceStyle() {
         //mText.setTypeface(mText.getTypeface(), itemTypefaceStyle);
         //grx
         mText.setTypeface(null,Typeface.BOLD);

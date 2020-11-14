@@ -215,7 +215,7 @@
         <item>rm -r /sdcard/backups/wifibackup</item>
     </string-array>
 
-    <string name="grx_circular_battery">Circular Battery options</string>
+    <string name="grx_circular_battery">Circular battery options</string>
     <string name="bold_text">Use bold text</string>
     <string name="battery_size">Battery Size</string>
     <string name="batt_stroke">Stroke Size</string>

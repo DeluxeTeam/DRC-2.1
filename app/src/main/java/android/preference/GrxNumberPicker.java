@@ -16,10 +16,10 @@ import android.util.AttributeSet;
 import android.view.View;
 
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.utils.Common;
-import com.grx.settings.prefs_dlgs.DlgFrGrxNumberPicker;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrGrxNumberPicker;
 
 
 public class GrxNumberPicker extends GrxBasePreference implements DlgFrGrxNumberPicker.OnGrxNumberPickerSetListener {
@@ -99,7 +99,7 @@ public class GrxNumberPicker extends GrxBasePreference implements DlgFrGrxNumber
         }
     }
 
-    public void onGrxNumberPickerSet(int value, String key){
+    public void onGrxNumberPickerSet(int value){
         saveNewIntValue(value);
         configIntPreference(mIntValue);
     }

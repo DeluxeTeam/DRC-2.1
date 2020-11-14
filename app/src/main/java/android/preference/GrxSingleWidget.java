@@ -16,11 +16,11 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefs_dlgs.DlgFrGrxMultipleWidgets;
-import com.grx.settings.utils.Common;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrGrxMultipleWidgets;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -30,7 +30,6 @@ import java.util.regex.Pattern;
 public class GrxSingleWidget extends GrxBasePreference  implements DlgFrGrxMultipleWidgets.OnWidgetsSelectedListener {
 
     private int idWidgetsArray;
-    private String mLabel;
 
     public GrxSingleWidget(Context context, AttributeSet attrs) {
             super(context, attrs);
@@ -54,7 +53,7 @@ public class GrxSingleWidget extends GrxBasePreference  implements DlgFrGrxMulti
     @Override
     public void resetPreference(){
         String[] uris = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
-        for(int i=0;i<uris.length;i++) GrxPrefsUtils.deleteGrxIconFileFromUriString(uris[i]);
+        for (String s : uris) GrxPrefsUtils.deleteGrxIconFileFromUriString(s);
         mStringValue= myPrefAttrsInfo.getMyStringDefValue();
         configStringPreference(mStringValue);
         saveNewStringValue(mStringValue);
@@ -64,12 +63,13 @@ public class GrxSingleWidget extends GrxBasePreference  implements DlgFrGrxMulti
     @Override
     public void configStringPreference(String value){
         int napps=0;
-        if(! (mStringValue.isEmpty()||(mStringValue==null))  ){
+        if(!mStringValue.isEmpty()){
             String[] arr = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
             napps=arr.length;
         }
 
-        if(napps==0) mLabel=myPrefAttrsInfo.getMySummary();
+        String mLabel;
+        if(napps==0) mLabel =myPrefAttrsInfo.getMySummary();
         else mLabel = myPrefAttrsInfo.getMySummary() +" "+  getContext().getString( R.string.grxs_num_selected,napps ) ;
         setSummary(mLabel);
     }

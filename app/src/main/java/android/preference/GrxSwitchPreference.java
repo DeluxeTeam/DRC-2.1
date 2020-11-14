@@ -14,23 +14,22 @@ package android.preference;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.provider.Settings;
 import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefssupport.OnClickRuleHelper;
-import com.grx.settings.utils.Common;
-import com.grx.settings.prefssupport.PrefAttrsInfo;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefssupport.OnClickRuleHelper;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.prefssupport.PrefAttrsInfo;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 
 public class GrxSwitchPreference extends SwitchPreference implements GrxPreferenceScreen.CustomDependencyListener {
@@ -70,7 +69,7 @@ public class GrxSwitchPreference extends SwitchPreference implements GrxPreferen
         if(ta.hasValue(R.styleable.grxSwitchPreference_switchColor)) {
             try {
                 mColor = ta.getColor(R.styleable.grxSwitchPreference_switchColor, 0);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
         ta.recycle();
@@ -89,7 +88,7 @@ public class GrxSwitchPreference extends SwitchPreference implements GrxPreferen
 
     @Override
     protected View onCreateView(ViewGroup parent) {
-        View view = (View) super.onCreateView(parent);
+        View view = super.onCreateView(parent);
         vAndroidIcon = (ImageView) view.findViewById(android.R.id.icon);
         mSwitch = (SwitchCompat) view.findViewById(R.id.switch_ctrl);
         if(mColor!=0){
@@ -137,7 +136,7 @@ public class GrxSwitchPreference extends SwitchPreference implements GrxPreferen
                 setChecked(getPersistedBoolean(myPrefAttrsInfo.getMyBooleanDefValue()));
             } else {
                 setChecked(myPrefAttrsInfo.getMyBooleanDefValue());
-                if(!myPrefAttrsInfo.isValidKey()) return;;
+                if(!myPrefAttrsInfo.isValidKey()) return;
                 persistBoolean(isChecked());
             }
             saveValueInSettings(isChecked());
@@ -171,6 +170,7 @@ public class GrxSwitchPreference extends SwitchPreference implements GrxPreferen
                     }
                     break;
                 case SYSTEM:
+                    Log.d("grxgx", "fucking saved " + myPrefAttrsInfo.getMyKey());
                     Settings.System.putInt(getContext().getContentResolver(),myPrefAttrsInfo.getMyKey(), (checked) ? 1:0  );
                     break;
                 case SECURE:
@@ -272,7 +272,7 @@ public class GrxSwitchPreference extends SwitchPreference implements GrxPreferen
             default:
                 break;
         }
-        boolean checked = (real==1) ? true : false;
+        boolean checked = real == 1;
         setChecked(checked);
         persistBoolean(checked);
     }

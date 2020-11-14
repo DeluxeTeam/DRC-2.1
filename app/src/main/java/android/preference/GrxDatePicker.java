@@ -12,12 +12,13 @@
 
 package android.preference;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -76,10 +77,10 @@ public class GrxDatePicker extends GrxBasePreference{
     }
 
     private void setFormattedValue(String value){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         mFormattedValue="";
         if(value==null || value.isEmpty()) return;
-        Date date = null;
+        Date date;
         try {
             date = sdf.parse(value);
             java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getContext());

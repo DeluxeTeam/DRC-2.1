@@ -1,12 +1,11 @@
 package com.sublimenavigationview;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 
-import com.grx.settings.R;
+import com.deluxelabs.drc.R;
 
 /* 
  * Grouxho - espdroids.com - 2018	

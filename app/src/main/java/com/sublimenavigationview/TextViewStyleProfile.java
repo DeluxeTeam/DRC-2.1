@@ -24,7 +24,7 @@ import android.util.Log;
 import android.util.TypedValue;
 
 
-import com.grx.settings.R;
+import com.deluxelabs.drc.R;
 /**
  * Keeps track of TextView styling based
  * on its role: Item, Hint, Group header etc.
@@ -46,9 +46,9 @@ public class TextViewStyleProfile {
     private Typeface mTypeface;
     private int mTypefaceStyle = Typeface.NORMAL;
 
-    private Context mContext;
+    private final Context mContext;
     // Used to create the default colors.
-    private SublimeThemer.DefaultTheme mDefaultTheme;
+    private final SublimeThemer.DefaultTheme mDefaultTheme;
 
     public TextViewStyleProfile(@NonNull Context context, @NonNull SublimeThemer.DefaultTheme defaultTheme) {
         mContext = context;
@@ -66,9 +66,7 @@ public class TextViewStyleProfile {
      * @return This {@link TextViewStyleProfile} for chaining.
      */
     public TextViewStyleProfile setTextColor(ColorStateList textColor) {
-        if (textColor == null) {
-         //   Log.e(TAG, "'setTextColor(ColorStateList)' was called with a 'null' value");
-        }
+        //   Log.e(TAG, "'setTextColor(ColorStateList)' was called with a 'null' value");
 
         mTextColor = textColor;
         return this;
@@ -82,9 +80,7 @@ public class TextViewStyleProfile {
      * @return This {@link TextViewStyleProfile} for chaining.
      */
     public TextViewStyleProfile setTypeface(Typeface typeface) {
-        if (typeface == null) {
-       //     Log.e(TAG, "'setTypeface(Typeface)' was called with a 'null' value");
-        }
+        //     Log.e(TAG, "'setTypeface(Typeface)' was called with a 'null' value");
 
         mTypeface = typeface;
         return this;

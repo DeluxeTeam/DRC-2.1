@@ -198,11 +198,16 @@
 	<attr name="spinnerValuesArray" format="reference"/>
 	<attr name="allowSortOut" format="boolean"/>
 
+	<attr name="check_icon_blacklist" format="boolean"/>
+	<attr name="onTheFly" format="boolean"/>
+
 	<declare-styleable name="grxperitemsingleselection">
 		<attr name="spinnerOptionsArray"/>
 		<attr name="spinnerValuesArray"/>
 		<attr name="iconsValueTint"/>
 		<attr name="allowSortOut"/>
+		<attr name="check_icon_blacklist"/>
+		<attr name="onTheFly"/>
 	</declare-styleable>
 
 

@@ -1,14 +1,5 @@
 package com.sublimenavigationview;
 
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Typeface;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.widget.ProgressBar;
-
-import com.grx.settings.R;
-
 
 /*
  * Grouxho - espdroids.com - 2018
@@ -25,18 +16,18 @@ public class GrxSublimeCenteredText extends SublimeBaseMenuItem {
     private static final String TAG = GrxSublimeCenteredText.class.getSimpleName();
 
     public GrxSublimeCenteredText(SublimeMenu menu, int group, int id,
-                               CharSequence title, CharSequence hint,
-                               boolean valueProvidedAsync, boolean showsIconSpace) {
+                                  CharSequence title, CharSequence hint,
+                                  boolean valueProvidedAsync) {
         super(menu, group, id, title, hint, ItemType.CENTERED, valueProvidedAsync, false);
 
 
     }
 
     public GrxSublimeCenteredText(int group, int id,
-                               CharSequence title, CharSequence hint,
-                               int iconResId,
-                               boolean valueProvidedAsync, boolean showsIconSpace,
-                               int flags) {
+                                  CharSequence title, CharSequence hint,
+                                  int iconResId,
+                                  boolean valueProvidedAsync,
+                                  int flags) {
         super(group, id, title, hint, iconResId, ItemType.CENTERED,
                 valueProvidedAsync, false, flags);
     }

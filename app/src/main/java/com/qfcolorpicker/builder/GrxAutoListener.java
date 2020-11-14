@@ -15,5 +15,5 @@ import android.content.DialogInterface;
 
 
 public interface GrxAutoListener  {
-    public void onClick(DialogInterface dlg, int which, int ctemp);
+    void onClick(DialogInterface dlg, int which, int ctemp);
 }

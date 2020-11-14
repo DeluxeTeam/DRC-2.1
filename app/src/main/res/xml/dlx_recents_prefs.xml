@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:grx="http://schemas.android.com/apk/res-auto">
+
+    <!-- Search bar -->
+    <PreferenceScreen android:title="@string/search_box">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="dlx_tw_recents"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSwitchPreference
+            android:title="@string/visibility"
+            grx:groupedValueSystemType="system"
+            grx:groupedValueMyAlias="search"
+            grx:groupedValueKey="dlx_tw_recents"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="dlx_tw_master"
+            android:key="dlx_recents_search"
+            android:defaultValue="1" />
+
+    </PreferenceScreen>
+
+    <!-- RAM bar -->
+    <PreferenceScreen android:title="@string/rambar">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="dlx_tw_recents"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSwitchPreference
+            android:title="@string/visibility"
+            grx:groupedValueMyAlias="ram"
+            grx:groupedValueKey="dlx_tw_recents"
+            android:key="dlx_ram_visible"
+            android:defaultValue="0" />
+
+        <GrxColorPicker
+            android:title="@string/bg_used"
+            grx:groupedValueMyAlias="usdbg"
+            grx:groupedValueKey="dlx_tw_recents"
+            android:key="dlx_ram_used_bg"
+            android:defaultValue="-65536"
+            grx:colorPickerStyle="flower"
+            android:dependency="dlx_ram_visible" />
+
+        <GrxColorPicker
+            android:title="@string/percent_bg"
+            grx:groupedValueMyAlias="prcbg"
+            grx:groupedValueKey="dlx_tw_recents"
+            android:key="dlx_ram_percent_bg"
+            android:defaultValue="-256"
+            grx:colorPickerStyle="flower"
+            android:dependency="dlx_ram_visible" />
+        
+        <GrxColorPicker
+            android:title="@string/free_bg"
+            android:key="dlx_ram_free_bg"
+            android:defaultValue="-65536"
+            grx:colorPickerStyle="flower"
+            android:dependency="dlx_ram_visible"
+            grx:groupedValueMyAlias="frebg"
+            grx:groupedValueKey="dlx_tw_recents" />
+
+        <GrxColorPicker
+            android:title="@string/used_text"
+            android:key="dlx_ram_used_color"
+            android:defaultValue="-16777216"
+            grx:colorPickerStyle="flower"
+            android:dependency="dlx_ram_visible"
+            grx:groupedValueMyAlias="usdclr"
+            grx:groupedValueKey="dlx_tw_recents" />
+
+        <GrxColorPicker
+            android:title="@string/percent_text"
+            android:key="dlx_ram_percent_color"
+            android:defaultValue="-16777216"
+            grx:colorPickerStyle="flower"
+            android:dependency="dlx_ram_visible"
+            grx:groupedValueMyAlias="prcclr"
+            grx:groupedValueKey="dlx_tw_recents" />
+
+        <GrxColorPicker
+            android:title="@string/free_text"
+            android:key="dlx_ram_free_color"
+            android:defaultValue="-16777216"
+            grx:colorPickerStyle="flower"
+            android:dependency="dlx_ram_visible"
+            grx:groupedValueMyAlias="freclr"
+            grx:groupedValueKey="dlx_tw_recents" />
+
+        <GrxSeekBar
+            android:title="@string/used_ram_sz"
+            grx:groupedValueMyAlias="usdsz"
+            grx:groupedValueKey="dlx_tw_recents"
+            android:key="dlx_ram_used_size"
+            android:defaultValue="15"
+            android:dependency="dlx_ram_visible"
+            grx:maxValue="25"
+            grx:minValue="1"
+            grx:interval="1" />
+
+        <GrxSeekBar
+            android:title="@string/percent_sz"
+            grx:groupedValueMyAlias="prcsz"
+            grx:groupedValueKey="dlx_tw_recents"
+            android:key="dlx_ram_percent_size"
+            android:defaultValue="15"
+            android:dependency="dlx_ram_visible"
+            grx:groupKey="dlx_ram_group"
+            grx:maxValue="25"
+            grx:minValue="1"
+            grx:interval="1" />
+
+        <GrxSeekBar
+            android:title="@string/free_sz"
+            grx:groupedValueMyAlias="fresz"
+            grx:groupedValueKey="dlx_tw_recents"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="dlx_tw_master"
+            android:key="dlx_ram_free_size"
+            android:defaultValue="15"
+            android:dependency="dlx_ram_visible"
+            grx:maxValue="25"
+            grx:minValue="1"
+            grx:interval="1" />
+
+    </PreferenceScreen>
+
+    <!-- Recent apps -->
+    <PreferenceScreen android:title="@string/recent_apps">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="dlx_tw_recents"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <!-- Max recommended apps -->
+        <GrxSeekBar
+            android:title="@string/max_icons"
+            grx:groupedValueMyAlias="maxrec"
+            grx:groupedValueKey="dlx_tw_recents"
+            grx:minValue="1"
+            grx:maxValue="10"
+            grx:showPopup="true"
+            grx:interval="1"
+            android:key="dlx_recents_max_recommended"
+            android:defaultValue="5" />
+
+        <!-- Icons size -->
+        <GrxSeekBar
+            android:title="@string/size"
+            grx:groupedValueMyAlias="sz"
+            grx:groupedValueKey="dlx_tw_recents"
+            grx:minValue="3"
+            grx:maxValue="15"
+            grx:showPopup="true"
+            grx:interval="1"
+            android:key="dlx_recents_icon_size"
+            android:defaultValue="10" />
+
+        <!-- Show app name -->
+        <GrxSwitchPreference
+            android:title="@string/show_name"
+            grx:groupedValueMyAlias="name"
+            grx:groupedValueKey="dlx_tw_recents"
+            android:key="dlx_tw_show_app_name_recents"
+            android:defaultValue="0"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="dlx_tw_master" />
+
+    </PreferenceScreen>
+
+</PreferenceScreen>

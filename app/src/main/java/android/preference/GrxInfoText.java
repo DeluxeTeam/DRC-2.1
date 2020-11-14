@@ -15,17 +15,15 @@ package android.preference;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.grx.settings.R;
-import com.grx.settings.prefssupport.PrefAttrsInfo;
-import com.grx.settings.utils.Common;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefssupport.PrefAttrsInfo;
+import com.deluxelabs.drc.utils.Common;
 
 public class GrxInfoText extends GrxBasePreference{
 
@@ -55,7 +53,7 @@ public class GrxInfoText extends GrxBasePreference{
         if(ta.hasValue(R.styleable.grxInfotext_rightIconTint)) {
             try {
                 mRightIconTint = ta.getInt(R.styleable.grxInfotext_rightIconTint, 0);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
         ta.recycle();
@@ -79,11 +77,11 @@ public class GrxInfoText extends GrxBasePreference{
 
     @Override
     protected View onCreateView(ViewGroup parent) {
-        View view = (View) super.onCreateView(parent);
+        View view = super.onCreateView(parent);
         TextView vTitle =  (TextView) view.findViewById(android.R.id.title);
         vTitle.setVisibility(View.GONE);
         String t = getSummary().toString();
-        if(t!=null) setSummary(Html.fromHtml(getSummary().toString()));
+        setSummary(Html.fromHtml(getSummary().toString()));
         if(vWidgetIcon!=null && mRightIconTint !=0) {
             vWidgetIcon.setColorFilter(mRightIconTint);
         }

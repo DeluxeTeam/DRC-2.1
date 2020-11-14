@@ -36,31 +36,31 @@
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:layout_marginBottom="4dp"
                 android:text="More info" android:textSize="14dp"  android:textStyle="bold" android:layout_gravity="center_horizontal"/>
 
-                <com.grx.settings.views.LinearLayoutWithLink
+                <com.deluxelabs.drc.views.LinearLayoutWithLink
                     grxURL="http://www.github.com" android:paddingTop="12dp" android:paddingBottom="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:layout_marginEnd="10dp"
                     android:background="?selectableItemBackground" android:orientation="horizontal">
                     <ImageView android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="center_vertical"  android:src="@drawable/demo_github_logo"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center_vertical" android:layout_marginStart="15dp"
                         android:text="Source Code in GitHub"/>
-                </com.grx.settings.views.LinearLayoutWithLink>
+                </com.deluxelabs.drc.views.LinearLayoutWithLink>
 
-                <com.grx.settings.views.LinearLayoutWithLink
+                <com.deluxelabs.drc.views.LinearLayoutWithLink
                     grxURL="http://www.espdroids.com" android:paddingTop="12dp" android:paddingBottom="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:layout_marginEnd="10dp"
                     android:background="?selectableItemBackground" android:orientation="horizontal">
-                    <com.grx.settings.views.ImageViewWithLink
+                    <com.deluxelabs.drc.views.ImageViewWithLink
                         android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="center_vertical"  android:tint="?colorAccent" android:src="@drawable/demo_espdroids"/>
                     <TextView android:layout_width="wrap_content"  android:layout_height="match_parent"  android:gravity="center_vertical" android:layout_marginStart="15dp"
                         android:text="EspDroids.com"/>
-                </com.grx.settings.views.LinearLayoutWithLink>
+                </com.deluxelabs.drc.views.LinearLayoutWithLink>
                 <TextView android:layout_marginTop="4dp" android:layout_marginBottom="4dp" android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="License" android:textSize="18dp" android:textStyle="bold" android:gravity="center" android:textColor="?complemnt_accent_color"/>
 
-                <com.grx.settings.views.LinearLayoutWithLink
+                <com.deluxelabs.drc.views.LinearLayoutWithLink
                     grxURL="https://www.mozilla.org/en-US/MPL/2.0/" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="?selectableItemBackground">
                     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"  android:padding="12dp"
                         android:text="All the source code made by me in this app  is Licensed under the Mozilla Public License Version version 2.0 (Press on this text to see the full license text).\n\n
 This app uses several libraries / pieces of code. The corresponding license to apply to that code is embedded in the source code. Please respect licensing!!. SublimeNavigation view, QuadFlask colorpicker, and Sergei Margaritov (Apache 2.0). Kerneladiutor (GPL 3.0). Floating Action View (MIT)."/>
-                </com.grx.settings.views.LinearLayoutWithLink>
+                </com.deluxelabs.drc.views.LinearLayoutWithLink>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="150dp"></LinearLayout>

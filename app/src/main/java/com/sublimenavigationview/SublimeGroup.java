@@ -36,11 +36,9 @@ public class SublimeGroup implements Parcelable {
     public enum CheckableBehavior {NONE, SINGLE, ALL}
 
     private SublimeMenu mMenu;
-    private int mGroupId;
+    private final int mGroupId;
     private boolean mIsCollapsible, mStateCollapsed, mEnabled, mVisible;
     private CheckableBehavior mCheckableBehavior;
-    //grx build prop
-    private String grxBpRule=null;
     private boolean mGrxIsBPenabled = true;
     private int mHeaderId=-1;
 
@@ -74,8 +72,8 @@ public class SublimeGroup implements Parcelable {
         mCheckableBehavior = checkableBehavior;
 
         //grx build prop
-        grxBpRule = bprule;
-        if(grxBpRule!=null && !grxBpRule.isEmpty()) mGrxIsBPenabled  = is_BPEnabled(grxBpRule);
+        //grx build prop
+        if(bprule !=null && !bprule.isEmpty()) mGrxIsBPenabled  = is_BPEnabled(bprule);
 
     }
 
@@ -280,29 +278,28 @@ public class SublimeGroup implements Parcelable {
     public static boolean is_BPEnabled(String BPRule){
 
         String[] rule = BPRule.split(Pattern.quote("#"));
-        if(rule==null || rule.length!=3  ) return true;
+        if(rule.length != 3) return true;
 
-        boolean rule_isenabled = (rule[0].toUpperCase().equals("ENABLE")) ? true : false;
+        boolean rule_isenabled = rule[0].toUpperCase().equals("ENABLE");
       // String propValue = Utils.getBPProperty(rule[1]);
         String[] conditions = rule[2].split(Pattern.quote(","));
 
         // process conditions
 
-        String mValuesToCheck=",";
-        List<String> mValuesToContain = new ArrayList<String>();
+        StringBuilder mValuesToCheck= new StringBuilder(",");
+        List<String> mValuesToContain = new ArrayList<>();
 
-        for(int i = 0; i<conditions.length; i++){
-            String value = conditions[i];
-            if(value.startsWith("(") && value.endsWith(")")) {
-                String substring = value.substring(1,value.length()-1);
-                if(substring.contains("NULL"))substring=substring.replace("NULL","");
+        for (String value : conditions) {
+            if (value.startsWith("(") && value.endsWith(")")) {
+                String substring = value.substring(1, value.length() - 1);
+                if (substring.contains("NULL")) substring = substring.replace("NULL", "");
                 mValuesToContain.add(substring);
-            }else mValuesToCheck+=value+",";
+            } else mValuesToCheck.append(value).append(",");
         }
-        if(!mValuesToCheck.endsWith(",")) mValuesToCheck += ",";
-        if(mValuesToCheck.contains("NULL")) {
-            mValuesToCheck=mValuesToCheck.replace("NULL","");
-        }else if(mValuesToCheck.equals(",,")) mValuesToCheck=null;
+        if(!mValuesToCheck.toString().endsWith(",")) mValuesToCheck.append(",");
+        if(mValuesToCheck.toString().contains("NULL")) {
+            mValuesToCheck = new StringBuilder(mValuesToCheck.toString().replace("NULL", ""));
+        }else if(mValuesToCheck.toString().equals(",,")) mValuesToCheck = null;
 
 
         //process build prop property
@@ -314,7 +311,7 @@ public class SublimeGroup implements Parcelable {
         boolean matched = false;
         if(mValuesToCheck!=null) {
             String pattern = "," + value + ",";
-            matched = mValuesToCheck.contains(pattern);
+            matched = mValuesToCheck.toString().contains(pattern);
         }
 
         if(matched)  return rule_isenabled;
@@ -332,12 +329,12 @@ public class SublimeGroup implements Parcelable {
 
 
     public static String getBPProperty(String property){
-        Process p = null;
+        Process p;
         String property_value = "";
         try {
             p = new ProcessBuilder("/system/bin/getprop", property).redirectErrorStream(true).start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            String line = "";
+            String line;
             while ((line=br.readLine()) != null){
                 property_value = line;
             }

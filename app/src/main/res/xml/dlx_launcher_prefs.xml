@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:grx="http://schemas.android.com/apk/res-auto">
+
+    <GrxButtonPreference
+        grx:groupedValueKey="dlx_tw_home"
+        android:title="@string/grxs_apply"
+        android:key="button_1"
+        grx:button_Style="big" />
+
+    <!-- Double tap -->
+    <GrxSingleSelection
+        android:title="@string/double_tap"
+        grx:groupedValueSystemType="system"
+        grx:groupedValueMyAlias="dt"
+        grx:groupedValueKey="dlx_tw_home"
+        android:key="dlx_tw_double_tap"
+        android:defaultValue="0"
+        grx:optionsArray="@array/common_actions"
+        grx:valuesArray="@array/common_actions_values" />
+
+    <GrxAppSelection
+        android:title="@string/double_tap_app"
+        grx:groupedValueMyAlias="dtapp"
+        grx:groupedValueKey="dlx_tw_home"
+        android:key="dlx_tw_double_tap_app"
+        grx:depRule="ENABLE#dlx_tw_double_tap#STRING#1"
+        grx:saveActivityname="true"
+        grx:showSystemapps="false" />
+
+    <GrxSingleSelection
+        android:title="@string/tw_animations"
+        android:key="dlx_tw_transition"
+        android:defaultValue="0"
+        grx:groupedValueMyAlias="tr"
+        grx:groupedValueKey="dlx_tw_home"
+        grx:optionsArray="@array/tw_animations_entries"
+        grx:valuesArray="@array/tw_animations_values" />
+
+    <GrxSwitchPreference
+        android:title="@string/blur"
+        android:key="dlx_tw_blur"
+        android:defaultValue="true"
+        grx:groupedValueBroadCastExtraName="arg"
+        grx:groupedValueBroadCast="dlx_tw_master"
+        grx:groupedValueMyAlias="blur"
+        grx:groupedValueKey="dlx_tw_home" />
+
+    <PreferenceScreen android:title="@string/text_apps">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="dlx_tw_home"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSwitchPreference
+            android:title="@string/use_custom_color"
+            grx:groupedValueMyAlias="usclr"
+            grx:groupedValueKey="dlx_tw_home"
+            android:key="dlx_tw_use_custom_color"
+            android:defaultValue="0" />
+
+        <GrxColorPicker
+            android:title="@string/color"
+            grx:groupedValueMyAlias="color"
+            grx:groupedValueKey="dlx_tw_home"
+            android:key="dlx_tw_custom_color"
+            android:defaultValue="-0"
+            grx:colorPickerStyle="flower"
+            android:dependency="dlx_tw_use_custom_color" />
+
+        <GrxSwitchPreference
+            android:title="@string/use_custom_size"
+            grx:groupedValueMyAlias="txcs"
+            grx:groupedValueKey="dlx_tw_home"
+            android:key="dlx_tw_use_custom_text_size"
+            android:defaultValue="0" />
+
+        <GrxSeekBar
+            android:title="@string/size"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="dlx_tw_master"
+            grx:groupedValueMyAlias="txsz"
+            grx:groupedValueKey="dlx_tw_home"
+            grx:minValue="5"
+            grx:maxValue="50"
+            grx:showPopup="true"
+            grx:interval="1"
+            android:dependency="dlx_tw_use_custom_text_size"
+            android:key="dlx_tw_custom_text_size"
+            android:defaultValue="25" />
+
+    </PreferenceScreen>
+
+    <PreferenceScreen android:title="@string/icon_apps">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="dlx_tw_home"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSwitchPreference
+            android:title="@string/use_custom_size"
+            android:key="dlx_tw_use_custom_icon_size"
+            grx:groupedValueMyAlias="iccs"
+            grx:groupedValueKey="dlx_tw_home"
+            android:defaultValue="0" />
+
+        <GrxSeekBar
+            android:title="@string/size"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="dlx_tw_master"
+            grx:groupedValueMyAlias="icsz"
+            grx:groupedValueKey="dlx_tw_home"
+            grx:minValue="50"
+            grx:maxValue="210"
+            grx:showPopup="true"
+            grx:interval="1"
+            android:dependency="dlx_tw_use_custom_icon_size"
+            android:key="dlx_tw_custom_icon_size"
+            android:defaultValue="145" />
+
+    </PreferenceScreen>
+
+</PreferenceScreen>

@@ -23,14 +23,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.grx.settings.utils.Common;
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.act.GrxImagePicker;
-import com.grx.settings.utils.GrxImageHelper;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.act.GrxImagePicker;
+import com.deluxelabs.drc.utils.GrxImageHelper;
 
 import java.io.File;
-
+import java.util.Objects;
 
 
 public class GrxPickImage extends GrxBasePreference{
@@ -65,7 +65,7 @@ public class GrxPickImage extends GrxBasePreference{
         mCircular=ta.getBoolean(R.styleable.grxPreferences_circularImage,false);
         ta.recycle();
 
-        mJustUri = (mSizeX!=0 && mSizeY!=0) ? false : true;
+        mJustUri = mSizeX == 0 || mSizeY == 0;
         Resources resources = getContext().getResources();
         mIconSize = resources.getDimensionPixelSize(R.dimen.icon_size_in_prefs);
     }
@@ -86,7 +86,7 @@ public class GrxPickImage extends GrxBasePreference{
                 Intent intent = new Intent(chl.getActivity(), GrxImagePicker.class);
                 intent.putExtra(Common.TAG_DEST_FRAGMENT_NAME_EXTRA_KEY,myPrefAttrsInfo.getMyKey());
                 intent = GrxImageHelper.intent_avatar_img(intent, mSizeX, mSizeY,mCircular);
-                String output_file_name = Common.IconsDir + File.separator + String.valueOf(System.currentTimeMillis()+".jpg");
+                String output_file_name = Common.IconsDir + File.separator + System.currentTimeMillis() + ".jpg";
                 intent.putExtra(GrxImagePicker.S_OUTPUT_FILE_NAME,output_file_name);
                 chl.startImagePicker(intent, Common.REQ_CODE_GALLERY_IMAGE_PICKER_CROP_CIRCULAR);
             }
@@ -102,7 +102,7 @@ public class GrxPickImage extends GrxBasePreference{
 
     @Override
     protected View onCreateView(ViewGroup parent) {
-        View view = (View) super.onCreateView(parent);
+        View view = super.onCreateView(parent);
         vWidgetIcon.setScaleType(ImageView.ScaleType.CENTER);
         vWidgetIcon.setVisibility(View.VISIBLE);
         return view;
@@ -126,8 +126,8 @@ public class GrxPickImage extends GrxBasePreference{
               detele_current_img = mStringValue.contains( getContext().getString(R.string.grxs_data_base_folder)+File.separator+getContext().getString(R.string.grxs_data_icons_subfolder) );
           }
           if(detele_current_img) {
-              File file = new File(Uri.parse(mStringValue).getPath());
-              if(file!=null && file.exists()) file.delete();
+              File file = new File(Objects.requireNonNull(Uri.parse(mStringValue).getPath()));
+              if(file.exists()) file.delete();
           }
     }
 

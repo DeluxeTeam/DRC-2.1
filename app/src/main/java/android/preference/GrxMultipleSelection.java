@@ -17,11 +17,11 @@ import android.util.AttributeSet;
 import android.view.View;
 
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefs_dlgs.DlgFrMultiSelect;
-import com.grx.settings.utils.Common;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrMultiSelect;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 import java.util.regex.Pattern;
 
@@ -51,7 +51,7 @@ public class GrxMultipleSelection extends GrxBasePreference implements DlgFrMult
             try {
                 iconsValueTint = ta.getInt(R.styleable.grxsiconsarray_iconsValueTint, 0);
 
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
 
@@ -84,7 +84,7 @@ public class GrxMultipleSelection extends GrxBasePreference implements DlgFrMult
     public void resetPreference(){
         if(mStringValue!=null && !mStringValue.isEmpty()){
             String[] uris = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
-            for(int i=0;i<uris.length;i++) GrxPrefsUtils.deleteGrxIconFileFromUriString(uris[i]);
+            for (String s : uris) GrxPrefsUtils.deleteGrxIconFileFromUriString(s);
         }
         mStringValue = myPrefAttrsInfo.getMyStringDefValue();
         saveNewStringValue(mStringValue);
@@ -95,7 +95,7 @@ public class GrxMultipleSelection extends GrxBasePreference implements DlgFrMult
     @Override
     public void configStringPreference(String value){
         int numitems=0;
-        if(! (mStringValue.isEmpty()||(mStringValue==null))  ){
+        if(!mStringValue.isEmpty()){
             String[] arr = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
             numitems=arr.length;
         }

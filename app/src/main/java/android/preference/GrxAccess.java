@@ -21,12 +21,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
 
-import com.grx.settings.prefs_dlgs.DlgFrGrxAccess;
-import com.grx.settings.utils.Common;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrGrxAccess;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -46,9 +46,7 @@ public class GrxAccess extends GrxBasePreference implements
 
     private String mLabel;
 
-    private int mTypoe = -1;
-
-    public GrxAccess(Context context, AttributeSet attrs) {
+            public GrxAccess(Context context, AttributeSet attrs) {
         super(context,attrs);
         initAttributes(context,attrs);
     }
@@ -77,7 +75,7 @@ public class GrxAccess extends GrxBasePreference implements
             try {
                 iconsValueTint = ta.getInt(R.styleable.grxPreferences_iconsValueTint, 0);
 
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
         ta.recycle();
@@ -112,7 +110,7 @@ public class GrxAccess extends GrxBasePreference implements
             return;
         }
 
-        Intent intent=null;
+        Intent intent;
 
         mLabel = myPrefAttrsInfo.getMySummary();
         try {
@@ -122,7 +120,7 @@ public class GrxAccess extends GrxBasePreference implements
         }
 
         mLabel = GrxPrefsUtils.getActivityLabelFromIntent(getContext(), intent);
-        mTypoe = intent.getIntExtra(Common.EXTRA_URI_TYPE,-1);
+        int mTypoe = intent.getIntExtra(Common.EXTRA_URI_TYPE, -1);
 
 
         setSummary(mLabel);

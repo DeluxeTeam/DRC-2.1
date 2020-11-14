@@ -13,8 +13,6 @@ package android.preference;
 import android.content.Context;
 import android.content.res.TypedArray;
 
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -22,11 +20,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.utils.Common;
-import com.grx.settings.prefssupport.PrefAttrsInfo;
-import com.grx.settings.utils.BPRulesUtils;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.prefssupport.PrefAttrsInfo;
+import com.deluxelabs.drc.utils.BPRulesUtils;
 
 
 public class GrxPreferenceCategory extends PreferenceCategory implements GrxPreferenceScreen.CustomDependencyListener{

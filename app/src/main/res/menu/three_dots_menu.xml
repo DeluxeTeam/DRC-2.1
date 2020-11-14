@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.grx.settings.GrxSettingsActivity">
+    tools:context="com.deluxelabs.drc.GrxSettingsActivity">
     <item
         android:id="@+id/menu_backup"
         android:orderInCategory="100"
@@ -32,4 +32,9 @@
         android:title="@string/grxs_tools"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/bug_report"
+        android:orderInCategory="100"
+        android:title="@string/bug_report"
+        app:showAsAction="never" />
 </menu>

@@ -94,12 +94,12 @@ public class  RootUtils {
                 writeable ? "rw" : "ro", mountpoint));
     }
 
-    public static String runScript(String text, String... arguments) {
+    public static void runScript(String text, String... arguments) {
         //RootFile script = new RootFile("/data/local/tmp/kerneladiutortmp.sh");
         RootFile script = new RootFile("/data/local/tmp/grxsettingstmp.sh");
         script.mkdir();
         script.write(text, false);
-        return script.execute(arguments);
+        script.execute(arguments);
     }
 
     public static void closeSU() {

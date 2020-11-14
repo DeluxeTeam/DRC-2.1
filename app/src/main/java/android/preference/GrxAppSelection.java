@@ -16,11 +16,11 @@ import android.util.AttributeSet;
 import android.view.View;
 
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefs_dlgs.DlgGrxAppSelection;
-import com.grx.settings.utils.Common;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefs_dlgs.DlgGrxAppSelection;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 public class GrxAppSelection extends GrxBasePreference implements DlgGrxAppSelection.OnGrxAppListener{
 
@@ -96,7 +96,7 @@ public class GrxAppSelection extends GrxBasePreference implements DlgGrxAppSelec
     }
 
     @Override
-    public void onGrxAppSel(DlgGrxAppSelection dialog, String app_selected){
+    public void onGrxAppSel(String app_selected){
         if(!mStringValue.equals(app_selected)){
             mStringValue=app_selected;
             saveNewStringValue(mStringValue);

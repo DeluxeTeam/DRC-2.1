@@ -144,7 +144,7 @@ public class ColorPickerView extends View {
     //
 
     public interface OnColorChangedListener {
-        public void onColorChanged(int color);
+        void onColorChanged(int color);
     }
 
     public ColorPickerView(Context context) {
@@ -242,10 +242,8 @@ public class ColorPickerView extends View {
 
         final RectF rect = mSatValRect;
 
-        if (BORDER_WIDTH_PX > 0) {
-            mBorderPaint.setColor(mBorderColor);
-            canvas.drawRect(mDrawingRect.left, mDrawingRect.top, rect.right + BORDER_WIDTH_PX, rect.bottom + BORDER_WIDTH_PX, mBorderPaint);
-        }
+        mBorderPaint.setColor(mBorderColor);
+        canvas.drawRect(mDrawingRect.left, mDrawingRect.top, rect.right + BORDER_WIDTH_PX, rect.bottom + BORDER_WIDTH_PX, mBorderPaint);
 
         if (mValShader == null) {
             mValShader = new LinearGradient(rect.left, rect.top, rect.left, rect.bottom,
@@ -275,14 +273,12 @@ public class ColorPickerView extends View {
 
         final RectF rect = mHueRect;
 
-        if (BORDER_WIDTH_PX > 0) {
-            mBorderPaint.setColor(mBorderColor);
-            canvas.drawRect(rect.left - BORDER_WIDTH_PX,
-                    rect.top - BORDER_WIDTH_PX,
-                    rect.right + BORDER_WIDTH_PX,
-                    rect.bottom + BORDER_WIDTH_PX,
-                    mBorderPaint);
-        }
+        mBorderPaint.setColor(mBorderColor);
+        canvas.drawRect(rect.left - BORDER_WIDTH_PX,
+                rect.top - BORDER_WIDTH_PX,
+                rect.right + BORDER_WIDTH_PX,
+                rect.bottom + BORDER_WIDTH_PX,
+                mBorderPaint);
 
         if (mHueShader == null) {
             mHueShader = new LinearGradient(rect.left, rect.top, rect.left, rect.bottom, buildHueColorArray(), null, TileMode.CLAMP);
@@ -312,14 +308,12 @@ public class ColorPickerView extends View {
 
         final RectF rect = mAlphaRect;
 
-        if (BORDER_WIDTH_PX > 0) {
-            mBorderPaint.setColor(mBorderColor);
-            canvas.drawRect(rect.left - BORDER_WIDTH_PX,
-                    rect.top - BORDER_WIDTH_PX,
-                    rect.right + BORDER_WIDTH_PX,
-                    rect.bottom + BORDER_WIDTH_PX,
-                    mBorderPaint);
-        }
+        mBorderPaint.setColor(mBorderColor);
+        canvas.drawRect(rect.left - BORDER_WIDTH_PX,
+                rect.top - BORDER_WIDTH_PX,
+                rect.right + BORDER_WIDTH_PX,
+                rect.bottom + BORDER_WIDTH_PX,
+                mBorderPaint);
 
 
         mAlphaPattern.draw(canvas);
@@ -336,7 +330,7 @@ public class ColorPickerView extends View {
 
         canvas.drawRect(rect, mAlphaPaint);
 
-        if (mAlphaSliderText != null && mAlphaSliderText != "") {
+        if (mAlphaSliderText != null && !mAlphaSliderText.equals("")) {
             canvas.drawText(mAlphaSliderText, rect.centerX(), rect.centerY() + 4 * mDensity, mAlphaTextPaint);
         }
 
@@ -645,8 +639,8 @@ public class ColorPickerView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-        int width = 0;
-        int height = 0;
+        int width;
+        int height;
 
         //grx it seems we need this fix for led pulse pref in sammy devices
 

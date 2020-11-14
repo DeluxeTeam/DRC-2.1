@@ -7,7 +7,7 @@
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 android:background="?main_bg_color"
-                tools:context="com.grx.settings.GrxSettingsActivity">
+                tools:context="com.deluxelabs.drc.GrxSettingsActivity">
 
 
 

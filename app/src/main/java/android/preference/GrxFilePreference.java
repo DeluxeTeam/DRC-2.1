@@ -16,7 +16,7 @@ package android.preference;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.grx.settings.prefssupport.PrefAttrsInfo;
+import com.deluxelabs.drc.prefssupport.PrefAttrsInfo;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -52,7 +52,7 @@ public class GrxFilePreference extends GrxSwitchPreference {
                 setChecked(getPersistedBoolean(myPrefAttrsInfo.getMyBooleanDefValue()));
             } else {
                 setChecked(myPrefAttrsInfo.getMyBooleanDefValue());
-                if(!myPrefAttrsInfo.isValidKey()) return;;
+                if(!myPrefAttrsInfo.isValidKey()) return;
                 persistBoolean(isChecked());
             }
             saveValueInSettings(isChecked());

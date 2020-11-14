@@ -15,8 +15,6 @@ package android.preference;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -25,10 +23,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefssupport.PrefAttrsInfo;
-import com.grx.settings.utils.Common;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefssupport.PrefAttrsInfo;
+import com.deluxelabs.drc.utils.Common;
 
 
 public class GrxButtonPreference extends GrxBasePreference {
@@ -53,6 +51,7 @@ public class GrxButtonPreference extends GrxBasePreference {
 
     private void initAttributes(Context context, AttributeSet attrs){
         TypedArray ta;
+
         if(Common.mContextWrapper!=null) ta = Common.mContextWrapper.obtainStyledAttributes(attrs, R.styleable.grxPreferenceButton);
         else ta = context.obtainStyledAttributes(attrs, R.styleable.grxPreferenceButton);
         //TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.grxPreferenceButton);
@@ -113,8 +112,6 @@ public class GrxButtonPreference extends GrxBasePreference {
     protected View onCreateView(ViewGroup parent) {
         View view = super.onCreateView(parent);
         switch (mButtonStyle){
-            case 0:
-                break;
             case 1:
                 vButton =(Button) view.findViewById(R.id.gid_button);
                 vButton.setText(mButtonText);
@@ -138,15 +135,12 @@ public class GrxButtonPreference extends GrxBasePreference {
 
         if(vButton!=null){
             setSelectable(false);
-            vButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String groupedkey = myPrefAttrsInfo.getMyGroupedValueKey();
-                    if(TextUtils.isEmpty(groupedkey)) execButtonAction();
-                    else {
-                        GrxPreferenceScreen grxPreferenceScreen = (GrxPreferenceScreen) getOnPreferenceChangeListener();
-                        if(grxPreferenceScreen!=null) grxPreferenceScreen.onGroupedValueButtonPressed(groupedkey);
-                    }
+            vButton.setOnClickListener(view1 -> {
+                String groupedkey = myPrefAttrsInfo.getMyGroupedValueKey();
+                if(TextUtils.isEmpty(groupedkey)) execButtonAction();
+                else {
+                    GrxPreferenceScreen grxPreferenceScreen = (GrxPreferenceScreen) getOnPreferenceChangeListener();
+                    if(grxPreferenceScreen!=null) grxPreferenceScreen.onGroupedValueButtonPressed(groupedkey);
                 }
             });
         }

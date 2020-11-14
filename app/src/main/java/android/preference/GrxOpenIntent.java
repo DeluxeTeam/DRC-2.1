@@ -15,8 +15,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.grx.settings.R;
-import com.grx.settings.prefssupport.PrefAttrsInfo;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefssupport.PrefAttrsInfo;
 
 
 

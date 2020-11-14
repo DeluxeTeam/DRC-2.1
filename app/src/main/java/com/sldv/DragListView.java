@@ -22,14 +22,10 @@ import java.util.List;
  * Created by yuyidong on 15/9/30.
  */
 public class DragListView<T> extends ListView implements View.OnDragListener {
-    /* 移动距离 */
-    private final int DRAG_SCROLL_PX_UNIT = 25;
     /* Handler */
     private Handler mScrollHandler;
     /* Handler的延时 */
     private final long SCROLL_HANDLER_DELAY_MILLIS = 5;
-    /* 边界比例，到这个比例的位置就开始移动 */
-    private final float BOUND_GAP_RATIO = 0.2f;
     /* 边界 */
     private int mTopScrollBound;
     private int mBottomScrollBound;
@@ -62,7 +58,7 @@ public class DragListView<T> extends ListView implements View.OnDragListener {
         this(context, attrs, 0);
     }
 
-    private float mTouchSlop;
+    private final float mTouchSlop;
 
     public DragListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -73,6 +69,8 @@ public class DragListView<T> extends ListView implements View.OnDragListener {
     private final Runnable mDragScroller = new Runnable() {
         @Override
         public void run() {
+            /* 移动距离 */
+            int DRAG_SCROLL_PX_UNIT = 25;
             if (mLastDragY <= mTopScrollBound) {
                 smoothScrollBy(-DRAG_SCROLL_PX_UNIT, (int) SCROLL_HANDLER_DELAY_MILLIS);
             } else if (mLastDragY >= mBottomScrollBound) {
@@ -93,6 +91,8 @@ public class DragListView<T> extends ListView implements View.OnDragListener {
     @Override
     public boolean onDrag(View v, DragEvent event) {
         final int action = event.getAction();
+        /* 边界比例，到这个比例的位置就开始移动 */
+        float BOUND_GAP_RATIO = 0.2f;
         switch (action) {
             case DragEvent.ACTION_DRAG_STARTED:
                 return true;
@@ -170,7 +170,7 @@ public class DragListView<T> extends ListView implements View.OnDragListener {
                     }
                 }
                 if (mOnDragListener != null) {
-                    mOnDragListener.onDragViewMoving(mCurrentPosition);
+                    mOnDragListener.onDragViewMoving();
                 }
                 return true;
             case DragEvent.ACTION_DRAG_EXITED:
@@ -186,7 +186,7 @@ public class DragListView<T> extends ListView implements View.OnDragListener {
                 mScrollHandler.removeCallbacks(mDragScroller);
                 mSDAdapter.notifyDataSetChanged();
                 if (mOnDragListener != null) {
-                    mOnDragListener.onDragViewDown(mCurrentPosition);
+                    mOnDragListener.onDragViewDown();
                 }
                 return true;
             default:
@@ -227,7 +227,7 @@ public class DragListView<T> extends ListView implements View.OnDragListener {
             ClipData.Item item = new ClipData.Item("1");
             ClipData data = new ClipData("1", new String[]{ClipDescription.MIMETYPE_TEXT_PLAIN}, item);
             itemMainLayout.startDrag(data, new View.DragShadowBuilder(itemMainLayout), null, 0);
-            mOnDragListener.onDragViewStart(position);
+            mOnDragListener.onDragViewStart();
             if (isWannaTransparentWhileDragging) {
                 Compat.setBackgroundDrawable(itemMainLayout.getItemCustomView(), backgroundDrawable);
             }
@@ -266,22 +266,19 @@ public class DragListView<T> extends ListView implements View.OnDragListener {
         /**
          * 开始drag
          *
-         * @param position
          */
-        void onDragViewStart(int position);
+        void onDragViewStart();
 
         /**
          * drag的正在移动
          *
-         * @param position
          */
-        void onDragViewMoving(int position);
+        void onDragViewMoving();
 
         /**
          * drag的放下了
          *
-         * @param position
          */
-        void onDragViewDown(int position);
+        void onDragViewDown();
     }
 }

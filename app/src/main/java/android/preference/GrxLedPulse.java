@@ -22,11 +22,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefs_dlgs.DlgFrAppLedPulse;
-import com.grx.settings.utils.Common;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrAppLedPulse;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 import com.qfcolorpicker.CircleColorDrawable;
 
 import java.util.regex.Pattern;
@@ -169,7 +169,7 @@ public class GrxLedPulse extends GrxBasePreference implements DlgFrAppLedPulse.A
   private void refresPrefView(){
       CircleColorDrawable colorChoiceDrawable = null;
       Drawable currentDrawable = vWidgetIcon.getDrawable();
-      if (currentDrawable!=null && currentDrawable instanceof CircleColorDrawable)
+      if (currentDrawable instanceof CircleColorDrawable)
           colorChoiceDrawable = (CircleColorDrawable) currentDrawable;
       if (colorChoiceDrawable==null) {
           colorChoiceDrawable = new CircleColorDrawable(Color.parseColor(mColor));

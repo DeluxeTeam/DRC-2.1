@@ -18,11 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefs_dlgs.DlgFrMultiSelect;
-import com.grx.settings.utils.Common;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrMultiSelect;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 import java.util.regex.Pattern;
 
@@ -69,7 +69,7 @@ public class GrxSingleSelection extends GrxBasePreference implements DlgFrMultiS
     @Override
     public void configStringPreference(String value){
         setWidgetIcon(null);
-        String vals_array[] = getContext().getResources().getStringArray(myPrefAttrsInfo.getMyValuesArrayId());
+        String[] vals_array = getContext().getResources().getStringArray(myPrefAttrsInfo.getMyValuesArrayId());
         int pos = -1;
         for(int i=0;i<vals_array.length;i++) {
             if (value.equals(vals_array[i])) {
@@ -78,7 +78,7 @@ public class GrxSingleSelection extends GrxBasePreference implements DlgFrMultiS
             }
         }
         if(pos!=-1) {
-            String opt_array[] = getContext().getResources().getStringArray(myPrefAttrsInfo.getMyOptionsArrayId());
+            String[] opt_array = getContext().getResources().getStringArray(myPrefAttrsInfo.getMyOptionsArrayId());
             mLabel = opt_array[pos];
             if(myPrefAttrsInfo.getMyIconsArrayId()!=0){
                 TypedArray icons_array=getContext().getResources().obtainTypedArray(myPrefAttrsInfo.getMyIconsArrayId());
@@ -102,7 +102,7 @@ public class GrxSingleSelection extends GrxBasePreference implements DlgFrMultiS
     public void resetPreference(){
         //   delete files(mValue);
         String[] uris = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
-        for(int i=0;i<uris.length;i++) GrxPrefsUtils.deleteGrxIconFileFromUriString(uris[i]);
+        for (String s : uris) GrxPrefsUtils.deleteGrxIconFileFromUriString(s);
 
         mStringValue= myPrefAttrsInfo.getMyStringDefValue();
         configStringPreference(mStringValue);

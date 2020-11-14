@@ -1,0 +1,1350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:grx="http://schemas.android.com/apk/res-auto">
+
+    <!-- Views -->
+    <PreferenceScreen android:title="@string/panel_views">
+
+        <!-- Positions -->
+        <GrxPerItemSingleSelection
+            android:title="@string/qp_positions_us"
+            android:key="qp_views_positions"
+            android:summary="@string/sb_positions_help"
+            grx:allowSortOut="true"
+            grx:separator="!"
+            grx:commonBcExtra="arg"
+            grx:commonBcExtraValue="qp_views"
+            grx:systemType="system"
+            grx:check_icon_blacklist="true"
+            android:defaultValue="qp_weather;4!qp_netspeed;7!statusicons;7!qp_minitbt;7!qp_circularbt;7!qp_batterycontainer;7!"
+            grx:optionsArray="@array/qp_views_positions_options"
+            grx:valuesArray="@array/qp_views_positions_values"
+            grx:spinnerOptionsArray="@array/sb_positions_options"
+            grx:spinnerValuesArray="@array/sb_positions_values" />
+
+        <!-- Batteries -->
+        <PreferenceScreen android:title="@string/batteries">
+
+            <GrxPreferenceCategory grx:hiddenCategory="true" grx:depRule="DISABLE#dlx_icon_blacklist_r#STRING#(qp_minitbt)">
+
+                <PreferenceScreen android:title="3MinitBattery">
+
+                    <GrxOpenActivity
+                        android:title="3MinitBattery app"
+                        grx:activity="com.three.minit.minitbatterysettings/com.three.minit.minitbatterysettings.MainActivity" />
+
+                    <GrxButtonPreference
+                        grx:groupedValueKey="qp_dlxsbminit"
+                        android:title="@string/grxs_apply"
+                        android:key="button_1"
+                        grx:button_Style="big" />
+
+                    <GrxCheckBoxPreference
+                        android:title="@string/minit_tint"
+                        android:defaultValue="1"
+                        grx:groupedValueSystemType="system"
+                        grx:groupedValueMyAlias="st"
+                        grx:groupedValueKey="qp_dlxsbminit"
+                        android:key="dlx_qp_allow_3minit_tint" />
+
+                    <GrxSeekBar
+                        android:title="@string/top_margin"
+                        android:key="dlx_qp_minit_top_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="tp"
+                        grx:groupedValueKey="qp_dlxsbminit"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/bottom_margin"
+                        android:key="dlx_qp_minit_bottom_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="bp"
+                        grx:groupedValueKey="qp_dlxsbminit"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/left_margin"
+                        android:key="dlx_qp_minit_left_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="lp"
+                        grx:groupedValueKey="qp_dlxsbminit"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/right_margin"
+                        android:key="dlx_qp_minit_right_margin"
+                        grx:groupedValueBroadCast="com.three.minit.BATTERY_TYPE_CHANGED"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="rp"
+                        grx:groupedValueKey="qp_dlxsbminit"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                </PreferenceScreen>
+
+            </GrxPreferenceCategory>
+
+            <GrxPreferenceCategory grx:hiddenCategory="true" grx:depRule="DISABLE#dlx_icon_blacklist_r#STRING#(qp_circularbt)">
+
+                <PreferenceScreen android:title="@string/circularbt">
+
+                    <GrxButtonPreference
+                        grx:groupedValueKey="qp_dlxsbcircularbt"
+                        android:title="@string/grxs_apply"
+                        android:key="button_1"
+                        grx:button_Style="big" />
+
+                    <GrxSwitchPreference
+                        android:title="@string/bold_text"
+                        android:defaultValue="1"
+                        grx:groupedValueSystemType="system"
+                        grx:groupedValueMyAlias="bd"
+                        grx:groupedValueKey="qp_dlxsbcircularbt"
+                        android:key="dlx_qp_circular_bold" />
+
+                    <PreferenceScreen android:title="@string/colors">
+
+                        <GrxButtonPreference
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            android:title="@string/grxs_apply"
+                            android:key="button_1"
+                            grx:button_Style="big" />
+
+                        <GrxColorPicker
+                            grx:groupedValueMyAlias="ld"
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            android:title="@string/batt_dark_bgs"
+                            android:key="qp_grxbat_darkbg_bat"
+                            android:defaultValue="0xfffafafa"
+                            grx:showAlphaSlider="true"
+                            grx:showAutoButton="true" />
+
+                        <GrxColorPicker
+                            grx:groupedValueMyAlias="fd"
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            android:title="@string/batt_framecolor_dark_bgs"
+                            android:key="qp_grxbat_darkbg_frame"
+                            android:defaultValue="0x20fafafa"
+                            grx:showAlphaSlider="true"
+                            grx:showAutoButton="true" />
+
+                        <GrxColorPicker
+                            grx:groupedValueMyAlias="td"
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            android:title="@string/batt_text_dark_bgs"
+                            android:key="qp_grxbat_darkbg_text"
+                            android:defaultValue="0xfffafafa"
+                            grx:showAlphaSlider="true"
+                            grx:showAutoButton="true" />
+
+                        <GrxColorPicker
+                            grx:groupedValueMyAlias="ll"
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            android:title="@string/batt_light_bgs"
+                            android:key="grxbat_lightbg_bat"
+                            android:defaultValue="0xff343434"
+                            grx:showAlphaSlider="true"
+                            grx:showAutoButton="true"  />
+
+                        <GrxColorPicker
+                            grx:groupedValueMyAlias="fl"
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            android:title="@string/batt_framecolor_light_bgs"
+                            android:key="grxbat_lightbg_frame"
+                            android:defaultValue="0x20343434"
+                            grx:showAlphaSlider="true"
+                            grx:showAutoButton="true"  />
+
+                        <GrxColorPicker
+                            grx:groupedValueMyAlias="tl"
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            android:title="@string/batt_text_light_bgs"
+                            android:key="grxbat_lightbg_text"
+                            android:defaultValue="0xff343434"
+                            grx:showAlphaSlider="true"
+                            grx:showAutoButton="true" />
+
+                    </PreferenceScreen>
+
+                    <GrxSeekBar
+                        android:title="@string/size"
+                        android:key="dlx_qp_circular_size"
+                        android:defaultValue="15"
+                        grx:groupedValueMyAlias="sz"
+                        grx:groupedValueKey="qp_dlxsbcircularbt"
+                        grx:maxValue="25"
+                        grx:minValue="1"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/batt_stroke"
+                        grx:groupedValueMyAlias="st"
+                        grx:groupedValueKey="qp_dlxsbcircularbt"
+                        android:key="dlx_qp_circular_stroke"
+                        android:defaultValue="2"
+                        grx:minValue="1"
+                        grx:maxValue="6"
+                        grx:units=" dp"
+                        grx:showPopup="true"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/batt_animation_time"
+                        grx:groupedValueMyAlias="at"
+                        grx:groupedValueKey="qp_dlxsbcircularbt"
+                        android:key="dlx_qp_circular_animtime"
+                        android:defaultValue="100"
+                        grx:minValue="10"
+                        grx:maxValue="250"
+                        grx:units=" mS"
+                        grx:showPopup="true"
+                        grx:interval="2"/>
+
+                    <GrxSeekBar
+                        android:title="@string/batt_alpha_animation"
+                        android:key="dlx_qp_circular_alphatime"
+                        android:defaultValue="2"
+                        grx:groupedValueMyAlias="apt"
+                        grx:groupedValueKey="qp_dlxsbcircularbt"
+                        grx:minValue="1"
+                        grx:maxValue="10"
+                        grx:units=" sec"
+                        grx:showPopup="true"
+                        grx:interval="1"/>
+
+                    <PreferenceScreen android:title="@string/margins">
+
+                        <GrxButtonPreference
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            android:title="@string/grxs_apply"
+                            android:key="button_1"
+                            grx:button_Style="big" />
+
+                        <GrxSeekBar
+                            android:title="@string/top_margin"
+                            android:key="dlx_qp_circular_top_margin"
+                            android:defaultValue="0"
+                            grx:groupedValueMyAlias="tp"
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            grx:maxValue="70"
+                            grx:minValue="0"
+                            grx:interval="1" />
+
+                        <GrxSeekBar
+                            android:title="@string/bottom_margin"
+                            android:key="dlx_qp_circular_bottom_margin"
+                            android:defaultValue="0"
+                            grx:groupedValueMyAlias="bp"
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            grx:maxValue="70"
+                            grx:minValue="0"
+                            grx:interval="1" />
+
+                        <GrxSeekBar
+                            android:title="@string/left_margin"
+                            android:key="dlx_qp_circular_left_margin"
+                            android:defaultValue="0"
+                            grx:groupedValueMyAlias="lp"
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            grx:maxValue="70"
+                            grx:minValue="0"
+                            grx:interval="1" />
+
+                        <GrxSeekBar
+                            android:title="@string/right_margin"
+                            android:key="dlx_qp_circular_right_margin"
+                            grx:groupedValueBroadCastExtraName="arg"
+                            grx:groupedValueBroadCast="deluxerom_master_prefs"
+                            android:defaultValue="0"
+                            grx:groupedValueMyAlias="rp"
+                            grx:groupedValueKey="qp_dlxsbcircularbt"
+                            grx:maxValue="70"
+                            grx:minValue="0"
+                            grx:interval="1" />
+
+                    </PreferenceScreen>
+
+                </PreferenceScreen>
+
+            </GrxPreferenceCategory>
+
+            <GrxPreferenceCategory grx:hiddenCategory="true" grx:depRule="DISABLE#dlx_icon_blacklist_r#STRING#(qp_batterycontainer)">
+
+                <PreferenceScreen android:title="@string/stock_bt">
+
+                    <GrxButtonPreference
+                        grx:groupedValueKey="qp_dlxsbbattery"
+                        android:title="@string/grxs_apply"
+                        android:key="button_1"
+                        grx:button_Style="big" />
+
+                    <GrxPreferenceCategory android:title="@string/icon">
+
+                        <GrxSwitchPreference
+                            grx:groupedValueSystemType="system"
+                            android:title="@string/show_stock_battery"
+                            android:defaultValue="true"
+                            grx:groupedValueMyAlias="sb"
+                            grx:groupedValueKey="qp_dlxsbbattery"
+                            android:key="dlx_qp_show_stock_battery" />
+
+                        <GrxColorPicker
+                            android:title="@string/empty_level"
+                            android:dependency="dlx_qp_show_stock_battery"
+                            android:key="dlx_qp_bt_empty_on_dark"
+                            android:defaultValue="1728053247"
+                            grx:colorPickerStyle="flower"
+                            grx:groupedValueMyAlias="emd"
+                            grx:groupedValueKey="qp_dlxsbbattery" />
+
+                        <GrxColorPicker
+                            android:title="@string/empty_level_on_white_bgs"
+                            android:key="dlx_qp_bt_empty_on_light"
+                            android:defaultValue="1713710373"
+                            android:dependency="dlx_qp_show_stock_battery"
+                            grx:colorPickerStyle="flower"
+                            grx:groupedValueMyAlias="eml"
+                            grx:groupedValueKey="qp_dlxsbbattery" />
+
+                        <GrxColorPicker
+                            android:title="@string/loaded_level"
+                            grx:groupedValueMyAlias="lod"
+                            android:dependency="dlx_qp_show_stock_battery"
+                            grx:groupedValueKey="qp_dlxsbbattery"
+                            android:key="dlx_qp_bt_loaded_on_dark"
+                            android:defaultValue="-1"
+                            grx:colorPickerStyle="flower"
+                            grx:saveValueOnFly="true" />
+
+                        <GrxColorPicker
+                            android:title="@string/loaded_level_on_white_bgs"
+                            grx:groupedValueMyAlias="lol"
+                            android:dependency="dlx_qp_show_stock_battery"
+                            grx:groupedValueKey="qp_dlxsbbattery"
+                            android:key="dlx_qp_bt_loaded_on_light"
+                            android:defaultValue="-14342875"
+                            grx:colorPickerStyle="flower" />
+
+                        <GrxColorPicker
+                            android:title="@string/bolt"
+                            grx:systemType="system"
+                            android:dependency="dlx_qp_show_stock_battery"
+                            android:key="dlx_qp_bt_bolt_on_dark"
+                            android:defaultValue="-1"
+                            grx:colorPickerStyle="flower"
+                            grx:groupedValueMyAlias="bld"
+                            grx:groupedValueKey="qp_dlxsbbattery" />
+
+                        <GrxColorPicker
+                            android:title="@string/bolt_on_white_bgs"
+                            android:key="dlx_qp_bt_bolt_on_light"
+                            android:defaultValue="-15461356"
+                            android:dependency="dlx_qp_show_stock_battery"
+                            grx:colorPickerStyle="flower"
+                            grx:groupedValueMyAlias="bll"
+                            grx:groupedValueKey="qp_dlxsbbattery" />
+
+                    </GrxPreferenceCategory>
+
+                    <GrxPreferenceCategory grx:hiddenCategory="true" grx:depRule="DISABLE#dlx_qp_show_stock_battery#BOOLEAN#FALSE">
+
+                        <PreferenceScreen android:title="@string/margins">
+
+                            <GrxButtonPreference
+                                grx:groupedValueKey="qp_dlxsbbattery"
+                                android:title="@string/grxs_apply"
+                                android:key="button_1"
+                                grx:button_Style="big" />
+
+                            <GrxSeekBar
+                                android:title="@string/top_margin"
+                                android:key="dlx_qp_bt_top_margin"
+                                android:defaultValue="0"
+                                grx:groupedValueMyAlias="tp"
+                                grx:groupedValueKey="qp_dlxsbbattery"
+                                grx:maxValue="70"
+                                grx:minValue="0"
+                                grx:interval="1" />
+
+                            <GrxSeekBar
+                                android:title="@string/bottom_margin"
+                                android:key="dlx_qp_bt_bottom_margin"
+                                android:defaultValue="0"
+                                grx:groupedValueMyAlias="bp"
+                                grx:groupedValueKey="qp_dlxsbbattery"
+                                grx:maxValue="70"
+                                grx:minValue="0"
+                                grx:interval="1" />
+
+                            <GrxSeekBar
+                                android:title="@string/left_margin"
+                                android:key="dlx_qp_bt_left_margin"
+                                android:defaultValue="0"
+                                grx:groupedValueMyAlias="lp"
+                                grx:groupedValueKey="qp_dlxsbbattery"
+                                grx:maxValue="70"
+                                grx:minValue="0"
+                                grx:interval="1" />
+
+                            <GrxSeekBar
+                                android:title="@string/right_margin"
+                                android:key="dlx_qp_bt_right_margin"
+                                android:defaultValue="0"
+                                grx:groupedValueMyAlias="rp"
+                                grx:groupedValueKey="qp_dlxsbbattery"
+                                grx:maxValue="70"
+                                grx:minValue="0"
+                                grx:interval="1" />
+
+                        </PreferenceScreen>
+
+                    </GrxPreferenceCategory>
+
+                    <GrxPreferenceCategory android:title="@string/percentage" grx:depRule="DISABLE#dlx_icon_blacklist_r#STRING#(qp_batterycontainer)">
+
+                        <GrxSwitchPreference
+                            android:title="@string/percentage"
+                            android:defaultValue="true"
+                            android:key="dlx_qp_show_percentage"
+                            grx:groupedValueMyAlias="sp"
+                            grx:groupedValueKey="qp_dlxsbbattery" />
+
+                        <GrxCheckBoxPreference
+                            android:title="@string/percentage_right"
+                            android:key="dlx_qp_percentage_right"
+                            android:defaultValue="false"
+                            android:dependency="dlx_qp_show_percentage"
+                            grx:groupedValueMyAlias="pr"
+                            grx:groupedValueKey="qp_dlxsbbattery" />
+
+                        <GrxColorPicker
+                            android:title="@string/color"
+                            grx:groupedValueMyAlias="pc"
+                            grx:groupedValueKey="qp_dlxsbbattery"
+                            android:dependency="dlx_qp_show_percentage"
+                            android:key="dlx_qp_percentage_color"
+                            android:defaultValue="-1107296257"
+                            grx:colorPickerStyle="flower" />
+
+                        <GrxColorPicker
+                            android:title="@string/tint"
+                            grx:groupedValueMyAlias="pt"
+                            grx:groupedValueKey="qp_dlxsbbattery"
+                            android:key="dlx_qp_percentage_tint"
+                            android:dependency="dlx_qp_show_percentage"
+                            android:defaultValue="0x99000000"
+                            grx:colorPickerStyle="flower" />
+
+                    </GrxPreferenceCategory>
+
+                    <GrxPreferenceCategory grx:hiddenCategory="true" grx:depRule="DISABLE#dlx_qp_show_percentage#BOOLEAN#FALSE">
+
+                        <PreferenceScreen android:title="@string/margins">
+
+                            <GrxButtonPreference
+                                grx:groupedValueKey="qp_dlxsbbattery"
+                                android:title="@string/grxs_apply"
+                                android:key="button_1"
+                                grx:button_Style="big" />
+
+                            <GrxSeekBar
+                                android:title="@string/top_margin"
+                                android:key="dlx_qp_bt_perc_top_margin"
+                                android:defaultValue="0"
+                                grx:groupedValueMyAlias="ptp"
+                                grx:groupedValueKey="qp_dlxsbbattery"
+                                grx:maxValue="70"
+                                grx:minValue="0"
+                                grx:interval="1" />
+
+                            <GrxSeekBar
+                                android:title="@string/bottom_margin"
+                                android:key="dlx_qp_bt_perc_bottom_margin"
+                                android:defaultValue="0"
+                                grx:groupedValueMyAlias="pbp"
+                                grx:groupedValueKey="qp_dlxsbbattery"
+                                grx:maxValue="70"
+                                grx:minValue="0"
+                                grx:interval="1" />
+
+                            <GrxSeekBar
+                                android:title="@string/left_margin"
+                                android:key="dlx_qp_bt_perc_left_margin"
+                                android:defaultValue="0"
+                                grx:groupedValueMyAlias="plp"
+                                grx:groupedValueKey="qp_dlxsbbattery"
+                                grx:maxValue="70"
+                                grx:minValue="0"
+                                grx:interval="1" />
+
+                            <GrxSeekBar
+                                android:title="@string/right_margin"
+                                android:key="dlx_qp_bt_perc_right_margin"
+                                android:defaultValue="15"
+                                grx:groupedValueBroadCastExtraName="arg"
+                                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                                grx:groupedValueMyAlias="prp"
+                                grx:groupedValueKey="qp_dlxsbbattery"
+                                grx:maxValue="70"
+                                grx:minValue="0"
+                                grx:interval="1" />
+
+                        </PreferenceScreen>
+
+                    </GrxPreferenceCategory>
+
+                </PreferenceScreen>
+
+            </GrxPreferenceCategory>
+
+        </PreferenceScreen>
+
+        <!-- Carrier -->
+        <GrxPreferenceCategory grx:hiddenCategory="true" grx:depRule="DISABLE#dlx_icon_blacklist_r#STRING#(qp_carrier)">
+            <PreferenceScreen android:title="@string/carrier">
+
+                <GrxButtonPreference
+                    grx:groupedValueKey="qp_dlxsbcarrier"
+                    android:title="@string/grxs_apply"
+                    android:key="button_1"
+                    grx:button_Style="big" />
+
+                <GrxCheckBoxPreference
+                    android:title="@string/use_custom_text"
+                    grx:systemType="system"
+                    android:key="dlx_qp_use_custom_carrier"
+                    android:defaultValue="true"
+                    grx:groupedValueSystemType="system"
+                    grx:groupedValueMyAlias="cu"
+                    grx:groupedValueKey="qp_dlxsbcarrier" />
+                <GrxEditText
+                    android:title="@string/custom_text"
+                    grx:systemType="system"
+                    android:key="dlx_qp_carrier_text"
+                    android:defaultValue="DeluxeROM®"
+                    grx:groupedValueKey="qp_dlxsbcarrier"
+                    grx:groupedValueMyAlias="tx" />
+
+                <GrxColorPicker
+                    android:title="@string/color"
+                    grx:groupedValueMyAlias="color"
+                    grx:groupedValueKey="qp_dlxsbcarrier"
+                    android:key="dlx_qp_carrier_color"
+                    android:defaultValue="-1107296257"
+                    grx:colorPickerStyle="flower" />
+
+                <GrxColorPicker
+                    android:title="@string/tint"
+                    grx:groupedValueMyAlias="tint"
+                    grx:groupedValueKey="qp_dlxsbcarrier"
+                    android:key="dlx_qp_tint_carrier"
+                    android:defaultValue="0x99000000"
+                    grx:colorPickerStyle="flower" />
+
+                <GrxSeekBar
+                    android:title="@string/size"
+                    android:key="dlx_qp_size_carrier"
+                    android:defaultValue="15"
+                    grx:groupedValueMyAlias="sz"
+                    grx:groupedValueKey="qp_dlxsbcarrier"
+                    grx:maxValue="25"
+                    grx:minValue="1"
+                    grx:interval="1" />
+
+                <GrxSingleSelection
+                    android:title="@string/font"
+                    android:key="dlx_qp_carrier_font"
+                    android:defaultValue="Stock"
+                    grx:groupedValueMyAlias="ft"
+                    grx:groupedValueKey="qp_dlxsbcarrier"
+                    grx:groupedValueBroadCastExtraName="arg"
+                    grx:groupedValueBroadCast="deluxerom_master_prefs"
+                    grx:iconsArray="@array/agc_estilo_fuente_drawables"
+                    grx:optionsArray="@array/agc_estilo_fuente_entries"
+                    grx:valuesArray="@array/agc_estilo_fuente_entries" />
+
+            </PreferenceScreen>
+        </GrxPreferenceCategory>
+
+        <!-- Netspeed -->
+        <GrxPreferenceCategory grx:hiddenCategory="true" grx:depRule="DISABLE#dlx_icon_blacklist_r#STRING#(qp_netspeed)">
+            <PreferenceScreen android:title="@string/netspeed">
+
+                <GrxButtonPreference
+                    grx:groupedValueKey="qp_dlxsbnetspeed"
+                    android:title="@string/grxs_apply"
+                    android:key="button_1"
+                    grx:button_Style="big" />
+
+                <GrxSwitchPreference
+                    grx:groupedValueKey="qp_dlxsbnetspeed"
+                    android:title="@string/show_all"
+                    android:defaultValue="false"
+                    grx:groupedValueMyAlias="all"
+                    grx:groupedValueSystemType="system"
+                    android:key="dlx_qp_netspeed_split"/>
+
+                <GrxColorPicker
+                    grx:depRule="HIDE#dlx_qp_netspeed_split#BOOLEAN#true"
+                    android:title="@string/single_color"
+                    grx:groupedValueMyAlias="slcl"
+                    grx:groupedValueKey="qp_dlxsbnetspeed"
+                    android:key="dlx_qp_netspeed_color"
+                    android:defaultValue="-1107296257"
+                    grx:colorPickerStyle="flower" />
+
+                <GrxColorPicker
+                    android:dependency="dlx_qp_netspeed_split"
+                    android:title="@string/up_color"
+                    grx:groupedValueSystemType="system"
+                    grx:groupedValueMyAlias="upcl"
+                    grx:groupedValueKey="qp_dlxsbnetspeed"
+                    android:key="dlx_qp_netspeed_up"
+                    android:defaultValue="-1107296257"
+                    grx:colorPickerStyle="flower" />
+
+                <GrxColorPicker
+                    android:dependency="dlx_qp_netspeed_split"
+                    android:title="@string/down_color"
+                    grx:groupedValueSystemType="system"
+                    grx:groupedValueMyAlias="dwcl"
+                    grx:groupedValueKey="qp_dlxsbnetspeed"
+                    android:key="dlx_qp_netspeed_down"
+                    android:defaultValue="-1107296257"
+                    grx:colorPickerStyle="flower" />
+
+                <GrxColorPicker
+                    android:dependency="dlx_qp_netspeed_split"
+                    android:title="@string/arrows_color"
+                    grx:groupedValueSystemType="system"
+                    grx:groupedValueMyAlias="awcl"
+                    grx:groupedValueKey="qp_dlxsbnetspeed"
+                    android:key="dlx_qp_netspeed_arrows"
+                    android:defaultValue="-1107296257"
+                    grx:colorPickerStyle="flower" />
+
+                <GrxColorPicker
+                    android:title="@string/tint"
+                    grx:groupedValueMyAlias="tint"
+                    grx:groupedValueKey="qp_dlxsbnetspeed"
+                    android:key="dlx_qp_tint_netspeed"
+                    android:defaultValue="0x99000000"
+                    grx:colorPickerStyle="flower" />
+
+                <GrxSeekBar
+                    android:title="@string/size"
+                    android:key="dlx_qp_netspeed_size"
+                    android:defaultValue="15"
+                    grx:groupedValueMyAlias="sz"
+                    grx:groupedValueKey="qp_dlxsbnetspeed"
+                    grx:maxValue="25"
+                    grx:minValue="1"
+                    grx:interval="1" />
+
+                <PreferenceScreen android:title="@string/margins">
+
+                    <GrxButtonPreference
+                        grx:groupedValueKey="qp_dlxsbnetspeed"
+                        android:title="@string/grxs_apply"
+                        android:key="button_1"
+                        grx:button_Style="big" />
+
+                    <GrxSeekBar
+                        android:title="@string/top_margin"
+                        android:key="dlx_qp_netspeed_top_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="tp"
+                        grx:groupedValueKey="qp_dlxsbnetspeed"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/bottom_margin"
+                        android:key="dlx_qp_netspeed_bottom_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="bp"
+                        grx:groupedValueKey="qp_dlxsbnetspeed"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/left_margin"
+                        android:key="dlx_qp_netspeed_left_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="lp"
+                        grx:groupedValueKey="qp_dlxsbnetspeed"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/right_margin"
+                        android:key="dlx_qp_netspeed_right_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="rp"
+                        grx:groupedValueKey="qp_dlxsbnetspeed"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                </PreferenceScreen>
+
+                <GrxSingleSelection
+                    android:title="@string/font"
+                    android:key="dlx_qp_netspeed_font"
+                    android:defaultValue="Stock"
+                    grx:groupedValueMyAlias="ft"
+                    grx:groupedValueKey="qp_dlxsbnetspeed"
+                    grx:groupedValueBroadCastExtraName="arg"
+                    grx:groupedValueBroadCast="deluxerom_master_prefs"
+                    grx:iconsArray="@array/agc_estilo_fuente_drawables"
+                    grx:optionsArray="@array/agc_estilo_fuente_entries"
+                    grx:valuesArray="@array/agc_estilo_fuente_entries" />
+
+            </PreferenceScreen>
+
+        </GrxPreferenceCategory>
+
+        <!-- Weather -->
+        <GrxPreferenceCategory grx:hiddenCategory="true" grx:depRule="DISABLE#dlx_icon_blacklist_r#STRING#(qp_weather)">
+            <PreferenceScreen android:title="@string/weather">
+
+                <GrxButtonPreference
+                    grx:groupedValueKey="qp_dlxsbweather"
+                    android:title="@string/grxs_apply"
+                    android:key="button_1"
+                    grx:button_Style="big" />
+
+                <GrxSwitchPreference
+                    android:title="@string/use_fahrenheit"
+                    grx:groupedValueSystemType="system"
+                    grx:groupedValueMyAlias="fh"
+                    grx:groupedValueKey="qp_dlxsbweather"
+                    android:key="dlx_qp_weather_fahrenheit"
+                    android:defaultValue="0" />
+
+                <GrxColorPicker
+                    android:title="@string/color"
+                    grx:groupedValueMyAlias="color"
+                    grx:groupedValueKey="qp_dlxsbweather"
+                    android:key="dlx_qp_weather_color"
+                    android:defaultValue="-1107296257"
+                    grx:colorPickerStyle="flower" />
+
+                <GrxColorPicker
+                    android:title="@string/tint"
+                    grx:groupedValueMyAlias="tint"
+                    grx:groupedValueKey="qp_dlxsbweather"
+                    android:key="dlx_qp_tint_weather"
+                    android:defaultValue="0x99000000"
+                    grx:colorPickerStyle="flower" />
+
+                <GrxSeekBar
+                    android:title="@string/size"
+                    android:key="dlx_qp_weather_size"
+                    android:defaultValue="15"
+                    grx:groupedValueMyAlias="sz"
+                    grx:groupedValueKey="qp_dlxsbweather"
+                    grx:maxValue="25"
+                    grx:minValue="1"
+                    grx:interval="1" />
+
+                <PreferenceScreen android:title="@string/margins">
+
+                    <GrxButtonPreference
+                        grx:groupedValueKey="qp_dlxsbweather"
+                        android:title="@string/grxs_apply"
+                        android:key="button_1"
+                        grx:button_Style="big" />
+
+                    <GrxSeekBar
+                        android:title="@string/top_margin"
+                        android:key="dlx_qp_weather_top_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="tp"
+                        grx:groupedValueKey="qp_dlxsbweather"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/bottom_margin"
+                        android:key="dlx_qp_weather_bottom_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="bp"
+                        grx:groupedValueKey="qp_dlxsbweather"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/left_margin"
+                        android:key="dlx_qp_weather_left_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="lp"
+                        grx:groupedValueKey="qp_dlxsbweather"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                    <GrxSeekBar
+                        android:title="@string/right_margin"
+                        android:key="dlx_qp_weather_right_margin"
+                        android:defaultValue="0"
+                        grx:groupedValueMyAlias="rp"
+                        grx:groupedValueKey="qp_dlxsbweather"
+                        grx:maxValue="70"
+                        grx:minValue="0"
+                        grx:interval="1" />
+
+                </PreferenceScreen>
+
+                <GrxSingleSelection
+                    android:title="@string/font"
+                    android:key="dlx_qp_weather_font"
+                    android:defaultValue="Stock"
+                    grx:groupedValueMyAlias="ft"
+                    grx:groupedValueKey="qp_dlxsbweather"
+                    grx:groupedValueBroadCastExtraName="arg"
+                    grx:groupedValueBroadCast="deluxerom_master_prefs"
+                    grx:iconsArray="@array/agc_estilo_fuente_drawables"
+                    grx:optionsArray="@array/agc_estilo_fuente_entries"
+                    grx:valuesArray="@array/agc_estilo_fuente_entries" />
+
+            </PreferenceScreen>
+        </GrxPreferenceCategory>
+
+        <PreferenceScreen android:title="@string/data_bar">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="qp_coloring"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/visibility"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="qpdatavisible"
+                grx:groupedValueKey="qp_coloring"
+                android:key="dlx_qpdata_visibility"
+                android:defaultValue="0" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/show_expanded"
+                grx:groupedValueMyAlias="qpdataexp"
+                grx:groupedValueKey="qp_coloring"
+                android:key="dlx_qpdata_visibility_expanded"
+                android:defaultValue="0" />
+
+            <GrxSingleSelection
+                android:title="@string/position"
+                grx:groupedValueMyAlias="qpdatagrav"
+                grx:groupedValueKey="qp_coloring"
+                grx:optionsArray="@array/dual_sb_noti_positions_options"
+                grx:valuesArray="@array/dual_sb_noti_positions_values"
+                android:key="dlx_qpdata_position"
+                android:defaultValue="2" />
+
+            <GrxColorPicker
+                android:title="@string/color"
+                grx:groupedValueMyAlias="qpdatalight"
+                grx:groupedValueKey="qp_coloring"
+                android:defaultValue="0x99000000"
+                android:key="dlx_qpdata_color"
+                grx:colorPickerStyle="flower" />
+
+            <GrxColorPicker
+                android:title="@string/tint"
+                grx:groupedValueMyAlias="qpdatadark"
+                grx:groupedValueKey="qp_coloring"
+                android:key="dlx_qpdata_tint"
+                android:defaultValue="-1107296257"
+                grx:colorPickerStyle="flower" />
+
+            <GrxSeekBar
+                android:title="@string/size"
+                android:key="dlx_qp_data_size"
+                android:defaultValue="12"
+                grx:groupedValueMyAlias="qpdatasz"
+                grx:groupedValueKey="qp_coloring"
+                grx:maxValue="25"
+                grx:minValue="1"
+                grx:interval="1" />
+
+            <GrxSingleSelection
+                android:title="@string/font"
+                android:key="dlx_qpdata_font"
+                android:defaultValue="Stock"
+                grx:groupedValueMyAlias="qpdatafont"
+                grx:groupedValueKey="qp_coloring"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                grx:iconsArray="@array/agc_estilo_fuente_drawables"
+                grx:optionsArray="@array/agc_estilo_fuente_entries"
+                grx:valuesArray="@array/agc_estilo_fuente_entries" />
+
+        </PreferenceScreen>
+
+        <!-- MultiSIM -->
+        <PreferenceScreen android:title="Multi SIM">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="qp_coloring"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                grx:groupedValueSystemType="system"
+                android:title="@string/visibility"
+                android:key="dlx_multisim_visible"
+                grx:groupedValueMyAlias="msim"
+                grx:groupedValueKey="qp_coloring"
+                android:defaultValue="false" />
+
+            <GrxColorPicker
+                android:title="@string/color"
+                android:key="dlx_multisim_color"
+                android:defaultValue="0x99000000"
+                grx:colorPickerStyle="flower"
+                grx:saveValueOnFly="false"
+                grx:groupedValueMyAlias="msimc"
+                grx:groupedValueKey="qp_coloring"
+                android:dependency="dlx_multisim_visible" />
+
+            <GrxColorPicker
+                android:title="@string/color_on_dark_bg"
+                android:key="dlx_multisim_color_on_dark"
+                android:defaultValue="-1107296257"
+                grx:colorPickerStyle="flower"
+                grx:saveValueOnFly="false"
+                grx:groupedValueMyAlias="msimcd"
+                grx:groupedValueKey="qp_coloring"
+                android:dependency="dlx_multisim_visible" />
+
+            <GrxSingleSelection
+                android:title="@string/font"
+                android:key="dlx_multisim_font"
+                android:defaultValue="Stock"
+                android:dependency="dlx_multisim_visible"
+                grx:groupedValueMyAlias="msimft"
+                grx:groupedValueKey="qp_coloring"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                grx:iconsArray="@array/agc_estilo_fuente_drawables"
+                grx:optionsArray="@array/agc_estilo_fuente_entries"
+                grx:valuesArray="@array/agc_estilo_fuente_entries" />
+
+        </PreferenceScreen>
+
+    </PreferenceScreen>
+
+    <!-- Panel coloring -->
+    <PreferenceScreen android:title="@string/panel_colors">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSwitchPreference
+            android:title="@string/use_custom_colors"
+            grx:groupedValueSystemType="system"
+            grx:groupedValueMyAlias="uc"
+            grx:groupedValueKey="qp_coloring"
+            android:key="dlx_qp_coloring"
+            android:defaultValue="0" />
+
+        <GrxPerItemColor
+            android:dependency="dlx_qp_coloring"
+            grx:groupedValueMyAlias="lm"
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/day_mode"
+            android:key="dlx_qp_light_map"
+            grx:valuesArray="@array/qp_color_values"
+            grx:optionsArray="@array/qp_color_entries"
+            android:defaultValue="bg/-263173##bi/1291845632##bs/1241513984##bc/-16747308##bfg/-16744193##bbg/1845526783##bfm/-1711308800##bbm/-1660977152##nbg/-1##nbb/-1##npc/-9737365##nsc/-8882056##cd/-10263709##sc/-9145228##bts/-9276814##tt/-11119018##tp/-6776680##ts/-7368817##ton/-15226625##toff/-1##tdim/-1##tion/-1##tioff/-7303024##tidim/-7303024##hd/-10395295##pi/-16777216##"
+            grx:separator="##"
+            grx:colorPickerStyle="flower"
+            grx:showAlphaSlider="true"
+            grx:showAutoButton="true" />
+
+        <GrxPerItemColor
+            android:dependency="dlx_qp_coloring"
+            grx:groupedValueMyAlias="dm"
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/night_mode"
+            android:key="dlx_qp_dark_map"
+            grx:valuesArray="@array/qp_color_values"
+            grx:optionsArray="@array/qp_color_entries"
+            android:defaultValue="bg/-16777216##bi/-1107296257##bs/-1107296257##bc/-16747308##bfg/-16744193##bbg/1845526783##bfm/-1711308800##bbm/-1660977152##nbg/-13948117##nbb/-11908534##npc/-1##nsc/-1##cd/-1##sc/-1107296257##bts/-1##tt/-1##tp/-1##ts/-1##ton/-13710337##toff/-11316397##tdim/-1598309445##tion/-1##tioff/-1598309445##tidim/-1598309445##hd/-1##pi/-1##"
+            grx:separator="##"
+            grx:colorPickerStyle="flower"
+            grx:showAlphaSlider="true"
+            grx:showAutoButton="true" />
+
+        <GrxCheckBoxPreference
+            android:title="@string/show_pw_bt"
+            grx:groupedValueMyAlias="btpwr"
+            grx:groupedValueKey="qp_coloring"
+            android:key="dlx_qp_power"
+            android:defaultValue="0" />
+
+        <GrxCheckBoxPreference
+            android:title="@string/show_usr_bt"
+            grx:groupedValueMyAlias="btuser"
+            grx:groupedValueKey="qp_coloring"
+            android:key="dlx_qp_user"
+            android:defaultValue="0" />
+
+        <GrxSwitchPreference
+            android:title="@string/clear_all"
+            grx:groupedValueMyAlias="clnf"
+            grx:groupedValueKey="qp_coloring"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="deluxerom_master_prefs"
+            android:key="dlx_qp_allow"
+            android:defaultValue="0" />
+
+    </PreferenceScreen>
+
+    <!-- Matrix effect -->
+    <PreferenceScreen android:title="@string/matrix">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSwitchPreference
+            android:title="@string/visibility"
+            grx:groupedValueSystemType="system"
+            grx:groupedValueMyAlias="mxen"
+            grx:groupedValueKey="qp_coloring"
+            android:key="dlx_qp_matrix"
+            android:defaultValue="0" />
+
+        <GrxCheckBoxPreference
+            grx:depRule="DISABLE#dlx_qp_matrix_random#BOOLEAN#true"
+            android:dependency="dlx_qp_matrix"
+            android:title="@string/use_gradient"
+            grx:groupedValueMyAlias="mxgd"
+            grx:groupedValueKey="qp_coloring"
+            android:key="dlx_qp_matrix_gradient"
+            android:defaultValue="0" />
+
+        <GrxCheckBoxPreference
+            android:dependency="dlx_qp_matrix"
+            grx:groupedValueMyAlias="mxiv"
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/invert"
+            android:key="dlx_qp_matrix_invert"
+            android:defaultValue="false" />
+
+        <GrxCheckBoxPreference
+            grx:depRule="DISABLE#dlx_qp_matrix_gradient#BOOLEAN#true"
+            android:dependency="dlx_qp_matrix"
+            grx:groupedValueMyAlias="mxrd"
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/random_color"
+            android:key="dlx_qp_matrix_random"
+            android:defaultValue="false" />
+
+        <GrxColorPicker
+            android:dependency="dlx_qp_matrix"
+            grx:groupedValueMyAlias="mxbg"
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/bg_color"
+            android:key="dlx_qp_matrix_bg"
+            android:defaultValue="0xFF000000"
+            grx:showAlphaSlider="true"
+            grx:showAutoButton="true" />
+
+        <GrxColorPicker
+            grx:depRule="DISABLE#dlx_qp_matrix_random#BOOLEAN#true"
+            android:dependency="dlx_qp_matrix"
+            grx:groupedValueMyAlias="mxpy"
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/primary_text_color"
+            android:key="dlx_qp_matrix_py"
+            android:defaultValue="0xFF00FF00"
+            grx:showAlphaSlider="true"
+            grx:showAutoButton="true" />
+
+        <GrxColorPicker
+            grx:depRule="DISABLE#dlx_qp_matrix_random#BOOLEAN#true"
+            android:dependency="dlx_qp_matrix_gradient"
+            grx:groupedValueMyAlias="mxsc"
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/second_txt_color_gradient"
+            android:key="dlx_qp_matrix_sc"
+            android:defaultValue="0xFFFFFF00"
+            grx:showAlphaSlider="true"
+            grx:showAutoButton="true" />
+
+        <GrxSeekBar
+            android:dependency="dlx_qp_matrix"
+            grx:groupedValueMyAlias="mxsz"
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/size"
+            android:key="dlx_qp_matrix_size"
+            android:defaultValue="15"
+            grx:maxValue="50"
+            grx:minValue="3"
+            grx:interval="1"
+            grx:showPopup="true" />
+
+        <GrxSeekBar
+            android:dependency="dlx_qp_matrix"
+            android:title="@string/opacity"
+            android:key="dlx_qp_matrix_alpha"
+            android:defaultValue="255"
+            grx:groupedValueMyAlias="mxap"
+            grx:groupedValueKey="qp_coloring"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="deluxerom_master_prefs"
+            grx:maxValue="255"
+            grx:minValue="1"
+            grx:interval="1"
+            grx:showPopup="true" />
+
+    </PreferenceScreen>
+
+    <!-- Custom background -->
+    <PreferenceScreen android:title="@string/colorimagegd">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSwitchPreference
+            android:title="@string/visibility"
+            android:key="dlx_qp_bg_enabled"
+            android:defaultValue="false"
+            grx:groupedValueMyAlias="bgen"
+            grx:groupedValueKey="qp_coloring" />
+
+        <GrxSingleSelection
+            android:title="@string/bg_type"
+            android:key="dlx_qp_bg_type"
+            android:defaultValue="0"
+            android:dependency="dlx_qp_bg_enabled"
+            grx:optionsArray="@array/custom_bg_type_entries"
+            grx:valuesArray="@array/custom_bg_type_values"
+            grx:groupedValueMyAlias="bgtp"
+            grx:groupedValueKey="qp_coloring" />
+
+        <GrxPickImage
+            android:title="@string/select_image"
+            android:key="dlx_qp_bg_uri"
+            android:dependency="dlx_qp_bg_enabled"
+            grx:depRule="ENABLE#dlx_qp_bg_type#STRING#0"
+            grx:groupedValueMyAlias="bguri"
+            grx:groupedValueKey="qp_coloring" />
+
+        <GrxSeekBar
+            android:title="@string/opacity"
+            android:key="dlx_qp_bg_alpha"
+            android:defaultValue="255"
+            android:dependency="dlx_qp_bg_enabled"
+            grx:maxValue="255"
+            grx:minValue="0"
+            grx:groupedValueMyAlias="bgal"
+            grx:groupedValueKey="qp_coloring" />
+
+        <GrxColorPicker
+            android:title="@string/color"
+            android:key="dlx_qp_bg_indv_color"
+            android:defaultValue="-1"
+            android:dependency="dlx_qp_bg_enabled"
+            grx:depRule="ENABLE#dlx_qp_bg_type#STRING#1"
+            grx:colorPickerStyle="flower"
+            grx:iconTint="?complementary_color3"
+            grx:showAlphaSlider="true"
+            grx:showAutoButton="true"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="deluxerom_master_prefs"
+            grx:groupedValueMyAlias="bgcl"
+            grx:groupedValueKey="qp_coloring" />
+
+    </PreferenceScreen>
+
+    <!-- Blur effect -->
+    <PreferenceScreen android:title="@string/bluref">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSwitchPreference
+            android:title="@string/enable_blur"
+            grx:groupedValueSystemType="system"
+            grx:groupedValueMyAlias="qpblur"
+            grx:groupedValueKey="qp_coloring"
+            android:key="dlx_qp_blur"
+            android:defaultValue="0" />
+
+        <GrxSeekBar
+            android:title="@string/blur_int"
+            android:key="dlx_qp_blur_intensity"
+            android:defaultValue="15"
+            android:dependency="dlx_qp_blur"
+            grx:maxValue="15"
+            grx:minValue="1"
+            grx:groupedValueMyAlias="qpbluri"
+            grx:groupedValueKey="qp_coloring"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="deluxerom_master_prefs" />
+
+    </PreferenceScreen>
+
+    <!-- Toggle styles -->
+    <PreferenceScreen android:title="@string/toggles">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSingleSelection
+            android:title="@string/toggle_style"
+            android:defaultValue="0"
+            android:key="dlx_toggle_style"
+            grx:groupedValueSystemType="system"
+            grx:groupedValueMyAlias="tgstyle"
+            grx:groupedValueKey="qp_coloring"
+            grx:optionsArray="@array/notpanel_styles_values"
+            grx:valuesArray="@array/notpanel_styles_values"
+            grx:iconsArray="@array/notpanel_styles_drawables" />
+
+        <GrxSeekBar
+            android:title="@string/rows_portrait"
+            grx:groupedValueMyAlias="mxprt"
+            grx:groupedValueKey="qp_coloring"
+            android:key="dlx_rows_portrait"
+            android:defaultValue="6"
+            grx:maxValue="10"
+            grx:minValue="3"
+            grx:interval="1" />
+
+        <GrxSeekBar
+            android:title="@string/rows_landscape"
+            grx:groupedValueMyAlias="mxlnd"
+            grx:groupedValueKey="qp_coloring"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="deluxerom_master_prefs"
+            android:key="dlx_rows_landscape"
+            android:defaultValue="10"
+            grx:maxValue="16"
+            grx:minValue="3"
+            grx:interval="1" />
+
+    </PreferenceScreen>
+
+    <!-- Toggle animations -->
+    <PreferenceScreen android:title="@string/toggle_anims">
+
+        <GrxButtonPreference
+            grx:groupedValueKey="qp_coloring"
+            android:title="@string/grxs_apply"
+            android:key="button_1"
+            grx:button_Style="big" />
+
+        <GrxSwitchPreference
+            android:title="@string/enable_animations"
+            grx:groupedValueSystemType="system"
+            grx:groupedValueMyAlias="qpanim"
+            grx:groupedValueKey="qp_coloring"
+            android:key="dlx_qp_toggle_animate"
+            android:defaultValue="0" />
+
+        <GrxSingleSelection
+            android:title="@string/anim"
+            android:dependency="dlx_qp_toggle_animate"
+            android:defaultValue="0"
+            android:key="dlx_qp_toggle_animation"
+            grx:optionsArray="@array/toggle_animations_entries"
+            grx:valuesArray="@array/toggle_animations_values"
+            grx:groupedValueMyAlias="qpanima"
+            grx:groupedValueKey="qp_coloring" />
+
+        <GrxSingleSelection
+            android:title="@string/interpolator"
+            android:dependency="dlx_qp_toggle_animate"
+            android:defaultValue="0"
+            android:key="dlx_qp_toggle_interpolator"
+            grx:optionsArray="@array/toggle_animations_interpolator_entries"
+            grx:valuesArray="@array/toggle_animations_interpolator_values"
+            grx:groupedValueMyAlias="qpanimi"
+            grx:groupedValueKey="qp_coloring"/>
+
+        <GrxSingleSelection
+            android:title="@string/timeout"
+            android:dependency="dlx_qp_toggle_animate"
+            android:defaultValue="2000"
+            android:key="dlx_qp_toggle_timeout"
+            grx:optionsArray="@array/toggle_animations_timeout_entries"
+            grx:valuesArray="@array/toggle_animations_timeout_values"
+            grx:groupedValueMyAlias="qpanimt"
+            grx:groupedValueKey="qp_coloring"
+            grx:groupedValueBroadCastExtraName="arg"
+            grx:groupedValueBroadCast="deluxerom_master_prefs" />
+
+    </PreferenceScreen>
+
+    <!-- Notifications led control -->
+    <PreferenceScreen android:title="@string/notifs_manager">
+
+        <GrxPreferenceCategory android:title="@string/led_category" />
+
+        <GrxInfoText android:summary="@string/led_color_info"/>
+
+        <GrxPerAppLedPulse android:title="@string/per_app_led_color" android:key="b_led_colors"
+            grx:groupKey="gk_notification_manager" grx:arrowColor="?complementary_color3"
+            grx:iconTint="?complementary_color3" grx:showSystemapps="true"/>
+
+        <GrxPreferenceCategory android:title="@string/led_quiet_hrs" grx:textColor="?complementary_color1"/>
+        <GrxInfoText android:summary="@string/led_quiet_hrs_info"
+            grx:rightIcon="@drawable/demo_icon_info" grx:rightIconTint="?complementary_color1" />
+        <GrxSwitchPreference android:title="@string/enable_led_quiethrs" grx:switchColor="?complementary_color1" grx:groupKey="gk_notification_manager" android:key="b_ledsqhrs_enabled" android:defaultValue="false"/>
+        <GrxTimePicker android:title="@string/start_time" grx:groupKey="gk_notification_manager"   android:dependency="b_ledsqhrs_enabled" android:key="b_ledsqhrs_initime" android:defaultValue="0" />
+        <GrxTimePicker android:title="@string/end_tme" grx:groupKey="gk_notification_manager" android:dependency="b_ledsqhrs_enabled" android:key="b_ledsqhrs_endtime" android:defaultValue="0" />
+
+        <GrxPreferenceCategory android:title="@string/notisounds_quiet_hrs" grx:textColor="?complementary_color2" />
+        <GrxInfoText android:summary="@string/notisounds_quiet_hrs_info"
+            grx:rightIcon="@drawable/demo_icon_info" grx:rightIconTint="?complementary_color2" />
+        <GrxSwitchPreference android:title="@string/notisounds_quiet_hrs_enable" grx:switchColor="?complementary_color2" grx:groupKey="gk_notification_manager"  android:key="b_soundqhrs_enabled" android:defaultValue="false"/>
+        <GrxTimePicker android:title="@string/start_time" grx:groupKey="gk_notification_manager"  android:dependency="b_soundqhrs_enabled" android:key="b_soundqhrs_inittime" android:defaultValue="0" />
+        <GrxTimePicker android:title="@string/end_tme" grx:groupKey="gk_notification_manager" android:dependency="b_soundqhrs_enabled" android:key="b_soundqhrs_endtime" android:defaultValue="0" />
+        <GrxCheckBoxPreference android:title="@string/quiet_also_led" android:key="b_sound_use_ledtime"
+            grx:checkboxColor="?complementary_color2" grx:groupKey="gk_notification_manager"  android:dependency="b_soundqhrs_enabled" android:defaultValue="false"  />
+
+        <GrxPreferenceCategory android:title="@string/vibration_quiet_hrs" grx:textColor="?complementary_color3" />
+        <GrxInfoText android:summary="@string/vibration_quiet_hrs_info"
+            grx:rightIcon="@drawable/demo_icon_info" grx:rightIconTint="?complementary_color3" />
+        <GrxSwitchPreference android:title="@string/vibration_quiet_hrs_enable" grx:switchColor="?complementary_color3" grx:groupKey="gk_notification_manager"  android:key="b_vibqhrs_enabled" android:defaultValue="false"/>
+        <GrxTimePicker android:title="@string/start_time" grx:groupKey="gk_notification_manager"  android:dependency="b_vibqhrs_enabled" android:key="b_vibqhrs_inittime" android:defaultValue="0" />
+        <GrxTimePicker android:title="@string/end_tme" grx:groupKey="gk_notification_manager" android:dependency="b_vibqhrs_enabled" android:key="b_vibqhrs_endtime" android:defaultValue="0" />
+        <GrxCheckBoxPreference android:title="@string/quiet_also_led" android:key="b_vibr_use_ledtime"
+            grx:checkboxColor="?complementary_color3" grx:groupKey="gk_notification_manager"  android:dependency="b_vibqhrs_enabled" android:defaultValue="false"  />
+
+    </PreferenceScreen>
+
+</PreferenceScreen>

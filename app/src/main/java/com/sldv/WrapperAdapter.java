@@ -18,13 +18,13 @@ class WrapperAdapter implements WrapperListAdapter, ItemMainLayout.OnItemSlideLi
     private static final int TAG_LEFT = 3 << 24;
     private static final int TAG_RIGHT = 4 << 24;
     /* 上下文 */
-    private Context mContext;
+    private final Context mContext;
     /* 适配器 */
-    private ListAdapter mAdapter;
+    private final ListAdapter mAdapter;
     /* 用户自定义参数 */
-    private Map<Integer, Menu> mMenuMap;
+    private final Map<Integer, Menu> mMenuMap;
     /* SDLV */
-    private SlideAndDragListView mListView;
+    private final SlideAndDragListView mListView;
     /* 当前滑动的item的位置 */
     private int mSlideItemPosition = -1;
     /* 监听器 */
@@ -88,9 +88,9 @@ class WrapperAdapter implements WrapperListAdapter, ItemMainLayout.OnItemSlideLi
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ItemMainLayout itemMainLayout = null;
+        ItemMainLayout itemMainLayout;
         if (convertView == null) {
-            View contentView = mAdapter.getView(position, convertView, parent);
+            View contentView = mAdapter.getView(position, null, parent);
             itemMainLayout = new ItemMainLayout(mContext, contentView);
             int type = mAdapter.getItemViewType(position);
             Menu menu = mMenuMap.get(type);
@@ -257,8 +257,6 @@ class WrapperAdapter implements WrapperListAdapter, ItemMainLayout.OnItemSlideLi
                     (Integer) (v.getTag(TAG_LEFT) != null ? v.getTag(TAG_LEFT) : v.getTag(TAG_RIGHT)),
                     v.getTag(TAG_LEFT) != null ? MenuItem.DIRECTION_LEFT : MenuItem.DIRECTION_RIGHT);
             switch (scroll) {
-                case Menu.ITEM_NOTHING:
-                    break;
                 case Menu.ITEM_SCROLL_BACK:
                     //归位
                     returnSlideItemPosition();

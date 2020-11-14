@@ -28,8 +28,8 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
-import com.grx.settings.R;
-import com.grx.settings.utils.BPRulesUtils;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.utils.BPRulesUtils;
 
 /**
  * Custom menu inflater.
@@ -83,7 +83,7 @@ public class SublimeMenuInflater {
 
     private static final int NO_ID = -1;
 
-    private Context mContext;
+    private final Context mContext;
 
     /**
      * Constructs a menu inflater.
@@ -104,18 +104,12 @@ public class SublimeMenuInflater {
      *                added to this Menu.
      */
     public void inflate(int menuRes, SublimeMenu menu) {
-        XmlResourceParser parser = null;
-        try {
-            parser = mContext.getResources().getLayout(menuRes);
+        try (XmlResourceParser parser = mContext.getResources().getLayout(menuRes)) {
             AttributeSet attrs = Xml.asAttributeSet(parser);
 
             parseMenu(parser, attrs, menu);
-        } catch (XmlPullParserException e) {
+        } catch (XmlPullParserException | IOException e) {
             throw new InflateException("Error inflating menu XML", e);
-        } catch (IOException e) {
-            throw new InflateException("Error inflating menu XML", e);
-        } finally {
-            if (parser != null) parser.close();
         }
     }
 
@@ -162,37 +156,41 @@ public class SublimeMenuInflater {
                     }
 
                     tagName = parser.getName();
-                    if (tagName.equals(XML_GROUP)) {
-                        // A Group item cannot have other Group items as children
-                        if (menuState.groupId != MenuState.defaultGroupId) {
-                            throw new RuntimeException("A 'Group' item cannot have " +
-                                    "other 'Group' items as children.");
-                        }
+                    switch (tagName) {
+                        case XML_GROUP:
+                            // A Group item cannot have other Group items as children
+                            if (menuState.groupId != MenuState.defaultGroupId) {
+                                throw new RuntimeException("A 'Group' item cannot have " +
+                                        "other 'Group' items as children.");
+                            }
 
-                        menuState.readGroup(attrs);
-                        menuState.addGroup();
-                    } else if (tagName.equals(XML_TEXT)
-                            || tagName.equals(XML_TEXT_WITH_BADGE)
-                            || tagName.equals(XML_CENTERED_TEXT) //grxgrx
-                            || tagName.equals(XML_CHECKBOX)
-                            || tagName.equals(XML_SWITCH)) {
-                        menuState.readMenuItem(attrs, tagName);
-                    } else if (tagName.equals(XML_SEPARATOR)) {
-                        menuState.readMenuItem(attrs, tagName);
-                    } else if (tagName.equals(XML_GROUP_HEADER)) {
-                        if (menuState.groupId == MenuState.defaultGroupId) {
-                            throw new RuntimeException("'GroupHeader' item should " +
-                                    "be placed inside a Group element.");
-                        }
+                            menuState.readGroup(attrs);
+                            menuState.addGroup();
+                            break;
+                        case XML_TEXT:
+                        case XML_TEXT_WITH_BADGE:
+                        case XML_CENTERED_TEXT:
+                        case XML_CHECKBOX:
+                        case XML_SWITCH:
+                        case XML_SEPARATOR:
+                            menuState.readMenuItem(attrs, tagName);
+                            break;
+                        case XML_GROUP_HEADER:
+                            if (menuState.groupId == MenuState.defaultGroupId) {
+                                throw new RuntimeException("'GroupHeader' item should " +
+                                        "be placed inside a Group element.");
+                            }
 
-                        menuState.readMenuItem(attrs, tagName);
-                    } else if (tagName.equals(XML_MENU)) {
-                        throw new RuntimeException("Sub-menus are not supported. " +
-                                "Similar functionality can be afforded " +
-                                "using the 'group' tag.");
-                    } else {
-                        lookingForEndOfUnknownTag = true;
-                        unknownTagName = tagName;
+                            menuState.readMenuItem(attrs, tagName);
+                            break;
+                        case XML_MENU:
+                            throw new RuntimeException("Sub-menus are not supported. " +
+                                    "Similar functionality can be afforded " +
+                                    "using the 'group' tag.");
+                        default:
+                            lookingForEndOfUnknownTag = true;
+                            unknownTagName = tagName;
+                            break;
                     }
                     break;
 
@@ -250,7 +248,7 @@ public class SublimeMenuInflater {
      * its state class).
      */
     private class MenuState {
-        private SublimeMenu menu;
+        private final SublimeMenu menu;
 
         /*
          * Group state is set on items as they are added, allowing an item to
@@ -497,7 +495,7 @@ public class SublimeMenuInflater {
                     //grx
                 case CENTERED:
                     setItem(menu.addTGrxCenterdextItem(groupId, itemId,
-                            itemTitle, itemHint, false));
+                            itemTitle, itemHint));
 
                 case SEPARATOR:
                     setItem(menu.addSeparatorItem(groupId, itemId));

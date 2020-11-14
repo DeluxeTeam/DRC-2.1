@@ -79,7 +79,7 @@ public abstract class SublimeBaseMenuItem implements Parcelable {
      */
     static final int NO_ICON = 0;
 
-    private ItemType mItemType;
+    private final ItemType mItemType;
     private boolean mValueProvidedAsync, mInvalidateEntireMenu;
 
     private boolean mBlockUpdates;
@@ -561,7 +561,7 @@ public abstract class SublimeBaseMenuItem implements Parcelable {
 
             case CENTERED:
                 return new GrxSublimeCenteredText(groupId, id, title,
-                        hint, iconResId, valueProvidedAsync, false, flags);
+                        hint, iconResId, valueProvidedAsync, flags);
 
             case SEPARATOR:
                 return new SublimeSeparatorMenuItem(groupId, id);

@@ -18,13 +18,10 @@ package com.sublimenavigationview;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.CheckBox;
-import com.grx.settings.R;
+import com.deluxelabs.drc.R;
 /**
  * View implementation for Checkbox menu item.
  */
@@ -71,16 +68,6 @@ public class SublimeCheckboxItemView extends SublimeBaseItemView {
     }
 
     public void setCheckableItemTintList(ColorStateList checkableItemTintList) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mCheckbox.setButtonTintList(checkableItemTintList);
-        } else {
-            Drawable dCheckbox = getResources().getDrawable(R.drawable.checkbox_pre_lollipop);
-
-            if (dCheckbox != null) {
-                dCheckbox = DrawableCompat.wrap(dCheckbox);
-                DrawableCompat.setTintList(dCheckbox, checkableItemTintList);
-                mCheckbox.setButtonDrawable(dCheckbox);
-            }
-        }
+        mCheckbox.setButtonTintList(checkableItemTintList);
     }
 }

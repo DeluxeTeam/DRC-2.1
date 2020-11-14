@@ -14,8 +14,6 @@ package android.preference;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.provider.Settings;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.text.TextUtils;
@@ -25,12 +23,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefssupport.OnClickRuleHelper;
-import com.grx.settings.utils.Common;
-import com.grx.settings.prefssupport.PrefAttrsInfo;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefssupport.OnClickRuleHelper;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.prefssupport.PrefAttrsInfo;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 
 public class GrxCheckBoxPreference extends CheckBoxPreference implements GrxPreferenceScreen.CustomDependencyListener {
@@ -70,7 +68,7 @@ public class GrxCheckBoxPreference extends CheckBoxPreference implements GrxPref
 
     @Override
     protected View onCreateView(ViewGroup parent) {
-        View view = (View) super.onCreateView(parent);
+        View view = super.onCreateView(parent);
         vAndroidIcon = (ImageView) view.findViewById(android.R.id.icon);
         AppCompatCheckBox appCompatCheckBox =null;
         if(mColor!=0) appCompatCheckBox = (AppCompatCheckBox) view.findViewById(android.R.id.checkbox);
@@ -79,8 +77,8 @@ public class GrxCheckBoxPreference extends CheckBoxPreference implements GrxPref
             if(mLefticonColor !=0) vAndroidIcon.setColorFilter(mLefticonColor);
         }
         if(appCompatCheckBox!=null) {
-            int states[][] = {{android.R.attr.state_checked}, {}};
-            int colors[] = {mColor, mColor};
+            int[][] states = {{android.R.attr.state_checked}, {}};
+            int[] colors = {mColor, mColor};
             appCompatCheckBox.setButtonTintList( new ColorStateList(states, colors));
         }
         return view;
@@ -109,7 +107,7 @@ public class GrxCheckBoxPreference extends CheckBoxPreference implements GrxPref
                 setChecked(getPersistedBoolean(myPrefAttrsInfo.getMyBooleanDefValue()));
             } else {
                 setChecked(myPrefAttrsInfo.getMyBooleanDefValue());
-                if(!myPrefAttrsInfo.isValidKey()) return;;
+                if(!myPrefAttrsInfo.isValidKey()) return;
                 persistBoolean(isChecked());
             }
             saveValueInSettings(isChecked());
@@ -233,7 +231,7 @@ public class GrxCheckBoxPreference extends CheckBoxPreference implements GrxPref
             default:
                 break;
         }
-        boolean checked = (real==1) ? true : false;
+        boolean checked = real == 1;
         setChecked(checked);
         persistBoolean(checked);
     }

@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.grx.settings"
-    android:versionCode="1"
-    android:versionName="GrxSettings v2.1">
+    package="com.deluxelabs.drc">
     <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" tools:ignore="ProtectedPermissions"/>
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.RECOVERY" tools:ignore="ProtectedPermissions"/>
-    <uses-permission android:name="com.sec.android.daemonapp.ap.accuweather.ACCUWEATHER_DAEMON_ACCESS_PROVIDER"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.REBOOT" tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.DEVICE_POWER" tools:ignore="ProtectedPermissions"/>
@@ -20,7 +17,6 @@
     <uses-permission android:name="android.permission.BIND_APPWIDGET" tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <application
-        android:name=".GrxSettingsApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/grxs_app_name"
@@ -30,7 +26,7 @@
         <meta-data android:name="com.samsung.android.icon_container.has_icon_container" android:value="true"/>
 
         <activity
-            android:name="com.grx.settings.GrxSettingsActivity"
+            android:name="com.deluxelabs.drc.GrxSettingsActivity"
             android:label="@string/grxs_app_name"
 
             android:theme="@style/Grx.NoActionBar">
@@ -41,11 +37,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.grx.settings.act.GrxImagePicker"
+            android:name=".act.GrxImagePicker"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:exported="false"
             android:excludeFromRecents="true">
         </activity>
+
+        <receiver
+            android:name=".utils.KernelUtils"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="dlx_kernel_values"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
 
     </application>
 

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
-    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <Text android:icon="@drawable/demo_icon_info" android:id="@+id/demo_categories_infotext" android:title="Category and info" app:showIconSpace="false" />
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <Text android:icon="@drawable/ic_statusbar" android:id="@+id/dlx_statusbar_prefs" android:title="@string/statusbar" />
+    <Text android:icon="@drawable/ic_notification_panel" android:id="@+id/dlx_panel_prefs" android:title="@string/notifpanel"/>
+    <Text android:icon="@drawable/ic_app_link" android:id="@+id/dlx_vbuttons_prefs" android:title="@string/virtual_buttons"/>
+    <Text android:icon="@drawable/ic_remap_boton" android:id="@+id/dlx_remap_prefs" android:title="@string/remap_buttons"/>
+    <Text android:icon="@drawable/ic_reboot" android:id="@+id/dlx_reboot_prefs" android:title="@string/rebootmenu"/>
+    <Text android:icon="@drawable/ic_lockscreen" android:id="@+id/dlx_lockscreen_prefs" android:title="@string/lockscreen"/>
+    <Text android:icon="@drawable/ic_navbar" android:id="@+id/dlx_navbar_prefs" android:title="@string/navbar"/>
+    <Text android:icon="@drawable/ic_recents" android:id="@+id/dlx_recents_prefs" android:title="@string/recents"/>
+    <Text android:icon="@drawable/ic_launcher" android:id="@+id/dlx_launcher_prefs" android:title="@string/twlauncher"/>
+    <Text android:icon="@drawable/ic_other" android:id="@+id/dlx_other_prefs" android:title="@string/others"/>
+    <Text android:icon="@drawable/ic_kernel_2" android:id="@+id/dlx_kernel_prefs" android:title="@string/kernel"/>
 </menu>

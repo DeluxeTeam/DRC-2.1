@@ -5,8 +5,7 @@
 
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/observableview">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,13 +14,137 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
+
             <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
 
-                 <TextView android:layout_marginTop="4dp" android:layout_marginBottom="4dp" android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="Reference layout for info tabs creation..." android:textSize="18dp" android:textStyle="bold" android:gravity="center" android:textColor="?complemnt_accent_color"/>
+                <com.deluxelabs.drc.views.LinearLayoutWithLink
+                    grxURL="https://forum.xda-developers.com/galaxy-note-8/development/n950f-g955f-g950f-deluxerom-v6-0-t3784712"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="?selectableItemBackground"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/xda" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:textColor="?toolbartitlecolor"
+                        android:text="@string/xda" />
+                </com.deluxelabs.drc.views.LinearLayoutWithLink>
 
+                <com.deluxelabs.drc.views.LinearLayoutWithLink
+                    grxURL="https://www.htcmania.com/showthread.php?t=1404819"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="?selectableItemBackground"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/htcmania"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:textColor="?toolbartitlecolor"
+                        android:text="@string/htc" />
+                </com.deluxelabs.drc.views.LinearLayoutWithLink>
+
+                <com.deluxelabs.drc.views.LinearLayoutWithLink
+                    grxURL="https://t.me/joinchat/IUnccUZqxr5hroZGl14d4g"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="?selectableItemBackground"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/telegram"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:textColor="?toolbartitlecolor"
+                        android:text="@string/telegram_eng" />
+                </com.deluxelabs.drc.views.LinearLayoutWithLink>
+
+                <com.deluxelabs.drc.views.LinearLayoutWithLink
+                    grxURL="https://t.me/joinchat/IUnccVNBGdsDyea2EGKPow"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="?selectableItemBackground"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/telegram_esp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:textColor="?toolbartitlecolor"
+                        android:text="@string/telegram_esp" />
+                </com.deluxelabs.drc.views.LinearLayoutWithLink>
+
+                <com.deluxelabs.drc.views.LinearLayoutWithLink
+                    grxURL="https://paypal.me/GCAbraham?locale.x=en_EN"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="?selectableItemBackground"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/paypal"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:textColor="?toolbartitlecolor"
+                        android:text="@string/paypal" />
+                </com.deluxelabs.drc.views.LinearLayoutWithLink>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="150dp"/>
 
             </LinearLayout>
+
         </FrameLayout>
     </LinearLayout>
 

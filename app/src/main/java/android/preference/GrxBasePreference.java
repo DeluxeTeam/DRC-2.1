@@ -15,9 +15,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -27,12 +25,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.grx.settings.prefssupport.OnClickRuleHelper;
-import com.grx.settings.utils.Common;
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefssupport.PrefAttrsInfo;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.prefssupport.OnClickRuleHelper;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefssupport.PrefAttrsInfo;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 
 public class GrxBasePreference extends Preference implements
@@ -119,11 +117,6 @@ public class GrxBasePreference extends Preference implements
     }
 
 
-
-    public void initArraysIds(Context context, AttributeSet attrs){
-        initArraysIds(context, attrs);
-    }
-
     public void setWidgetIcon(Drawable drawable){
         mWidgetIcon = drawable;
         if(mWidgetIcon!=null) {
@@ -155,8 +148,8 @@ public class GrxBasePreference extends Preference implements
                 mArrowColor = myPrefAttrsInfo.getMyArrowTint();
             }
             if(mArrowColor !=0){
-                int states[][] = {{android.R.attr.state_checked}, {}};
-                int colors[] = {mArrowColor, mArrowColor};
+                int[][] states = {{android.R.attr.state_checked}, {}};
+                int[] colors = {mArrowColor, mArrowColor};
                 vWidgetArrow.setBackgroundTintList(new ColorStateList(states, colors));
             }else {
                 vWidgetArrow.setVisibility(View.GONE);
@@ -174,8 +167,8 @@ public class GrxBasePreference extends Preference implements
         if(vWidgetArrow!=null) {
             if(mArrowColor==0) mArrowColor = myPrefAttrsInfo.getMyArrowTint();
             if(mArrowColor!=0) {
-                int states[][] = {{android.R.attr.state_checked}, {}};
-                int colors[] = {mArrowColor, mArrowColor};
+                int[][] states = {{android.R.attr.state_checked}, {}};
+                int[] colors = {mArrowColor, mArrowColor};
                 vWidgetArrow.setBackgroundTintList(new ColorStateList(states, colors));
             }
             vWidgetArrow.setAlpha(alpha);
@@ -241,8 +234,7 @@ public class GrxBasePreference extends Preference implements
             default:
                 break;
         }
-        if(returnvalue==null) return myPrefAttrsInfo.getMyStringDefValue();
-        else return returnvalue;
+        return returnvalue;
 
     }
 
@@ -338,23 +330,20 @@ public class GrxBasePreference extends Preference implements
 
     private void setUpDoubleClick(){
         mHandler = new Handler();
-        mLongClickTimeOut = Long.valueOf(ViewConfiguration.getDoubleTapTimeout());
+        mLongClickTimeOut = (long) ViewConfiguration.getDoubleTapTimeout();
         mDoubleClickPending =false;
 
-        DoubleClickRunnable = new Runnable() {
-            @Override
-            public void run() {
-                if(!mDoubleClickPending){
+        DoubleClickRunnable = () -> {
+            if(!mDoubleClickPending){
+                actionClick();
+            }else {
+                if(mNumClicks ==0) actionClick();
+                else if(mNumClicks !=2) {
                     actionClick();
                 }else {
-                    if(mNumClicks ==0) actionClick();
-                    else if(mNumClicks !=2) {
-                        actionClick();
-                    }else {
-                        if(!mDisableDoubleClick) actionDoubleClick();
-                    }
-
+                    if(!mDisableDoubleClick) actionDoubleClick();
                 }
+
             }
         };
     }
@@ -401,12 +390,7 @@ public class GrxBasePreference extends Preference implements
         AlertDialog dlg = new AlertDialog.Builder(getContext()).create();
         dlg.setTitle(getContext().getResources().getString(R.string.grxs_reset_values));
         dlg.setMessage(getContext().getResources().getString(R.string.grxs_reset_message));
-        dlg.setButton(DialogInterface.BUTTON_POSITIVE, getContext().getString(R.string.grxs_ok), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                resetPreference();
-            }
-        });
+        dlg.setButton(DialogInterface.BUTTON_POSITIVE, getContext().getString(R.string.grxs_ok), (dialog, which) -> resetPreference());
         dlg.show();
     }
 
@@ -565,7 +549,7 @@ public class GrxBasePreference extends Preference implements
 
         String myGroupedKey = myPrefAttrsInfo.getMyGroupedValueKey();
         if(!TextUtils.isEmpty(myGroupedKey) && !TextUtils.isEmpty( getKey() )){
-            Object defval = null;
+            Object defval;
             PrefAttrsInfo.PREF_TYPE pref_type = myPrefAttrsInfo.getMyTypeOfPref();
             if(pref_type == PrefAttrsInfo.PREF_TYPE.INT) {
                 defval = myPrefAttrsInfo.getMyIntDefValue();

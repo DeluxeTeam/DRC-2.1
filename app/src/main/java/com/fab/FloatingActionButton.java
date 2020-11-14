@@ -30,7 +30,7 @@ import android.view.animation.Interpolator;
 import android.widget.AbsListView;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
-import com.grx.settings.R;
+import com.deluxelabs.drc.R;
 
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
@@ -38,6 +38,7 @@ import com.nineoldandroids.view.ViewPropertyAnimator;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+@SuppressLint("AppCompatCustomView")
 public class FloatingActionButton extends ImageButton {
     private static final int TRANSLATE_DURATION_MILLIS = 200;
 

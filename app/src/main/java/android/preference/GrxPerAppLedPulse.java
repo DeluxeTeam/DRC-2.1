@@ -14,17 +14,16 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefs_dlgs.DlgFrGrxPerAppLedPulse;
-import com.grx.settings.utils.Common;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrGrxPerAppLedPulse;
+import com.deluxelabs.drc.utils.Common;
 
 import java.util.regex.Pattern;
 
 
 public class GrxPerAppLedPulse extends GrxBasePreference implements DlgFrGrxPerAppLedPulse.PerAppLedPulseListener{
 
-    private String mLabel;
     private boolean showSystemApps;
 
 
@@ -59,13 +58,14 @@ public class GrxPerAppLedPulse extends GrxBasePreference implements DlgFrGrxPerA
     @Override
     public void configStringPreference(String value){
         int numitems=0;
-        if(! (mStringValue.isEmpty()||(mStringValue==null))  ){
+        if(!mStringValue.isEmpty()){
             String[] arr = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
             numitems=arr.length;
         }
-        if(numitems==0) mLabel="";/*myPrefAttrsInfo.getMySummary();*/
+        String mLabel;
+        if(numitems==0) mLabel ="";/*myPrefAttrsInfo.getMySummary();*/
         else mLabel = getContext().getString( R.string.grxs_num_selected,numitems ) ;
-        setSummary(myPrefAttrsInfo.getMySummary() + " " +mLabel);
+        setSummary(myPrefAttrsInfo.getMySummary() + " " + mLabel);
     }
 
 

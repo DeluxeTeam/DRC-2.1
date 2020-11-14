@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:grx="http://schemas.android.com/apk/res-auto">
+
+    <!-- Warning if not DeluxeKernel -->
+    <GrxPreferenceCategory grx:hiddenCategory="true" grx:bpRule="kernelWarn">
+        <GrxInfoText android:textColor="?complementary_color3" android:textSize="20sp" android:summary="@string/no_deluxe_kernel" />
+    </GrxPreferenceCategory>
+
+    <GrxPreferenceCategory android:title="@string/selinux_title" grx:bpRule="kernel">
+
+        <GrxSwitchPreference
+            android:title="@string/selinux"
+            android:key="dlx_kernel_selinux"
+            android:defaultValue="true"
+            android:summaryOff="Permissive"
+            android:summaryOn="Enforcing"
+            grx:broadCast1Extra="selinux"
+            grx:broadCast1="dlx_kernel_values" />
+
+    </GrxPreferenceCategory>
+
+    <!-- Governors / IO schedulers -->
+    <GrxPreferenceCategory android:title="@string/govs_scheds" grx:bpRule="kernel">
+
+        <!-- Governors -->
+        <GrxPerItemSingleSelection
+            android:title="@string/governors"
+            android:key="dlx_kernel_governors"
+            grx:allowSortOut="false"
+            grx:broadCast1Extra="governors"
+            grx:broadCast1="dlx_kernel_values"
+            android:defaultValue="big;interactive|little;interactive|"
+            grx:optionsArray="@array/kernel_governor_littlebig_options"
+            grx:valuesArray="@array/kernel_governor_littlebig_values"
+            grx:spinnerOptionsArray="@array/kernel_governors"
+            grx:spinnerValuesArray="@array/kernel_governors" />
+
+        <!-- IO schedulers -->
+        <GrxPerItemSingleSelection
+            android:title="@string/io_schedulers"
+            grx:allowSortOut="false"
+            android:key="dlx_kernel_schedulers"
+            grx:broadCast1Extra="schedulers"
+            grx:broadCast1="dlx_kernel_values"
+            android:defaultValue="internal;cfq|external;cfq|"
+            grx:optionsArray="@array/kernel_scheduler_intext_options"
+            grx:valuesArray="@array/kernel_scheduler_intext_values"
+            grx:spinnerOptionsArray="@array/kernel_schedulers"
+            grx:spinnerValuesArray="@array/kernel_schedulers" />
+
+    </GrxPreferenceCategory>
+
+    <!-- Gestures -->
+    <GrxPreferenceCategory android:title="@string/gestures" grx:bpRule="kernel">
+
+        <!-- DT2W -->
+        <GrxSwitchPreference
+            android:title="@string/dt2w"
+            android:key="dlx_kernel_dt2w"
+            android:defaultValue="false"
+            grx:broadCast1Extra="dt2w"
+            grx:broadCast1="dlx_kernel_values" />
+
+        <!-- S2W -->
+        <GrxMultipleSelection
+            android:title="@string/s2w"
+            android:key="dlx_kernel_s2w"
+            grx:broadCast1="dlx_kernel_values"
+            grx:separator=","
+            grx:broadCast1Extra="s2w"
+            grx:optionsArray="@array/kernel_s2w_entries"
+            grx:valuesArray="@array/kernel_s2w_values" />
+
+        <!-- S2S -->
+        <GrxSingleSelection
+            android:title="@string/s2s"
+            android:key="dlx_kernel_s2s"
+            android:defaultValue="0"
+            grx:broadCast1="dlx_kernel_values"
+            grx:broadCast1Extra="s2s"
+            grx:optionsArray="@array/kernel_s2s_entries"
+            grx:valuesArray="@array/kernel_s2s_values" />
+
+        <!-- Vibration intensity -->
+        <GrxSeekBar
+            android:title="@string/kernel_gesture_vibration"
+            android:key="dlx_kernel_gest_vibration"
+            android:defaultValue="10"
+            grx:broadCast1="dlx_kernel_values"
+            grx:broadCast1Extra="gesture_vibration"
+            grx:minValue="0"
+            grx:maxValue="90"
+            grx:interval="1"/>
+
+    </GrxPreferenceCategory>
+
+
+</PreferenceScreen>

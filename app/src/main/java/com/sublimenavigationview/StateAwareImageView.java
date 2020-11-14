@@ -16,13 +16,15 @@
 
 package com.sublimenavigationview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.grx.settings.R;
+import com.deluxelabs.drc.R;
 /**
  * Sub-classed ImageView that responds to custom states.
  */
+@SuppressLint("AppCompatCustomView")
 public class StateAwareImageView extends ImageView {
 
     // Drawable state set - checked

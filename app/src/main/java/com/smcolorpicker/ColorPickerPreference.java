@@ -51,17 +51,17 @@ public class ColorPickerPreference
 
     public ColorPickerPreference(Context context) {
         super(context);
-        init(context, null);
+        init(null);
     }
 
     public ColorPickerPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context, attrs);
+        init(attrs);
     }
 
     public ColorPickerPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(context, attrs);
+        init(attrs);
     }
 
     /**Method edited by
@@ -87,7 +87,7 @@ public class ColorPickerPreference
         onColorChanged(restoreValue ? getPersistedInt(mValue) : (Integer) defaultValue);
     }
 
-    private void init(Context context, AttributeSet attrs) {
+    private void init(AttributeSet attrs) {
         mDensity = getContext().getResources().getDisplayMetrics().density;
         setOnPreferenceClickListener(this);
         if (attrs != null) {
@@ -132,10 +132,10 @@ public class ColorPickerPreference
         Bitmap bm = Bitmap.createBitmap(d, d, Config.ARGB_8888);
         int w = bm.getWidth();
         int h = bm.getHeight();
-        int c = color;
+        int c;
         for (int i = 0; i < w; i++) {
             for (int j = i; j < h; j++) {
-                c = (i <= 1 || j <= 1 || i >= w - 2 || j >= h - 2) ? Color.GRAY : color;
+                c = i <= 1 || i >= w - 2 || j >= h - 2 ? Color.GRAY : color;
                 bm.setPixel(i, j, c);
                 if (i != j) {
                     bm.setPixel(j, i, c);
@@ -155,7 +155,7 @@ public class ColorPickerPreference
         setPreviewColor();
         try {
             getOnPreferenceChangeListener().onPreferenceChange(this, color);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException ignored) {
 
         }
     }
@@ -288,7 +288,7 @@ public class ColorPickerPreference
 
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
-        if (state == null || !(state instanceof SavedState)) {
+        if (!(state instanceof SavedState)) {
             // Didn't save state for us in onSaveInstanceState
             super.onRestoreInstanceState(state);
             return;

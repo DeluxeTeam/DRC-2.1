@@ -11,13 +11,13 @@ public final class Menu {
     public static final int ITEM_SCROLL_BACK = 1;
     public static final int ITEM_DELETE_FROM_BOTTOM_TO_TOP = 2;
 
-    private List<MenuItem> mLeftMenuItems;
-    private List<MenuItem> mRightMenuItems;
+    private final List<MenuItem> mLeftMenuItems;
+    private final List<MenuItem> mRightMenuItems;
 
-    private boolean mWannaOver = true;
-    private boolean mWannaTransparentWhileDragging = true;
+    private final boolean mWannaOver;
+    private final boolean mWannaTransparentWhileDragging;
 
-    private int mMenuViewType = 0;
+    private final int mMenuViewType;
 
     public Menu(boolean wannaTransparentWhileDragging) {
         this(wannaTransparentWhileDragging, true);
@@ -73,13 +73,12 @@ public final class Menu {
             for (MenuItem menuItem : mLeftMenuItems) {
                 total += menuItem.width;
             }
-            return total;
         } else {
             for (MenuItem menuItem : mRightMenuItems) {
                 total += menuItem.width;
             }
-            return total;
         }
+        return total;
     }
 
     /**

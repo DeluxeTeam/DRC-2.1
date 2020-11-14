@@ -5,13 +5,10 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefs_dlgs.DlgFrGrxPerItemSingleSelection;
-import com.grx.settings.utils.Common;
-import com.grx.settings.utils.GrxPrefsUtils;
-
-import java.util.regex.Pattern;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrGrxPerItemSingleSelection;
+import com.deluxelabs.drc.utils.Common;
 
 
 /*
@@ -29,7 +26,7 @@ public class GrxPerItemSingleSelection extends GrxBasePreference implements DlgF
     int iconsValueTint =0;
     boolean shortout = false;
     int spinnerOptionsArrayId = 0, spinnerValuesArrayId=0;
-
+    private boolean mIconblacklistDependency;
 
     public GrxPerItemSingleSelection(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -50,8 +47,12 @@ public class GrxPerItemSingleSelection extends GrxBasePreference implements DlgF
             try {
                 iconsValueTint = ta.getInt(R.styleable.grxperitemsingleselection_iconsValueTint, 0);
 
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
+        }
+
+        if(ta.hasValue(R.styleable.grxperitemsingleselection_check_icon_blacklist)) {
+            mIconblacklistDependency = ta.getBoolean(R.styleable.grxperitemsingleselection_check_icon_blacklist, false);
         }
 
         shortout = ta.getBoolean(R.styleable.grxperitemsingleselection_allowSortOut,false);
@@ -71,7 +72,7 @@ public class GrxPerItemSingleSelection extends GrxBasePreference implements DlgF
                 dlg = DlgFrGrxPerItemSingleSelection.newInstance(this, Common.TAG_PREFSSCREEN_FRAGMENT, myPrefAttrsInfo.getMyKey(), myPrefAttrsInfo.getMyTitle(),mStringValue,
                         myPrefAttrsInfo.getMyOptionsArrayId(), myPrefAttrsInfo.getMyValuesArrayId(), myPrefAttrsInfo.getMyIconsArrayId(), spinnerOptionsArrayId, spinnerValuesArrayId,
                         iconsValueTint,
-                        myPrefAttrsInfo.getMySeparator(),shortout);
+                        myPrefAttrsInfo.getMySeparator(),shortout, mIconblacklistDependency);
                 dlg.show(prefsScreen.getFragmentManager(),Common.TAG_DLGFRGRPERITEMSINGLESELECTION);
             }
         }

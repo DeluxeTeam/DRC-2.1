@@ -17,11 +17,8 @@ import java.util.List;
  * Created by yuyidong on 15/9/24.
  */
 class ItemBackGroundLayout extends ViewGroup {
-    /* 下一个View的距离 */
-    private int mMarginLeft = 0;
-    private int mMarginRight = 0;
     /* 添加的子View */
-    private List<View> mBtnViews;
+    private final List<View> mBtnViews;
 
     public ItemBackGroundLayout(Context context) {
         this(context, null);
@@ -101,8 +98,9 @@ class ItemBackGroundLayout extends ViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int total = getChildCount();
-        mMarginLeft = 0;
-        mMarginRight = getMeasuredWidth();
+        /* 下一个View的距离 */
+        int mMarginLeft = 0;
+        int mMarginRight = getMeasuredWidth();
         for (int i = 0; i < total; i++) {
             View view = getChildAt(i);
             MenuItem menuItem = (MenuItem) view.getTag();

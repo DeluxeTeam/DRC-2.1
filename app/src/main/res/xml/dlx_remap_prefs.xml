@@ -1,0 +1,1294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:grx="http://schemas.android.com/apk/res-auto">
+
+    <!-- Remap keys while screen is on -->
+    <GrxPreferenceCategory android:title="@string/screen_on">
+
+        <PreferenceScreen android:title="@string/recents">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="dlx_remap_recent"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/remap"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="enable"
+                grx:groupedValueKey="dlx_remap_recent"
+                android:key="dlx_remap_recent_enabled"
+                android:defaultValue="false" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="dlx_remap_recent_short"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_recent_enabled"
+                grx:groupedValueMyAlias="short"
+                grx:groupedValueKey="dlx_remap_recent"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="dlx_remap_recent_short_app"
+                android:dependency="dlx_remap_recent_enabled"
+                grx:groupedValueMyAlias="short_app"
+                grx:groupedValueKey="dlx_remap_recent"
+                grx:depRule="ENABLE#dlx_remap_recent_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="dlx_remap_recent_double"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_recent_enabled"
+                grx:groupedValueMyAlias="double"
+                grx:groupedValueKey="dlx_remap_recent"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="dlx_remap_recent_double_app"
+                android:dependency="dlx_remap_recent_enabled"
+                grx:groupedValueMyAlias="double_app"
+                grx:groupedValueKey="dlx_remap_recent"
+                grx:depRule="ENABLE#dlx_remap_recent_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/triple_tap"
+                android:key="dlx_remap_recent_triple"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_recent_enabled"
+                grx:groupedValueMyAlias="triple"
+                grx:groupedValueKey="dlx_remap_recent"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/triple_tap_app"
+                android:key="dlx_remap_recent_triple_app"
+                android:dependency="dlx_remap_recent_enabled"
+                grx:groupedValueMyAlias="triple_app"
+                grx:groupedValueKey="dlx_remap_recent"
+                grx:depRule="ENABLE#dlx_remap_recent_triple#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="dlx_remap_recent_long"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_recent_enabled"
+                grx:groupedValueMyAlias="long"
+                grx:groupedValueKey="dlx_remap_recent"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="dlx_remap_recent_long_app"
+                android:dependency="dlx_remap_recent_enabled"
+                grx:groupedValueMyAlias="long_app"
+                grx:groupedValueKey="dlx_remap_recent"
+                grx:depRule="ENABLE#dlx_remap_recent_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSwitchPreference
+                android:title="@string/vibrate"
+                android:key="dlx_remap_recent_vibrate"
+                android:dependency="dlx_remap_recent_enabled"
+                grx:groupedValueMyAlias="vibrate"
+                grx:groupedValueKey="dlx_remap_recent"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/block_short_vibrate"
+                android:dependency="dlx_remap_recent_vibrate"
+                grx:groupedValueMyAlias="block_short_vibrate"
+                grx:groupedValueKey="dlx_remap_recent"
+                android:key="dlx_remap_recent_block_short"
+                android:defaultValue="false" />
+
+            <GrxSeekBar
+                android:title="@string/duration"
+                android:key="dlx_remap_recent_vibrate_time"
+                android:defaultValue="0"
+                grx:minValue="1"
+                grx:maxValue="100"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="dlx_services_mods"
+                android:dependency="dlx_remap_recent_vibrate"
+                grx:groupedValueMyAlias="vibrate_time"
+                grx:groupedValueKey="dlx_remap_recent"
+                grx:showPopup="true"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="@string/home">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="dlx_remap_home"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/remap"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="enable"
+                grx:groupedValueKey="dlx_remap_home"
+                android:key="dlx_remap_home_enabled"
+                android:defaultValue="false" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="dlx_remap_home_short"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_home_enabled"
+                grx:groupedValueMyAlias="short"
+                grx:groupedValueKey="dlx_remap_home"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="dlx_remap_home_short_app"
+                android:dependency="dlx_remap_home_enabled"
+                grx:groupedValueMyAlias="short_app"
+                grx:groupedValueKey="dlx_remap_home"
+                grx:depRule="ENABLE#dlx_remap_home_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="dlx_remap_home_double"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_home_enabled"
+                grx:groupedValueMyAlias="double"
+                grx:groupedValueKey="dlx_remap_home"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="dlx_remap_home_double_app"
+                android:dependency="dlx_remap_home_enabled"
+                grx:groupedValueMyAlias="double_app"
+                grx:groupedValueKey="dlx_remap_home"
+                grx:depRule="ENABLE#dlx_remap_home_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/triple_tap"
+                android:key="dlx_remap_home_triple"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_home_enabled"
+                grx:groupedValueMyAlias="triple"
+                grx:groupedValueKey="dlx_remap_home"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/triple_tap_app"
+                android:key="dlx_remap_home_triple_app"
+                android:dependency="dlx_remap_home_enabled"
+                grx:groupedValueMyAlias="triple_app"
+                grx:groupedValueKey="dlx_remap_home"
+                grx:depRule="ENABLE#dlx_remap_home_triple#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="dlx_remap_home_long"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_home_enabled"
+                grx:groupedValueMyAlias="long"
+                grx:groupedValueKey="dlx_remap_home"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="dlx_remap_home_long_app"
+                android:dependency="dlx_remap_home_enabled"
+                grx:groupedValueMyAlias="long_app"
+                grx:groupedValueKey="dlx_remap_home"
+                grx:depRule="ENABLE#dlx_remap_home_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSwitchPreference
+                android:title="@string/vibrate"
+                android:key="dlx_remap_home_vibrate"
+                android:dependency="dlx_remap_home_enabled"
+                grx:groupedValueMyAlias="vibrate"
+                grx:groupedValueKey="dlx_remap_home"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/block_short_vibrate"
+                android:dependency="dlx_remap_home_vibrate"
+                grx:groupedValueMyAlias="block_short_vibrate"
+                grx:groupedValueKey="dlx_remap_home"
+                android:key="dlx_remap_home_block_short"
+                android:defaultValue="false" />
+
+            <GrxSeekBar
+                android:title="@string/duration"
+                android:key="dlx_remap_home_vibrate_time"
+                android:defaultValue="0"
+                grx:minValue="1"
+                grx:maxValue="100"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="dlx_services_mods"
+                android:dependency="dlx_remap_home_vibrate"
+                grx:groupedValueMyAlias="vibrate_time"
+                grx:groupedValueKey="dlx_remap_home"
+                grx:showPopup="true"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="@string/back">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="dlx_remap_back"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/remap"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="enable"
+                grx:groupedValueKey="dlx_remap_back"
+                android:key="dlx_remap_back_enabled"
+                android:defaultValue="false" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="dlx_remap_back_short"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_back_enabled"
+                grx:groupedValueMyAlias="short"
+                grx:groupedValueKey="dlx_remap_back"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="dlx_remap_back_short_app"
+                android:dependency="dlx_remap_back_enabled"
+                grx:groupedValueMyAlias="short_app"
+                grx:groupedValueKey="dlx_remap_back"
+                grx:depRule="ENABLE#dlx_remap_back_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="dlx_remap_back_double"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_back_enabled"
+                grx:groupedValueMyAlias="double"
+                grx:groupedValueKey="dlx_remap_back"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="dlx_remap_back_double_app"
+                android:dependency="dlx_remap_back_enabled"
+                grx:groupedValueMyAlias="double_app"
+                grx:groupedValueKey="dlx_remap_back"
+                grx:depRule="ENABLE#dlx_remap_back_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/triple_tap"
+                android:key="dlx_remap_back_triple"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_back_enabled"
+                grx:groupedValueMyAlias="triple"
+                grx:groupedValueKey="dlx_remap_back"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/triple_tap_app"
+                android:key="dlx_remap_back_triple_app"
+                android:dependency="dlx_remap_back_enabled"
+                grx:groupedValueMyAlias="triple_app"
+                grx:groupedValueKey="dlx_remap_back"
+                grx:depRule="ENABLE#dlx_remap_back_triple#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="dlx_remap_back_long"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_back_enabled"
+                grx:groupedValueMyAlias="long"
+                grx:groupedValueKey="dlx_remap_back"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="dlx_remap_back_long_app"
+                android:dependency="dlx_remap_back_enabled"
+                grx:groupedValueMyAlias="long_app"
+                grx:groupedValueKey="dlx_remap_back"
+                grx:depRule="ENABLE#dlx_remap_back_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSwitchPreference
+                android:title="@string/vibrate"
+                android:key="dlx_remap_back_vibrate"
+                android:dependency="dlx_remap_back_enabled"
+                grx:groupedValueMyAlias="vibrate"
+                grx:groupedValueKey="dlx_remap_back"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/block_short_vibrate"
+                android:dependency="dlx_remap_back_vibrate"
+                grx:groupedValueMyAlias="block_short_vibrate"
+                grx:groupedValueKey="dlx_remap_back"
+                android:key="dlx_remap_back_block_short"
+                android:defaultValue="false" />
+
+            <GrxSeekBar
+                android:title="@string/duration"
+                android:key="dlx_remap_back_vibrate_time"
+                android:defaultValue="0"
+                grx:minValue="1"
+                grx:maxValue="100"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="dlx_services_mods"
+                android:dependency="dlx_remap_back_vibrate"
+                grx:groupedValueMyAlias="vibrate_time"
+                grx:groupedValueKey="dlx_remap_back"
+                grx:showPopup="true"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="@string/power">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="dlx_remap_power"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/remap"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="enable"
+                grx:groupedValueKey="dlx_remap_power"
+                android:key="dlx_remap_power_enabled"
+                android:defaultValue="false" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="dlx_remap_power_short"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_power_enabled"
+                grx:groupedValueMyAlias="short"
+                grx:groupedValueKey="dlx_remap_power"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="dlx_remap_power_short_app"
+                android:dependency="dlx_remap_power_enabled"
+                grx:groupedValueMyAlias="short_app"
+                grx:groupedValueKey="dlx_remap_power"
+                grx:depRule="ENABLE#dlx_remap_power_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="dlx_remap_power_double"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_power_enabled"
+                grx:groupedValueMyAlias="double"
+                grx:groupedValueKey="dlx_remap_power"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="dlx_remap_power_double_app"
+                android:dependency="dlx_remap_power_enabled"
+                grx:groupedValueMyAlias="double_app"
+                grx:groupedValueKey="dlx_remap_power"
+                grx:depRule="ENABLE#dlx_remap_power_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/triple_tap"
+                android:key="dlx_remap_power_triple"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_power_enabled"
+                grx:groupedValueMyAlias="triple"
+                grx:groupedValueKey="dlx_remap_power"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/triple_tap_app"
+                android:key="dlx_remap_power_triple_app"
+                android:dependency="dlx_remap_power_enabled"
+                grx:groupedValueMyAlias="triple_app"
+                grx:groupedValueKey="dlx_remap_power"
+                grx:depRule="ENABLE#dlx_remap_power_triple#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="dlx_remap_power_long"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_power_enabled"
+                grx:groupedValueMyAlias="long"
+                grx:groupedValueKey="dlx_remap_power"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="dlx_remap_power_long_app"
+                android:dependency="dlx_remap_power_enabled"
+                grx:groupedValueMyAlias="long_app"
+                grx:groupedValueKey="dlx_remap_power"
+                grx:depRule="ENABLE#dlx_remap_power_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSwitchPreference
+                android:title="@string/vibrate"
+                android:key="dlx_remap_power_vibrate"
+                android:dependency="dlx_remap_power_enabled"
+                grx:groupedValueMyAlias="vibrate"
+                grx:groupedValueKey="dlx_remap_power"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/block_short_vibrate"
+                android:dependency="dlx_remap_power_vibrate"
+                grx:groupedValueMyAlias="block_short_vibrate"
+                grx:groupedValueKey="dlx_remap_power"
+                android:key="dlx_remap_power_block_short"
+                android:defaultValue="false" />
+
+            <GrxSeekBar
+                android:title="@string/duration"
+                android:key="dlx_remap_power_vibrate_time"
+                android:defaultValue="0"
+                grx:minValue="1"
+                grx:maxValue="100"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="dlx_services_mods"
+                android:dependency="dlx_remap_power_vibrate"
+                grx:groupedValueMyAlias="vibrate_time"
+                grx:groupedValueKey="dlx_remap_power"
+                grx:showPopup="true"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="@string/volup">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="dlx_remap_volup"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/remap"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="enable"
+                grx:groupedValueKey="dlx_remap_volup"
+                android:key="dlx_remap_volup_enabled"
+                android:defaultValue="false" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="dlx_remap_volup_short"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_volup_enabled"
+                grx:groupedValueMyAlias="short"
+                grx:groupedValueKey="dlx_remap_volup"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="dlx_remap_volup_short_app"
+                android:dependency="dlx_remap_volup_enabled"
+                grx:groupedValueMyAlias="short_app"
+                grx:groupedValueKey="dlx_remap_volup"
+                grx:depRule="ENABLE#dlx_remap_volup_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="dlx_remap_volup_double"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_volup_enabled"
+                grx:groupedValueMyAlias="double"
+                grx:groupedValueKey="dlx_remap_volup"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="dlx_remap_volup_double_app"
+                android:dependency="dlx_remap_volup_enabled"
+                grx:groupedValueMyAlias="double_app"
+                grx:groupedValueKey="dlx_remap_volup"
+                grx:depRule="ENABLE#dlx_remap_volup_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/triple_tap"
+                android:key="dlx_remap_volup_triple"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_volup_enabled"
+                grx:groupedValueMyAlias="triple"
+                grx:groupedValueKey="dlx_remap_volup"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/triple_tap_app"
+                android:key="dlx_remap_volup_triple_app"
+                android:dependency="dlx_remap_volup_enabled"
+                grx:groupedValueMyAlias="triple_app"
+                grx:groupedValueKey="dlx_remap_volup"
+                grx:depRule="ENABLE#dlx_remap_volup_triple#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="dlx_remap_volup_long"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_volup_enabled"
+                grx:groupedValueMyAlias="long"
+                grx:groupedValueKey="dlx_remap_volup"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="dlx_remap_volup_long_app"
+                android:dependency="dlx_remap_volup_enabled"
+                grx:groupedValueMyAlias="long_app"
+                grx:groupedValueKey="dlx_remap_volup"
+                grx:depRule="ENABLE#dlx_remap_volup_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSwitchPreference
+                android:title="@string/vibrate"
+                android:key="dlx_remap_volup_vibrate"
+                android:dependency="dlx_remap_volup_enabled"
+                grx:groupedValueMyAlias="vibrate"
+                grx:groupedValueKey="dlx_remap_volup"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/block_short_vibrate"
+                android:dependency="dlx_remap_volup_vibrate"
+                grx:groupedValueMyAlias="block_short_vibrate"
+                grx:groupedValueKey="dlx_remap_volup"
+                android:key="dlx_remap_volup_block_short"
+                android:defaultValue="false" />
+
+            <GrxSeekBar
+                android:title="@string/duration"
+                android:key="dlx_remap_volup_vibrate_time"
+                android:defaultValue="0"
+                grx:minValue="1"
+                grx:maxValue="100"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="dlx_services_mods"
+                android:dependency="dlx_remap_volup_vibrate"
+                grx:groupedValueMyAlias="vibrate_time"
+                grx:groupedValueKey="dlx_remap_volup"
+                grx:showPopup="true"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="@string/voldown">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="dlx_remap_voldown"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/remap"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="enable"
+                grx:groupedValueKey="dlx_remap_voldown"
+                android:key="dlx_remap_voldown_enabled"
+                android:defaultValue="false" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="dlx_remap_voldown_short"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_voldown_enabled"
+                grx:groupedValueMyAlias="short"
+                grx:groupedValueKey="dlx_remap_voldown"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="dlx_remap_voldown_short_app"
+                android:dependency="dlx_remap_voldown_enabled"
+                grx:groupedValueMyAlias="short_app"
+                grx:groupedValueKey="dlx_remap_voldown"
+                grx:depRule="ENABLE#dlx_remap_voldown_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="dlx_remap_voldown_double"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_voldown_enabled"
+                grx:groupedValueMyAlias="double"
+                grx:groupedValueKey="dlx_remap_voldown"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="dlx_remap_voldown_double_app"
+                android:dependency="dlx_remap_voldown_enabled"
+                grx:groupedValueMyAlias="double_app"
+                grx:groupedValueKey="dlx_remap_voldown"
+                grx:depRule="ENABLE#dlx_remap_voldown_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/triple_tap"
+                android:key="dlx_remap_voldown_triple"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_voldown_enabled"
+                grx:groupedValueMyAlias="triple"
+                grx:groupedValueKey="dlx_remap_voldown"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/triple_tap_app"
+                android:key="dlx_remap_voldown_triple_app"
+                android:dependency="dlx_remap_voldown_enabled"
+                grx:groupedValueMyAlias="triple_app"
+                grx:groupedValueKey="dlx_remap_voldown"
+                grx:depRule="ENABLE#dlx_remap_voldown_triple#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="dlx_remap_voldown_long"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_voldown_enabled"
+                grx:groupedValueMyAlias="long"
+                grx:groupedValueKey="dlx_remap_voldown"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="dlx_remap_voldown_long_app"
+                android:dependency="dlx_remap_voldown_enabled"
+                grx:groupedValueMyAlias="long_app"
+                grx:groupedValueKey="dlx_remap_voldown"
+                grx:depRule="ENABLE#dlx_remap_voldown_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSwitchPreference
+                android:title="@string/vibrate"
+                android:key="dlx_remap_voldown_vibrate"
+                android:dependency="dlx_remap_voldown_enabled"
+                grx:groupedValueMyAlias="vibrate"
+                grx:groupedValueKey="dlx_remap_voldown"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/block_short_vibrate"
+                android:dependency="dlx_remap_voldown_vibrate"
+                grx:groupedValueMyAlias="block_short_vibrate"
+                grx:groupedValueKey="dlx_remap_voldown"
+                android:key="dlx_remap_voldown_block_short"
+                android:defaultValue="false" />
+
+            <GrxSeekBar
+                android:title="@string/duration"
+                android:key="dlx_remap_voldown_vibrate_time"
+                android:defaultValue="0"
+                grx:minValue="1"
+                grx:maxValue="100"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="dlx_services_mods"
+                android:dependency="dlx_remap_voldown_vibrate"
+                grx:groupedValueMyAlias="vibrate_time"
+                grx:groupedValueKey="dlx_remap_voldown"
+                grx:showPopup="true"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="Bixby">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="dlx_remap_bixby"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/remap"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="enable"
+                grx:groupedValueKey="dlx_remap_bixby"
+                android:key="dlx_remap_bixby_enabled"
+                android:defaultValue="false" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="dlx_remap_bixby_short"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_bixby_enabled"
+                grx:groupedValueMyAlias="short"
+                grx:groupedValueKey="dlx_remap_bixby"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="dlx_remap_bixby_short_app"
+                android:dependency="dlx_remap_bixby_enabled"
+                grx:groupedValueMyAlias="short_app"
+                grx:groupedValueKey="dlx_remap_bixby"
+                grx:depRule="ENABLE#dlx_remap_bixby_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="dlx_remap_bixby_double"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_bixby_enabled"
+                grx:groupedValueMyAlias="double"
+                grx:groupedValueKey="dlx_remap_bixby"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="dlx_remap_bixby_double_app"
+                android:dependency="dlx_remap_bixby_enabled"
+                grx:groupedValueMyAlias="double_app"
+                grx:groupedValueKey="dlx_remap_bixby"
+                grx:depRule="ENABLE#dlx_remap_bixby_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/triple_tap"
+                android:key="dlx_remap_bixby_triple"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_bixby_enabled"
+                grx:groupedValueMyAlias="triple"
+                grx:groupedValueKey="dlx_remap_bixby"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/triple_tap_app"
+                android:key="dlx_remap_bixby_triple_app"
+                android:dependency="dlx_remap_bixby_enabled"
+                grx:groupedValueMyAlias="triple_app"
+                grx:groupedValueKey="dlx_remap_bixby"
+                grx:depRule="ENABLE#dlx_remap_bixby_triple#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="dlx_remap_bixby_long"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_bixby_enabled"
+                grx:groupedValueMyAlias="long"
+                grx:groupedValueKey="dlx_remap_bixby"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="dlx_remap_bixby_long_app"
+                android:dependency="dlx_remap_bixby_enabled"
+                grx:groupedValueMyAlias="long_app"
+                grx:groupedValueKey="dlx_remap_bixby"
+                grx:depRule="ENABLE#dlx_remap_bixby_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSwitchPreference
+                android:title="@string/vibrate"
+                android:key="dlx_remap_bixby_vibrate"
+                android:dependency="dlx_remap_bixby_enabled"
+                grx:groupedValueMyAlias="vibrate"
+                grx:groupedValueKey="dlx_remap_bixby"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/block_short_vibrate"
+                android:dependency="dlx_remap_bixby_vibrate"
+                grx:groupedValueMyAlias="block_short_vibrate"
+                grx:groupedValueKey="dlx_remap_bixby"
+                android:key="dlx_remap_bixby_block_short"
+                android:defaultValue="false" />
+
+            <GrxSeekBar
+                android:title="@string/duration"
+                android:key="dlx_remap_bixby_vibrate_time"
+                android:defaultValue="0"
+                grx:minValue="1"
+                grx:maxValue="100"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="dlx_services_mods"
+                android:dependency="dlx_remap_bixby_vibrate"
+                grx:groupedValueMyAlias="vibrate_time"
+                grx:groupedValueKey="dlx_remap_bixby"
+                grx:showPopup="true"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
+
+    </GrxPreferenceCategory>
+
+    <!-- Remap keys while screen is off -->
+    <GrxPreferenceCategory android:title="@string/screen_off">
+
+        <PreferenceScreen android:title="@string/volup">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="dlx_remap_volup_off"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/remap"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="enable"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                android:key="dlx_remap_volup_off_enabled"
+                android:defaultValue="false" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="dlx_remap_volup_off_short"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_volup_off_enabled"
+                grx:groupedValueMyAlias="short"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="dlx_remap_volup_off_short_app"
+                android:dependency="dlx_remap_volup_off_enabled"
+                grx:groupedValueMyAlias="short_app"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                grx:depRule="ENABLE#dlx_remap_volup_off_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="dlx_remap_volup_off_double"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_volup_off_enabled"
+                grx:groupedValueMyAlias="double"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="dlx_remap_volup_off_double_app"
+                android:dependency="dlx_remap_volup_off_enabled"
+                grx:groupedValueMyAlias="double_app"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                grx:depRule="ENABLE#dlx_remap_volup_off_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/triple_tap"
+                android:key="dlx_remap_volup_off_triple"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_volup_off_enabled"
+                grx:groupedValueMyAlias="triple"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/triple_tap_app"
+                android:key="dlx_remap_volup_off_triple_app"
+                android:dependency="dlx_remap_volup_off_enabled"
+                grx:groupedValueMyAlias="triple_app"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                grx:depRule="ENABLE#dlx_remap_volup_off_triple#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="dlx_remap_volup_off_long"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_volup_off_enabled"
+                grx:groupedValueMyAlias="long"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="dlx_remap_volup_off_long_app"
+                android:dependency="dlx_remap_volup_off_enabled"
+                grx:groupedValueMyAlias="long_app"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                grx:depRule="ENABLE#dlx_remap_volup_off_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSwitchPreference
+                android:title="@string/vibrate"
+                android:key="dlx_remap_volup_off_vibrate"
+                android:dependency="dlx_remap_volup_off_enabled"
+                grx:groupedValueMyAlias="vibrate"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/block_short_vibrate"
+                android:dependency="dlx_remap_volup_off_vibrate"
+                grx:groupedValueMyAlias="block_short_vibrate"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                android:key="dlx_remap_volup_off_block_short"
+                android:defaultValue="false" />
+
+            <GrxSeekBar
+                android:title="@string/duration"
+                android:key="dlx_remap_volup_off_vibrate_time"
+                android:defaultValue="0"
+                grx:minValue="1"
+                grx:maxValue="100"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="dlx_services_mods"
+                android:dependency="dlx_remap_volup_off_vibrate"
+                grx:groupedValueMyAlias="vibrate_time"
+                grx:groupedValueKey="dlx_remap_volup_off"
+                grx:showPopup="true"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="@string/voldown">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/remap"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="enable"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                android:key="dlx_remap_voldown_off_enabled"
+                android:defaultValue="false" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="dlx_remap_voldown_off_short"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_voldown_off_enabled"
+                grx:groupedValueMyAlias="short"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="dlx_remap_voldown_off_short_app"
+                android:dependency="dlx_remap_voldown_off_enabled"
+                grx:groupedValueMyAlias="short_app"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                grx:depRule="ENABLE#dlx_remap_voldown_off_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="dlx_remap_voldown_off_double"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_voldown_off_enabled"
+                grx:groupedValueMyAlias="double"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="dlx_remap_voldown_off_double_app"
+                android:dependency="dlx_remap_voldown_off_enabled"
+                grx:groupedValueMyAlias="double_app"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                grx:depRule="ENABLE#dlx_remap_voldown_off_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/triple_tap"
+                android:key="dlx_remap_voldown_off_triple"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_voldown_off_enabled"
+                grx:groupedValueMyAlias="triple"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/triple_tap_app"
+                android:key="dlx_remap_voldown_off_triple_app"
+                android:dependency="dlx_remap_voldown_off_enabled"
+                grx:groupedValueMyAlias="triple_app"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                grx:depRule="ENABLE#dlx_remap_voldown_off_triple#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="dlx_remap_voldown_off_long"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_voldown_off_enabled"
+                grx:groupedValueMyAlias="long"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="dlx_remap_voldown_off_long_app"
+                android:dependency="dlx_remap_voldown_off_enabled"
+                grx:groupedValueMyAlias="long_app"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                grx:depRule="ENABLE#dlx_remap_voldown_off_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSwitchPreference
+                android:title="@string/vibrate"
+                android:key="dlx_remap_voldown_off_vibrate"
+                android:dependency="dlx_remap_voldown_off_enabled"
+                grx:groupedValueMyAlias="vibrate"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/block_short_vibrate"
+                android:dependency="dlx_remap_voldown_off_vibrate"
+                grx:groupedValueMyAlias="block_short_vibrate"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                android:key="dlx_remap_voldown_off_block_short"
+                android:defaultValue="false" />
+
+            <GrxSeekBar
+                android:title="@string/duration"
+                android:key="dlx_remap_voldown_off_vibrate_time"
+                android:defaultValue="0"
+                grx:minValue="1"
+                grx:maxValue="100"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="dlx_services_mods"
+                android:dependency="dlx_remap_voldown_off_vibrate"
+                grx:groupedValueMyAlias="vibrate_time"
+                grx:groupedValueKey="dlx_remap_voldown_off"
+                grx:showPopup="true"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="@string/bixby">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSwitchPreference
+                android:title="@string/remap"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="enable"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                android:key="dlx_remap_bixby_off_enabled"
+                android:defaultValue="false" />
+
+            <GrxSingleSelection
+                android:title="@string/short_press"
+                android:key="dlx_remap_bixby_off_short"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_bixby_off_enabled"
+                grx:groupedValueMyAlias="short"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/short_app"
+                android:key="dlx_remap_bixby_off_short_app"
+                android:dependency="dlx_remap_bixby_off_enabled"
+                grx:groupedValueMyAlias="short_app"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                grx:depRule="ENABLE#dlx_remap_bixby_off_short#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/double_tap"
+                android:key="dlx_remap_bixby_off_double"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_bixby_off_enabled"
+                grx:groupedValueMyAlias="double"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/double_tap_app"
+                android:key="dlx_remap_bixby_off_double_app"
+                android:dependency="dlx_remap_bixby_off_enabled"
+                grx:groupedValueMyAlias="double_app"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                grx:depRule="ENABLE#dlx_remap_bixby_off_double#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/triple_tap"
+                android:key="dlx_remap_bixby_off_triple"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_bixby_off_enabled"
+                grx:groupedValueMyAlias="triple"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/triple_tap_app"
+                android:key="dlx_remap_bixby_off_triple_app"
+                android:dependency="dlx_remap_bixby_off_enabled"
+                grx:groupedValueMyAlias="triple_app"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                grx:depRule="ENABLE#dlx_remap_bixby_off_triple#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSingleSelection
+                android:title="@string/long_press"
+                android:key="dlx_remap_bixby_off_long"
+                android:defaultValue="0"
+                android:dependency="dlx_remap_bixby_off_enabled"
+                grx:groupedValueMyAlias="long"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                grx:optionsArray="@array/common_actions"
+                grx:valuesArray="@array/common_actions_values" />
+
+            <GrxAppSelection
+                android:title="@string/long_press_app"
+                android:key="dlx_remap_bixby_off_long_app"
+                android:dependency="dlx_remap_bixby_off_enabled"
+                grx:groupedValueMyAlias="long_app"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                grx:depRule="ENABLE#dlx_remap_bixby_off_long#STRING#1"
+                grx:saveActivityname="true"
+                grx:showSystemapps="false" />
+
+            <GrxSwitchPreference
+                android:title="@string/vibrate"
+                android:key="dlx_remap_bixby_off_vibrate"
+                android:dependency="dlx_remap_bixby_off_enabled"
+                grx:groupedValueMyAlias="vibrate"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                android:defaultValue="false" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/block_short_vibrate"
+                android:dependency="dlx_remap_bixby_off_vibrate"
+                grx:groupedValueMyAlias="block_short_vibrate"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                android:key="dlx_remap_bixby_off_block_short"
+                android:defaultValue="false" />
+
+            <GrxSeekBar
+                android:title="@string/duration"
+                android:key="dlx_remap_bixby_off_vibrate_time"
+                android:defaultValue="0"
+                grx:minValue="1"
+                grx:maxValue="100"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="dlx_services_mods"
+                android:dependency="dlx_remap_bixby_off_vibrate"
+                grx:groupedValueMyAlias="vibrate_time"
+                grx:groupedValueKey="dlx_remap_bixby_off"
+                grx:showPopup="true"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
+
+    </GrxPreferenceCategory>
+
+</PreferenceScreen>

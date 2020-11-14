@@ -16,6 +16,7 @@
 
 package com.sublimenavigationview;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -35,7 +36,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.grx.settings.R;
+import com.deluxelabs.drc.R;
 
 /**
  * Top level view that hosts a SublimeMenu
@@ -375,14 +376,9 @@ public class SublimeNavigationView extends ScrimInsetsFrameLayout {
                 inflateMenu(menuResId);
             }
 
-            mMenu.setCallback(new SublimeMenu.Callback() {
-                public boolean onMenuItemSelected(SublimeMenu menu, SublimeBaseMenuItem item,
-                                                  OnNavigationMenuEventListener.Event event) {
-                    return SublimeNavigationView.this.mEventListener != null
-                            && SublimeNavigationView.this
-                            .mEventListener.onNavigationMenuEvent(event, item);
-                }
-            });
+            mMenu.setCallback((menu, item, event) -> SublimeNavigationView.this.mEventListener != null
+                    && SublimeNavigationView.this
+                    .mEventListener.onNavigationMenuEvent(event, item));
 
             mPresenter = new SublimeMenuPresenter();
             applyThemer();
@@ -411,6 +407,7 @@ public class SublimeNavigationView extends ScrimInsetsFrameLayout {
      * @param newMenuResId id of the menu that you wish
      *                     to switch to. Eg: R.menu.new_menu_id
      */
+    @SuppressLint("ResourceType")
     public void switchMenuTo(@MenuRes int newMenuResId) {
         if (newMenuResId < 1) {
             Log.e(TAG, "Could not switch to new menu: passed menuResourceId was invalid.");
@@ -420,14 +417,9 @@ public class SublimeNavigationView extends ScrimInsetsFrameLayout {
         mMenu = new SublimeMenu(newMenuResId);
         inflateMenu(newMenuResId);
 
-        mMenu.setCallback(new SublimeMenu.Callback() {
-            public boolean onMenuItemSelected(SublimeMenu menu, SublimeBaseMenuItem item,
-                                              OnNavigationMenuEventListener.Event event) {
-                return SublimeNavigationView.this.mEventListener != null
-                        && SublimeNavigationView.this
-                        .mEventListener.onNavigationMenuEvent(event, item);
-            }
-        });
+        mMenu.setCallback((menu, item, event) -> SublimeNavigationView.this.mEventListener != null
+                && SublimeNavigationView.this
+                .mEventListener.onNavigationMenuEvent(event, item));
 
         mMenu.setMenuPresenter(getContext(), mPresenter);
     }
@@ -441,21 +433,12 @@ public class SublimeNavigationView extends ScrimInsetsFrameLayout {
      */
     public void switchMenuTo(@NonNull SublimeMenu newMenu) {
         // Todo: pending removal of this NULL check
-        if (newMenu == null) {
-            Log.e(TAG, "Could not switch to new menu: passed menu was 'null'.");
-            return;
-        }
 
         mMenu = newMenu;
 
-        mMenu.setCallback(new SublimeMenu.Callback() {
-            public boolean onMenuItemSelected(SublimeMenu menu, SublimeBaseMenuItem item,
-                                              OnNavigationMenuEventListener.Event event) {
-                return SublimeNavigationView.this.mEventListener != null
-                        && SublimeNavigationView.this
-                        .mEventListener.onNavigationMenuEvent(event, item);
-            }
-        });
+        mMenu.setCallback((menu, item, event) -> SublimeNavigationView.this.mEventListener != null
+                && SublimeNavigationView.this
+                .mEventListener.onNavigationMenuEvent(event, item));
 
         mMenu.setMenuPresenter(getContext(), mPresenter);
     }
@@ -501,14 +484,9 @@ public class SublimeNavigationView extends ScrimInsetsFrameLayout {
                 }
 
                 if (mMenu != null) {
-                    mMenu.setCallback(new SublimeMenu.Callback() {
-                        public boolean onMenuItemSelected(SublimeMenu menu, SublimeBaseMenuItem item,
-                                                          OnNavigationMenuEventListener.Event event) {
-                            return SublimeNavigationView.this.mEventListener != null
-                                    && SublimeNavigationView.this
-                                    .mEventListener.onNavigationMenuEvent(event, item);
-                        }
-                    });
+                    mMenu.setCallback((menu, item, event) -> SublimeNavigationView.this.mEventListener != null
+                            && SublimeNavigationView.this
+                            .mEventListener.onNavigationMenuEvent(event, item));
                     mMenu.setMenuPresenter(getContext(), mPresenter);
                 }
     }catch (BadParcelableException e){
@@ -640,10 +618,6 @@ public class SublimeNavigationView extends ScrimInsetsFrameLayout {
      */
     public void updateThemer(@NonNull SublimeThemer sublimeThemer) {
         // Todo: pending removal of this NULL check
-        if (sublimeThemer == null) {
-            //Log.e(TAG, "'updateThemer(SublimeThemer)' was called with a 'null' value");
-            return;
-        }
 
         mThemer = sublimeThemer;
         applyThemer();
@@ -672,7 +646,7 @@ public class SublimeNavigationView extends ScrimInsetsFrameLayout {
     //----------------------------------------------------------------//
 
     public static class SavedState extends View.BaseSavedState {
-        public Bundle sMenuState;
+        public final Bundle sMenuState;
         public static final Creator<SublimeNavigationView.SavedState> CREATOR
                 = new Creator<SublimeNavigationView.SavedState>() {
             public SublimeNavigationView.SavedState createFromParcel(Parcel parcel) {
@@ -684,6 +658,7 @@ public class SublimeNavigationView extends ScrimInsetsFrameLayout {
             }
         };
 
+        @SuppressLint("ParcelClassLoader")
         public SavedState(Parcel in) {
             super(in);
             sMenuState = in.readBundle();

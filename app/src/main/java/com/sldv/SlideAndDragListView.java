@@ -47,7 +47,7 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
     /* WrapperAdapter */
     private WrapperAdapter mWrapperAdapter;
     /* 手指滑动的最短距离 */
-    private int mShortestDistance = 25;
+    private final int mShortestDistance;
     /* CustomItemView距离左边的距离 */
     private int mItemLeftDistance = 0;
     /* ItemMainView是否正在处理手势操作 */
@@ -85,7 +85,7 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
                 //回滚
                 mWrapperAdapter.returnSlideItemPosition();
                 //触发回调
-                mOnListItemLongClickListener.onListItemLongClick(itemMainLayout.getItemCustomView(), position);
+                mOnListItemLongClickListener.onListItemLongClick();
             }
         }
         if (mState == STATE_LONG_CLICK_FINISH || mState == STATE_DOWN) {
@@ -181,11 +181,10 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
                         isItemViewHandlingMotionEvent = true;
                         mState = STATE_SCROLL;
                         itemMainLayout.handleMotionEvent(ev, mXDown, mYDown, mItemLeftDistance);
-                        return true;
                     } else {
                         mState = STATE_NOTHING;
-                        return true;
                     }
+                    return true;
                 } else {
                     if (isItemViewHandlingMotionEvent) {
                         ItemMainLayout itemMainLayout = getItemMainLayoutByPosition(mXDown, mYDown);
@@ -207,7 +206,7 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
                                 View v = getChildAt(position - getFirstVisiblePosition());
                                 if (v instanceof ItemMainLayout) {
                                     ItemMainLayout itemMainLayout = (ItemMainLayout) v;
-                                    mOnListItemClickListener.onListItemClick(itemMainLayout.getItemCustomView(), position);
+                                    mOnListItemClickListener.onListItemClick(position);
                                 }
                             }
                         }
@@ -436,7 +435,7 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
         mIsDeleteAnimationRunning = false;
         if (mOnItemDeleteListener != null && view instanceof ItemMainLayout) {
             ItemMainLayout itemMainLayout = (ItemMainLayout) view;
-            mOnItemDeleteListener.onItemDelete(itemMainLayout.getItemCustomView(), position);
+            mOnItemDeleteListener.onItemDelete(position);
         }
     }
 
@@ -472,27 +471,21 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
         /**
          * 当滑动开的时候触发
          *
-         * @param view
-         * @param parentView
-         * @param position
          */
-        void onSlideOpen(View view, View parentView, int position, int direction);
+        void onSlideOpen();
 
         /**
          * 当滑动归位的时候触发
          *
-         * @param view
-         * @param parentView
-         * @param position
          */
-        void onSlideClose(View view, View parentView, int position, int direction);
+        void onSlideClose();
     }
 
     @Override
     public void onSlideOpen(View view, int position, int direction) {
         if (mOnSlideListener != null && view instanceof ItemMainLayout) {
             ItemMainLayout itemMainLayout = (ItemMainLayout) view;
-            mOnSlideListener.onSlideOpen(itemMainLayout.getItemCustomView(), this, position, direction);
+            mOnSlideListener.onSlideOpen();
         }
     }
 
@@ -500,7 +493,7 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
     public void onSlideClose(View view, int position, int direction) {
         if (mOnSlideListener != null && view instanceof ItemMainLayout) {
             ItemMainLayout itemMainLayout = (ItemMainLayout) view;
-            mOnSlideListener.onSlideClose(itemMainLayout.getItemCustomView(), this, position, direction);
+            mOnSlideListener.onSlideClose();
         }
     }
 
@@ -520,19 +513,18 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
         /**
          * 点击事件
          *
-         * @param v
          * @param itemPosition   第几个item
          * @param buttonPosition 第几个button
          * @param direction      方向
          * @return 参考Menu的几个常量
          */
-        int onMenuItemClick(View v, int itemPosition, int buttonPosition, int direction);
+        int onMenuItemClick(int itemPosition, int buttonPosition, int direction);
     }
 
     @Override
     public int onMenuItemClick(View v, int itemPosition, int buttonPosition, int direction) {
         if (mOnMenuItemClickListener != null) {
-            return mOnMenuItemClickListener.onMenuItemClick(v, itemPosition, buttonPosition, direction);
+            return mOnMenuItemClickListener.onMenuItemClick(itemPosition, buttonPosition, direction);
         }
         return Menu.ITEM_NOTHING;
     }
@@ -555,7 +547,7 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
      * 自己的单击事件
      */
     public interface OnListItemClickListener {
-        void onListItemClick(View v, int position);
+        void onListItemClick(int position);
     }
 
     /**
@@ -582,7 +574,7 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
      * 自己写的长点击事件
      */
     public interface OnListItemLongClickListener {
-        void onListItemLongClick(View view, int position);
+        void onListItemLongClick();
     }
 
     public void setOnItemDeleteListener(OnItemDeleteListener onItemDeleteListener) {
@@ -590,7 +582,7 @@ public class SlideAndDragListView<T> extends DragListView<T> implements WrapperA
     }
 
     public interface OnItemDeleteListener {
-        void onItemDelete(View view, int position);
+        void onItemDelete(int position);
     }
 
     @Deprecated

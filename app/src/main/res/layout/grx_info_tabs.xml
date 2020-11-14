@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.grx.settings.GrxSettingsActivity">
+    tools:context="com.deluxelabs.drc.GrxSettingsActivity">
 
-    <com.grx.settings.utils.SlidingTabLayout
+    <com.deluxelabs.drc.utils.SlidingTabLayout
         android:id="@+id/gid_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

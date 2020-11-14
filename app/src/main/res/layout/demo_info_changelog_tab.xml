@@ -23,19 +23,19 @@
                     android:textSize="14sp" android:textStyle="bold" android:layout_margin="8dp"
                     android:text="Main Features" android:textColor="?complemnt_accent_color"/>
 
-                <com.grx.settings.views.ArrayTextList
+                <com.deluxelabs.drc.views.ArrayTextList
                     android:layout_marginStart="18dp" android:layout_marginEnd="18dp"
                     android:layout_width="match_parent" android:layout_height="wrap_content" grxA_entries="@array/demo_changelog"/>
                 <TextView android:layout_width="wrap_content"  android:layout_height="wrap_content" android:gravity="center" android:layout_gravity="center"
                     android:textSize="14sp" android:textStyle="bold" android:layout_margin="8dp"
                     android:text="Type of Preferences" android:textColor="?complemnt_accent_color"/>
-                <com.grx.settings.views.ArrayTextList
+                <com.deluxelabs.drc.views.ArrayTextList
                     android:layout_marginStart="18dp" android:layout_marginEnd="18dp"
                     android:layout_width="match_parent" android:layout_height="wrap_content" grxA_entries="@array/demo_preferences"/>
                 <TextView android:layout_width="wrap_content"  android:layout_height="wrap_content" android:gravity="center" android:layout_gravity="center"
                     android:textSize="14sp" android:textStyle="bold" android:layout_margin="8dp"
                     android:text="User Options" android:textColor="?complemnt_accent_color"/>
-                <com.grx.settings.views.ArrayTextList
+                <com.deluxelabs.drc.views.ArrayTextList
                     android:layout_marginStart="18dp" android:layout_marginEnd="18dp"
                     android:layout_width="match_parent" android:layout_height="wrap_content" grxA_entries="@array/demo_useroptions"/>
                 <!--some space for fab button if you want to-->

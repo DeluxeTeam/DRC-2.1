@@ -16,11 +16,11 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
 
-import com.grx.settings.prefs_dlgs.DlgFrSelectSortItems;
-import com.grx.settings.utils.Common;
+import com.deluxelabs.drc.prefs_dlgs.DlgFrSelectSortItems;
+import com.deluxelabs.drc.utils.Common;
 
 import java.util.regex.Pattern;
 
@@ -66,7 +66,7 @@ public class GrxSelectSortItems extends GrxBasePreference implements DlgFrSelect
     @Override
     public void configStringPreference(String value){
         int napps=0;
-        if(! (mStringValue.isEmpty()||(mStringValue==null))  ){
+        if(!mStringValue.isEmpty()){
             String[] arr = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
             napps=arr.length;
         }

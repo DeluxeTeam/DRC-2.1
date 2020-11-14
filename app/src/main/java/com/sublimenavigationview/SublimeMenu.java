@@ -57,25 +57,25 @@ public class SublimeMenu implements Parcelable {
     /**
      * Contains all of the items for this menu
      */
-    private ArrayList<SublimeBaseMenuItem> mItems = new ArrayList<>();
+    private final ArrayList<SublimeBaseMenuItem> mItems = new ArrayList<>();
 
     /**
      * Contains all of the groups for this menu
      */
-    private ArrayList<SublimeGroup> mGroups = new ArrayList<>();
+    private final ArrayList<SublimeGroup> mGroups = new ArrayList<>();
 
     /**
      * Contains only the items that are currently visible.  This will be created/refreshed from
      * {@link #getVisibleItems()}
      */
-    private ArrayList<SublimeBaseMenuItem> mVisibleItems = new ArrayList<>();
+    private final ArrayList<SublimeBaseMenuItem> mVisibleItems = new ArrayList<>();
 
     // We only require _one_ presenter
     private SublimeMenuPresenter mPresenter;
 
     private boolean mBlockUpdates;
 
-    private ArrayList<SublimeBaseMenuItem> mAdapterData = new ArrayList<>();
+    private final ArrayList<SublimeBaseMenuItem> mAdapterData = new ArrayList<>();
 
     /**
      * Called by menu to notify of close and selection changes.
@@ -245,7 +245,7 @@ public class SublimeMenu implements Parcelable {
                 //grxgrx
             case CENTERED:
                 item = new GrxSublimeCenteredText(this, group, id, title,
-                        hint, valueProvidedAsync, false);
+                        hint, valueProvidedAsync);
                 break;
             default:
                 // TEXT
@@ -561,15 +561,13 @@ public class SublimeMenu implements Parcelable {
     }
 
     public SublimeBaseMenuItem addTGrxCenterdextItem(int groupId,
-                                           CharSequence title, CharSequence hint,
-                                           boolean showsIconSpace) {
+                                                     CharSequence title, CharSequence hint) {
         return addInternal(groupId, generateUniqueItemID()/* itemId */, title, hint, SublimeBaseMenuItem.ItemType.CENTERED,
                 false /*valueProvidedAsync*/, null, false, true);
     }
 
     protected SublimeBaseMenuItem addTGrxCenterdextItem(int groupId, int itemId,
-                                              CharSequence title, CharSequence hint,
-                                              boolean showsIconSpace) {
+                                                        CharSequence title, CharSequence hint) {
         return addInternal(groupId, itemId, title, hint, SublimeBaseMenuItem.ItemType.CENTERED,
                 false /*valueProvidedAsync*/, null, false, false);
     }
@@ -999,16 +997,16 @@ public class SublimeMenu implements Parcelable {
 
         // Used with ChangeType: ITEM_INSERTED, ITEM_REMOVED, ITEM_CHANGED,
         // RANGE_INSERTED, RANGE_REMOVED, RANGE_CHANGED
-        private int mAffectedPosition;
+        private final int mAffectedPosition;
 
         // Used with ChangeType: ITEM_MOVED
-        private int mMovedFromPosition;
-        private int mMovedToPosition;
+        private final int mMovedFromPosition;
+        private final int mMovedToPosition;
 
         // Used with ChangeType: RANGE_INSERTED, RANGE_REMOVED, RANGE_CHANGED
-        private int mNumberOfAffectedItems;
+        private final int mNumberOfAffectedItems;
 
-        private ChangeType mChangeType;
+        private final ChangeType mChangeType;
 
         public Change(ChangeType changeType, int affectedPosition, int movedFromPosition,
                       int movedToPosition, int numberOfAffectedItems) {

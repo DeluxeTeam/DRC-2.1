@@ -16,33 +16,31 @@
 
 package com.sublimenavigationview;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import com.grx.settings.R;
+import com.deluxelabs.drc.R;
+
+import java.util.Objects;
+
 /**
  * Base ViewGroup for all menu item types.
  */
 public class SublimeBaseItemView extends LinearLayout {
-    private static final String TAG = SublimeBaseItemView.class.getSimpleName();
 
     // Drawable state set - checked
     private static final int[] CHECKED_STATE_SET = {
             R.attr.state_item_checked
     };
 
-    private static final boolean isJBorHigher
-            = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
-
-    protected int mIconSize;
+    protected final int mIconSize;
     protected StateAwareTextView mText, mHint;
     protected SublimeBaseMenuItem mItemData;
     protected StateAwareImageView mIconHolder;
@@ -73,12 +71,9 @@ public class SublimeBaseItemView extends LinearLayout {
     protected void initializeViews() {
         mText = (StateAwareTextView) findViewById(R.id.text);
         mHint = (StateAwareTextView) findViewById(R.id.hint);
-        //mText = (StateAwareTextView) findViewById(R.id.text);
-        //mHint = (StateAwareTextView) findViewById(R.id.hint);
         mIconHolder = (StateAwareImageView) findViewById(R.id.iconHolder);
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void initialize(SublimeBaseMenuItem itemData, SublimeThemer themer) {
         mItemData = itemData;
         setVisibility(itemData.isVisible() ? View.VISIBLE : View.GONE);
@@ -86,7 +81,7 @@ public class SublimeBaseItemView extends LinearLayout {
 
         // Item Title styling
         TextViewStyleProfile itemStyleProfile = themer.getItemStyleProfile();
-        setItemTextColor(itemStyleProfile.getTextColor());
+        setItemTextColor(ColorStateList.valueOf(itemData.isEnabled() ? itemStyleProfile.getTextColor().getDefaultColor() : Color.GRAY));
         if (itemStyleProfile.getTypeface() != null) {
             setItemTypeface(itemStyleProfile.getTypeface(),
                     itemStyleProfile.getTypefaceStyle());
@@ -103,8 +98,6 @@ public class SublimeBaseItemView extends LinearLayout {
         if (showHint) {
             // Hint styling
             TextViewStyleProfile hintStyleProfile = themer.getItemHintStyleProfile();
-          //  setHintTextColor(hintStyleProfile.getTextColor());
-            setHintTextColor(hintStyleProfile.getHintTextColor());
             if (hintStyleProfile.getTypeface() != null) {
                 setHintTypeface(hintStyleProfile.getTypeface(),
                         hintStyleProfile.getTypefaceStyle());
@@ -126,14 +119,14 @@ public class SublimeBaseItemView extends LinearLayout {
 
         // Item Title styling
         TextViewStyleProfile itemStyleProfile = themer.getItemStyleProfile();
-       // setItemTextColor(itemStyleProfile.getTextColor());
-
+        setItemTextColor(ColorStateList.valueOf(itemData.isEnabled() ? itemStyleProfile.getTextColor().getDefaultColor() : Color.GRAY));
         if (itemStyleProfile.getTypeface() != null) {
             setItemTypeface(itemStyleProfile.getTypeface(),
                     itemStyleProfile.getTypefaceStyle());
         } else {
             setItemTypefaceStyle(itemStyleProfile.getTypefaceStyle());
         }
+
         setTitle(itemData.getTitle());
 
         setIconTintList(themer.getIconTintList());
@@ -144,7 +137,7 @@ public class SublimeBaseItemView extends LinearLayout {
         if (showHint) {
             // Hint styling
             TextViewStyleProfile hintStyleProfile = themer.getItemHintStyleProfile();
-           // setHintTextColor(hintStyleProfile.getTextColor());
+            setHintTextColor(ColorStateList.valueOf(itemData.isEnabled() ? itemStyleProfile.getTextColor().getDefaultColor() : Color.GRAY));
             if (hintStyleProfile.getTypeface() != null) {
                 setHintTypeface(hintStyleProfile.getTypeface(),
                         hintStyleProfile.getTypefaceStyle());
@@ -155,11 +148,6 @@ public class SublimeBaseItemView extends LinearLayout {
         }
 
         setItemChecked(itemData.isChecked());
-        //setItemBackground(themer.getItemBackground());
-    }
-
-    public SublimeBaseMenuItem getItemData() {
-        return mItemData;
     }
 
     public void setTitle(CharSequence title) {
@@ -167,9 +155,10 @@ public class SublimeBaseItemView extends LinearLayout {
     }
 
     private Drawable prepareIcon(Drawable icon) {
-        icon = DrawableCompat.wrap(icon.getConstantState().newDrawable()).mutate();
+        icon = DrawableCompat.wrap(Objects.requireNonNull(icon.getConstantState()).newDrawable()).mutate();
         icon.setBounds(0, 0, mIconSize, mIconSize);
-        DrawableCompat.setTintList(icon, mIconTintList);
+        // Uncomment if icons are plain to get custom color
+        // DrawableCompat.setTintList(icon, mIconTintList);
         return icon;
     }
 
@@ -227,14 +216,8 @@ public class SublimeBaseItemView extends LinearLayout {
 
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void setItemBackground(Drawable itemBackground) {
-        if (isJBorHigher) {
-            setBackground(itemBackground);
-        } else {
-            setBackgroundDrawable(itemBackground);
-        }
-
+        setBackground(itemBackground);
         refreshDrawableState();
     }
 
@@ -244,7 +227,6 @@ public class SublimeBaseItemView extends LinearLayout {
         if (mItemData != null && mItemData.isCheckable() && mItemData.isChecked()) {
             mergeDrawableStates(drawableState, CHECKED_STATE_SET);
         }
-
         return drawableState;
     }
 }

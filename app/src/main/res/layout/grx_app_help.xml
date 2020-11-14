@@ -16,7 +16,7 @@
             android:gravity="center_horizontal"
             android:textColor="?colorAccent" android:textSize="18sp" android:text="@string/grxs_app_help"/>
 
-        <com.grx.settings.views.ArrayTextList
+        <com.deluxelabs.drc.views.ArrayTextList
             android:layout_marginStart="18dp" android:layout_marginEnd="18dp"
             android:layout_width="match_parent" android:layout_height="wrap_content" grxA_entries="@array/grxa_app_help"/>
         <LinearLayout

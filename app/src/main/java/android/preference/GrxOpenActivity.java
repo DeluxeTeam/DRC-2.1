@@ -20,9 +20,9 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.Toast;
 
-import com.grx.settings.R;
-import com.grx.settings.prefssupport.PrefAttrsInfo;
-import com.grx.settings.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefssupport.PrefAttrsInfo;
+import com.deluxelabs.drc.utils.GrxPrefsUtils;
 
 import java.util.regex.Pattern;
 
@@ -30,7 +30,6 @@ import java.util.regex.Pattern;
 public class GrxOpenActivity extends GrxBasePreference{
 
     private Intent mIntent;
-    private String mLabel;
     private boolean mIsInstalled=false;
     private Drawable mIcon=null;
 
@@ -55,18 +54,19 @@ public class GrxOpenActivity extends GrxBasePreference{
         mStringValue=ta.getString(R.styleable.grxOpenactivity_activity);
         ta.recycle();
         checkDepRuleAndAssignKeyIfNeeded();
+        String mLabel;
         if(mStringValue.contains("/")){
             mIntent = new Intent();
-            String aux[]=mStringValue.split(Pattern.quote("/"));
+            String[] aux =mStringValue.split(Pattern.quote("/"));
             ComponentName componentName = new ComponentName(aux[0], aux[1] );
             mIntent.setComponent(componentName);
             mLabel = GrxPrefsUtils.getActivityLabelFromIntent(getContext(),mIntent);
         }else {
             mIntent=getContext().getPackageManager().getLaunchIntentForPackage(mStringValue);
-            mLabel=GrxPrefsUtils.getApplicationLabel(getContext(),mStringValue);
+            mLabel =GrxPrefsUtils.getApplicationLabel(getContext(),mStringValue);
         }
         if(mIntent!=null) mIcon = GrxPrefsUtils.getIconFromIntent(getContext(),mIntent);
-        if(mLabel==null) mLabel="";
+        if(mLabel ==null) mLabel ="";
         ResolveInfo resolveInfo = getContext().getPackageManager().resolveActivity(mIntent, 0);
         if(resolveInfo!=null) mIsInstalled = true;
         setSummary(mIsInstalled ? mLabel : getContext().getResources().getString(R.string.grxs_not_installed));

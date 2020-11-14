@@ -361,6 +361,185 @@
 
     <!--        Black White                    -->
 
+    <!--        Theme DRC Light                -->
+
+    <style name="Theme.Base.Light.Dlx" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Preferences color attributes. Keep them here with these values. Override values in added preference attributes. -->
+        <item name="iconTint">#00000000</item>
+        <item name="arrowColor">#00000000</item>
+        <item name="checkboxColor">#00000000</item>
+        <item name="switchColor">#00000000</item>
+        <item name="iconsValueTint">#00000000</item>
+        <item name="button_backgroundColor">#00000000</item>
+        <item name="button_textColor">#00000000</item>
+        <item name="rightIconTint">#00000000</item>
+        <item name="textColor">#00000000</item>
+        <item name="backgroundColor">#00000000</item>
+        <item name="seekbarColor">#00000000</item>
+        <item name="navbarcolor">#ff0c849e</item>
+
+        <!-- Customize Base theme here. -->
+
+        <item name="tabs_text_color">#ff0c849e</item> ## color textos tab en rom info
+        <item name="tabs_indicator_color">#ff0c849e</item> ## color lineas tab en rom info
+        <item name="sublimetheme">@style/SublimeTheme_drc_light</item>
+        <item name="android:dialogTheme">@style/GrxDialogStyleDlxLight</item>
+        <item name="android:alertDialogTheme">@style/GrxDialogStyleDlxLight</item>
+        <item name="svn_nav_header_bg">?colorPrimary</item>
+        <item name="navigationviewstyle">@style/NavigationViewStyle</item>
+        <item name="pickerColorEditTextColor">0xff222222</item>
+        <item name="tint_arrow_prefs">#ff222222</item>
+        <item name="pref_category_bg">#00000000</item>
+        <item name="seekbar_popup_bg">?colorAccent</item>
+        <item name="contrast_text_color">#ffffffff</item>
+        <item name="prefscreen_arrow_tint">?colorAccent</item>
+        <item name="complemnt_accent_color">?colorAccent</item>
+        <item name="button_text_color">?contrast_text_color</item>
+        <item name="recentscreensbg">?colorAccent</item>
+        <item name="drawerArrowStyle">@style/ToolbarDrawerStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
+    </style>
+
+    <style name="GrxDialogStyleDlxLight">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@style/GrxDialogStyleDlxLight</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@drawable/dialog_background_dlx_light</item>
+        <item name="android:windowMinWidthMajor">70.0%</item>
+        <item name="android:windowMinWidthMinor">90.0%</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowNoTitle">false</item>
+    </style>
+
+    <style name="Theme.DRC.Light" parent="@style/Theme.Base.Light.Dlx">
+        <item name="colorPrimary">#00000000</item> ## color pesta�a superior de ajustes bg , se pone transparente con 8 ceros
+        <item name="colorPrimaryDark">#ff0c849e</item> ## color en statusbar
+        <item name="colorAccent">#ff05d0fb</item>
+        <item name="contrast_text_color">#ffffffff</item>
+        <item name="svn_nav_header_bg">#ff05d0fb</item>
+        <item name="pref_category_text_color">#ff0c849e</item>
+        <item name="sublimetheme">@style/SublimeTheme_drc_light</item>
+        <item name="main_bg_color">@drawable/dlx_light</item>
+        <item name="pref_category_bg">#00000000</item>
+        <item name="snackbar_bg">#ff05d0fb</item>
+        <item name="toolbartitlecolor">#ff0c849e</item> ## Titulo texto toolbar
+        <item name="button_bg_tint">#ff05d0fb</item>
+        <item name="toolbarsubtitlecolor">#ff0c849e</item> ## SubTitulo texto toolbar
+        <item name="menucenteredtextcolor">#ff05d0fb</item>
+        <item name="recentscreenstextcolor">#ffffffff</item>
+        <item name="drawerArrowColor">#ff05d0fb</item> ## 3 rayas menu izquierda
+        <item name="threedotscolor">#ff05d0fb</item> ## 3 puntos derecha
+        <item name="fab_m_color">#ff05d0fb</item> ## Boton inferior redondo on
+        <item name="fab_m_press">#ff093653</item> ## Boton inferior redondo presion
+        <item name="fab_m_ripple">#ff05d0fb</item>
+        <item name="complementary_color1">#ff05d0fb</item>
+        <item name="complementary_color2">#ff0c849e</item>
+        <item name="complementary_color3">#ff025a93</item>
+        <item name="complementary_color4">#ff0a4266</item>
+        <item name="complementary_color5">#ff093653</item>
+    </style>
+
+    <style name="SublimeTheme_drc_light" parent="@style/SublimeTheme">
+        <item name="colorPrimary">#ff05d0fb</item> ## color primario de las pesta�as de ajustes on
+        <item name="colorPrimaryDark">#ff093653</item>
+        <item name="colorAccent">#ff05d0fb</item>
+        <item name="svn_panel_bg">#ffd5f6fd</item> ## panel ajustes y pesta�as
+        <item name="svn_fab_tint">#ff05d0fb</item> ## Boton ajustes superior redondo on
+        <item name="android:listDivider">@color/colorAccent_drc_light</item>
+        <item name="svn_hintTextColor">#ff093653</item>
+        <item name="svn_separatorHeight">1dp</item>
+        <item name="svn_separatorColor">#ff0c849e</item>
+        <item name="svn_menuTextColor">#ff093653</item> ## color texto de resto de pesta�as de ajustes off y menu ajustes
+    </style>
+
+    <!--        Theme.DRC.Dark                -->
+
+    <style name="Theme.Base.Dark.Dlx" parent="Theme.AppCompat">
+        <!-- Preferences color attributes. Keep them here with these values. Override values in added preference attributes. -->
+        <item name="iconTint">#00000000</item>
+        <item name="arrowColor">#00000000</item>
+        <item name="checkboxColor">#00000000</item>
+        <item name="switchColor">#00000000</item>
+        <item name="iconsValueTint">#00000000</item>
+        <item name="navbarcolor">#ff770303</item>
+
+        <!-- customize theme here -->
+        <item name="tabs_text_color">#ffdeb65f</item> ## color textos tab en rom info
+        <item name="tabs_indicator_color">#ffdeb65f</item> ## color lineas tab en rom info
+        <item name="sublimetheme">@style/SublimeTheme_drc_dark</item>
+        <item name="tint_arrow_prefs">#ffffffff</item>
+        <item name="android:dialogTheme">@style/GrxDialogStyleDlxDark</item>
+        <item name="android:alertDialogTheme">@style/GrxDialogStyleDlxDark</item>
+        <item name="navigationviewstyle">@style/NavigationViewStyle</item>
+        <item name="pickerColorEditTextColor">0xffffffff</item>
+        <item name="seekbar_popup_bg">?colorAccent</item>
+        <item name="prefscreen_arrow_tint">?colorAccent</item>
+        <item name="complemnt_accent_color">?colorAccent</item>
+        <item name="button_text_color">?contrast_text_color</item>
+        <item name="recentscreensbg">?colorAccent</item>
+        <item name="drawerArrowStyle">@style/ToolbarDrawerStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
+    </style>
+
+    <style name="GrxDialogStyleDlxDark">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@style/GrxDialogStyleDlxDark</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@drawable/dialog_background_dlx_dark</item>
+        <item name="android:windowMinWidthMajor">70.0%</item>
+        <item name="android:windowMinWidthMinor">90.0%</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowNoTitle">false</item>
+    </style>
+
+    <style name="Theme.DRC.Dark" parent="@style/Theme.Base.Dark.Dlx">
+        <item name="colorPrimary">#00000000</item> ## color pesta�a superior de ajustes bg , con 2 ceros menos se pone en color negro
+        <item name="colorPrimaryDark">#00000000</item> ## color en statusbar
+        <item name="colorAccent">#ff770303</item>
+        <item name="contrast_text_color">#ffffffff</item>
+        <item name="svn_nav_header_bg">#000000</item>
+        <item name="pref_category_text_color">#ff770303</item>
+        <item name="snackbar_bg">#ff970d0d</item>
+        <item name="sublimetheme">@style/SublimeTheme_drc_dark</item>
+        <item name="main_bg_color">@drawable/dlx_dark</item>
+        <item name="toolbartitlecolor">#ffdeb65f</item> ## Titulo texto toolbar
+        <item name="button_bg_tint">#ff4f0000</item>
+        <item name="toolbarsubtitlecolor">#fffed988</item> ## SubTitulo texto toolbar
+        <item name="drawerArrowColor">#ff970d0d</item> ## 3 rayas menu izquierda
+        <item name="threedotscolor">#ff970d0d</item> ## 3 puntos derecha
+        <item name="recentscreenstextcolor">#ffffffff</item>
+        <item name="menucenteredtextcolor">#ff770303</item>
+        <item name="fab_m_color">#ff770303</item> ## Boton inferior redondo on
+        <item name="fab_m_press">#ffdeb65f</item> ## Boton inferior redondo presion
+        <item name="fab_m_ripple">#ff970d0d</item>
+        <item name="complementary_color1">#fffed988</item>
+        <item name="complementary_color2">#fffed47a</item>
+        <item name="complementary_color3">#ffdeb65f</item>
+        <item name="complementary_color4">#ffb79344 </item>
+        <item name="complementary_color5">#ff98721e</item>
+    </style>
+
+    <style name="SublimeTheme_drc_dark" parent="SublimeTheme_dark">
+        <item name="colorPrimary">#ff770303</item> ## color primario de las pesta�as de ajustes on
+        <item name="colorPrimaryDark">#ff4f0000</item>
+        <item name="colorAccent">#ff770303</item>
+        <item name="svn_panel_bg">#000000</item> ## panel ajustes y pesta�as
+        <item name="android:listDivider">@color/colorAccent_drc_dark</item>
+        <item name="navigationviewstyle">@style/NavigationViewStyle</item>
+        <item name="svn_fab_tint">#ff770303</item> ## Boton ajustes superior redondo on
+        <item name="svn_hintTextColor">#ff98721e</item>
+        <item name="svn_separatorHeight">1dp</item>
+        <item name="svn_separatorColor">#ff770303</item>
+        <item name="svn_menuTextColor">#fffceecf</item> ## color texto de resto de pesta�as de ajustes off y menu ajustes
+    </style>
+
+
     <!--               black ICS               -->
 
     <style name="Theme.Black.Ics" parent="@style/Theme.Base.Dark">

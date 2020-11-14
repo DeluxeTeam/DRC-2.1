@@ -14,10 +14,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
-import com.grx.settings.utils.Common;
-import com.grx.settings.GrxPreferenceScreen;
-import com.grx.settings.R;
-import com.grx.settings.prefs_dlgs.DlgGrxMultipleAppSelection;
+import com.deluxelabs.drc.utils.Common;
+import com.deluxelabs.drc.GrxPreferenceScreen;
+import com.deluxelabs.drc.R;
+import com.deluxelabs.drc.prefs_dlgs.DlgGrxMultipleAppSelection;
 
 import java.util.regex.Pattern;
 
@@ -81,7 +81,7 @@ public class GrxMultipleAppSelection extends GrxBasePreference implements DlgGrx
 
     private void getPrefInfo(){
         int napps=0;
-        if(! (mStringValue.isEmpty()||(mStringValue==null))  ){
+        if(!mStringValue.isEmpty()){
             String[] arr = mStringValue.split(Pattern.quote(myPrefAttrsInfo.getMySeparator()));
             napps=arr.length;
         }

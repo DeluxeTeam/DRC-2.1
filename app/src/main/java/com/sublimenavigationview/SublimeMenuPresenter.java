@@ -29,7 +29,7 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.grx.settings.R;
+import com.deluxelabs.drc.R;
 /**
  * Presenter used to display a SublimeMenu.
  *
@@ -44,8 +44,6 @@ public class SublimeMenuPresenter {
     private LayoutInflater mLayoutInflater;
     private int mPaddingTopDefault;
     private SublimeThemer mThemer;
-
-    private Context mContext;
 
     private boolean mInitializing;
 
@@ -65,7 +63,6 @@ public class SublimeMenuPresenter {
     }
 
     public void initForMenu(Context context, SublimeMenu menu) {
-        mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
         mMenu = menu;
         mPaddingTopDefault = context.getResources()
@@ -418,7 +415,7 @@ public class SublimeMenuPresenter {
 
         @Override
         public long getItemId(int position) {
-            return (long) position;
+            return position;
         }
 
         private int resolveItemViewType(SublimeBaseMenuItem item) {

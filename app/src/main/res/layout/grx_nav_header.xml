@@ -22,15 +22,11 @@
     android:theme="?sublimetheme">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/gid_developer_icon"
-        android:src="@drawable/header_image"
-
-        android:scaleType="fitXY"
-        android:padding="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_gravity="center_vertical"/>
+        android:id="@+id/dlx_animation"
+        android:background="@drawable/fondos_varios_128"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="wrap_content"
