@@ -418,11 +418,10 @@ public class DlgFrGrxPerItemSingleSelection extends DialogFragment
         }
     };
 
-    private final static String blacklist = Common.sp.getString("dlx_icon_blacklist_r", "rotate,headset,sb_circularbt,qp_circularbt,kg_circularbt,analogclock,bt_level,sb_weather,kg_weather,qp_weather,sb_minitbt,qp_minitbt,kg_minitbt,sb_netspeed,kg_netspeed,qp_netspeed,sb_date,");
-
     private boolean shouldHide(String value) {
         if (value.contains(";")) value = value.split(";")[0];
-        return blacklist.contains(value);
+        return Common.sp.getString("dlx_icon_blacklist_r", "rotate,headset,sb_circularbt,qp_circularbt,kg_circularbt,analogclock,bt_level,sb_weather,kg_weather,qp_weather,sb_minitbt,qp_minitbt,kg_minitbt,sb_netspeed,kg_netspeed,qp_netspeed,sb_date,")
+                .contains(value);
     }
 
 }

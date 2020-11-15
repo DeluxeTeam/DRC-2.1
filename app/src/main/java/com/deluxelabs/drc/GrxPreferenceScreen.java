@@ -181,14 +181,17 @@ public class GrxPreferenceScreen extends PreferenceFragment implements
                 Common.BroadCastsList.clear();
             }
             if(!Common.SyncUpMode && Common.CommonBroadCastList!=null) Common.CommonBroadCastList.clear();
-            initPreferenceScreen(mGrxScreen);
+            // Fix NullPointerException on screen density change
+            try {
+                initPreferenceScreen(mGrxScreen);
+            } catch (NullPointerException ignored) {
+                mGrxSettingsActivity.restartApp();
+            }
             removePreferences();
 
             if(mCurrentSubScreen!=null && !TextUtils.isEmpty(mCurrentSubScreen)) {
                 showScreen((PreferenceScreen) getPreferenceScreen().findPreference(mCurrentSubScreen));
             }
-
-
 
         }
 

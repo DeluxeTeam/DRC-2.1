@@ -255,7 +255,13 @@ public class Common {
 
     public static void buildContextWrapper(Context context){
         Common.mContextWrapper = null;
-        String themename = Common.sp.getString(Common.S_APPOPT_USER_SELECTED_THEME_NAME, context.getString(R.string.grxs_default_theme));
+        // Fix NullPointerException on screen density change (if it throws NullPointerException will reboot the app from GrxPreferenceScreen)
+        String themename;
+        try {
+            themename = Common.sp.getString(Common.S_APPOPT_USER_SELECTED_THEME_NAME, context.getString(R.string.grxs_default_theme));
+        } catch (NullPointerException ignored) {
+            return;
+        }
         if(themename.isEmpty()) return;
         int themeid = context.getResources().getIdentifier(themename,"style",  context.getPackageName());
         Resources.Theme helpertheme = context.getResources().newTheme();
@@ -263,4 +269,5 @@ public class Common {
         Common.mContextWrapper = new ContextThemeWrapper(context, 0);
         Common.mContextWrapper.getTheme().setTo(helpertheme);
     }
+
 }
