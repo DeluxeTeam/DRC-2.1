@@ -6,12 +6,14 @@
         <GrxInfoText android:textColor="?complementary_color3" android:textSize="20sp" android:summary="@string/no_deluxe_kernel" />
     </GrxPreferenceCategory>
 
+    <!-- SELinux -->
     <GrxPreferenceCategory android:title="@string/selinux_title" grx:bpRule="kernel">
 
         <GrxSwitchPreference
             android:title="@string/selinux"
             android:key="dlx_kernel_selinux"
             android:defaultValue="true"
+            grx:saveSettings="false"
             android:summaryOff="Permissive"
             android:summaryOn="Enforcing"
             grx:broadCast1Extra="selinux"
@@ -27,6 +29,7 @@
             android:title="@string/governors"
             android:key="dlx_kernel_governors"
             grx:allowSortOut="false"
+            grx:saveSettings="false"
             grx:broadCast1Extra="governors"
             grx:broadCast1="dlx_kernel_values"
             android:defaultValue="big;interactive|little;interactive|"
@@ -39,6 +42,7 @@
         <GrxPerItemSingleSelection
             android:title="@string/io_schedulers"
             grx:allowSortOut="false"
+            grx:saveSettings="false"
             android:key="dlx_kernel_schedulers"
             grx:broadCast1Extra="schedulers"
             grx:broadCast1="dlx_kernel_values"
@@ -57,6 +61,7 @@
         <GrxSwitchPreference
             android:title="@string/dt2w"
             android:key="dlx_kernel_dt2w"
+            grx:saveSettings="false"
             android:defaultValue="false"
             grx:broadCast1Extra="dt2w"
             grx:broadCast1="dlx_kernel_values" />
@@ -67,6 +72,7 @@
             android:key="dlx_kernel_s2w"
             grx:broadCast1="dlx_kernel_values"
             grx:separator=","
+            grx:saveSettings="false"
             grx:broadCast1Extra="s2w"
             grx:optionsArray="@array/kernel_s2w_entries"
             grx:valuesArray="@array/kernel_s2w_values" />
@@ -78,6 +84,7 @@
             android:defaultValue="0"
             grx:broadCast1="dlx_kernel_values"
             grx:broadCast1Extra="s2s"
+            grx:saveSettings="false"
             grx:optionsArray="@array/kernel_s2s_entries"
             grx:valuesArray="@array/kernel_s2s_values" />
 
@@ -89,10 +96,24 @@
             grx:broadCast1="dlx_kernel_values"
             grx:broadCast1Extra="gesture_vibration"
             grx:minValue="0"
+            grx:saveSettings="false"
             grx:maxValue="90"
             grx:interval="1"/>
 
     </GrxPreferenceCategory>
 
+    <!-- Misc -->
+    <GrxPreferenceCategory android:title="@string/misc" grx:bpRule="kernel">
+
+        <!-- Software CRC -->
+        <GrxSwitchPreference
+            android:title="@string/crc"
+            android:key="dlx_kernel_crc"
+            android:defaultValue="false"
+            grx:saveSettings="false"
+            grx:broadCast1Extra="crc"
+            grx:broadCast1="dlx_kernel_values" />
+
+    </GrxPreferenceCategory>
 
 </PreferenceScreen>

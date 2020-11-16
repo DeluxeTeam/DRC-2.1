@@ -6,14 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Handler;
-import android.os.Process;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.deluxelabs.drc.R;
-import com.deluxelabs.drc.utils.Common;
-import com.deluxelabs.drc.utils.RootPrivilegedUtils;
 import com.root.RootUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -113,9 +109,9 @@ public class KernelUtils extends BroadcastReceiver {
     }
 
     private void setCRC() {
-        /*final int dt2w = Common.sp.getBoolean("dlx_kernel_crc", false) ? 1 : 0;
-        RootUtils.runCommand("busybox echo " + dt2w + " > /sys/crc"); // TODO CRC sys file
-        RootUtils.runCommand("echo " + dt2w + " > /sys/crc");*/
+        final String crc = Common.sp.getBoolean("dlx_kernel_crc", false) ? "Y" : "N";
+        RootUtils.runCommand("busybox echo " + crc + " > /sys/module/mmc_core/parameters/use_spi_crc");
+        RootUtils.runCommand("echo " + crc + " > /sys/module/mmc_core/parameters/use_spi_crc");
     }
 
     private void setDT2W(Context context) {

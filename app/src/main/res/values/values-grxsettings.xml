@@ -2466,6 +2466,8 @@
     <string name="second">Second color</string>
     <string name="dcolor">Dials color</string>
     <string name="use_bg">Use image as background</string>
+    <string name="misc">Others</string>
+    <string name="crc">Software CRC</string>
     <!-- DeluxeROM end -->
 
 </resources>
