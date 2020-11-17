@@ -49,7 +49,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="dlx_kernel_values"/>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>

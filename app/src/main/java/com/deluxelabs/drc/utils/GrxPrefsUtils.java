@@ -681,6 +681,7 @@ public class GrxPrefsUtils {
             try {
                 intent.setAction(action);
                 if(extraval!=null && !extraval.isEmpty()) intent.putExtra("arg", extraval);
+                intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
                 context.sendBroadcast(intent);
             }catch (Exception e){
                 e.printStackTrace();

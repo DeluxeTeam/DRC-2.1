@@ -20,8 +20,10 @@ import android.app.DialogFragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -69,6 +71,7 @@ import com.deluxelabs.drc.prefssupport.GroupedValueInfo;
 import com.deluxelabs.drc.utils.Common;
 import com.deluxelabs.drc.utils.GrxImageHelper;
 import com.deluxelabs.drc.utils.GrxPrefsUtils;
+import com.deluxelabs.drc.utils.KernelUtils;
 import com.deluxelabs.drc.utils.RootPrivilegedUtils;
 import com.deluxelabs.drc.views.GrxFloatingRecents;
 import com.fab.ObservableScrollView;
@@ -227,6 +230,13 @@ public class GrxSettingsActivity extends AppCompatActivity implements
 
 
         setContentView(R.layout.grx_nav_layout);
+
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                KernelUtils.dlxApplyValues(context, intent.getStringExtra("arg"));
+            }
+        }, new IntentFilter("dlx_kernel_values"));
 
         mOptionsMenu=null;
         mCurrentMenuItem = null;
