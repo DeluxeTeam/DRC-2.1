@@ -50,13 +50,15 @@ public class KernelUtils extends BroadcastReceiver {
             if (!RootPrivilegedUtils.getIsDeviceRooted()) {
                 Toast.makeText(context, R.string.grxs_app_not_rooted, Toast.LENGTH_LONG).show();
             } else {
-                final String pm = context.getPackageName();
-                // Create SharedPreferences on boot_completed, else we'll get FC while getting prefs
-                try {
-                    Common.sp = context.createPackageContext(pm, CONTEXT_IGNORE_SECURITY).getSharedPreferences(pm + "_preferences", MODE_PRIVATE);
-                } catch (PackageManager.NameNotFoundException ignored) {
-                    Log.d("DLX", "CANNOT CREATE DRC SharedPreferences");
-                    return;
+                if (Common.sp == null) {
+                    final String pm = context.getPackageName();
+                    // Create SharedPreferences on boot_completed, else we'll get FC while getting prefs
+                    try {
+                        Common.sp = context.createPackageContext(pm, CONTEXT_IGNORE_SECURITY).getSharedPreferences(pm + "_preferences", MODE_PRIVATE);
+                    } catch (PackageManager.NameNotFoundException ignored) {
+                        Log.d("DLX", "CANNOT CREATE DRC SharedPreferences");
+                        return;
+                    }
                 }
                 switch (arg) {
                     case "boot":
