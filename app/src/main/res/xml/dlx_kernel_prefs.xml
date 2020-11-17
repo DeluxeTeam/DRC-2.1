@@ -102,6 +102,46 @@
 
     </GrxPreferenceCategory>
 
+    <!-- Fading led -->
+    <GrxPreferenceCategory android:title="@string/led_fading" grx:bpRule="kernel">
+
+        <!-- Enable fading in/out -->
+        <GrxSwitchPreference
+            android:title="@string/enable_fading"
+            android:key="dlx_kernel_led_ramp"
+            android:defaultValue="true"
+            grx:saveSettings="false"
+            grx:broadCast1Extra="led"
+            grx:broadCast1="dlx_kernel_values" />
+
+        <!-- Fade in timeout -->
+        <GrxSeekBar
+            android:title="@string/fade_in"
+            android:key="dlx_kernel_led_in"
+            android:dependency="dlx_kernel_led_ramp"
+            android:defaultValue="800"
+            grx:broadCast1="dlx_kernel_values"
+            grx:broadCast1Extra="led"
+            grx:minValue="100"
+            grx:saveSettings="false"
+            grx:maxValue="4000"
+            grx:interval="1"/>
+
+        <!-- Fade out timeout -->
+        <GrxSeekBar
+            android:title="@string/fade_out"
+            android:key="dlx_kernel_led_out"
+            android:dependency="dlx_kernel_led_ramp"
+            android:defaultValue="800"
+            grx:broadCast1="dlx_kernel_values"
+            grx:broadCast1Extra="led"
+            grx:minValue="100"
+            grx:saveSettings="false"
+            grx:maxValue="4000"
+            grx:interval="1"/>
+
+    </GrxPreferenceCategory>
+
     <!-- Misc -->
     <GrxPreferenceCategory android:title="@string/misc" grx:bpRule="kernel">
 

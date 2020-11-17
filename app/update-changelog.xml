@@ -1,9 +1,14 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.1.1</latestVersion>
+        <latestVersion>2.1.2</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
-            - Test
+-- DRC 2.1.2
+
+- Fixed kernel settings not saved sometimes
+- Added next/prev track as custom actions
+- Added software CRC switch
+- Added led fading settings (Requires DeluxeKernel_v16.4)
         </releaseNotes>
     </update>
 </AppUpdater>

@@ -90,6 +90,9 @@ public class KernelUtils extends BroadcastReceiver {
                     case "crc":
                         setCRC();
                         break;
+                    case "led":
+                        setLed();
+                        break;
                 }
             }
         }
@@ -105,7 +108,22 @@ public class KernelUtils extends BroadcastReceiver {
         setGovernors();
         setSchedulers();
         setCRC();
+        setLed();
         android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+    private void setLed() {
+        final String led = Common.sp.getBoolean("dlx_kernel_led_ramp", true) ? "1" : "0";
+        RootUtils.runCommand("busybox echo " + led + " > /sys/class/sec/led/led_fade");
+        RootUtils.runCommand("echo " + led + " > /sys/class/sec/led/led_fade");
+
+        final int in = Common.sp.getInt("dlx_kernel_led_in", 800);
+        RootUtils.runCommand("busybox echo " + in + " > /sys/class/sec/led/led_fade_time_up");
+        RootUtils.runCommand("echo " + in + " > /sys/class/sec/led/led_fade_time_up");
+
+        final int out = Common.sp.getInt("dlx_kernel_led_out", 800);
+        RootUtils.runCommand("busybox echo " + out + " > /sys/class/sec/led/led_fade_time_down");
+        RootUtils.runCommand("echo " + out + " > /sys/class/sec/led/led_fade_time_down");
     }
 
     private void setCRC() {

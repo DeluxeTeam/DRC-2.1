@@ -1097,6 +1097,10 @@
     <string name="use_bg">Usar imagen de fondo</string>
     <string name="misc">Otros</string>
     <string name="crc">Software CRC</string>
+    <string name="led_fading">Desvanecimiento progresivo de led</string>
+    <string name="enable_fading">Activar efecto</string>
+    <string name="fade_in">Tiempo para aparecer</string>
+    <string name="fade_out">Tiempo para desaparecer</string>
     <!-- DeluxeROM end -->
 
 </resources>
