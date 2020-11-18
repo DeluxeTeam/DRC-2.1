@@ -2474,6 +2474,10 @@
     <string name="enable_fading">Enable fading in/out</string>
     <string name="fade_in">Fade in timeout</string>
     <string name="fade_out">Fade out timeout</string>
+    <string name="rom_updates">Automatic check for ROM updates</string>
+    <string name="kernel_updates">Automatic check for kernel updates</string>
+    <string name="new_kernel">-- New DeluxeKernel®_v%s is out!</string>
+    <string name="new_rom">-- New DeluxeROM®_v%s is out!</string>
     <!-- DeluxeROM end -->
 
 </resources>

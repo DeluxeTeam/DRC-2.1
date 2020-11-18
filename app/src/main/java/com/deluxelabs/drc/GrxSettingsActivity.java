@@ -30,9 +30,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -56,7 +54,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -85,7 +82,9 @@ import com.sublimenavigationview.SublimeMenu;
 import com.sublimenavigationview.SublimeNavMenuView;
 import com.sublimenavigationview.SublimeNavigationView;
 import com.sublimenavigationview.SublimeTextWithBadgeMenuItem;
+import org.apache.commons.io.IOUtils;
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -95,10 +94,13 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.ref.WeakReference;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -199,7 +201,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
     private boolean isUserWarned = false;
 
     // Both AsyncTasks must be accessible to cancel them on onDetached, else on app reloads (night mode, dual bar...) we'll get a memory leak
-    private AsyncTask<Void, Void, Void> mSU/*, mDLX*/;
+    private AsyncTask<Void, Void, Void> mSU/*, mDLX*/, mROM, mKernel;
 
     public int mSelectedTool = -1;
 
@@ -321,13 +323,38 @@ public class GrxSettingsActivity extends AppCompatActivity implements
 
         setNavigationBarBgColor();
 
-        if (!Common.sp.getBoolean("check_updates", true)) return;
+        final boolean isSpanish = Locale.getDefault().getLanguage().equals("es");
 
-        AppUpdater appUpdater = new AppUpdater(this)
-        .setUpdateFrom(UpdateFrom.XML)
-        .setButtonDoNotShowAgain(null)
-        .setUpdateXML("https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update-changelog.xml");
-        appUpdater.start();
+        if (Common.sp.getBoolean("check_updates", true)) {
+            new AppUpdater(this)
+                .setUpdateFrom(UpdateFrom.XML)
+                .setButtonDoNotShowAgain(null)
+                .setUpdateXML(
+                        isSpanish ?
+                        "https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update-changelog_es.xml"
+                                :
+                        "https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update-changelog.xml"
+                )
+                .start();
+        }
+
+        if (Common.sp.getBoolean("check_rom", true)) {
+            mROM = new dlxUpdater(this,
+                    isSpanish ?
+                            "https://raw.githubusercontent.com/DeluxeTeam/DeluxeROM_N950F_G95xF/master/update_es.json"
+                            :
+                            "https://raw.githubusercontent.com/DeluxeTeam/DeluxeROM_N950F_G95xF/master/update.json",
+                    "/sdcard/dlxtmprom").execute();
+        }
+
+        if (Common.sp.getBoolean("check_kernel", true)) {
+            mKernel = new dlxUpdater(this,
+                    isSpanish ?
+                            "https://raw.githubusercontent.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/master/deluxe/update_es.json"
+                            :
+                            "https://raw.githubusercontent.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/master/deluxe/update.json",
+                    "/sdcard/dlxtmpkernel").execute();
+        }
 
     }
 
@@ -936,6 +963,8 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         mConfigMenu.getMenuItem(R.id.grx_mid_fw_dismiss_outside).setEnabled(mShowFloatingRecentsWindow);
 
         mConfigMenu.getMenuItem(R.id.grx_mid_app_updates).setChecked(Common.sp.getBoolean("check_updates", true));
+        mConfigMenu.getMenuItem(R.id.grx_mid_rom_updates).setChecked(Common.sp.getBoolean("check_rom", true));
+        mConfigMenu.getMenuItem(R.id.grx_mid_kernel_updates).setChecked(Common.sp.getBoolean("check_kernel", true));
 
         if(mShowFloatingRecentsWindow) {
             if(mFloatingRecentsWindow==null) addFloatingRecentScreensWindow();
@@ -2215,11 +2244,111 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         }
     }
 
-    // Cancel AsyncTask since will be called again on onCreate
+    // Cancel AsyncTasks since will be called again on onCreate
     @Override
     public void onDetachedFromWindow() {
         mSU.cancel(true);
+        mROM.cancel(true);
+        mKernel.cancel(true);
         super.onDetachedFromWindow();
+    }
+
+    private final static class dlxUpdater extends AsyncTask<Void, Void, Void> {
+
+        private final WeakReference<GrxSettingsActivity> mInstance;
+        private final String mUrl, mFile;
+
+        dlxUpdater(GrxSettingsActivity activity, String url, String file) {
+            mInstance = new WeakReference<>(activity);
+            mUrl = url;
+            mFile = file;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                URL u = new URL(mUrl);
+                InputStream is = u.openStream();
+
+                DataInputStream dis = new DataInputStream(is);
+
+                byte[] buffer = new byte[1024];
+                int length;
+
+                FileOutputStream fos = new FileOutputStream(new File(mFile));
+                while ((length = dis.read(buffer))>0) {
+                    fos.write(buffer, 0, length);
+                }
+
+            } catch (SecurityException | IOException ignored) {}
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            final File outputFile = new File(mFile);
+            if (!outputFile.exists()) return;
+            final GrxSettingsActivity grx = mInstance.get();
+            grx.runOnUiThread(mFile.equals("/sdcard/dlxtmprom") ? grx::checkRom : grx::checkKernel);
+        }
+
+    }
+
+    private void checkKernel() {
+        final String kernel = KernelUtils.getKernelName();
+        if (kernel.isEmpty() || !kernel.contains("Deluxe")) return;
+        final String version = kernel.split(Pattern.quote("++"))[1].split("v")[1];
+        String file = null;
+        try {
+            file = IOUtils.toString(URI.create("file:///sdcard/dlxtmpkernel"));
+        } catch (IOException ignored) {};
+        if (file == null || file.isEmpty() || !file.contains("lastVersion") || !file.contains("changelog")) return;
+        final String lastVersion = file.split(Pattern.quote("{"))[1].split(Pattern.quote("}"))[0];
+        if (!version.equals(lastVersion)) {
+            final String changelog = file.split(Pattern.quote("{"))[2].split(Pattern.quote("}"))[0];
+            warnUpdate(changelog, getString(R.string.new_kernel, lastVersion),
+                    Uri.parse("https://github.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/releases"));
+        }
+    }
+
+    @SuppressLint("PrivateApi")
+    private void checkRom() {
+        String value = null;
+        try {
+            value = (String) Class.forName("android.os.SystemProperties")
+                    .getMethod("get", String.class).invoke(null, "ro.deluxerom.version");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (value == null || value.isEmpty() || !value.contains("Deluxe")) return;
+        final String version = value.split(Pattern.quote("_"))[1].split("v")[1];
+        String file = null;
+        try {
+            file = IOUtils.toString(URI.create("file:///sdcard/dlxtmprom"));
+        } catch (IOException ignored) {};
+        if (file == null || file.isEmpty() || !file.contains("lastVersion") || !file.contains("changelog")) return;
+        final String lastVersion = file.split(Pattern.quote("{"))[1].split(Pattern.quote("}"))[0];
+        if (!version.equals(lastVersion)) {
+            final String changelog = file.split(Pattern.quote("{"))[2].split(Pattern.quote("}"))[0];
+            final boolean isSpanish = Locale.getDefault().getLanguage().equals("es");
+            warnUpdate(changelog, getString(R.string.new_rom, lastVersion),
+                    Uri.parse(
+                            isSpanish ?
+                            "https://www.htcmania.com/showthread.php?t=1404819"
+                                :
+                            "https://forum.xda-developers.com/galaxy-note-8/development/n950f-g955f-g950f-deluxerom-v6-0-t3784712"
+                    ));
+        }
+    }
+
+    private void warnUpdate(String changelog, String message, Uri url) {
+        AlertDialog.Builder adb= new AlertDialog.Builder(this);
+        adb.setMessage(message + "\n\n\n" + changelog);
+        adb.setPositiveButton(R.string.appupdater_btn_update, (dialogInterface, i) ->
+                startActivity(new Intent(Intent.ACTION_VIEW).setData(url)));
+        adb.setNegativeButton(R.string.appupdater_btn_dismiss, (dialogInterface, i) -> dialogInterface.dismiss());
+        adb.create().show();
     }
 
     /** get root bg task, to avoid the app to crash if phone not rooted **/

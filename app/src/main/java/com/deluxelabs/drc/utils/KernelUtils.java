@@ -32,7 +32,7 @@ public class KernelUtils extends BroadcastReceiver {
         }
     }
 
-    public static void dlxApplyValues(Context context, String arg) {
+    public static String getKernelName() {
         StringBuilder log = new StringBuilder();
         try {
             java.lang.Process process = Runtime.getRuntime().exec("uname -a");
@@ -45,7 +45,11 @@ public class KernelUtils extends BroadcastReceiver {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String kernel = log.toString();
+        return log.toString();
+    }
+
+    public static void dlxApplyValues(Context context, String arg) {
+        final String kernel = getKernelName();
         if (!kernel.isEmpty() && kernel.contains("Deluxe")) {
             if (!RootPrivilegedUtils.getIsDeviceRooted()) {
                 Toast.makeText(context, R.string.grxs_app_not_rooted, Toast.LENGTH_LONG).show();

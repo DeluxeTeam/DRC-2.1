@@ -1101,6 +1101,10 @@
     <string name="enable_fading">Activar efecto</string>
     <string name="fade_in">Tiempo para aparecer</string>
     <string name="fade_out">Tiempo para desaparecer</string>
+    <string name="rom_updates">Comprobación de actualizaciones de ROM</string>
+    <string name="kernel_updates">Comprobación de actualizaciones de kernel</string>
+    <string name="new_kernel">-- Nuevo DeluxeKernel®_v%s publicado!</string>
+    <string name="new_rom">-- Nuevo DeluxeROM®_v%s publicado!</string>
     <!-- DeluxeROM end -->
 
 </resources>

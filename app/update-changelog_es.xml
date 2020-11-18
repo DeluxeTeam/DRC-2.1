@@ -1,0 +1,14 @@
+<AppUpdater>
+    <update>
+        <latestVersion>2.1.2</latestVersion>
+        <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
+        <releaseNotes>
+            -- DRC 2.1.2
+
+            - Arreglados ajustes de kernel
+            - Añadido siguiente/anterior canción como acción personalizada
+            - Añadido ajustes de CRC software
+            - Añadidos ajustes de led progresivo (Requiere DeluxeKernel_v16.4)
+        </releaseNotes>
+    </update>
+</AppUpdater>
