@@ -15,9 +15,11 @@ package com.deluxelabs.drc;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.app.FragmentTransaction;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -725,6 +727,12 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         startActivity(new Intent(this, GrxSettingsActivity.class));
         Common.buildContextWrapper(this);
         this.overridePendingTransition(R.animator.fadein, 0);
+    }
+
+    void restartAppFull() {
+        ((AlarmManager) getSystemService(ALARM_SERVICE)).set(AlarmManager.RTC, System.currentTimeMillis() + 100,
+                PendingIntent.getActivity(this, 123456, new Intent(this, GrxSettingsActivity.class), PendingIntent.FLAG_CANCEL_CURRENT));
+        System.exit(0);
     }
 
     private void updateUserConfigCheckBox(String userOption, boolean state){

@@ -167,7 +167,7 @@ public class GrxPreferenceScreen extends PreferenceFragment implements
             try {
                 addPreferencesFromResource(i);
             } catch (InflateException ignored) {
-                mGrxSettingsActivity.restartApp();
+                mGrxSettingsActivity.restartAppFull();
             }
             mGrxScreen = getPreferenceScreen();
             mNumPrefs=mGrxScreen.getPreferenceCount();
