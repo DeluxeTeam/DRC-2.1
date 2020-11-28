@@ -203,7 +203,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
     private boolean isUserWarned = false;
 
     // Both AsyncTasks must be accessible to cancel them on onDetached, else on app reloads (night mode, dual bar...) we'll get a memory leak
-    private AsyncTask<Void, Void, Void> mSU/*, mDLX*/, mROM, mKernel;
+    private AsyncTask<Void, Void, Void> mSU/*, mDLX*/, mROM, mKernel, mBLCP;
 
     public int mSelectedTool = -1;
 
@@ -356,6 +356,12 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                             :
                             "https://raw.githubusercontent.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/master/deluxe/update.json",
                     "/sdcard/dlxtmpkernel").execute();
+        }
+
+        if (Common.sp.getBoolean("check_blcp", true)) {
+            mBLCP = new dlxUpdater(this,
+                            "https://raw.githubusercontent.com/DeluxeTeam/N950F_G95xF_BL_CP/master/VERSIONS",
+                    "/sdcard/dlxtmpblcp").execute();
         }
 
     }
@@ -973,6 +979,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         mConfigMenu.getMenuItem(R.id.grx_mid_app_updates).setChecked(Common.sp.getBoolean("check_updates", true));
         mConfigMenu.getMenuItem(R.id.grx_mid_rom_updates).setChecked(Common.sp.getBoolean("check_rom", true));
         mConfigMenu.getMenuItem(R.id.grx_mid_kernel_updates).setChecked(Common.sp.getBoolean("check_kernel", true));
+        mConfigMenu.getMenuItem(R.id.grx_mid_blcp_updates).setChecked(Common.sp.getBoolean("check_blcp", true));
 
         if(mShowFloatingRecentsWindow) {
             if(mFloatingRecentsWindow==null) addFloatingRecentScreensWindow();
@@ -2258,6 +2265,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         mSU.cancel(true);
         mROM.cancel(true);
         mKernel.cancel(true);
+        mBLCP.cancel(true);
         super.onDetachedFromWindow();
     }
 
@@ -2298,9 +2306,42 @@ public class GrxSettingsActivity extends AppCompatActivity implements
             final File outputFile = new File(mFile);
             if (!outputFile.exists()) return;
             final GrxSettingsActivity grx = mInstance.get();
-            grx.runOnUiThread(mFile.equals("/sdcard/dlxtmprom") ? grx::checkRom : grx::checkKernel);
+            grx.runOnUiThread(mFile.equals("/sdcard/dlxtmprom") ? grx::checkRom : mFile.equals("/sdcard/dlxtmpkernel") ? grx::checkKernel : grx::checkBLCP);
         }
 
+    }
+
+    @SuppressLint("PrivateApi")
+    private void checkBLCP() {
+        String value = null;
+        try {
+            value = (String) Class.forName("android.os.SystemProperties")
+                    .getMethod("get", String.class).invoke(null, "ro.boot.bootloader");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (value == null || value.isEmpty()) return;
+        final String version = value.substring(0, 5);
+        String[] lines = null;
+        try {
+            lines = IOUtils.toString(URI.create("file:///sdcard/dlxtmpblcp")).split(Pattern.quote("\n"));
+        } catch (IOException ignored) {}
+        assert lines != null;
+        boolean found = false;
+        String newversion = null;
+        String full = "";
+        for (String i : lines) {
+            if (i.contains(version)) {
+                found = true;
+                full = i;
+                newversion = i.split(":")[0];
+                break;
+            }
+        }
+        if (found && newversion != null && !newversion.isEmpty() && !value.equals(newversion)) {
+            warnUpdate(full, getString(R.string.new_blcp, newversion),
+                Uri.parse("https://github.com/DeluxeTeam/N950F_G95xF_BL_CP/releases"));
+        }
     }
 
     private void checkKernel() {

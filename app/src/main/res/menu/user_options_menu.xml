@@ -29,6 +29,12 @@
         android:title="@string/kernel_updates"
         android:checked="true"
         android:checkable="true" />
+    <Checkbox
+        android:id="@+id/grx_mid_blcp_updates"
+        android:key="check_blcp"
+        android:title="@string/blcp_updates"
+        android:checked="true"
+        android:checkable="true" />
     <Separator/>
     <CenteredText android:title="@string/grxs_title_theming_options" android:checked="true"/>
     <Separator/>

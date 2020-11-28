@@ -1105,6 +1105,9 @@
     <string name="kernel_updates">Comprobación de actualizaciones de kernel</string>
     <string name="new_kernel">-- Nuevo DeluxeKernel®_v%s publicado!</string>
     <string name="new_rom">-- Nuevo DeluxeROM®_v%s publicado!</string>
+    <string name="blcp_updates">Comprobación de actualizaciones de BL/CP</string>
+    <string name="new_blcp">Nuevo BL/CP %s publicado!</string>
+    <string name="color_night">Color en modo noche</string>
     <!-- DeluxeROM end -->
 
 </resources>

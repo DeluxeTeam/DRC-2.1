@@ -850,8 +850,8 @@
                 android:title="@string/position"
                 grx:groupedValueMyAlias="qpdatagrav"
                 grx:groupedValueKey="qp_coloring"
-                grx:optionsArray="@array/dual_sb_noti_positions_options"
-                grx:valuesArray="@array/dual_sb_noti_positions_values"
+                grx:optionsArray="@array/data_bar_pos"
+                grx:valuesArray="@array/data_bar_pos_values"
                 android:key="dlx_qpdata_position"
                 android:defaultValue="2" />
 
@@ -864,7 +864,7 @@
                 grx:colorPickerStyle="flower" />
 
             <GrxColorPicker
-                android:title="@string/tint"
+                android:title="@string/color_night"
                 grx:groupedValueMyAlias="qpdatadark"
                 grx:groupedValueKey="qp_coloring"
                 android:key="dlx_qpdata_tint"

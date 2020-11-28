@@ -893,7 +893,7 @@
 
                 <GrxSeekBar
                     android:title="@string/size"
-                    android:key="dlx_kg_netspeed_size"
+                    android:key="dlx_kg_weather_size"
                     android:defaultValue="15"
                     grx:groupedValueMyAlias="sz"
                     grx:groupedValueKey="kg_dlxsbweather"

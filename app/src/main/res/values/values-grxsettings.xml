@@ -2093,6 +2093,16 @@
     <string-array name="dlx_analog_values"> <!-- SystemUI drawable name -->
         <item>dlx_analog_black</item>
     </string-array>
+    <string-array name="data_bar_pos">
+        <item>@string/left</item>
+        <item>@string/center</item>
+        <item>@string/right</item>
+    </string-array>
+    <string-array name="data_bar_pos_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 
     <string name="toast_FastFade_animation">Fast fade</string>
     <string name="toast_GrowFadeBottom_animation">Grow fade bottom</string>
@@ -2478,6 +2488,9 @@
     <string name="kernel_updates">Automatic check for kernel updates</string>
     <string name="new_kernel">-- New DeluxeKernel®_v%s is out!</string>
     <string name="new_rom">-- New DeluxeROM®_v%s is out!</string>
+    <string name="blcp_updates">Automatic check for BL/CP updates</string>
+    <string name="new_blcp">New BL/CP %s is out!</string>
+    <string name="color_night">Color on night mode</string>
     <!-- DeluxeROM end -->
 
 </resources>
