@@ -798,6 +798,17 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                 Common.sp.edit().putBoolean("check_updates", state).commit();
                 break;
 
+            case "grx_mid_rom_updates":
+                Common.sp.edit().putBoolean("check_rom", state).commit();
+                break;
+
+            case "grx_mid_kernel_updates":
+                Common.sp.edit().putBoolean("check_kernel", state).commit();
+                break;
+
+            case "grx_mid_blcp_updates":
+                Common.sp.edit().putBoolean("check_blcp", state).commit();
+                break;
 
             default: break;
         }
