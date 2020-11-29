@@ -2150,10 +2150,10 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         toggle.syncState();
         mToolbar.setNavigationOnClickListener(v -> {
             if( mDrawer.isDrawerVisible(mSVN) ) {
-                if(!mDrawerInLeftPosition) mDrawer.closeDrawer(GravityCompat.END);
+                if(!mDrawerInLeftPosition) mDrawer.closeDrawer(Gravity.RIGHT);
                 else mDrawer.closeDrawer(GravityCompat.START);
             }else {
-                if(!mDrawerInLeftPosition) mDrawer.openDrawer(GravityCompat.END);
+                if(!mDrawerInLeftPosition) mDrawer.openDrawer(Gravity.RIGHT);
                 else mDrawer.openDrawer(GravityCompat.START);
             }
         });
