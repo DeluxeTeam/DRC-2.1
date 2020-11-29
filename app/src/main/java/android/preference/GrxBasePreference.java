@@ -262,7 +262,7 @@ public class GrxBasePreference extends Preference implements
 
         switch (mTypeOfPreference){
             case STRING:
-                if(myPrefAttrsInfo.getMySystemPrefType()== PrefAttrsInfo.SETTINGS_PREF_TYPE.SHARED) {
+                if(myPrefAttrsInfo.getMySystemPrefType()== PrefAttrsInfo.SETTINGS_PREF_TYPE.SHARED || Common.SyncUpMode) {
 
                     if (restorePersistedValue) {
                         mStringValue = getPersistedString(myPrefAttrsInfo.getMyStringDefValue());
@@ -279,7 +279,7 @@ public class GrxBasePreference extends Preference implements
                 }
                 break;
             case INT:
-                if(myPrefAttrsInfo.getMySystemPrefType()== PrefAttrsInfo.SETTINGS_PREF_TYPE.SHARED) {
+                if(myPrefAttrsInfo.getMySystemPrefType()== PrefAttrsInfo.SETTINGS_PREF_TYPE.SHARED || Common.SyncUpMode) {
                     if (restorePersistedValue) {
                         mIntValue = getPersistedInt(myPrefAttrsInfo.getMyIntDefValue());
                     } else {

@@ -2491,6 +2491,7 @@
     <string name="blcp_updates">Automatic check for BL/CP updates</string>
     <string name="new_blcp">New BL/CP %s is out!</string>
     <string name="color_night">Color on night mode</string>
+    <string name="only_user_restored">Only user preferences has been restored</string>
     <!-- DeluxeROM end -->
 
 </resources>

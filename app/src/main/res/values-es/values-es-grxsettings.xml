@@ -1108,6 +1108,7 @@
     <string name="blcp_updates">Comprobación de actualizaciones de BL/CP</string>
     <string name="new_blcp">Nuevo BL/CP %s publicado!</string>
     <string name="color_night">Color en modo noche</string>
+    <string name="only_user_restored">Solo las preferencias de usuario han sido restauradas</string>
     <!-- DeluxeROM end -->
 
 </resources>

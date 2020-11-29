@@ -334,7 +334,6 @@
 
                         <GrxColorPicker
                             android:title="@string/bolt"
-                            grx:systemType="system"
                             android:dependency="dlx_qp_show_stock_battery"
                             android:key="dlx_qp_bt_bolt_on_dark"
                             android:defaultValue="-1"
@@ -518,7 +517,6 @@
 
                 <GrxCheckBoxPreference
                     android:title="@string/use_custom_text"
-                    grx:systemType="system"
                     android:key="dlx_qp_use_custom_carrier"
                     android:defaultValue="true"
                     grx:groupedValueSystemType="system"
@@ -526,7 +524,6 @@
                     grx:groupedValueKey="qp_dlxsbcarrier" />
                 <GrxEditText
                     android:title="@string/custom_text"
-                    grx:systemType="system"
                     android:key="dlx_qp_carrier_text"
                     android:defaultValue="DeluxeROM®"
                     grx:groupedValueKey="qp_dlxsbcarrier"

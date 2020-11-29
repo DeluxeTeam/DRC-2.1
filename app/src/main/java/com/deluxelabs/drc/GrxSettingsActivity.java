@@ -1565,8 +1565,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                 break;
             case RESTORING_BACKUP:
                 showSnack(info);
-                RestorePreferencesTask task = new RestorePreferencesTask(this, info);
-                task.execute();
+                new RestorePreferencesTask(this, info).execute();
                 break;
             case ERROR:
                 showSnack(info);
@@ -1600,6 +1599,11 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                 error=true;
             }
             if(!error){
+                if (RootPrivilegedUtils.getIsDeviceRooted()) {
+                    RootPrivilegedUtils.runFileScript(mInstance.get(), "clear_db.sh");
+                } else {
+                    Toast.makeText(mInstance.get(), R.string.only_user_restored, Toast.LENGTH_LONG).show();
+                }
                 sp.edit().clear().commit();
                 try{
                     Map map= (Map) ois.readObject();
@@ -1693,8 +1697,8 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                     //Common.sp.edit().putInt(Common.S_APPOPT_USER_SELECTED_THEME,mTheme).commit(); //lets keep current theme
                     Common.sp.edit().putString(Common.S_APPOPT_USER_SELECTED_THEME_NAME,mInstance.get().mThemeS);
                     Common.sp.edit().putBoolean(Common.S_CTRL_SYNC_NEEDED,true).commit();
-                    dialog.dismiss();
                     mInstance.get().synchronizePreferences();
+                    dialog.dismiss();
                 }else showToast(mRestoreResultText);
             }
             return null;
@@ -1760,9 +1764,17 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                 }
                 break;
             case Common.INT_ID_APPDLG_RESET_ALL_PREFERENCES:
-                        Common.sp.edit().clear().commit();
-                        restartApp();
-                        break;
+                Common.sp.edit().clear().commit();
+                // clear the device db, else if we are using systemType the restore and reset won't work as expected
+                boolean isrooted = RootPrivilegedUtils.getIsDeviceRooted();
+                if ( isrooted ) {
+                    RootPrivilegedUtils.runFileScript(this, "clear_db.sh");
+                } else {
+                    Toast.makeText(this, R.string.only_user_restored, Toast.LENGTH_LONG).show();
+                }
+                Common.sp.edit().putBoolean(Common.S_CTRL_SYNC_NEEDED,true);
+                restartAppFull();
+                break;
 
             case Common.INT_ID_APPDLG_TOOLS:
                     mSelectedTool = opt;
