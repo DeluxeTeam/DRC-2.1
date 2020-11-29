@@ -1,15 +1,12 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.1.2</latestVersion>
+        <latestVersion>2.1.4</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.1.3
+-- DRC 2.1.4
 
-- Añadidas actualizaciones de ROM/kernel/BL
-- Arreglados varios FCs
-- Correciones de lenguaje
-- Arreglado tamaño de velocímetro de red
-- Mejorados controles del kernel
+- Arregladas actualizaciones de kernel/rom/bl
+- Arreglado reseteo/restauración de DRC
         </releaseNotes>
     </update>
 </AppUpdater>
