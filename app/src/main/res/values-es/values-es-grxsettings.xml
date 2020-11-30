@@ -364,6 +364,23 @@
         <item>Descripción en fondos blancos</item>
         <item>Estado en fondos blancos</item>
     </string-array>
+    <string-array name="changelog_281">
+        <item>Actualizado DeluxeKernel_v16.4</item>
+        <item>Actualizado BusyBox 1.31.1</item>
+        <item>Actualizado Magisk Manager 8.0.3</item>
+        <item>Arreglado facewidget de clima</item>
+        <item>Arreglado Magisk en instalaciones limpias</item>
+        <item>Arreglado tamaño de velocímetro de red</item>
+        <item>Arreglado tamaño de texto de operadora</item>
+        <item>Arreglado reseteo/restauración en DRC</item>
+        <item>Arreglada opción de carga rápida</item>
+        <item>Arreglado FC en DRC al usar RTL</item>
+        <item>Correciones en DRC (traducciones/FCs)</item>
+        <item>Actualizado DRC 2.1.5</item>
+        <item>Añadidas actualizaciones de ROM en DRC</item>
+        <item>Añadidas actualizaciones de kernel en DRC</item>
+        <item>Añadidas actualizaciones de BL/CP en DRC</item>
+    </string-array>
     <string-array name="changelog_280">
         <item>Rebasada sobre N950FXXSDDTJ1</item>
         <item>Parche de seguridad 01/10/2020</item>
@@ -922,6 +939,7 @@
     <string name="dlxui">DlxUI</string>
     <string name="dlxdark">DlxDark</string>
     <string name="dlxlight">DlxLight</string>
+    <string name="changelog_281">Cambios v28.1</string>
     <string name="changelog_280">Cambios v28</string>
     <string name="changelog_270">Cambios v27</string>
     <string name="changelog_260">Cambios v26</string>

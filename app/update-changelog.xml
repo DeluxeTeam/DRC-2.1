@@ -1,12 +1,12 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.1.4</latestVersion>
+        <latestVersion>2.1.5</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.1.4
+-- DRC 2.1.5
 
-- Fixed kernel/ROM/bl updates switch
-- Fixed DRC restoring/resetting
+- Fixed FC when using RTL
+- Fixed fast charging switch
         </releaseNotes>
     </update>
 </AppUpdater>

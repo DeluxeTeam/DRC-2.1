@@ -1628,6 +1628,23 @@
         <item>descwhite</item>
         <item>statuswhite</item>
     </string-array>
+    <string-array name="changelog_281">
+        <item>Updated DeluxeKernel_v16.4</item>
+        <item>Updated BusyBox 1.31.1</item>
+        <item>Updated Magisk Manager 8.0.3</item>
+        <item>Fixed weather facewidget</item>
+        <item>Fixed Magisk on clean installs</item>
+        <item>Fixed lockscreen speedmetter size</item>
+        <item>Fixed notif. panel carrier size</item>
+        <item>Fixed some typos and FCs on DRC</item>
+        <item>Fixed DRC restoring/resetting</item>
+        <item>Fixed fast charging switch</item>
+        <item>Fixed FC on DRC while using RTL</item>
+        <item>Updated DRC to 2.1.5</item>
+        <item>Added ROM updates on DRC</item>
+        <item>Added kernel updates on DRC</item>
+        <item>Added BL/CP updates on DRC</item>
+    </string-array>
     <string-array name="changelog_280">
         <item>Rebased over N950FXXSDDTJ1</item>
         <item>Security patch 01/10/2020</item>
@@ -2270,6 +2287,7 @@
     <string name="dlxui">DlxUI</string>
     <string name="dlxdark">DlxDark</string>
     <string name="dlxlight">DlxLight</string>
+    <string name="changelog_281">Changelog v28.1</string>
     <string name="changelog_280">Changelog v28</string>
     <string name="changelog_270">Changelog v27</string>
     <string name="changelog_260">Changelog v26</string>
