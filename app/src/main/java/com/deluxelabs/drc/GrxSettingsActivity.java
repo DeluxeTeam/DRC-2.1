@@ -2377,7 +2377,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         } catch (IOException ignored) {};
         if (file == null || file.isEmpty() || !file.contains("lastVersion") || !file.contains("changelog")) return;
         final String lastVersion = file.split(Pattern.quote("{"))[1].split(Pattern.quote("}"))[0];
-        if (!version.equals(lastVersion)) {
+        if (Float.parseFloat(version) < Float.parseFloat(lastVersion)) {
             final String changelog = file.split(Pattern.quote("{"))[2].split(Pattern.quote("}"))[0];
             warnUpdate(changelog, getString(R.string.new_kernel, lastVersion),
                     Uri.parse("https://github.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/releases"));
@@ -2401,7 +2401,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         } catch (IOException ignored) {};
         if (file == null || file.isEmpty() || !file.contains("lastVersion") || !file.contains("changelog")) return;
         final String lastVersion = file.split(Pattern.quote("{"))[1].split(Pattern.quote("}"))[0];
-        if (!version.equals(lastVersion)) {
+        if (Float.parseFloat(version) < Float.parseFloat(lastVersion)) {
             final String changelog = file.split(Pattern.quote("{"))[2].split(Pattern.quote("}"))[0];
             final boolean isSpanish = Locale.getDefault().getLanguage().equals("es");
             warnUpdate(changelog, getString(R.string.new_rom, lastVersion),
