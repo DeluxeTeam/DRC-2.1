@@ -104,6 +104,7 @@
     <GrxSwitchPreference
         android:title="@string/fast_charging"
         android:defaultValue="true"
+        android:key="adaptive_fast_charging"
         grx:systemType="system" />
 
     <!-- Secure flag -->
