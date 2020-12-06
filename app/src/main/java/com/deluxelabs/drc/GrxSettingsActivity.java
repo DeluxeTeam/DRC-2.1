@@ -2285,10 +2285,10 @@ public class GrxSettingsActivity extends AppCompatActivity implements
     // Cancel AsyncTasks since will be called again on onCreate
     @Override
     public void onDetachedFromWindow() {
-        mSU.cancel(true);
-        mROM.cancel(true);
-        mKernel.cancel(true);
-        mBLCP.cancel(true);
+        if (mSU != null) mSU.cancel(true);
+        if (mROM != null) mROM.cancel(true);
+        if (mKernel != null) mKernel.cancel(true);
+        if (mBLCP != null) mBLCP.cancel(true);
         super.onDetachedFromWindow();
     }
 
