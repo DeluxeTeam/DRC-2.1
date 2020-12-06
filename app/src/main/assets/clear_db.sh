@@ -8,3 +8,4 @@ for db in system secure global; do
         settings delete $db $key
     done;
 done;
+exit 0
