@@ -108,6 +108,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import pl.droidsonroids.gif.GifImageView;
+
 
 public class GrxSettingsActivity extends AppCompatActivity implements
         DlgFrGrxNavigationUserOptions.DlgFrGrxNavigationUserOptionsCallBack,
@@ -215,6 +217,10 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         showToast(txt);
     }
 
+    // Play with this to avoid showing "changing bootanimation spinner" and gif preview while restoring/resetting
+    private int blockedTimes = 0;
+    private boolean blockPreview = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -241,6 +247,56 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                 KernelUtils.dlxApplyValues(context, intent.getStringExtra("arg"));
             }
         }, new IntentFilter("dlx_kernel_values"));
+
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                final String boot = Common.sp.getString("dlx_bootanimation", "stock");
+                if (blockedTimes >= 2) {
+                    Common.sp.edit().putBoolean("block_preview", false).commit();
+                    blockPreview = false;
+                } else if (blockPreview || Common.sp.getBoolean("block_preview", true))  {
+                    blockPreview = true;
+                    blockedTimes++;
+                }
+                if (intent.hasExtra("arg")) {
+                    if (blockPreview) return;
+                    final AlertDialog.Builder adb = new AlertDialog.Builder(context);
+                    final GifImageView gif = new GifImageView(context, null);
+                    final File file = new File("/sdcard/.dlx/" + boot + ".gif");
+                    if (!file.exists()) {
+                        Toast.makeText(context, R.string.cannot_preview, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    gif.setImageURI(Uri.fromFile(file));
+                    gif.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                    gif.setAdjustViewBounds(true);
+                    gif.setBottom(5);
+                    adb.setMessage(boot.toUpperCase());
+                    adb.setView(gif);
+                    AlertDialog dialog = adb.create();
+                    dialog.show();
+                    final Rect displayRectangle = new Rect();
+                    getWindow().getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
+                    dialog.getWindow().setLayout(dialog.getWindow().getAttributes().width, (int) (displayRectangle.height() * 0.6f));
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    return;
+                }
+                if (Common.IsRooted && RootUtils.busyboxInstalled()) {
+                    ProgressDialog dialog = new ProgressDialog(context);
+                    dialog.setMessage(getString(R.string.changing_boot));
+                    dialog.setCancelable(false);
+                    dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    if (!blockPreview) dialog.show();
+                    AsyncTask.execute(() -> {
+                        RootPrivilegedUtils.runFileScript(context, "bootanimation.sh", boot);
+                        dialog.dismiss();
+                    });
+                } else {
+                    Toast.makeText(context, R.string.bootanim_root, Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new IntentFilter("dlx_bootanimation"));
 
         mOptionsMenu=null;
         mCurrentMenuItem = null;
@@ -363,6 +419,9 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                             "https://raw.githubusercontent.com/DeluxeTeam/N950F_G95xF_BL_CP/master/VERSIONS",
                     "/sdcard/dlxtmpblcp").execute();
         }
+
+        // On DRC upgrade it won´t contain the keys and won´t be synced unless it´s clean install so let´s avoid issues faking blockedTimes
+        if (!Common.sp.contains("dlx_bootanimation") && !Common.sp.contains("block_preview")) blockedTimes = 2;
 
     }
 
@@ -1565,6 +1624,8 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                 break;
             case RESTORING_BACKUP:
                 showSnack(info);
+                blockPreview = true;
+                blockedTimes = 0;
                 new RestorePreferencesTask(this, info).execute();
                 break;
             case ERROR:
@@ -1772,7 +1833,8 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                 } else {
                     Toast.makeText(this, R.string.only_user_restored, Toast.LENGTH_LONG).show();
                 }
-                Common.sp.edit().putBoolean(Common.S_CTRL_SYNC_NEEDED,true);
+                Common.sp.edit().putBoolean(Common.S_CTRL_SYNC_NEEDED,true).commit();
+                Common.sp.edit().putBoolean("block_preview", true).commit();
                 restartAppFull();
                 break;
 

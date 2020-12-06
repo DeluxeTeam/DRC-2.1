@@ -1127,6 +1127,12 @@
     <string name="new_blcp">Nuevo BL/CP %s publicado!</string>
     <string name="color_night">Color en modo noche</string>
     <string name="only_user_restored">Solo las preferencias de usuario han sido restauradas</string>
+    <string name="bootanim_root">Se requiere root y busybox para cambiar la animación de inicio</string>
+    <string name="bootanimation">Animación de arranque</string>
+    <string name="bootanim_warning">ATENCIÓN: Para evitar aumentar el tamaño de DRC, las animaciones de arranque se descargarán cada vez que las elijas [solo la seleccionada], así que cuidado con los datos móviles!&lt;br /&gt;También se necesitan alrededor de 10 segundos para instalarse, no reinicies muy rápido!&lt;br /&gt;Si tu velocidad de internet es lenta, puede tardar mas de lo esperado.</string>
+    <string name="preview">Previsualizar animación</string>
+    <string name="changing_boot">Cambiando animación, por favor espera …</string>
+    <string name="cannot_preview">No se puede previsualizar la animación, por favor cambia al menos una vez para poder mostrarla</string>
     <!-- DeluxeROM end -->
 
 </resources>

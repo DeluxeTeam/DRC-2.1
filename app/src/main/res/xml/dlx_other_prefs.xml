@@ -116,4 +116,26 @@
         grx:broadCast1Extra="secure_flag"
         android:key="dlx_secure_flag" />
 
+    <!-- Bootanimation -->
+    <PreferenceScreen android:title="@string/bootanimation">
+
+        <GrxInfoText grx:rightIcon="@drawable/demo_icon_info" grx:rightIconTint="?complementary_color1" android:textSize="20sp" android:summary="@string/bootanim_warning" />
+
+        <GrxSingleSelection
+            android:title="@string/bootanimation"
+            android:key="dlx_bootanimation"
+            android:defaultValue="stock"
+            grx:saveSettings="false"
+            grx:broadCast1="dlx_bootanimation"
+            grx:optionsArray="@array/bootanimation_entries"
+            grx:valuesArray="@array/bootanimation_values" />
+
+        <GrxButtonPreference
+            android:title="@string/preview"
+            grx:broadCast1="dlx_bootanimation"
+            grx:broadCast1Extra="preview"
+            grx:button_Style="big" />
+
+    </PreferenceScreen>
+
 </PreferenceScreen>

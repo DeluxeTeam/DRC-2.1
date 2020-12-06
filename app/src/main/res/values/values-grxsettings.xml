@@ -1628,6 +1628,22 @@
         <item>descwhite</item>
         <item>statuswhite</item>
     </string-array>
+    <string-array name="bootanimation_entries">
+        <item>Stock</item>
+        <item>Deluxe</item>
+        <item>Deluxe 2</item>
+        <item>Deluxe 3</item>
+        <item>Deluxe 4</item>
+        <item>ACDC</item>
+    </string-array>
+    <string-array name="bootanimation_values">
+        <item>stock</item>
+        <item>deluxe</item>
+        <item>deluxe2</item>
+        <item>deluxe3</item>
+        <item>deluxe4</item>
+        <item>acdc</item>
+    </string-array>
     <string-array name="changelog_281">
         <item>Updated DeluxeKernel_v16.4</item>
         <item>Updated BusyBox 1.31.1</item>
@@ -2510,6 +2526,12 @@
     <string name="new_blcp">New BL/CP %s is out!</string>
     <string name="color_night">Color on night mode</string>
     <string name="only_user_restored">Only user preferences has been restored</string>
+    <string name="bootanim_root">Cannot change bootanimation without root and busybox</string>
+    <string name="bootanimation">Bootanimation</string>
+    <string name="bootanim_warning">WARNING : To avoid increasing DRC size, bootanimations will be downloaded each time you change it [only the selected one], so be careful with mobile data!&lt;br /&gt;Also it needs around 10 seconds to get installed, don\'t reboot so fast!&lt;br /&gt;If your internet speed is slow it might take long too.</string>
+    <string name="preview">Preview animation</string>
+    <string name="changing_boot">Changing bootanimation, please wait …</string>
+    <string name="cannot_preview">Can\'t load preview, please change first the bootanimation at least once</string>
     <!-- DeluxeROM end -->
 
 </resources>
