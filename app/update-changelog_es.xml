@@ -1,12 +1,12 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.1.5</latestVersion>
+        <latestVersion>2.1.6</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.1.5
+-- DRC 2.1.6
 
-- Arreglado FC al usar RTL
-- Arreglada opción de carga rápida
+- Arreglado FC al cerrar app
+- Añadido selector de bootanimation (Apartado "Otros")
         </releaseNotes>
     </update>
 </AppUpdater>
