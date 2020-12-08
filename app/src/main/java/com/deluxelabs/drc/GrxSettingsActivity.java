@@ -293,7 +293,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                         dialog.dismiss();
                     });
                 } else {
-                    Toast.makeText(context, R.string.bootanim_root, Toast.LENGTH_LONG).show();
+                    if (!blockPreview) Toast.makeText(context, R.string.bootanim_root, Toast.LENGTH_LONG).show();
                 }
             }
         }, new IntentFilter("dlx_bootanimation"));
