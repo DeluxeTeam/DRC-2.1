@@ -838,6 +838,58 @@
                 grx:optionsArray="@array/dlx_analog_entries"
                 grx:valuesArray="@array/dlx_analog_values" />
 
+            <PreferenceScreen android:title="@string/margins">
+
+                <GrxButtonPreference
+                    grx:groupedValueKey="dlx_analogclock"
+                    android:title="@string/grxs_apply"
+                    android:key="button_1"
+                    grx:button_Style="big" />
+
+                <GrxSeekBar
+                    android:title="@string/top_margin"
+                    android:key="dlx_sb_analog_top_margin"
+                    android:defaultValue="0"
+                    grx:groupedValueMyAlias="tp"
+                    grx:groupedValueKey="dlx_analogclock"
+                    grx:maxValue="70"
+                    grx:minValue="0"
+                    grx:interval="1" />
+
+                <GrxSeekBar
+                    android:title="@string/bottom_margin"
+                    android:key="dlx_sb_analog_bottom_margin"
+                    android:defaultValue="0"
+                    grx:groupedValueMyAlias="bp"
+                    grx:groupedValueKey="dlx_analogclock"
+                    grx:maxValue="70"
+                    grx:minValue="0"
+                    grx:interval="1" />
+
+                <GrxSeekBar
+                    android:title="@string/left_margin"
+                    android:key="dlx_sb_analog_left_margin"
+                    android:defaultValue="0"
+                    grx:groupedValueMyAlias="lp"
+                    grx:groupedValueKey="dlx_analogclock"
+                    grx:maxValue="70"
+                    grx:minValue="0"
+                    grx:interval="1" />
+
+                <GrxSeekBar
+                    android:title="@string/right_margin"
+                    android:key="dlx_sb_analog_right_margin"
+                    grx:groupedValueBroadCastExtraName="arg"
+                    grx:groupedValueBroadCast="deluxerom_master_prefs"
+                    android:defaultValue="0"
+                    grx:groupedValueMyAlias="rp"
+                    grx:groupedValueKey="dlx_analogclock"
+                    grx:maxValue="70"
+                    grx:minValue="0"
+                    grx:interval="1" />
+
+            </PreferenceScreen>
+
         </PreferenceScreen>
     </GrxPreferenceCategory>
 
