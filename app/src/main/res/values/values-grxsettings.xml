@@ -2532,6 +2532,7 @@
     <string name="preview">Preview animation</string>
     <string name="changing_boot">Changing bootanimation, please wait …</string>
     <string name="cannot_preview">Can\'t load preview, please change first the bootanimation at least once</string>
+    <string name="updating_app">Updating DRC…</string>
     <!-- DeluxeROM end -->
 
 </resources>

@@ -1133,6 +1133,7 @@
     <string name="preview">Previsualizar animación</string>
     <string name="changing_boot">Cambiando animación, por favor espera …</string>
     <string name="cannot_preview">No se puede previsualizar la animación, por favor cambia al menos una vez para poder mostrarla</string>
+    <string name="updating_app">Actualizando DRC…</string>
     <!-- DeluxeROM end -->
 
 </resources>

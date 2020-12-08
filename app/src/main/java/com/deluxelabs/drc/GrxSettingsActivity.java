@@ -387,6 +387,44 @@ public class GrxSettingsActivity extends AppCompatActivity implements
             new AppUpdater(this)
                 .setUpdateFrom(UpdateFrom.XML)
                 .setButtonDoNotShowAgain(null)
+                .setButtonUpdateClickListener((dialogInterface, i) -> {
+                    ProgressDialog dialog = new ProgressDialog(GrxSettingsActivity.this);
+                    dialog.setMessage(getString(R.string.updating_app));
+                    dialog.setCancelable(false);
+                    dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    dialog.show();
+                    AsyncTask.execute(() -> {
+                        download("https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update-changelog.xml", "/sdcard/dlxtmpapp");
+                        final String version = BuildConfig.VERSION_NAME;
+                        String file = null;
+                        try {
+                            file = IOUtils.toString(URI.create("file:///sdcard/dlxtmpapp"));
+                        } catch (IOException ignored) {}
+                        if (file == null || file.isEmpty() || !file.contains("latestVersion")) return;
+                        final String lastVersion = file.split(Pattern.quote(">"))[3].split(Pattern.quote("<"))[0];
+                        if (Integer.parseInt(version.replace(".", "")) < Integer.parseInt(lastVersion.replace(".", ""))) {
+                            download("https://github.com/DeluxeTeam/DRC-2.1/releases/download/" + lastVersion + "/DRC.apk", "/sdcard/dlxtmpapp");
+                            if (!new File("/sdcard/dlxtmpapp").exists()) return;
+                            if (Common.IsRooted && RootUtils.busyboxInstalled()) {
+                                ((AlarmManager) getSystemService(ALARM_SERVICE)).set(AlarmManager.RTC, System.currentTimeMillis() + 4600,
+                                        PendingIntent.getActivity(this, 123456, new Intent(this, GrxSettingsActivity.class),
+                                                PendingIntent.FLAG_CANCEL_CURRENT));
+                                RootUtils.runCommand("cp -rf /sdcard/dlxtmpapp /data/local/tmp/dlxtmpapp; pm install -r /data/local/tmp/dlxtmpapp;");
+                            } else {
+                                final Uri apk = Uri.parse("file:///sdcard/dlxtmpapp");
+                                Intent promptInstall = new Intent(Intent.ACTION_VIEW);
+                                promptInstall.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+                                promptInstall.setDataAndType(apk, "application/vnd.android.package-archive");
+                                promptInstall.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                promptInstall.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                try {
+                                    startActivity(promptInstall);
+                                } catch (ActivityNotFoundException ignored) {}
+                            }
+                        }
+                        dialog.dismiss();
+                    });
+                })
                 .setUpdateXML(
                         isSpanish ?
                         "https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update-changelog_es.xml"
@@ -423,6 +461,24 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         // On DRC upgrade it won´t contain the keys and won´t be synced unless it´s clean install so let´s avoid issues faking blockedTimes
         if (!Common.sp.contains("dlx_bootanimation") && !Common.sp.contains("block_preview")) blockedTimes = 2;
 
+    }
+
+    private void download(String url, String file) {
+        try {
+            URL u = new URL(url);
+            InputStream is = u.openStream();
+
+            DataInputStream dis = new DataInputStream(is);
+
+            byte[] buffer = new byte[1024];
+            int length;
+
+            FileOutputStream fos = new FileOutputStream(new File(file));
+            while ((length = dis.read(buffer))>0) {
+                fos.write(buffer, 0, length);
+            }
+
+        } catch (SecurityException | IOException ignored) {}
     }
 
     private void setNavigationBarBgColor(){
@@ -2367,21 +2423,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
 
         @Override
         protected Void doInBackground(Void... voids) {
-            try {
-                URL u = new URL(mUrl);
-                InputStream is = u.openStream();
-
-                DataInputStream dis = new DataInputStream(is);
-
-                byte[] buffer = new byte[1024];
-                int length;
-
-                FileOutputStream fos = new FileOutputStream(new File(mFile));
-                while ((length = dis.read(buffer))>0) {
-                    fos.write(buffer, 0, length);
-                }
-
-            } catch (SecurityException | IOException ignored) {}
+            mInstance.get().download(mUrl, mFile);
             return null;
         }
 
