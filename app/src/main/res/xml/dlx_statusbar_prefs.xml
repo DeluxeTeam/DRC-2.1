@@ -1438,6 +1438,59 @@
             grx:groupedValueKey="sb_dlxsbicons"
             android:key="dlx_use_lte" />
 
+        <!-- systemIcons margins -->
+        <PreferenceScreen android:title="@string/margins">
+
+            <GrxButtonPreference
+                grx:groupedValueKey="sb_dlxsbicons"
+                android:title="@string/grxs_apply"
+                android:key="button_1"
+                grx:button_Style="big" />
+
+            <GrxSeekBar
+                android:title="@string/top_margin"
+                android:key="dlx_sb_icons_top_margin"
+                android:defaultValue="0"
+                grx:groupedValueMyAlias="tp"
+                grx:groupedValueKey="sb_dlxsbicons"
+                grx:maxValue="70"
+                grx:minValue="0"
+                grx:interval="1" />
+
+            <GrxSeekBar
+                android:title="@string/bottom_margin"
+                android:key="dlx_sb_icons_bottom_margin"
+                android:defaultValue="0"
+                grx:groupedValueMyAlias="bp"
+                grx:groupedValueKey="sb_dlxsbicons"
+                grx:maxValue="70"
+                grx:minValue="0"
+                grx:interval="1" />
+
+            <GrxSeekBar
+                android:title="@string/left_margin"
+                android:key="dlx_sb_icons_left_margin"
+                android:defaultValue="0"
+                grx:groupedValueMyAlias="lp"
+                grx:groupedValueKey="sb_dlxsbicons"
+                grx:maxValue="70"
+                grx:minValue="0"
+                grx:interval="1" />
+
+            <GrxSeekBar
+                android:title="@string/right_margin"
+                android:key="dlx_sb_icons_right_margin"
+                android:defaultValue="0"
+                grx:groupedValueBroadCastExtraName="arg"
+                grx:groupedValueBroadCast="deluxerom_master_prefs"
+                grx:groupedValueMyAlias="rp"
+                grx:groupedValueKey="sb_dlxsbicons"
+                grx:maxValue="70"
+                grx:minValue="0"
+                grx:interval="1" />
+
+        </PreferenceScreen>
+
         <GrxInfoText android:textColor="?complementary_color3" android:textSize="20sp" android:summary="@string/general_colors_info" />
 
         <GrxPerItemColor
