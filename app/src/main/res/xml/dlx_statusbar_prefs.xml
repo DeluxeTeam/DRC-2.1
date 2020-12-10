@@ -124,6 +124,21 @@
                 grx:groupedValueMyAlias="bgcl"
                 grx:groupedValueKey="dlxsbviews" />
 
+            <GrxPerItemColor
+                android:title="@string/gradient"
+                android:key="dlx_statusbar_bg_color_array"
+                grx:valuesArray="@array/custombg_color_values"
+                grx:optionsArray="@array/custombg_color_entries"
+                android:defaultValue="color1/-1##color2/-1##color3/-1##color4/-1##color5/-1##color6/-1##"
+                grx:separator="##"
+                grx:colorPickerStyle="flower"
+                android:dependency="dlx_statusbar_bg_enabled"
+                grx:depRule="ENABLE#dlx_statusbar_bg_type#STRING#2"
+                grx:showAlphaSlider="true"
+                grx:showAutoButton="true"
+                grx:groupedValueMyAlias="bgsx"
+                grx:groupedValueKey="dlxsbviews" />
+
         </PreferenceScreen>
 
         <PreferenceScreen android:title="@string/margins">

@@ -1137,6 +1137,7 @@
     <string name="auto_flash">Flasheo automático del ZIP</string>
     <string name="downloading_wait">Descargando ZIP, esto puede tardar dependiendo de la red…</string>
     <string name="download_error">ALGO HA IDO MAL MIENTRAS SE DESCARGABA %s</string>
+    <string name="gradient">Colores de degradado</string>
     <!-- DeluxeROM end -->
 
 </resources>

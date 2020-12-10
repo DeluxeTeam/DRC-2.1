@@ -1644,6 +1644,22 @@
         <item>deluxe4</item>
         <item>acdc</item>
     </string-array>
+    <string-array name="custombg_color_entries">
+        <item>Color 1</item>
+        <item>Color 2</item>
+        <item>Color 3</item>
+        <item>Color 4</item>
+        <item>Color 5</item>
+        <item>Color 6</item>
+    </string-array>
+    <string-array name="custombg_color_values">
+        <item>color1</item>
+        <item>color2</item>
+        <item>color3</item>
+        <item>color4</item>
+        <item>color5</item>
+        <item>color6</item>
+    </string-array>
     <string-array name="changelog_281">
         <item>Updated DeluxeKernel_v16.4</item>
         <item>Updated BusyBox 1.31.1</item>
@@ -2536,6 +2552,7 @@
     <string name="auto_flash">Auto flash ZIP</string>
     <string name="downloading_wait">Downloading the ZIP, this might get long depending on your network…</string>
     <string name="download_error">SOMETHING WENT WRONG WHILE DOWNLOADING %s</string>
+    <string name="gradient">Gradient colors</string>
     <!-- DeluxeROM end -->
 
 </resources>
