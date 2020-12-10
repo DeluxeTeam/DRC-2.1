@@ -2533,6 +2533,9 @@
     <string name="changing_boot">Changing bootanimation, please wait …</string>
     <string name="cannot_preview">Can\'t load preview, please change first the bootanimation at least once</string>
     <string name="updating_app">Updating DRC…</string>
+    <string name="auto_flash">Auto flash ZIP</string>
+    <string name="downloading_wait">Downloading the ZIP, this might get long depending on your network…</string>
+    <string name="download_error">SOMETHING WENT WRONG WHILE DOWNLOADING %s</string>
     <!-- DeluxeROM end -->
 
 </resources>

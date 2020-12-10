@@ -2421,6 +2421,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         @Override
         protected Void doInBackground(Void... voids) {
             mInstance.get().download(mUrl, mFile);
+            if (mFile.contains("blcp")) mInstance.get().download("https://raw.githubusercontent.com/DeluxeTeam/N950F_G95xF_BL_CP/master/.zipDate", "/sdcard/dlxtmpblcpdate");
             return null;
         }
 
@@ -2447,8 +2448,10 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         if (value == null || value.isEmpty()) return;
         final String version = value.substring(0, 5);
         String[] lines = null;
+        String date = null;
         try {
             lines = IOUtils.toString(URI.create("file:///sdcard/dlxtmpblcp")).split(Pattern.quote("\n"));
+            date = IOUtils.toString(URI.create("file:///sdcard/dlxtmpblcpdate"));
         } catch (IOException ignored) {}
         assert lines != null;
         boolean found = false;
@@ -2464,7 +2467,8 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         }
         if (found && newversion != null && !newversion.isEmpty() && !value.equals(newversion)) {
             warnUpdate(full, getString(R.string.new_blcp, newversion),
-                Uri.parse("https://github.com/DeluxeTeam/N950F_G95xF_BL_CP/releases"));
+                Uri.parse("https://github.com/DeluxeTeam/N950F_G95xF_BL_CP/releases"), Common.IsRooted && RootUtils.busyboxInstalled(),
+                    "https://github.com/DeluxeTeam/N950F_G95xF_BL_CP/releases/download/" + date + "/N950F_G95xF_BL_CP_" + date + ".zip");
         }
     }
 
@@ -2481,7 +2485,9 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         if (Float.parseFloat(version) < Float.parseFloat(lastVersion)) {
             final String changelog = file.split(Pattern.quote("{"))[2].split(Pattern.quote("}"))[0];
             warnUpdate(changelog, getString(R.string.new_kernel, lastVersion),
-                    Uri.parse("https://github.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/releases"));
+                    Uri.parse("https://github.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/releases"), Common.IsRooted && RootUtils.busyboxInstalled(),
+                    "https://github.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/releases/download/" + lastVersion +
+                            "/N950F_G95xF_DeluxeKernel_v" + lastVersion + "_REL.zip");
         }
     }
 
@@ -2511,16 +2517,31 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                             "https://www.htcmania.com/showthread.php?t=1404819"
                                 :
                             "https://forum.xda-developers.com/galaxy-note-8/development/n950f-g955f-g950f-deluxerom-v6-0-t3784712"
-                    ));
+                    ), false, null);
         }
     }
 
-    private void warnUpdate(String changelog, String message, Uri url) {
+    private void warnUpdate(String changelog, String message, Uri url, boolean autoFlash, String zipLink) {
         AlertDialog.Builder adb= new AlertDialog.Builder(this);
         adb.setMessage(message + "\n\n\n" + changelog);
         adb.setPositiveButton(R.string.appupdater_btn_update, (dialogInterface, i) ->
                 startActivity(new Intent(Intent.ACTION_VIEW).setData(url)));
         adb.setNegativeButton(R.string.appupdater_btn_dismiss, (dialogInterface, i) -> dialogInterface.dismiss());
+        if (autoFlash) {
+            adb.setNeutralButton(R.string.auto_flash, (dialogInterface, i) -> {
+                ProgressDialog dialog = new ProgressDialog(GrxSettingsActivity.this);
+                dialog.setMessage(getString(R.string.downloading_wait));
+                dialog.setCancelable(false);
+                dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                dialog.show();
+                AsyncTask.execute(() -> {
+                    download(zipLink, "/sdcard/dlxtmpzip.zip");
+                    RootPrivilegedUtils.runFileScript(this, "flash_zip.sh");
+                    // At this point it means zip is not there so something went wrong
+                    Toast.makeText(this, getString(R.string.download_error, zipLink), Toast.LENGTH_SHORT).show();
+                });
+            });
+        }
         adb.create().show();
     }
 
