@@ -406,10 +406,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                             download("https://github.com/DeluxeTeam/DRC-2.1/releases/download/" + lastVersion + "/DRC.apk", "/sdcard/dlxtmpapp");
                             if (!new File("/sdcard/dlxtmpapp").exists()) return;
                             if (Common.IsRooted && RootUtils.busyboxInstalled()) {
-                                ((AlarmManager) getSystemService(ALARM_SERVICE)).set(AlarmManager.RTC, System.currentTimeMillis() + 4600,
-                                        PendingIntent.getActivity(this, 123456, new Intent(this, GrxSettingsActivity.class),
-                                                PendingIntent.FLAG_CANCEL_CURRENT));
-                                RootUtils.runCommand("cp -rf /sdcard/dlxtmpapp /data/local/tmp/dlxtmpapp; pm install -r /data/local/tmp/dlxtmpapp;");
+                                RootUtils.runCommand("cp -rf /sdcard/dlxtmpapp /data/local/tmp/dlxtmpapp; pm install -r /data/local/tmp/dlxtmpapp; am start -n com.deluxelabs.drc/com.deluxelabs.drc.GrxSettingsActivity;");
                             } else {
                                 final Uri apk = Uri.parse("file:///sdcard/dlxtmpapp");
                                 Intent promptInstall = new Intent(Intent.ACTION_VIEW);
