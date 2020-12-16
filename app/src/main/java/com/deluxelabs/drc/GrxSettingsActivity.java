@@ -251,6 +251,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+                if (!Common.sp.getBoolean("dlx_drc_bootanimation", false)) return;
                 final String boot = Common.sp.getString("dlx_bootanimation", "stock");
                 if (blockedTimes >= 2) {
                     Common.sp.edit().putBoolean("block_preview", false).commit();

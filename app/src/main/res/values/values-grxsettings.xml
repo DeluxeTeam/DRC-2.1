@@ -2553,6 +2553,8 @@
     <string name="downloading_wait">Downloading the ZIP, this might get long depending on your network…</string>
     <string name="download_error">SOMETHING WENT WRONG WHILE DOWNLOADING %s</string>
     <string name="gradient">Gradient colors</string>
+    <string name="use_drc_boot">Use bootanimation from list</string>
+    <string name="keep_off_boot">Keep it off to use external bootanimations</string>
     <!-- DeluxeROM end -->
 
 </resources>

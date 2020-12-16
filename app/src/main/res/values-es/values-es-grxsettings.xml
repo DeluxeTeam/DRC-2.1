@@ -1138,6 +1138,8 @@
     <string name="downloading_wait">Descargando ZIP, esto puede tardar dependiendo de la red…</string>
     <string name="download_error">ALGO HA IDO MAL MIENTRAS SE DESCARGABA %s</string>
     <string name="gradient">Colores de degradado</string>
+    <string name="use_drc_boot">Usar animación del listado</string>
+    <string name="keep_off_boot">Mantener desactivado para usar animaciones externas</string>
     <!-- DeluxeROM end -->
 
 </resources>

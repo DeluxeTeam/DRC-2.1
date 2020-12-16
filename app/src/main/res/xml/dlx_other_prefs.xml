@@ -121,7 +121,16 @@
 
         <GrxInfoText grx:rightIcon="@drawable/demo_icon_info" grx:rightIconTint="?complementary_color1" android:textSize="20sp" android:summary="@string/bootanim_warning" />
 
+        <GrxSwitchPreference
+            android:title="@string/use_drc_boot"
+            android:defaultValue="false"
+            grx:saveSettings="false"
+            android:summaryOff="@string/keep_off_boot"
+            grx:broadCast1="dlx_bootanimation"
+            android:key="dlx_drc_bootanimation" />
+
         <GrxSingleSelection
+            android:dependency="dlx_drc_bootanimation"
             android:title="@string/bootanimation"
             android:key="dlx_bootanimation"
             android:defaultValue="stock"
@@ -131,6 +140,7 @@
             grx:valuesArray="@array/bootanimation_values" />
 
         <GrxButtonPreference
+            android:dependency="dlx_drc_bootanimation"
             android:title="@string/preview"
             grx:broadCast1="dlx_bootanimation"
             grx:broadCast1Extra="preview"
