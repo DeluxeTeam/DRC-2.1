@@ -1,12 +1,15 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.1.6</latestVersion>
+        <latestVersion>2.1.7</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.1.6
+-- DRC 2.1.7
 
-- Arreglado FC al cerrar app
-- Añadido selector de bootanimation (Apartado "Otros")
+- Añadido flasheo automático de BLCP/kernel
+- Añadida instalación automatíca de actualizaciones de DRC
+- Añadida opción para no forzar el cambio de bootanimation
+- Añadidas opciones de degradado en fondos personalizados
+- Arreglado FC al abrir un link sin tener ningún navegador
         </releaseNotes>
     </update>
 </AppUpdater>

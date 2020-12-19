@@ -1,12 +1,15 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.1.6</latestVersion>
+        <latestVersion>2.1.7</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.1.6
+-- DRC 2.1.7
 
-- Fixed background FC
-- Added bootanimation selector ("Others" section)
+- Added kernel/BLCP auto-flash
+- Added auto-update of DRC
+- Added option to not force bootanimation change
+- Added missing gradient options on custom backgrounds
+- Fixed FC when there is no browser installed
         </releaseNotes>
     </update>
 </AppUpdater>
