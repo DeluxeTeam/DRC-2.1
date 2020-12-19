@@ -2525,8 +2525,13 @@ public class GrxSettingsActivity extends AppCompatActivity implements
     private void warnUpdate(String changelog, String message, Uri url, boolean autoFlash, String zipLink) {
         AlertDialog.Builder adb= new AlertDialog.Builder(this);
         adb.setMessage(message + "\n\n\n" + changelog);
-        adb.setPositiveButton(R.string.appupdater_btn_update, (dialogInterface, i) ->
-                startActivity(new Intent(Intent.ACTION_VIEW).setData(url)));
+        adb.setPositiveButton(R.string.appupdater_btn_update, (dialogInterface, i) -> {
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW).setData(url));
+            } catch (ActivityNotFoundException ignored) {
+                Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_LONG).show();
+            }
+        });
         adb.setNegativeButton(R.string.appupdater_btn_dismiss, (dialogInterface, i) -> dialogInterface.dismiss());
         if (autoFlash) {
             adb.setNeutralButton(R.string.auto_flash, (dialogInterface, i) -> {
