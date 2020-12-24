@@ -86,9 +86,9 @@ public class KernelUtils extends BroadcastReceiver {
                     case "schedulers":
                         setSchedulers();
                         break;
-                    case "selinux":
+                    /*case "selinux":
                         setSELinux();
-                        break;
+                        break;*/
                     case "crc":
                         setCRC();
                         break;
@@ -102,7 +102,7 @@ public class KernelUtils extends BroadcastReceiver {
 
     private static void bootCompleted(Context context) {
         Log.d("DLX", "SETTING KERNEL VALUES (ON-BOOT)");
-        setSELinux();
+        //setSELinux();
         setDT2W(context);
         setS2S();
         setS2W();
