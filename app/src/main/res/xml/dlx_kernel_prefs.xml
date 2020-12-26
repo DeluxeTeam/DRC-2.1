@@ -7,19 +7,19 @@
     </GrxPreferenceCategory>
 
     <!-- SELinux -->
-    <!--GrxPreferenceCategory android:title="@string/selinux_title" grx:bpRule="kernel">
+    <GrxPreferenceCategory android:title="@string/selinux_title" grx:bpRule="kernel">
 
         <GrxSwitchPreference
             android:title="@string/selinux"
             android:key="dlx_kernel_selinux"
-            android:defaultValue="true"
+            android:defaultValue="false"
             grx:saveSettings="false"
             android:summaryOff="Permissive"
             android:summaryOn="Enforcing"
             grx:broadCast1Extra="selinux"
             grx:broadCast1="dlx_kernel_values" />
 
-    </GrxPreferenceCategory-->
+    </GrxPreferenceCategory>
 
     <!-- Governors / IO schedulers -->
     <GrxPreferenceCategory android:title="@string/govs_scheds" grx:bpRule="kernel">

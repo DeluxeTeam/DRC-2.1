@@ -86,9 +86,9 @@ public class KernelUtils extends BroadcastReceiver {
                     case "schedulers":
                         setSchedulers();
                         break;
-                    /*case "selinux":
+                    case "selinux":
                         setSELinux();
-                        break;*/
+                        break;
                     case "crc":
                         setCRC();
                         break;
@@ -102,7 +102,7 @@ public class KernelUtils extends BroadcastReceiver {
 
     private static void bootCompleted(Context context) {
         Log.d("DLX", "SETTING KERNEL VALUES (ON-BOOT)");
-        //setSELinux();
+        setSELinux();
         setDT2W(context);
         setS2S();
         setS2W();
@@ -189,7 +189,7 @@ public class KernelUtils extends BroadcastReceiver {
 
     private static void setSELinux() {
         final String path = "/sys/fs/selinux/enforce";
-        final int selinux = Common.sp.getBoolean("dlx_kernel_selinux", true) ? 1 : 0;
+        final int selinux = Common.sp.getBoolean("dlx_kernel_selinux", false) ? 1 : 0;
         RootUtils.runCommand("chmod 744 " + path + "; busybox echo " + selinux + " > " + path + "; chmod 644 " + path + ";");
         RootUtils.runCommand("chmod 744 " + path + "; echo " + selinux + " > " + path + "; chmod 644 " + path + ";");
     }
