@@ -10,11 +10,13 @@ echo -e "DeluxeROM® - Bug report\n\n" > $file
 [ -f /system/priv-app/DRC/DRC.apk ] && drc=1 || drc=0
 [ -f /system/vendor/overlay/framework-res__auto_generated_rro.apk ] && overlay=1 || overlay=0
 [ -f /system/xbin/busybox ] && busybox=1 || busybox=0
+[ -d /system/priv-app/AppLock ] && applock=1 || applock=0
 version="$(getprop ro.deluxerom.version)"
 build_date="$(getprop ro.deluxerom.date)"
 device="$(getprop ro.deluxerom.device)"
 csc="$(cat /system/omc/sales_code.dat)"
 kernel="$(uname -a)"
+selinux="$(getenforce)"
 magisk="$(magisk -c)"
 timeout 25s logcat *:V > /sdcard/bug_report/logcat
 
@@ -22,12 +24,14 @@ echo "version=${version}" >> $file
 echo "device=${device}" >> $file
 echo "build=${build_date}" >> $file
 echo "kernel=${kernel}" >> $file
+echo "selinux=${selinux}" >> $file
 echo "csc=${csc}" >> $file
 echo "lib=${lib}" >> $file
 echo "drc=${drc}" >> $file
 echo "overlay=${overlay}" >> $file
 echo "busybox=${busybox}" >> $file
 echo "magisk=${magisk}" >> $file
+echo "applock=${applock}" >> $file
 echo "ui_hash=$(md5sum /system/priv-app/SystemUI/SystemUI.apk)" >> $file
 echo "drc_hash=$(md5sum /system/priv-app/DRC/DRC.apk)" >> $file
 
