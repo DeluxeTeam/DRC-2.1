@@ -1660,6 +1660,18 @@
         <item>color5</item>
         <item>color6</item>
     </string-array>
+    <string-array name="changelog_282">
+        <item>Updated DeluxeKernel_v16.6</item>
+        <item>Updated DRC to 2.1.8</item>
+        <item>Added optional AppLock</item>
+        <item>Added missing gradient bg\'s options</item>
+        <item>Added option to don\'t force DRC bootanimation</item>
+        <item>Added analog and system icons margins</item>
+        <item>Added kernel/BLCP auto-flash option (On DRC)</item>
+        <item>Fixed biometric/SCloud issues</item>
+        <item>Fixed some background FCs</item>
+        <item>Fixed toast animations</item>
+    </string-array>
     <string-array name="changelog_281">
         <item>Updated DeluxeKernel_v16.4</item>
         <item>Updated BusyBox 1.31.1</item>
@@ -2319,6 +2331,7 @@
     <string name="dlxui">DlxUI</string>
     <string name="dlxdark">DlxDark</string>
     <string name="dlxlight">DlxLight</string>
+    <string name="changelog_282">Changelog v28.2</string>
     <string name="changelog_281">Changelog v28.1</string>
     <string name="changelog_280">Changelog v28</string>
     <string name="changelog_270">Changelog v27</string>

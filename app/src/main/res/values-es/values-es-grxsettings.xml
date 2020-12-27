@@ -364,6 +364,18 @@
         <item>Descripción en fondos blancos</item>
         <item>Estado en fondos blancos</item>
     </string-array>
+    <string-array name="changelog_282">
+        <item>Actualizado DeluxeKernel_v16.6</item>
+        <item>Actualizado DRC 2.1.8</item>
+        <item>Añadido AppLock opcional</item>
+        <item>Añadidas opciones de degradado para fondos</item>
+        <item>Añadida opción para no forzar instalación de bootanimation</item>
+        <item>Añadidos margenes de reloj analogico e iconos de sistema</item>
+        <item>Añadido flasheo automático de kernel/BLCP (En DRC)</item>
+        <item>Arreglados problemas de biometricos/SCloud</item>
+        <item>Arreglados algunos FCs en segundo plano</item>
+        <item>Arregladas animaciones toast</item>
+    </string-array>
     <string-array name="changelog_281">
         <item>Actualizado DeluxeKernel_v16.4</item>
         <item>Actualizado BusyBox 1.31.1</item>
@@ -939,6 +951,7 @@
     <string name="dlxui">DlxUI</string>
     <string name="dlxdark">DlxDark</string>
     <string name="dlxlight">DlxLight</string>
+    <string name="changelog_282">Cambios v28.2</string>
     <string name="changelog_281">Cambios v28.1</string>
     <string name="changelog_280">Cambios v28</string>
     <string name="changelog_270">Cambios v27</string>
