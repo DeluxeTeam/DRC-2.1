@@ -1,15 +1,12 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.1.7</latestVersion>
+        <latestVersion>2.1.8</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.1.7
+-- DRC 2.1.8
 
-- Added kernel/BLCP auto-flash
-- Added auto-update of DRC
-- Added option to not force bootanimation change
-- Added missing gradient options on custom backgrounds
-- Fixed FC when there is no browser installed
+- Changed default SELinux to permissive
+- Added more info to bug reports
         </releaseNotes>
     </update>
 </AppUpdater>
