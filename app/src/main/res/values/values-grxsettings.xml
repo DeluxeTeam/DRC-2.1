@@ -1660,6 +1660,22 @@
         <item>color5</item>
         <item>color6</item>
     </string-array>
+    <string-array name="kernel_lmk_entries">
+        <item>Default</item>
+        <item>Very light</item>
+        <item>Light</item>
+        <item>Medium</item>
+        <item>Aggressive</item>
+        <item>Very aggressive</item>
+    </string-array>
+    <string-array name="kernel_lmk_values">
+        <item>18432,23040,27648,32256,55296,80640</item>
+        <item>13742,27484,41226,54968,68710,82452</item>
+        <item>27484,41226,54968,68710,82452,96194</item>
+        <item>41226,54968,68710,82452,96194,123678</item>
+        <item>27484,41226,82452,16420,19388,206130</item>
+        <item>41226,5968,68710,151162,206130,219872</item>
+    </string-array>
     <string-array name="changelog_282">
         <item>Updated DeluxeKernel_v16.6</item>
         <item>Updated DRC to 2.1.8</item>
@@ -2570,6 +2586,8 @@
     <string name="keep_off_boot">Keep it off to use external bootanimations</string>
     <string name="gestures_descrp">Gestures settings (DT2W,S2W,S2S)</string>
     <string name="fade_settings">Fading settings (Status,timeout)</string>
+    <string name="lmk">Low memory killer</string>
+    <string name="lmk_profile">Low memory killer profile</string>
     <!-- DeluxeROM end -->
 
 </resources>

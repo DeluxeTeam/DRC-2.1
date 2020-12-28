@@ -95,6 +95,9 @@ public class KernelUtils extends BroadcastReceiver {
                     case "led":
                         setLed();
                         break;
+                    case "lmk":
+                        setLMK();
+                        break;
                 }
             }
         }
@@ -111,7 +114,14 @@ public class KernelUtils extends BroadcastReceiver {
         setSchedulers();
         setCRC();
         setLed();
+        setLMK();
         android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+    private static void setLMK() {
+        final String value = Common.sp.getString("dlx_kernel_lmk", "18432,23040,27648,32256,55296,80640");
+        RootUtils.runCommand("busybox echo " + value + " > /sys/module/lowmemorykiller/parameters/minfree");
+        RootUtils.runCommand("echo " + value + " > /sys/module/lowmemorykiller/parameters/minfree");
     }
 
     private static void setLed() {

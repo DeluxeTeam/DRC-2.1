@@ -364,6 +364,14 @@
         <item>Descripción en fondos blancos</item>
         <item>Estado en fondos blancos</item>
     </string-array>
+    <string-array name="kernel_lmk_entries">
+        <item>Por defecto</item>
+        <item>Muy ligero</item>
+        <item>Ligero</item>
+        <item>Medio</item>
+        <item>Agresivo</item>
+        <item>Muy agresivo</item>
+    </string-array>
     <string-array name="changelog_282">
         <item>Actualizado DeluxeKernel_v16.6</item>
         <item>Actualizado DRC 2.1.8</item>
@@ -1155,6 +1163,8 @@
     <string name="keep_off_boot">Mantener desactivado para usar animaciones externas</string>
     <string name="gestures_descrp">Ajustes de gestos (DT2W,S2W,S2S)</string>
     <string name="fade_settings">Ajustes de led (Estado,tiempo)</string>
+    <string name="lmk">Gestor de memoria baja</string>
+    <string name="lmk_profile">Perfil de memoria baja</string>
     <!-- DeluxeROM end -->
 
 </resources>

@@ -54,6 +54,22 @@
 
     </GrxPreferenceCategory>
 
+    <!-- Low memory killer -->
+    <GrxPreferenceCategory android:title="@string/lmk" grx:bpRule="kernel">
+
+        <!-- LMK profile -->
+        <GrxSingleSelection
+            android:title="@string/lmk_profile"
+            android:key="dlx_kernel_lmk"
+            android:defaultValue="18432,23040,27648,32256,55296,80640"
+            grx:broadCast1="dlx_kernel_values"
+            grx:broadCast1Extra="lmk"
+            grx:saveSettings="false"
+            grx:optionsArray="@array/kernel_lmk_entries"
+            grx:valuesArray="@array/kernel_lmk_values" />
+
+    </GrxPreferenceCategory>
+
     <!-- Gestures -->
     <GrxPreferenceCategory android:title="@string/gestures" grx:bpRule="kernel">
 
