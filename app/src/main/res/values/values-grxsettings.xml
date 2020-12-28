@@ -2568,6 +2568,8 @@
     <string name="gradient">Gradient colors</string>
     <string name="use_drc_boot">Use bootanimation from list</string>
     <string name="keep_off_boot">Keep it off to use external bootanimations</string>
+    <string name="gestures_descrp">Gestures settings (DT2W,S2W,S2S)</string>
+    <string name="fade_settings">Fading settings (Status,timeout)</string>
     <!-- DeluxeROM end -->
 
 </resources>

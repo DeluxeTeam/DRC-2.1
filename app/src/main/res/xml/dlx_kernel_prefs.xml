@@ -57,88 +57,96 @@
     <!-- Gestures -->
     <GrxPreferenceCategory android:title="@string/gestures" grx:bpRule="kernel">
 
-        <!-- DT2W -->
-        <GrxSwitchPreference
-            android:title="@string/dt2w"
-            android:key="dlx_kernel_dt2w"
-            grx:saveSettings="false"
-            android:defaultValue="false"
-            grx:broadCast1Extra="dt2w"
-            grx:broadCast1="dlx_kernel_values" />
+        <PreferenceScreen android:title="@string/gestures_descrp">
 
-        <!-- S2W -->
-        <GrxMultipleSelection
-            android:title="@string/s2w"
-            android:key="dlx_kernel_s2w"
-            grx:broadCast1="dlx_kernel_values"
-            grx:separator=","
-            grx:saveSettings="false"
-            grx:broadCast1Extra="s2w"
-            grx:optionsArray="@array/kernel_s2w_entries"
-            grx:valuesArray="@array/kernel_s2w_values" />
+            <!-- DT2W -->
+            <GrxSwitchPreference
+                android:title="@string/dt2w"
+                android:key="dlx_kernel_dt2w"
+                grx:saveSettings="false"
+                android:defaultValue="false"
+                grx:broadCast1Extra="dt2w"
+                grx:broadCast1="dlx_kernel_values" />
 
-        <!-- S2S -->
-        <GrxSingleSelection
-            android:title="@string/s2s"
-            android:key="dlx_kernel_s2s"
-            android:defaultValue="0"
-            grx:broadCast1="dlx_kernel_values"
-            grx:broadCast1Extra="s2s"
-            grx:saveSettings="false"
-            grx:optionsArray="@array/kernel_s2s_entries"
-            grx:valuesArray="@array/kernel_s2s_values" />
+            <!-- S2W -->
+            <GrxMultipleSelection
+                android:title="@string/s2w"
+                android:key="dlx_kernel_s2w"
+                grx:broadCast1="dlx_kernel_values"
+                grx:separator=","
+                grx:saveSettings="false"
+                grx:broadCast1Extra="s2w"
+                grx:optionsArray="@array/kernel_s2w_entries"
+                grx:valuesArray="@array/kernel_s2w_values" />
 
-        <!-- Vibration intensity -->
-        <GrxSeekBar
-            android:title="@string/kernel_gesture_vibration"
-            android:key="dlx_kernel_gest_vibration"
-            android:defaultValue="10"
-            grx:broadCast1="dlx_kernel_values"
-            grx:broadCast1Extra="gesture_vibration"
-            grx:minValue="0"
-            grx:saveSettings="false"
-            grx:maxValue="90"
-            grx:interval="1"/>
+            <!-- S2S -->
+            <GrxSingleSelection
+                android:title="@string/s2s"
+                android:key="dlx_kernel_s2s"
+                android:defaultValue="0"
+                grx:broadCast1="dlx_kernel_values"
+                grx:broadCast1Extra="s2s"
+                grx:saveSettings="false"
+                grx:optionsArray="@array/kernel_s2s_entries"
+                grx:valuesArray="@array/kernel_s2s_values" />
+
+            <!-- Vibration intensity -->
+            <GrxSeekBar
+                android:title="@string/kernel_gesture_vibration"
+                android:key="dlx_kernel_gest_vibration"
+                android:defaultValue="10"
+                grx:broadCast1="dlx_kernel_values"
+                grx:broadCast1Extra="gesture_vibration"
+                grx:minValue="0"
+                grx:saveSettings="false"
+                grx:maxValue="90"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
 
     </GrxPreferenceCategory>
 
     <!-- Fading led -->
     <GrxPreferenceCategory android:title="@string/led_fading" grx:bpRule="kernel">
 
-        <!-- Enable fading in/out -->
-        <GrxSwitchPreference
-            android:title="@string/enable_fading"
-            android:key="dlx_kernel_led_ramp"
-            android:defaultValue="true"
-            grx:saveSettings="false"
-            grx:broadCast1Extra="led"
-            grx:broadCast1="dlx_kernel_values" />
+        <PreferenceScreen android:title="@string/fade_settings">
 
-        <!-- Fade in timeout -->
-        <GrxSeekBar
-            android:title="@string/fade_in"
-            android:key="dlx_kernel_led_in"
-            android:dependency="dlx_kernel_led_ramp"
-            android:defaultValue="800"
-            grx:broadCast1="dlx_kernel_values"
-            grx:broadCast1Extra="led"
-            grx:minValue="100"
-            grx:saveSettings="false"
-            grx:maxValue="4000"
-            grx:interval="1"/>
+            <!-- Enable fading in/out -->
+            <GrxSwitchPreference
+                android:title="@string/enable_fading"
+                android:key="dlx_kernel_led_ramp"
+                android:defaultValue="true"
+                grx:saveSettings="false"
+                grx:broadCast1Extra="led"
+                grx:broadCast1="dlx_kernel_values" />
 
-        <!-- Fade out timeout -->
-        <GrxSeekBar
-            android:title="@string/fade_out"
-            android:key="dlx_kernel_led_out"
-            android:dependency="dlx_kernel_led_ramp"
-            android:defaultValue="800"
-            grx:broadCast1="dlx_kernel_values"
-            grx:broadCast1Extra="led"
-            grx:minValue="100"
-            grx:saveSettings="false"
-            grx:maxValue="4000"
-            grx:interval="1"/>
+            <!-- Fade in timeout -->
+            <GrxSeekBar
+                android:title="@string/fade_in"
+                android:key="dlx_kernel_led_in"
+                android:dependency="dlx_kernel_led_ramp"
+                android:defaultValue="800"
+                grx:broadCast1="dlx_kernel_values"
+                grx:broadCast1Extra="led"
+                grx:minValue="100"
+                grx:saveSettings="false"
+                grx:maxValue="4000"
+                grx:interval="1"/>
+
+            <!-- Fade out timeout -->
+            <GrxSeekBar
+                android:title="@string/fade_out"
+                android:key="dlx_kernel_led_out"
+                android:dependency="dlx_kernel_led_ramp"
+                android:defaultValue="800"
+                grx:broadCast1="dlx_kernel_values"
+                grx:broadCast1Extra="led"
+                grx:minValue="100"
+                grx:saveSettings="false"
+                grx:maxValue="4000"
+                grx:interval="1"/>
+
+        </PreferenceScreen>
 
     </GrxPreferenceCategory>
 
