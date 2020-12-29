@@ -1165,6 +1165,20 @@
     <string name="fade_settings">Ajustes de led (Estado,tiempo)</string>
     <string name="lmk">Gestor de memoria baja</string>
     <string name="lmk_profile">Perfil de memoria baja</string>
+    <string name="moro_sound">MoroSound 2.1.0</string>
+    <string name="moro_settings">Ajustes de sonido (Ganancia,ecualizador,perfiles)</string>
+    <string name="headphone_left_gain">Ganancia auricular (externo) izquierdo</string>
+    <string name="headphone_right_gain">Ganancia auricular (externo) derecho</string>
+    <string name="speaker_gain">Ganancia de altavoz</string>
+    <string name="earphone_gain">Ganancia de auricular</string>
+    <string name="enable_eq">Habilitar ecualizador</string>
+    <string name="profile">Perfil</string>
+    <string name="band_25">Banda 25mhz</string>
+    <string name="band_100">Banda 100mhz</string>
+    <string name="band_250">Banda 250mhz</string>
+    <string name="band_500">Banda 500mhz</string>
+    <string name="band_1k">Banda 1k</string>
+    <string name="bands">Bandas</string>
     <!-- DeluxeROM end -->
 
 </resources>

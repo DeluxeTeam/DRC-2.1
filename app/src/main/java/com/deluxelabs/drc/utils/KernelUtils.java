@@ -98,6 +98,9 @@ public class KernelUtils extends BroadcastReceiver {
                     case "lmk":
                         setLMK();
                         break;
+                    case "moro":
+                        setMoroSound();
+                        break;
                 }
             }
         }
@@ -115,7 +118,100 @@ public class KernelUtils extends BroadcastReceiver {
         setCRC();
         setLed();
         setLMK();
+        setMoroSound();
         android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+    private static void setMoroSound() {
+        boolean isEnabled = Common.sp.getBoolean("dlx_kernel_moro_enable", false);
+        String value = isEnabled ? "1" : "0";
+        RootUtils.runCommand("busybox echo " + value + " > /sys/devices/virtual/misc/moro_sound/moro_sound");
+        RootUtils.runCommand("echo " + value + " > /sys/devices/virtual/misc/moro_sound/moro_sound");
+
+        if (!isEnabled) return;
+
+        value = calculateSoundValue(Common.sp.getInt("dlx_kernel_moro_headphone_left", 0)) + " " + calculateSoundValue(Common.sp.getInt("dlx_kernel_moro_headphone_right", 0));
+        RootUtils.runCommand("busybox echo " + value + " > /sys/devices/virtual/misc/moro_sound/headphone_gain");
+        RootUtils.runCommand("echo " + value + " > /sys/devices/virtual/misc/moro_sound/headphone_gain");
+
+        value = String.valueOf(Common.sp.getInt("dlx_kernel_moro_speaker", 19));
+        RootUtils.runCommand("busybox echo " + value + " > /sys/devices/virtual/misc/moro_sound/speaker_gain");
+        RootUtils.runCommand("echo " + value + " > /sys/devices/virtual/misc/moro_sound/speaker_gain");
+
+        value = String.valueOf(calculateSoundValue(Common.sp.getInt("dlx_kernel_moro_ear", 2)));
+        RootUtils.runCommand("busybox echo " + value + " > /sys/devices/virtual/misc/moro_sound/earpiece_gain");
+        RootUtils.runCommand("echo " + value + " > /sys/devices/virtual/misc/moro_sound/earpiece_gain");
+
+        isEnabled = Common.sp.getBoolean("dlx_kernel_moro_eq", false);
+        value = isEnabled ? "1" : "0";
+        RootUtils.runCommand("busybox echo " + value + " > /sys/devices/virtual/misc/moro_sound/eq");
+        RootUtils.runCommand("echo " + value + " > /sys/devices/virtual/misc/moro_sound/eq");
+
+        if (!isEnabled) return;
+
+        value = getSoundProfile(Common.sp.getString("dlx_kernel_moro_profile", "flat"));
+        RootUtils.runCommand("busybox echo " + value + " > /sys/devices/virtual/misc/moro_sound/eq_gains");
+        RootUtils.runCommand("echo " + value + " > /sys/devices/virtual/misc/moro_sound/eq_gains");
+
+        int gain = 1;
+        for (int i = 0; i < 5; i++) {
+            String tmp = value.split(" ")[i];
+            RootUtils.runCommand("busybox echo " + tmp + " > /sys/devices/virtual/misc/moro_sound/eq_b" + gain + "_gain");
+            RootUtils.runCommand("echo " + tmp + " > /sys/devices/virtual/misc/moro_sound/eq_b" + gain + "_gain");
+            gain++;
+        }
+    }
+
+    private static String getSoundProfile(String value) {
+        switch (value) {
+            default:
+            case "flat":
+                value = "0 0 0 0 0";
+                break;
+            case "extreme":
+                value = "12 8 3 -1 1";
+                break;
+            case "balance":
+                value = "10 7 0 2 5";
+                break;
+            case "treble":
+                value = "-5 1 0 4 3";
+                break;
+            case "classic":
+                value = "0 0 0 -3 -5";
+                break;
+            case "pleasant":
+                value = "4 3 2 2 3";
+                break;
+            case "eargasm":
+                value = "12 8 4 2 3";
+                break;
+            case "beats":
+                value = "10 8 6 5 7";
+                break;
+            case "enhanced":
+                value = "9 -3 9 7 8";
+                break;
+            case "deep":
+                value = "10 -1 8 4 8";
+                break;
+            case "detonation":
+                value = "9 4 -2 7 11";
+                break;
+            case "beast":
+                value = "9 4 10 4 7";
+                break;
+            case "custom":
+                value = Common.sp.getInt("dlx_kernel_moro_b1", 0) + " " + Common.sp.getInt("dlx_kernel_moro_b2", 0) + " " +
+                        Common.sp.getInt("dlx_kernel_moro_b3", 0) + " " + Common.sp.getInt("dlx_kernel_moro_b4", 0) + " " +
+                        Common.sp.getInt("dlx_kernel_moro_b5", 0);
+                break;
+        }
+        return value;
+    }
+
+    private static int calculateSoundValue(int value) {
+        return value > 0 ? (value / 2 * 4) + 128 : value == 0 ? 128 : 128 - (-value / 2 * 4);
     }
 
     private static void setLMK() {

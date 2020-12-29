@@ -1676,6 +1676,36 @@
         <item>27484,41226,82452,16420,19388,206130</item>
         <item>41226,5968,68710,151162,206130,219872</item>
     </string-array>
+    <string-array name="moro_profile_entries">
+        <item>Flat</item>
+        <item>Extreme</item>
+        <item>Balance</item>
+        <item>Treble</item>
+        <item>Classic</item>
+        <item>Pleasant</item>
+        <item>Eargasm</item>
+        <item>Beats</item>
+        <item>Enhanced</item>
+        <item>Deep</item>
+        <item>Detonation</item>
+        <item>Beast</item>
+        <item>Custom</item>
+    </string-array>
+    <string-array name="moro_profile_values">
+        <item>flat</item>
+        <item>extreme</item>
+        <item>balance</item>
+        <item>treble</item>
+        <item>classic</item>
+        <item>pleasant</item>
+        <item>eargasm</item>
+        <item>beats</item>
+        <item>enhanced</item>
+        <item>deep</item>
+        <item>detonation</item>
+        <item>beast</item>
+        <item>custom</item>
+    </string-array>
     <string-array name="changelog_282">
         <item>Updated DeluxeKernel_v16.6</item>
         <item>Updated DRC to 2.1.8</item>
@@ -2588,6 +2618,20 @@
     <string name="fade_settings">Fading settings (Status,timeout)</string>
     <string name="lmk">Low memory killer</string>
     <string name="lmk_profile">Low memory killer profile</string>
+    <string name="moro_sound">MoroSound 2.1.0</string>
+    <string name="moro_settings">Sound settings (Gains,equalizer,profiles)</string>
+    <string name="headphone_left_gain">Headphone left gain</string>
+    <string name="headphone_right_gain">Headphone right gain</string>
+    <string name="speaker_gain">Speaker gain</string>
+    <string name="earphone_gain">Earphone gain</string>
+    <string name="enable_eq">Enable equalizer</string>
+    <string name="profile">Profile</string>
+    <string name="band_25">25mhz band</string>
+    <string name="band_100">100mhz band</string>
+    <string name="band_250">250mhz band</string>
+    <string name="band_500">500mhz band</string>
+    <string name="band_1k">1k band</string>
+    <string name="bands">Bands</string>
     <!-- DeluxeROM end -->
 
 </resources>

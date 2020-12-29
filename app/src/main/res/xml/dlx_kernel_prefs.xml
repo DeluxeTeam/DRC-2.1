@@ -122,6 +122,171 @@
 
     </GrxPreferenceCategory>
 
+    <!-- MoroSound 2.1.0 -->
+    <GrxPreferenceCategory android:title="@string/moro_sound" grx:bpRule="kernel">
+
+        <PreferenceScreen android:title="@string/moro_settings">
+
+            <!-- Enable morosound -->
+            <GrxSwitchPreference
+                android:title="@string/enable"
+                android:key="dlx_kernel_moro_enable"
+                android:defaultValue="false"
+                grx:saveSettings="false"
+                grx:broadCast1Extra="moro"
+                grx:broadCast1="dlx_kernel_values" />
+
+            <!-- Headphone left -->
+            <GrxSeekBar
+                android:title="@string/headphone_left_gain"
+                android:key="dlx_kernel_moro_headphone_left"
+                android:dependency="dlx_kernel_moro_enable"
+                android:defaultValue="0"
+                grx:broadCast1="dlx_kernel_values"
+                grx:broadCast1Extra="moro"
+                grx:minValue="-18"
+                grx:saveSettings="false"
+                grx:maxValue="18"
+                grx:interval="2"/>
+
+            <!-- Headphone right -->
+            <GrxSeekBar
+                android:title="@string/headphone_right_gain"
+                android:key="dlx_kernel_moro_headphone_right"
+                android:dependency="dlx_kernel_moro_enable"
+                android:defaultValue="0"
+                grx:broadCast1="dlx_kernel_values"
+                grx:broadCast1Extra="moro"
+                grx:minValue="-18"
+                grx:saveSettings="false"
+                grx:maxValue="18"
+                grx:interval="2"/>
+
+            <!-- Speaker gain -->
+            <GrxSeekBar
+                android:title="@string/speaker_gain"
+                android:key="dlx_kernel_moro_speaker"
+                android:dependency="dlx_kernel_moro_enable"
+                android:defaultValue="19"
+                grx:broadCast1="dlx_kernel_values"
+                grx:broadCast1Extra="moro"
+                grx:minValue="12"
+                grx:saveSettings="false"
+                grx:maxValue="30"
+                grx:interval="1"/>
+
+            <!-- Earphone gain -->
+            <GrxSeekBar
+                android:title="@string/earphone_gain"
+                android:key="dlx_kernel_moro_ear"
+                android:dependency="dlx_kernel_moro_enable"
+                android:defaultValue="2"
+                grx:broadCast1="dlx_kernel_values"
+                grx:broadCast1Extra="moro"
+                grx:minValue="-8"
+                grx:saveSettings="false"
+                grx:maxValue="28"
+                grx:interval="2"/>
+
+            <!-- Enable equalizer -->
+            <GrxCheckBoxPreference
+                android:title="@string/enable_eq"
+                android:key="dlx_kernel_moro_eq"
+                android:dependency="dlx_kernel_moro_enable"
+                android:defaultValue="false"
+                grx:saveSettings="false"
+                grx:broadCast1Extra="moro"
+                grx:broadCast1="dlx_kernel_values" />
+
+            <!-- Eq profile -->
+            <GrxSingleSelection
+                android:title="@string/profile"
+                android:dependency="dlx_kernel_moro_eq"
+                android:key="dlx_kernel_moro_profile"
+                android:defaultValue="flat"
+                grx:broadCast1="dlx_kernel_values"
+                grx:broadCast1Extra="moro"
+                grx:saveSettings="false"
+                grx:optionsArray="@array/moro_profile_entries"
+                grx:valuesArray="@array/moro_profile_values" />
+
+            <GrxPreferenceCategory grx:hiddenCategory="true" android:dependency="dlx_kernel_moro_eq" grx:depRule="ENABLE#dlx_kernel_moro_profile#STRING#custom">
+
+                <PreferenceScreen android:title="@string/bands">
+
+                    <!-- 25mhz -->
+                    <GrxSeekBar
+                        android:title="@string/band_25"
+                        android:key="dlx_kernel_moro_b1"
+                        grx:depRule="ENABLE#dlx_kernel_moro_eq#BOOLEAN#true"
+                        android:defaultValue="0"
+                        grx:broadCast1="dlx_kernel_values"
+                        grx:broadCast1Extra="moro"
+                        grx:minValue="-12"
+                        grx:saveSettings="false"
+                        grx:maxValue="12"
+                        grx:interval="1"/>
+
+                    <!-- 100mhz -->
+                    <GrxSeekBar
+                        android:title="@string/band_100"
+                        android:key="dlx_kernel_moro_b2"
+                        grx:depRule="ENABLE#dlx_kernel_moro_eq#BOOLEAN#true"
+                        android:defaultValue="0"
+                        grx:broadCast1="dlx_kernel_values"
+                        grx:broadCast1Extra="moro"
+                        grx:minValue="-12"
+                        grx:saveSettings="false"
+                        grx:maxValue="12"
+                        grx:interval="1"/>
+
+                    <!-- 250mhz -->
+                    <GrxSeekBar
+                        android:title="@string/band_250"
+                        android:key="dlx_kernel_moro_b3"
+                        grx:depRule="ENABLE#dlx_kernel_moro_eq#BOOLEAN#true"
+                        android:defaultValue="0"
+                        grx:broadCast1="dlx_kernel_values"
+                        grx:broadCast1Extra="moro"
+                        grx:minValue="-12"
+                        grx:saveSettings="false"
+                        grx:maxValue="12"
+                        grx:interval="1"/>
+
+                    <!-- 500mhz -->
+                    <GrxSeekBar
+                        android:title="@string/band_500"
+                        android:key="dlx_kernel_moro_b4"
+                        grx:depRule="ENABLE#dlx_kernel_moro_eq#BOOLEAN#true"
+                        android:defaultValue="0"
+                        grx:broadCast1="dlx_kernel_values"
+                        grx:broadCast1Extra="moro"
+                        grx:minValue="-12"
+                        grx:saveSettings="false"
+                        grx:maxValue="12"
+                        grx:interval="1"/>
+
+                    <!-- 1k -->
+                    <GrxSeekBar
+                        android:title="@string/band_1k"
+                        android:key="dlx_kernel_moro_b5"
+                        grx:depRule="ENABLE#dlx_kernel_moro_eq#BOOLEAN#true"
+                        android:defaultValue="0"
+                        grx:broadCast1="dlx_kernel_values"
+                        grx:broadCast1Extra="moro"
+                        grx:minValue="-12"
+                        grx:saveSettings="false"
+                        grx:maxValue="12"
+                        grx:interval="1"/>
+
+                </PreferenceScreen>
+
+            </GrxPreferenceCategory>
+
+        </PreferenceScreen>
+
+    </GrxPreferenceCategory>
+
     <!-- Fading led -->
     <GrxPreferenceCategory android:title="@string/led_fading" grx:bpRule="kernel">
 
