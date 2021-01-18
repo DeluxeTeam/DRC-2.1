@@ -1,12 +1,12 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.1.8</latestVersion>
+        <latestVersion>2.1.9</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.1.8
+-- DRC 2.1.9
 
-- Cambiado SELinux por defecto a permissive
-- Añadida mas información a los reportes de errores
+- Añadidos controles de MoroSound
+- Añadidos perfiles de LMK (LowMemoryKiller)
         </releaseNotes>
     </update>
 </AppUpdater>
