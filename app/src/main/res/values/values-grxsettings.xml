@@ -1706,6 +1706,15 @@
         <item>beast</item>
         <item>custom</item>
     </string-array>
+    <string-array name="changelog_290">
+        <item>Rebased over N950FXXSEDTL1</item>
+        <item>Security patch 01/01/2021</item>
+        <item>Updated DeluxeKernel_v16.7</item>
+        <item>Updated TWRP v3.5.0</item>
+        <item>Updated Magisk v21.4</item>
+        <item>Updated DRC v2.1.9</item>
+        <item>Fixed typo on installer causing wrong AROMA options</item>
+    </string-array>
     <string-array name="changelog_282">
         <item>Updated DeluxeKernel_v16.6</item>
         <item>Updated DRC to 2.1.8</item>
@@ -2377,6 +2386,7 @@
     <string name="dlxui">DlxUI</string>
     <string name="dlxdark">DlxDark</string>
     <string name="dlxlight">DlxLight</string>
+    <string name="changelog_290">Changelog v29</string>
     <string name="changelog_282">Changelog v28.2</string>
     <string name="changelog_281">Changelog v28.1</string>
     <string name="changelog_280">Changelog v28</string>

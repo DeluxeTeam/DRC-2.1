@@ -372,6 +372,15 @@
         <item>Agresivo</item>
         <item>Muy agresivo</item>
     </string-array>
+    <string-array name="changelog_290">
+        <item>Rebasada sobre N950FXXSEDTL1</item>
+        <item>Parche de seguridad 01/01/2021</item>
+        <item>Actualizado DeluxeKernel_v16.7</item>
+        <item>Actualizado TWRP v3.5.0</item>
+        <item>Actualizado Magisk v21.4</item>
+        <item>Actualizado DRC v2.1.9</item>
+        <item>Arreglado error en la configuración de AROMA</item>
+    </string-array>
     <string-array name="changelog_282">
         <item>Actualizado DeluxeKernel_v16.6</item>
         <item>Actualizado DRC 2.1.8</item>
@@ -959,6 +968,7 @@
     <string name="dlxui">DlxUI</string>
     <string name="dlxdark">DlxDark</string>
     <string name="dlxlight">DlxLight</string>
+    <string name="changelog_290">Cambios v29</string>
     <string name="changelog_282">Cambios v28.2</string>
     <string name="changelog_281">Cambios v28.1</string>
     <string name="changelog_280">Cambios v28</string>
