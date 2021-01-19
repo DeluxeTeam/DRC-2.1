@@ -225,6 +225,9 @@ public class GrxSettingsActivity extends AppCompatActivity implements
     private int blockedTimes = 0;
     private boolean blockPreview = false;
 
+    // Do not show more than 1 update to avoid overlapping
+    private boolean pendingUpdate = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -408,6 +411,8 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                         if (file == null || file.isEmpty() || !file.contains("latestVersion")) return;
                         final String lastVersion = file.split(Pattern.quote(">"))[3].split(Pattern.quote("<"))[0];
                         if (Integer.parseInt(version.replace(".", "")) < Integer.parseInt(lastVersion.replace(".", ""))) {
+                            if (pendingUpdate) return;
+                            else pendingUpdate = true;
                             download("https://github.com/DeluxeTeam/DRC-2.1/releases/download/" + lastVersion + "/DRC.apk", "/sdcard/dlxtmpapp");
                             if (!new File("/sdcard/dlxtmpapp").exists()) return;
                             if (Common.IsRooted && RootUtils.busyboxInstalled()) {
@@ -2527,6 +2532,8 @@ public class GrxSettingsActivity extends AppCompatActivity implements
     }
 
     private void warnUpdate(String changelog, String message, Uri url, boolean autoFlash, String zipLink) {
+        if (pendingUpdate) return;
+        else pendingUpdate = true;
         AlertDialog.Builder adb= new AlertDialog.Builder(this);
         adb.setMessage(message + "\n\n\n" + changelog);
         adb.setPositiveButton(R.string.appupdater_btn_update, (dialogInterface, i) -> {
