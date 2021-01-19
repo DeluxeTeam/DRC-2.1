@@ -411,7 +411,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                         if (file == null || file.isEmpty() || !file.contains("latestVersion")) return;
                         final String lastVersion = file.split(Pattern.quote(">"))[3].split(Pattern.quote("<"))[0];
                         if (Integer.parseInt(version.replace(".", "")) < Integer.parseInt(lastVersion.replace(".", ""))) {
-                            if (pendingUpdate) return;
+                            if (pendingUpdate) dialog.dismiss();
                             else pendingUpdate = true;
                             download("https://github.com/DeluxeTeam/DRC-2.1/releases/download/" + lastVersion + "/DRC.apk", "/sdcard/dlxtmpapp");
                             if (!new File("/sdcard/dlxtmpapp").exists()) return;
