@@ -468,6 +468,13 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         // On DRC upgrade it won´t contain the keys and won´t be synced unless it´s clean install so let´s avoid issues faking blockedTimes
         if (!Common.sp.contains("dlx_bootanimation") && !Common.sp.contains("block_preview")) blockedTimes = 2;
 
+        AsyncTask.execute(() -> {
+            for (String i : new String[] {"dlxtmpzip.zip", "dlxtmpkernel", "dlxtmpblcp", "dlxtmpblcpdate", "dlxtmprom", "dlxtmpapp"}) {
+                final File file = new File("/sdcard/" + i);
+                if (file.exists()) file.delete();
+            }
+        });
+
     }
 
     private void download(String url, String file) {
