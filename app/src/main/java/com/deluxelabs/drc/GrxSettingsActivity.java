@@ -402,23 +402,23 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                     dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                     dialog.show();
                     AsyncTask.execute(() -> {
-                        download("https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update-changelog.xml", "/sdcard/dlxtmpapp");
+                        download("https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update-changelog.xml", getCacheDir() + "/dlxtmpapp");
                         final String version = BuildConfig.VERSION_NAME;
                         String file = null;
                         try {
-                            file = IOUtils.toString(URI.create("file:///sdcard/dlxtmpapp"));
+                            file = IOUtils.toString(URI.create("file://" + getCacheDir() + "/dlxtmpapp"));
                         } catch (IOException ignored) {}
                         if (file == null || file.isEmpty() || !file.contains("latestVersion")) return;
                         final String lastVersion = file.split(Pattern.quote(">"))[3].split(Pattern.quote("<"))[0];
                         if (Integer.parseInt(version.replace(".", "")) < Integer.parseInt(lastVersion.replace(".", ""))) {
                             if (pendingUpdate) dialog.dismiss();
                             else pendingUpdate = true;
-                            download("https://github.com/DeluxeTeam/DRC-2.1/releases/download/" + lastVersion + "/DRC.apk", "/sdcard/dlxtmpapp");
-                            if (!new File("/sdcard/dlxtmpapp").exists()) return;
+                            download("https://github.com/DeluxeTeam/DRC-2.1/releases/download/" + lastVersion + "/DRC.apk", getCacheDir() + "/dlxtmpapp");
+                            if (!new File(getCacheDir() + "/dlxtmpapp").exists()) return;
                             if (Common.IsRooted && RootUtils.busyboxInstalled()) {
-                                RootUtils.runCommand("cp -rf /sdcard/dlxtmpapp /data/local/tmp/dlxtmpapp; pm install -r /data/local/tmp/dlxtmpapp; am start -n com.deluxelabs.drc/com.deluxelabs.drc.GrxSettingsActivity;");
+                                RootUtils.runCommand("cp -rf " + getCacheDir() + "/dlxtmpapp /data/local/tmp/dlxtmpapp; pm install -r /data/local/tmp/dlxtmpapp; am start -n com.deluxelabs.drc/com.deluxelabs.drc.GrxSettingsActivity;");
                             } else {
-                                final Uri apk = Uri.parse("file:///sdcard/dlxtmpapp");
+                                final Uri apk = Uri.parse("file://" + getCacheDir() + "/dlxtmpapp");
                                 Intent promptInstall = new Intent(Intent.ACTION_VIEW);
                                 promptInstall.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
                                 promptInstall.setDataAndType(apk, "application/vnd.android.package-archive");
@@ -447,7 +447,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                             "https://raw.githubusercontent.com/DeluxeTeam/DeluxeROM_N950F_G95xF/master/update_es.json"
                             :
                             "https://raw.githubusercontent.com/DeluxeTeam/DeluxeROM_N950F_G95xF/master/update.json",
-                    "/sdcard/dlxtmprom").execute();
+                    getCacheDir() + "/dlxtmprom").execute();
         }
 
         if (Common.sp.getBoolean("check_kernel", true)) {
@@ -456,13 +456,13 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                             "https://raw.githubusercontent.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/master/deluxe/update_es.json"
                             :
                             "https://raw.githubusercontent.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/master/deluxe/update.json",
-                    "/sdcard/dlxtmpkernel").execute();
+                    getCacheDir() + "/dlxtmpkernel").execute();
         }
 
         if (Common.sp.getBoolean("check_blcp", true)) {
             mBLCP = new dlxUpdater(this,
                             "https://raw.githubusercontent.com/DeluxeTeam/N950F_G95xF_BL_CP/master/VERSIONS",
-                    "/sdcard/dlxtmpblcp").execute();
+                    getCacheDir() + "/dlxtmpblcp").execute();
         }
 
         // On DRC upgrade it won´t contain the keys and won´t be synced unless it´s clean install so let´s avoid issues faking blockedTimes
@@ -2430,8 +2430,9 @@ public class GrxSettingsActivity extends AppCompatActivity implements
 
         @Override
         protected Void doInBackground(Void... voids) {
-            mInstance.get().download(mUrl, mFile);
-            if (mFile.contains("blcp")) mInstance.get().download("https://raw.githubusercontent.com/DeluxeTeam/N950F_G95xF_BL_CP/master/.zipDate", "/sdcard/dlxtmpblcpdate");
+            final GrxSettingsActivity grx = mInstance.get();
+            grx.download(mUrl, mFile);
+            if (mFile.contains("blcp")) grx.download("https://raw.githubusercontent.com/DeluxeTeam/N950F_G95xF_BL_CP/master/.zipDate", grx.getCacheDir() + "/dlxtmpblcpdate");
             return null;
         }
 
@@ -2441,7 +2442,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
             final File outputFile = new File(mFile);
             if (!outputFile.exists()) return;
             final GrxSettingsActivity grx = mInstance.get();
-            grx.runOnUiThread(mFile.equals("/sdcard/dlxtmprom") ? grx::checkRom : mFile.equals("/sdcard/dlxtmpkernel") ? grx::checkKernel : grx::checkBLCP);
+            grx.runOnUiThread(mFile.equals(grx.getCacheDir() + "/dlxtmprom") ? grx::checkRom : mFile.equals(grx.getCacheDir() + "/dlxtmpkernel") ? grx::checkKernel : grx::checkBLCP);
         }
 
     }
@@ -2460,8 +2461,8 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         String[] lines = null;
         String date = null;
         try {
-            lines = IOUtils.toString(URI.create("file:///sdcard/dlxtmpblcp")).split(Pattern.quote("\n"));
-            date = IOUtils.toString(URI.create("file:///sdcard/dlxtmpblcpdate"));
+            lines = IOUtils.toString(URI.create("file://" + getCacheDir() + "/dlxtmpblcp")).split(Pattern.quote("\n"));
+            date = IOUtils.toString(URI.create("file://" + getCacheDir() + "dlxtmpblcpdate"));
         } catch (IOException ignored) {}
         assert lines != null;
         boolean found = false;
@@ -2488,7 +2489,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         final String version = kernel.split(Pattern.quote("++"))[1].split("v")[1];
         String file = null;
         try {
-            file = IOUtils.toString(URI.create("file:///sdcard/dlxtmpkernel"));
+            file = IOUtils.toString(URI.create("file://" + getCacheDir() + "/dlxtmpkernel"));
         } catch (IOException ignored) {};
         if (file == null || file.isEmpty() || !file.contains("lastVersion") || !file.contains("changelog")) return;
         final String lastVersion = file.split(Pattern.quote("{"))[1].split(Pattern.quote("}"))[0];
@@ -2514,7 +2515,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         final String version = value.split(Pattern.quote("_"))[1].split("v")[1];
         String file = null;
         try {
-            file = IOUtils.toString(URI.create("file:///sdcard/dlxtmprom"));
+            file = IOUtils.toString(URI.create("file://" + getCacheDir() + "/dlxtmprom"));
         } catch (IOException ignored) {};
         if (file == null || file.isEmpty() || !file.contains("lastVersion") || !file.contains("changelog")) return;
         final String lastVersion = file.split(Pattern.quote("{"))[1].split(Pattern.quote("}"))[0];
