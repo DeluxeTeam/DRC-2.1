@@ -223,6 +223,9 @@ public class GrxImageHelper {
 
                 InputStream inputStream = context.getContentResolver().openInputStream(img_uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+                if (bitmap == null) return drawable;
+
                 int sx = bitmap.getWidth();
                 int sy = bitmap.getHeight();
 
