@@ -298,6 +298,7 @@ public class KernelUtils extends BroadcastReceiver {
         final int selinux = Common.sp.getBoolean("dlx_kernel_selinux", false) ? 1 : 0;
         RootUtils.runCommand("chmod 744 " + path + "; busybox echo " + selinux + " > " + path + "; chmod 644 " + path + ";");
         RootUtils.runCommand("chmod 744 " + path + "; echo " + selinux + " > " + path + "; chmod 644 " + path + ";");
+        RootUtils.runCommand("resetprop ro.build.selinux 1");
     }
 
     private static int dlxGenerateValue(String i) {
