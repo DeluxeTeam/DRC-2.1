@@ -78,8 +78,6 @@ import com.deluxelabs.drc.utils.KernelUtils;
 import com.deluxelabs.drc.utils.RootPrivilegedUtils;
 import com.deluxelabs.drc.views.GrxFloatingRecents;
 import com.fab.ObservableScrollView;
-import com.github.javiersantos.appupdater.AppUpdater;
-import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.root.RootUtils;
 import com.sublimenavigationview.SublimeBaseMenuItem;
 import com.sublimenavigationview.SublimeGroup;
@@ -209,7 +207,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
     private boolean isUserWarned = false;
 
     // Both AsyncTasks must be accessible to cancel them on onDetached, else on app reloads (night mode, dual bar...) we'll get a memory leak
-    private AsyncTask<Void, Void, Void> mSU/*, mDLX*/, mROM, mKernel, mBLCP;
+    private AsyncTask<Void, Void, Void> mSU/*, mDLX*/, mROM, mKernel, mBLCP, mApp;
 
     public int mSelectedTool = -1;
 
@@ -392,53 +390,12 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         final boolean isSpanish = Locale.getDefault().getLanguage().equals("es");
 
         if (Common.sp.getBoolean("check_updates", true)) {
-            new AppUpdater(this)
-                .setUpdateFrom(UpdateFrom.XML)
-                .setButtonDoNotShowAgain(null)
-                .setButtonUpdateClickListener((dialogInterface, i) -> {
-                    ProgressDialog dialog = new ProgressDialog(GrxSettingsActivity.this);
-                    dialog.setMessage(getString(R.string.updating_app));
-                    dialog.setCancelable(false);
-                    dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                    dialog.show();
-                    AsyncTask.execute(() -> {
-                        download("https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update-changelog.xml", getCacheDir() + "/dlxtmpapp");
-                        final String version = BuildConfig.VERSION_NAME;
-                        String file = null;
-                        try {
-                            file = IOUtils.toString(URI.create("file://" + getCacheDir() + "/dlxtmpapp"));
-                        } catch (IOException ignored) {}
-                        if (file == null || file.isEmpty() || !file.contains("latestVersion")) return;
-                        final String lastVersion = file.split(Pattern.quote(">"))[3].split(Pattern.quote("<"))[0];
-                        if (Integer.parseInt(version.replace(".", "")) < Integer.parseInt(lastVersion.replace(".", ""))) {
-                            if (pendingUpdate) dialog.dismiss();
-                            else pendingUpdate = true;
-                            download("https://github.com/DeluxeTeam/DRC-2.1/releases/download/" + lastVersion + "/DRC.apk", getCacheDir() + "/dlxtmpapp");
-                            if (!new File(getCacheDir() + "/dlxtmpapp").exists()) return;
-                            if (Common.IsRooted && RootUtils.busyboxInstalled()) {
-                                RootUtils.runCommand("cp -rf " + getCacheDir() + "/dlxtmpapp /data/local/tmp/dlxtmpapp; pm install -r /data/local/tmp/dlxtmpapp; am start -n com.deluxelabs.drc/com.deluxelabs.drc.GrxSettingsActivity;");
-                            } else {
-                                final Uri apk = Uri.parse("file://" + getCacheDir() + "/dlxtmpapp");
-                                Intent promptInstall = new Intent(Intent.ACTION_VIEW);
-                                promptInstall.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-                                promptInstall.setDataAndType(apk, "application/vnd.android.package-archive");
-                                promptInstall.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                promptInstall.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                                try {
-                                    startActivity(promptInstall);
-                                } catch (ActivityNotFoundException ignored) {}
-                            }
-                        }
-                        dialog.dismiss();
-                    });
-                })
-                .setUpdateXML(
-                        isSpanish ?
-                        "https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update-changelog_es.xml"
-                                :
-                        "https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update-changelog.xml"
-                )
-                .start();
+            mApp = new dlxUpdater(this,
+                    isSpanish ?
+                            "https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update_es.json"
+                            :
+                            "https://raw.githubusercontent.com/DeluxeTeam/DRC-2.1/N950F-P/app/update.json",
+                    getCacheDir() + "/dlxtmpapp").execute();
         }
 
         if (Common.sp.getBoolean("check_rom", true)) {
@@ -2421,6 +2378,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         if (mROM != null) mROM.cancel(true);
         if (mKernel != null) mKernel.cancel(true);
         if (mBLCP != null) mBLCP.cancel(true);
+        if (mApp != null) mApp.cancel(true);
         super.onDetachedFromWindow();
     }
 
@@ -2449,9 +2407,24 @@ public class GrxSettingsActivity extends AppCompatActivity implements
             final File outputFile = new File(mFile);
             if (!outputFile.exists()) return;
             final GrxSettingsActivity grx = mInstance.get();
-            grx.runOnUiThread(mFile.equals(grx.getCacheDir() + "/dlxtmprom") ? grx::checkRom : mFile.equals(grx.getCacheDir() + "/dlxtmpkernel") ? grx::checkKernel : grx::checkBLCP);
+            grx.runOnUiThread(mFile.equals(grx.getCacheDir() + "/dlxtmprom") ? grx::checkRom : mFile.equals(grx.getCacheDir() + "/dlxtmpkernel") ?
+                    grx::checkKernel : mFile.equals(grx.getCacheDir() + "/dlxtmpapp") ? grx::checkApp : grx::checkBLCP);
         }
 
+    }
+
+    private void checkApp() {
+        final String version = BuildConfig.VERSION_NAME;
+        String file = null;
+        try {
+            file = IOUtils.toString(URI.create("file://" + getCacheDir() + "/dlxtmpapp"));
+        } catch (IOException ignored) {}
+        if (file == null || file.isEmpty() || !file.contains("lastVersion")) return;
+        final String lastVersion = file.split(Pattern.quote("{"))[1].split(Pattern.quote("}"))[0];
+        if (Integer.parseInt(version.replace(".", "")) < Integer.parseInt(lastVersion.replace(".", ""))) {
+            final String changelog = file.split(Pattern.quote("{"))[2].split(Pattern.quote("}"))[0];
+            warnUpdate(changelog, getString(R.string.new_app, lastVersion), null, false, lastVersion, true);
+        }
     }
 
     @SuppressLint("PrivateApi")
@@ -2486,7 +2459,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         if (found && newversion != null && !newversion.isEmpty() && !value.equals(newversion)) {
             warnUpdate(full, getString(R.string.new_blcp, newversion),
                 Uri.parse("https://github.com/DeluxeTeam/N950F_G95xF_BL_CP/releases"), Common.IsRooted && RootUtils.busyboxInstalled(),
-                    "https://github.com/DeluxeTeam/N950F_G95xF_BL_CP/releases/download/" + date + "/N950F_G95xF_BL_CP_" + date + ".zip");
+                    "https://github.com/DeluxeTeam/N950F_G95xF_BL_CP/releases/download/" + date + "/N950F_G95xF_BL_CP_" + date + ".zip", false);
         }
     }
 
@@ -2505,7 +2478,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
             warnUpdate(changelog, getString(R.string.new_kernel, lastVersion),
                     Uri.parse("https://github.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/releases"), Common.IsRooted && RootUtils.busyboxInstalled(),
                     "https://github.com/DeluxeTeam/DeluxeKernel_N950F_G95xF_SM/releases/download/" + lastVersion +
-                            "/N950F_G95xF_DeluxeKernel_v" + lastVersion + "_REL.zip");
+                            "/N950F_G95xF_DeluxeKernel_v" + lastVersion + "_REL.zip", false);
         }
     }
 
@@ -2535,23 +2508,49 @@ public class GrxSettingsActivity extends AppCompatActivity implements
                             "https://www.htcmania.com/showthread.php?t=1404819"
                                 :
                             "https://forum.xda-developers.com/galaxy-note-8/development/n950f-g955f-g950f-deluxerom-v6-0-t3784712"
-                    ), false, null);
+                    ), false, null, false);
         }
     }
 
-    private void warnUpdate(String changelog, String message, Uri url, boolean autoFlash, String zipLink) {
+    private void warnUpdate(String changelog, String message, Uri url, boolean autoFlash, String zipLink, boolean isApp) {
         if (pendingUpdate) return;
         else pendingUpdate = true;
         AlertDialog.Builder adb= new AlertDialog.Builder(this);
         adb.setMessage(message + "\n\n\n" + changelog);
-        adb.setPositiveButton(R.string.appupdater_btn_update, (dialogInterface, i) -> {
-            try {
-                startActivity(new Intent(Intent.ACTION_VIEW).setData(url));
-            } catch (ActivityNotFoundException ignored) {
-                Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_LONG).show();
+        adb.setPositiveButton(R.string.update, (dialogInterface, i) -> {
+            if (isApp) {
+                ProgressDialog dialog = new ProgressDialog(GrxSettingsActivity.this);
+                dialog.setMessage(getString(R.string.updating_app));
+                dialog.setCancelable(false);
+                dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                dialog.show();
+                AsyncTask.execute(() -> {
+                    download("https://github.com/DeluxeTeam/DRC-2.1/releases/download/" + zipLink + "/DRC.apk", getCacheDir() + "/dlxtmpapp");
+                    if (!new File(getCacheDir() + "/dlxtmpapp").exists()) return;
+                    if (Common.IsRooted && RootUtils.busyboxInstalled()) {
+                        RootUtils.runCommand("cp -rf " + getCacheDir() + "/dlxtmpapp /data/local/tmp/dlxtmpapp; pm install -r /data/local/tmp/dlxtmpapp; am start -n com.deluxelabs.drc/com.deluxelabs.drc.GrxSettingsActivity;");
+                    } else {
+                        final Uri apk = Uri.parse("file://" + getCacheDir() + "/dlxtmpapp");
+                        Intent promptInstall = new Intent(Intent.ACTION_VIEW);
+                        promptInstall.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+                        promptInstall.setDataAndType(apk, "application/vnd.android.package-archive");
+                        promptInstall.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        promptInstall.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        try {
+                            startActivity(promptInstall);
+                        } catch (ActivityNotFoundException ignored) {}
+                    }
+                    dialog.dismiss();
+                });
+            } else {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW).setData(url));
+                } catch (ActivityNotFoundException ignored) {
+                    Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_LONG).show();
+                }
             }
         });
-        adb.setNegativeButton(R.string.appupdater_btn_dismiss, (dialogInterface, i) -> dialogInterface.dismiss());
+        adb.setNegativeButton(R.string.dismiss, (dialogInterface, i) -> dialogInterface.dismiss());
         if (autoFlash) {
             adb.setNeutralButton(R.string.auto_flash, (dialogInterface, i) -> {
                 ProgressDialog dialog = new ProgressDialog(GrxSettingsActivity.this);

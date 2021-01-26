@@ -1189,6 +1189,9 @@
     <string name="band_500">Banda 500mhz</string>
     <string name="band_1k">Banda 1k</string>
     <string name="bands">Bandas</string>
+    <string name="update">Actualizar</string>
+    <string name="dismiss">Omitir</string>
+    <string name="new_app">-- Nuevo DRC v%s publicado!</string>
     <!-- DeluxeROM end -->
 
 </resources>
