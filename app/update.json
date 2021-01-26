@@ -1,0 +1,6 @@
+lastVersion{2.2.0}
+changelog{- Fixed FC when restoring old backups
+- Used stock style for DRC updates
+- Only show 1 update at same time
+- Always show SELinux status on settings
+- Moved tmp files to cache instead of internal storage}
