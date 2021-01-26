@@ -1,12 +1,15 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.1.9</latestVersion>
+        <latestVersion>2.2.0</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.1.9
+-- DRC 2.2.0
 
-- Added MoroSound controls
-- Added LMK (LowMemoryKiler) profiles
+- Fixed FC when restoring old backups
+- Used stock style for DRC updates
+- Only show 1 update at same time
+- Always show SELinux status on settings
+- Moved tmp files to cache instead of internal storage
         </releaseNotes>
     </update>
 </AppUpdater>
