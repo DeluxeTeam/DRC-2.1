@@ -2442,7 +2442,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         String date = null;
         try {
             lines = IOUtils.toString(URI.create("file://" + getCacheDir() + "/dlxtmpblcp")).split(Pattern.quote("\n"));
-            date = IOUtils.toString(URI.create("file://" + getCacheDir() + "dlxtmpblcpdate"));
+            date = IOUtils.toString(URI.create("file://" + getCacheDir() + "/dlxtmpblcpdate"));
         } catch (IOException ignored) {}
         assert lines != null;
         boolean found = false;
