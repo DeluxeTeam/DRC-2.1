@@ -1706,6 +1706,23 @@
         <item>beast</item>
         <item>custom</item>
     </string-array>
+    <string-array name="changelog_291">
+        <item>Updated CSC N950FOXMEDTL1</item>
+        <item>Updated DeluxeKernel_v16.8</item>
+        <item>Updated Magisk v22</item>
+        <item>Updated S8+/S8 files [DUA3]</item>
+        <item>Updated DRC 2.2.1</item>
+        <item>Added CSC KTC</item>
+        <item>Added CSC LUC</item>
+        <item>Added CSC OPS</item>
+        <item>Added CSC SKC</item>
+        <item>Added CSC TEL</item>
+        <item>Added CSC TNZ</item>
+        <item>Added CSC VAU</item>
+        <item>Added CSC VNZ</item>
+        <item>Added CSC XNX</item>
+        <item>Added CSC XSA</item>
+    </string-array>
     <string-array name="changelog_290">
         <item>Rebased over N950FXXSEDTL1</item>
         <item>Security patch 01/01/2021</item>
@@ -2386,6 +2403,7 @@
     <string name="dlxui">DlxUI</string>
     <string name="dlxdark">DlxDark</string>
     <string name="dlxlight">DlxLight</string>
+    <string name="changelog_291">Changelog v29.1</string>
     <string name="changelog_290">Changelog v29</string>
     <string name="changelog_282">Changelog v28.2</string>
     <string name="changelog_281">Changelog v28.1</string>

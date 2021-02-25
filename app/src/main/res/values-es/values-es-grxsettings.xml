@@ -372,6 +372,23 @@
         <item>Agresivo</item>
         <item>Muy agresivo</item>
     </string-array>
+    <string-array name="changelog_291">
+        <item>Actualizado CSC N950FOXMEDTL1</item>
+        <item>Actualizado DeluxeKernel_v16.8</item>
+        <item>Actualizado Magisk v22</item>
+        <item>Actualizados archivos de S8+/S8 [DUA3]</item>
+        <item>Actualizado DRC 2.2.1</item>
+        <item>Añadido CSC KTC</item>
+        <item>Añadido CSC LUC</item>
+        <item>Añadido CSC OPS</item>
+        <item>Añadido CSC SKC</item>
+        <item>Añadido CSC TEL</item>
+        <item>Añadido CSC TNZ</item>
+        <item>Añadido CSC VAU</item>
+        <item>Añadido CSC VNZ</item>
+        <item>Añadido CSC XNX</item>
+        <item>Añadido CSC XSA</item>
+    </string-array>
     <string-array name="changelog_290">
         <item>Rebasada sobre N950FXXSEDTL1</item>
         <item>Parche de seguridad 01/01/2021</item>
@@ -968,6 +985,7 @@
     <string name="dlxui">DlxUI</string>
     <string name="dlxdark">DlxDark</string>
     <string name="dlxlight">DlxLight</string>
+    <string name="changelog_291">Cambios v29.1</string>
     <string name="changelog_290">Cambios v29</string>
     <string name="changelog_282">Cambios v28.2</string>
     <string name="changelog_281">Cambios v28.1</string>
