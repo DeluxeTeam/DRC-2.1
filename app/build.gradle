@@ -17,7 +17,7 @@ android {
                             // If you still need API 22 to 25, uncomment in lintOptions Section the line checkReleaseBuilds false
                             // or you will not be able to generate a signed apk
         versionCode 2
-        versionName "2.2.0"
+        versionName "2.2.1"
         multiDexEnabled  false
     }
 

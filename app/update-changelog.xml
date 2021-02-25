@@ -1,15 +1,12 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.2.0</latestVersion>
+        <latestVersion>2.2.1</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.2.0
+-- DRC 2.2.1
 
-- Fixed FC when restoring old backups
-- Used stock style for DRC updates
-- Only show 1 update at same time
-- Always show SELinux status on settings
-- Moved tmp files to cache instead of internal storage
+- Fixed dream2/dream BLCP auto-flash
+- Added "Cancel" button for auto-updates
         </releaseNotes>
     </update>
 </AppUpdater>
