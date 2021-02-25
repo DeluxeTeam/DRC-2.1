@@ -24,6 +24,7 @@ import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -108,6 +109,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Pattern;
 
 import pl.droidsonroids.gif.GifImageView;
@@ -2517,6 +2519,7 @@ public class GrxSettingsActivity extends AppCompatActivity implements
         else pendingUpdate = true;
         AlertDialog.Builder adb= new AlertDialog.Builder(this);
         adb.setMessage(message + "\n\n\n" + changelog);
+        AtomicBoolean cancelable = new AtomicBoolean(true);
         adb.setPositiveButton(R.string.update, (dialogInterface, i) -> {
             if (isApp) {
                 ProgressDialog dialog = new ProgressDialog(GrxSettingsActivity.this);
@@ -2555,14 +2558,21 @@ public class GrxSettingsActivity extends AppCompatActivity implements
             adb.setNeutralButton(R.string.auto_flash, (dialogInterface, i) -> {
                 ProgressDialog dialog = new ProgressDialog(GrxSettingsActivity.this);
                 dialog.setMessage(getString(R.string.downloading_wait));
-                dialog.setCancelable(false);
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.grxs_cancel), (dialog1, which) -> {
+                    if (!cancelable.get()) Toast.makeText(GrxSettingsActivity.this, getString(R.string.cant_cancel), Toast.LENGTH_LONG).show();
+                    else dialog1.cancel();
+                });
+                dialog.setCancelable(true);
                 dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 dialog.show();
                 AsyncTask.execute(() -> {
                     download(zipLink, "/sdcard/dlxtmpzip.zip");
+                    cancelable.set(false);
+                    if (!dialog.isShowing()) return;
                     RootPrivilegedUtils.runFileScript(this, "flash_zip.sh");
                     // At this point it means zip is not there so something went wrong
-                    Toast.makeText(this, getString(R.string.download_error, zipLink), Toast.LENGTH_SHORT).show();
+                    runOnUiThread(() -> Toast.makeText(GrxSettingsActivity.this, getString(R.string.download_error, zipLink), Toast.LENGTH_SHORT).show());
                 });
             });
         }

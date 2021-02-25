@@ -2645,6 +2645,7 @@
     <string name="update">Update</string>
     <string name="dismiss">Dismiss</string>
     <string name="new_app">-- New DRC v%s is out!</string>
+    <string name="cant_cancel">Can\'t cancel at this point</string>
     <!-- DeluxeROM end -->
 
 </resources>
