@@ -1,12 +1,11 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.2.1</latestVersion>
+        <latestVersion>2.2.2</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.2.1
+-- DRC 2.2.2
 
-- Arreglado auto-flasheo de BLCP para dream2/dream
-- Añadida posibilidad de cancelar auto-flasheo (interrumpir descarga)
+- Actualizado listado de cambios para v30 [FINAL]
         </releaseNotes>
     </update>
 </AppUpdater>
