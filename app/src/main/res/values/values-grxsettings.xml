@@ -1706,6 +1706,11 @@
         <item>beast</item>
         <item>custom</item>
     </string-array>
+    <string-array name="changelog_301">
+        <item>Rebased over N950FXXUFDUE4</item>
+        <item>Security patch 01/05/2021</item>
+        <item>Included floating media buttons fix</item>
+    </string-array>
     <string-array name="changelog_300">
         <item>Rebased over N950FXXSFDUD1</item>
         <item>Updated DeluxeKernel_v16.9</item>
@@ -2405,6 +2410,7 @@
     <string name="dlxui">DlxUI</string>
     <string name="dlxdark">DlxDark</string>
     <string name="dlxlight">DlxLight</string>
+    <string name="changelog_301">Changelog v31</string>
     <string name="changelog_300">Changelog v30</string>
     <string name="changelog_290">Changelog v29</string>
     <string name="changelog_282">Changelog v28.2</string>

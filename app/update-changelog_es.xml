@@ -1,11 +1,11 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.2.2</latestVersion>
+        <latestVersion>2.2.3</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.2.2
+-- DRC 2.2.3
 
-- Actualizado listado de cambios para v30 [FINAL]
+- Actualizado listado de cambios para v31 [FINAL]
         </releaseNotes>
     </update>
 </AppUpdater>

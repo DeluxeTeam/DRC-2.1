@@ -16,6 +16,14 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"  android:orientation="vertical"
                 android:weightSum="1">
 
+                <!-- Changelog 31-->
+                <TextView android:layout_width="wrap_content"  android:layout_height="wrap_content" android:gravity="center" android:layout_gravity="center"
+                    android:textSize="20sp" android:textStyle="bold" android:layout_margin="8dp"
+                    android:text="@string/changelog_301" android:textColor="?complemnt_accent_color"/>
+                <com.deluxelabs.drc.views.ArrayTextList
+                    android:layout_marginStart="18dp" android:layout_marginEnd="18dp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" grxA_entries="@array/changelog_301"/>
+
                 <!-- Changelog 30-->
                 <TextView android:layout_width="wrap_content"  android:layout_height="wrap_content" android:gravity="center" android:layout_gravity="center"
                     android:textSize="20sp" android:textStyle="bold" android:layout_margin="8dp"

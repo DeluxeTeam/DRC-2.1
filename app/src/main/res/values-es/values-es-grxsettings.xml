@@ -372,6 +372,11 @@
         <item>Agresivo</item>
         <item>Muy agresivo</item>
     </string-array>
+    <string-array name="changelog_301">
+        <item>Rebasada sobre N950FXXUFDUE4</item>
+        <item>Parche de seguridad 01/05/2021</item>
+        <item>Incluido fix de botones flotantes</item>
+    </string-array>
     <string-array name="changelog_300">
         <item>Rebasada sobre N950FXXSFDUD1</item>
         <item>Actualizado DeluxeKernel_v16.9</item>
@@ -987,6 +992,7 @@
     <string name="dlxui">DlxUI</string>
     <string name="dlxdark">DlxDark</string>
     <string name="dlxlight">DlxLight</string>
+    <string name="changelog_301">Cambios v31</string>
     <string name="changelog_300">Cambios v30</string>
     <string name="changelog_290">Cambios v29</string>
     <string name="changelog_282">Cambios v28.2</string>
