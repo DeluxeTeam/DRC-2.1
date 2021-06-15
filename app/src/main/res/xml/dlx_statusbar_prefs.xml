@@ -1085,12 +1085,22 @@
                 grx:groupedValueSystemType="system"
                 grx:groupedValueMyAlias="cu"
                 grx:groupedValueKey="sb_dlxsbcarrier" />
+
             <GrxEditText
+                android:dependency="dlx_sb_use_custom_carrier"
                 android:title="@string/custom_text"
                 android:key="dlx_sb_carrier_text"
                 android:defaultValue="DeluxeROM®"
                 grx:groupedValueKey="sb_dlxsbcarrier"
                 grx:groupedValueMyAlias="tx" />
+
+            <GrxCheckBoxPreference
+                android:title="@string/allow_scroll"
+                android:key="dlx_sb_carrier_scroll"
+                android:defaultValue="false"
+                grx:groupedValueSystemType="system"
+                grx:groupedValueMyAlias="sc"
+                grx:groupedValueKey="sb_dlxsbcarrier" />
 
             <GrxColorPicker
                 android:title="@string/color"

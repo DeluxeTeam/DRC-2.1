@@ -2672,6 +2672,7 @@
     <string name="dismiss">Dismiss</string>
     <string name="new_app">-- New DRC v%s is out!</string>
     <string name="cant_cancel">Can\'t cancel at this point</string>
+    <string name="allow_scroll">Allow text scrolling</string>
     <!-- DeluxeROM end -->
 
 </resources>

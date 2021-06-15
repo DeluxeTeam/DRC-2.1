@@ -1219,6 +1219,7 @@
     <string name="dismiss">Omitir</string>
     <string name="new_app">-- Nuevo DRC v%s publicado!</string>
     <string name="cant_cancel">No se puede cancelar en este punto</string>
+    <string name="allow_scroll">Permitir desplazamiento de texto</string>
     <!-- DeluxeROM end -->
 
 </resources>
