@@ -1,11 +1,11 @@
 <AppUpdater>
     <update>
-        <latestVersion>2.2.3</latestVersion>
+        <latestVersion>2.2.4</latestVersion>
         <url>https://github.com/DeluxeTeam/DRC-2.1/releases</url>
         <releaseNotes>
--- DRC 2.2.3
+-- DRC 2.2.4
 
-- Actualizado listado de cambios para v31 [FINAL]
+- Añadida opción para desplazamiento de texto de operadora y multi-SIM
         </releaseNotes>
     </update>
 </AppUpdater>
